@@ -1,28 +1,13 @@
-# <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sober Adventuring | Travel Without Limits</title>
-<!-- =====================================================
-STRIPE SETUP INSTRUCTIONS
 
-1. Create a free Stripe account at [stripe.com](http://stripe.com/)
-2. Go to Payment Links in your dashboard
-3. Create a link for each plan (Explorer/Adventurer/Pioneer)
-4. Replace the href values on each .plan-btn below
-with your actual Stripe Payment Link URLs
-5. For the free Explorer plan, point to your
-Supabase or Clerk signup page instead
-===================================================== -->
-<!-- SUPABASE / CLERK LOGIN SETUP
-Free options:
-- Supabase: [supabase.com](http://supabase.com/) (free up to 50k users)
-Add their JS SDK and wrap member-only content
-- Clerk: clerk.dev (free up to 10k users)
-Drop in their <SignIn> component, easiest option
-Both work with this static HTML file with no backend
-===================================================== -->
+<!-- ========== SUPABASE SDK ========== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -37,7 +22,7 @@ Both work with this static HTML file with no backend
 --muted: #6B7B6E;
 --border: rgba(26,51,37,0.12);
 }
-- { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
@@ -826,6 +811,112 @@ transform: scale(1.03);
 box-shadow: 0 8px 24px rgba(232,96,58,0.4);
 }
 
+/* ── AUTH MODAL ── */
+.auth-overlay {
+display: none;
+position: fixed; inset: 0; z-index: 9999;
+background: rgba(0,0,0,0.6);
+backdrop-filter: blur(8px);
+align-items: center; justify-content: center;
+}
+.auth-overlay.active { display: flex; }
+
+.auth-modal {
+background: var(--warm-white);
+border-radius: 24px;
+padding: 48px 40px;
+max-width: 420px;
+width: 90%;
+position: relative;
+box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+}
+
+.auth-close {
+position: absolute; top: 16px; right: 20px;
+background: none; border: none;
+font-size: 24px; cursor: pointer;
+color: var(--muted);
+}
+
+.auth-modal h2 {
+font-family: 'Fraunces', serif;
+font-size: 28px; font-weight: 700;
+color: var(--forest);
+margin-bottom: 8px;
+}
+
+.auth-modal .auth-sub {
+font-size: 14px; color: var(--muted);
+margin-bottom: 28px; line-height: 1.5;
+}
+
+.auth-input {
+width: 100%;
+padding: 14px 20px;
+border-radius: 12px;
+border: 1px solid var(--border);
+background: white;
+font-size: 15px;
+font-family: 'Plus Jakarta Sans', sans-serif;
+outline: none;
+margin-bottom: 12px;
+transition: border-color 0.2s;
+}
+
+.auth-input:focus { border-color: var(--sage); }
+
+.auth-submit {
+width: 100%;
+padding: 14px;
+border-radius: 100px;
+background: var(--coral);
+color: white;
+border: none;
+font-size: 15px; font-weight: 600;
+cursor: pointer;
+font-family: 'Plus Jakarta Sans', sans-serif;
+margin-top: 8px;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-submit:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 24px rgba(232,96,58,0.4);
+}
+
+.auth-toggle {
+text-align: center;
+margin-top: 20px;
+font-size: 13px;
+color: var(--muted);
+}
+
+.auth-toggle a {
+color: var(--coral);
+font-weight: 600;
+cursor: pointer;
+text-decoration: none;
+}
+
+.auth-error {
+color: var(--coral);
+font-size: 13px;
+margin-top: 8px;
+display: none;
+}
+
+.auth-success {
+color: var(--sage);
+font-size: 13px;
+margin-top: 8px;
+display: none;
+}
+
+/* Logged-in state */
+.logged-in-only { display: none; }
+body.is-logged-in .logged-in-only { display: block; }
+body.is-logged-in .logged-out-only { display: none; }
+
 /* ── FOOTER ── */
 footer {
 background: var(--charcoal);
@@ -1016,6 +1107,36 @@ opacity: 0.6;
 </head>
 <body>
 
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose">&times;</button>
+
+    <!-- SIGNUP FORM -->
+    <div id="signupForm">
+      <h2>Join the community</h2>
+      <p class="auth-sub">Create your free Explorer account to get started.</p>
+      <input type="email" class="auth-input" id="signupEmail" placeholder="Your email">
+      <input type="password" class="auth-input" id="signupPassword" placeholder="Create a password (6+ characters)">
+      <button class="auth-submit" id="signupBtn">Create free account</button>
+      <div class="auth-error" id="signupError"></div>
+      <div class="auth-success" id="signupSuccess"></div>
+      <div class="auth-toggle">Already have an account? <a id="showLogin">Log in</a></div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="loginForm" style="display:none;">
+      <h2>Welcome back</h2>
+      <p class="auth-sub">Log in to access your membership.</p>
+      <input type="email" class="auth-input" id="loginEmail" placeholder="Your email">
+      <input type="password" class="auth-input" id="loginPassword" placeholder="Your password">
+      <button class="auth-submit" id="loginBtn">Log in</button>
+      <div class="auth-error" id="loginError"></div>
+      <div class="auth-toggle">Don't have an account? <a id="showSignup">Sign up free</a></div>
+    </div>
+  </div>
+</div>
+
 <!-- JOURNEY MAP NAVIGATOR -->
 <nav class="journey-nav" id="journeyNav">
 <div class="journey-track">
@@ -1063,7 +1184,8 @@ opacity: 0.6;
 <li><a href="#community">Community</a></li>
 <li><a href="#remote-academy">Remote work</a></li>
 <li><a href="#resources">Resources</a></li>
-<li><a href="#membership" class="nav-cta">Join Free</a></li>
+<li class="logged-out-only"><a href="#" class="nav-cta" id="navJoinBtn">Join Free</a></li>
+<li class="logged-in-only"><a href="#" class="nav-cta" id="navLogoutBtn" style="background:var(--forest)">Log out</a></li>
 </ul>
 </nav>
 
@@ -1111,7 +1233,6 @@ opacity: 0.6;
 <a href="#" class="card-link">Browse guides →</a>
 </div>
 
-```
 <div class="money-card">
   <span class="money-card-icon">🏨</span>
   <h3>Sober Hotel Directory</h3>
@@ -1146,7 +1267,6 @@ opacity: 0.6;
   <p>Sober Adventuring branded gear — journals, apparel, and accessories for the mindful traveler.</p>
   <a href="#" class="card-link">Shop gear →</a>
 </div>
-```
 
 </div>
 </section>
@@ -1168,11 +1288,9 @@ opacity: 0.6;
 <li>Public blog access</li>
 <li>1 free destination guide</li>
 </ul>
-<!-- STRIPE: Replace href with your Clerk/Supabase signup URL -->
-<a href="YOUR_SIGNUP_URL_HERE" class="plan-btn" style="text-align:center;display:block;text-decoration:none;line-height:2.8">Get started free</a>
+<button class="plan-btn auth-trigger" data-plan="explorer">Get started free</button>
 </div>
 
-```
 <div class="plan-card popular">
   <div class="popular-badge">Most popular</div>
   <div class="plan-name">Adventurer</div>
@@ -1207,7 +1325,6 @@ opacity: 0.6;
   <!-- STRIPE: Replace href with your $49/mo Stripe Payment Link -->
   <a href="YOUR_STRIPE_PIONEER_LINK_HERE" class="plan-btn" style="text-align:center;display:block;text-decoration:none;line-height:2.8">Join Pioneer</a>
 </div>
-```
 
 </div>
 </section>
@@ -1236,7 +1353,6 @@ opacity: 0.6;
 </div>
 </a>
 
-```
 <a class="blog-card" href="#">
   <div class="blog-img">
     <div class="blog-img-pattern"></div>
@@ -1262,7 +1378,6 @@ opacity: 0.6;
     <p class="blog-excerpt">I remember every sunset, every conversation, every moment. That's the real flex.</p>
   </div>
 </a>
-```
 
 </div>
 
@@ -1308,10 +1423,9 @@ opacity: 0.6;
 <p class="dir-bio">Full-time remote worker exploring Southeast Asia one café at a time. Love connecting with other sober adventurers!</p>
 </div>
 
-```
 <div class="dir-card">
   <div class="dir-avatar-img">
-    <img src="<https://api.dicebear.com/7.x/adventurer/svg?seed=James&backgroundColor=2D5A3D&hair=short01&skinColor=ae5d29>" alt="James T." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=James&backgroundColor=2D5A3D&hair=short01&skinColor=ae5d29" alt="James T." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
   </div>
   <div class="dir-name">James T.</div>
   <div class="dir-location">📍 Denver, CO</div>
@@ -1325,7 +1439,7 @@ opacity: 0.6;
 
 <div class="dir-card">
   <div class="dir-avatar-img">
-    <img src="<https://api.dicebear.com/7.x/adventurer/svg?seed=Sofia&backgroundColor=4A7C59&hair=long16&skinColor=edbfa0>" alt="Sofia M." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Sofia&backgroundColor=4A7C59&hair=long16&skinColor=edbfa0" alt="Sofia M." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
   </div>
   <div class="dir-name">Sofia M.</div>
   <div class="dir-location">📍 Lisbon, Portugal</div>
@@ -1339,7 +1453,7 @@ opacity: 0.6;
 
 <div class="dir-card">
   <div class="dir-avatar-img">
-    <img src="<https://api.dicebear.com/7.x/adventurer/svg?seed=Marcus&backgroundColor=1A3325&hair=short05&skinColor=694d3d>" alt="Marcus L." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Marcus&backgroundColor=1A3325&hair=short05&skinColor=694d3d" alt="Marcus L." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
   </div>
   <div class="dir-name">Marcus L.</div>
   <div class="dir-location">📍 Brooklyn, NY</div>
@@ -1353,7 +1467,7 @@ opacity: 0.6;
 
 <div class="dir-card">
   <div class="dir-avatar-img">
-    <img src="<https://api.dicebear.com/7.x/adventurer/svg?seed=Priya&backgroundColor=C8A96E&hair=long04&skinColor=c47632>" alt="Priya K." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Priya&backgroundColor=C8A96E&hair=long04&skinColor=c47632" alt="Priya K." style="width:100%;height:100%;object-fit:cover;border-radius:50%">
   </div>
   <div class="dir-name">Priya K.</div>
   <div class="dir-location">📍 Sydney, Australia</div>
@@ -1371,7 +1485,6 @@ opacity: 0.6;
   <p style="font-size: 13px; color: rgba(247,240,227,0.55); margin-bottom: 24px; line-height: 1.5">Join the directory and connect with sober travelers worldwide</p>
   <a href="#membership" class="btn-primary" style="font-size: 13px; padding: 12px 24px;">Create profile →</a>
 </div>
-```
 
 </div>
 </section>
@@ -1389,7 +1502,6 @@ opacity: 0.6;
 <div class="aff-desc">Comprehensive coverage for sober travelers with no alcohol clauses</div>
 </div>
 
-```
 <div class="aff-card">
   <div class="aff-icon">🏨</div>
   <div class="aff-name">Wellness Hotels</div>
@@ -1431,7 +1543,6 @@ opacity: 0.6;
   <div class="aff-name">Tour Operators</div>
   <div class="aff-desc">Sober-friendly group tours and experiences worldwide</div>
 </div>
-```
 
 </div>
 </section>
@@ -1446,7 +1557,7 @@ opacity: 0.6;
 <p style="font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 36px;">Sobriety gave me the clarity to build something real. The agency funds the travel. The travel fuels the content. It's a full loop.</p>
 <div style="display: flex; gap: 16px; flex-wrap: wrap;">
 <a href="#nomad" class="btn-primary">How I do it →</a>
-<a href="[https://impelloagency.com](https://impelloagency.com/)" target="_blank" style="color: var(--forest); padding: 16px 32px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: all 0.2s; display:inline-block;">Visit Impello Agency</a>
+<a href="https://impelloagency.com" target="_blank" style="color: var(--forest); padding: 16px 32px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: all 0.2s; display:inline-block;">Visit Impello Agency</a>
 </div>
 </div>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
@@ -1511,7 +1622,6 @@ opacity: 0.6;
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px;">
 
-```
 <div style="background: rgba(247,240,227,0.06); border: 1px solid rgba(247,240,227,0.12); border-radius: 20px; padding: 36px 32px; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.background='rgba(247,240,227,0.1)'" onmouseout="this.style.background='rgba(247,240,227,0.06)'">
   <div style="font-size: 36px; margin-bottom: 20px;">🎯</div>
   <h3 style="font-family: Fraunces, serif; font-size: 22px; color: var(--cream); margin-bottom: 10px;">Land your first remote client</h3>
@@ -1542,7 +1652,6 @@ opacity: 0.6;
     <a href="YOUR_STRIPE_MENTORSHIP_LINK" style="background: var(--coral); color: white; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;">Apply now</a>
   </div>
 </div>
-```
 
 </div>
 
@@ -1560,7 +1669,7 @@ opacity: 0.6;
 <h2>Never travel <em>alone.</em></h2>
 <p>Weekly stories, destination guides, and community spotlights, straight to your inbox. Free forever.</p>
 <div class="email-form">
-<input type="email" [placeholder="your@email.com](mailto:placeholder=%22your@email.com)">
+<input type="email" placeholder="your@email.com">
 <button>Subscribe free</button>
 </div>
 </section>
@@ -1579,7 +1688,6 @@ opacity: 0.6;
 </div>
 </div>
 
-```
 <div class="footer-col">
   <h4>Explore</h4>
   <ul>
@@ -1609,17 +1717,152 @@ opacity: 0.6;
     <li><a href="#">Contact</a></li>
   </ul>
 </div>
-```
 
 </div>
 
 <div class="footer-bottom">
-<p>© 2026 Sober Adventuring. All rights reserved.</p>
+<p>&copy; 2026 Sober Adventuring. All rights reserved.</p>
 <p>Made with intention · <a href="#" style="color:rgba(255,255,255,0.4)">Privacy</a> · <a href="#" style="color:rgba(255,255,255,0.4)">Terms</a></p>
 </div>
 </footer>
 
 <script>
+// ========== SUPABASE CONNECTION ==========
+const supabase = window.supabase.createClient(
+  'https://azatqjnwjoyfnondqdhl.supabase.co',
+  'sb_publishable_LOArgyOf2TPfe4kHX4fxuQ_mLuNKv9P'
+);
+
+// ========== AUTH LOGIC ==========
+const authOverlay = document.getElementById('authOverlay');
+const authClose = document.getElementById('authClose');
+const signupForm = document.getElementById('signupForm');
+const loginForm = document.getElementById('loginForm');
+const showLogin = document.getElementById('showLogin');
+const showSignup = document.getElementById('showSignup');
+
+// Open auth modal
+function openAuth() {
+  authOverlay.classList.add('active');
+  signupForm.style.display = 'block';
+  loginForm.style.display = 'none';
+}
+
+// Close auth modal
+authClose.addEventListener('click', () => authOverlay.classList.remove('active'));
+authOverlay.addEventListener('click', (e) => {
+  if (e.target === authOverlay) authOverlay.classList.remove('active');
+});
+
+// Toggle between signup/login
+showLogin.addEventListener('click', () => {
+  signupForm.style.display = 'none';
+  loginForm.style.display = 'block';
+});
+showSignup.addEventListener('click', () => {
+  signupForm.style.display = 'block';
+  loginForm.style.display = 'none';
+});
+
+// Nav "Join Free" button opens auth modal
+const navJoinBtn = document.getElementById('navJoinBtn');
+if (navJoinBtn) navJoinBtn.addEventListener('click', (e) => { e.preventDefault(); openAuth(); });
+
+// Explorer plan button opens auth modal
+document.querySelectorAll('.auth-trigger').forEach(btn => {
+  btn.addEventListener('click', (e) => { e.preventDefault(); openAuth(); });
+});
+
+// SIGNUP
+document.getElementById('signupBtn').addEventListener('click', async () => {
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const errorEl = document.getElementById('signupError');
+  const successEl = document.getElementById('signupSuccess');
+  errorEl.style.display = 'none';
+  successEl.style.display = 'none';
+
+  if (!email || !password) {
+    errorEl.textContent = 'Please fill in both fields.';
+    errorEl.style.display = 'block';
+    return;
+  }
+  if (password.length < 6) {
+    errorEl.textContent = 'Password must be at least 6 characters.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const { data, error } = await supabase.auth.signUp({ email, password });
+
+  if (error) {
+    errorEl.textContent = error.message;
+    errorEl.style.display = 'block';
+  } else {
+    successEl.textContent = 'Check your email to confirm your account!';
+    successEl.style.display = 'block';
+    document.getElementById('signupEmail').value = '';
+    document.getElementById('signupPassword').value = '';
+  }
+});
+
+// LOGIN
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  const errorEl = document.getElementById('loginError');
+  errorEl.style.display = 'none';
+
+  if (!email || !password) {
+    errorEl.textContent = 'Please fill in both fields.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+  if (error) {
+    errorEl.textContent = error.message;
+    errorEl.style.display = 'block';
+  } else {
+    authOverlay.classList.remove('active');
+    updateAuthUI(data.user);
+  }
+});
+
+// LOGOUT
+const navLogoutBtn = document.getElementById('navLogoutBtn');
+if (navLogoutBtn) {
+  navLogoutBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await supabase.auth.signOut();
+    updateAuthUI(null);
+  });
+}
+
+// Update UI based on logged in/out
+function updateAuthUI(user) {
+  if (user) {
+    document.body.classList.add('is-logged-in');
+  } else {
+    document.body.classList.remove('is-logged-in');
+  }
+}
+
+// Check if already logged in on page load
+(async () => {
+  const { data: { user } } = await supabase.auth.getUser();
+  updateAuthUI(user);
+})();
+
+// Listen for auth state changes (email confirm, etc.)
+supabase.auth.onAuthStateChange((event, session) => {
+  updateAuthUI(session?.user || null);
+});
+
+
+// ========== ORIGINAL SITE SCRIPTS ==========
+
 // Filter buttons
 document.querySelectorAll('.filter-btn').forEach(btn => {
 btn.addEventListener('click', () => {
@@ -1687,7 +1930,6 @@ const docH = document.documentElement.scrollHeight - window.innerHeight;
 const pct = Math.min(100, (scrollY / docH) * 100);
 journeyProgress.style.width = pct + '%';
 
-```
 if (scrollY > window.innerHeight * 0.5) {
   journeyNav.classList.add('visible');
 } else {
@@ -1702,7 +1944,6 @@ sections.forEach(s => {
 stops.forEach(stop => {
   stop.classList.toggle('active', stop.dataset.section === current);
 });
-```
 
 }
 
