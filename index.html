@@ -1728,7 +1728,8 @@ opacity: 0.6;
 
 <script>
 // ========== SUPABASE CONNECTION ==========
-const supabase = window.supabase.createClient(
+const { createClient } = supabase;
+const _supabase = createClient(
   'https://azatqjnwjoyfnondqdhl.supabase.co',
   'sb_publishable_LOArgyOf2TPfe4kHX4fxuQ_mLuNKv9P'
 );
@@ -1793,7 +1794,7 @@ document.getElementById('signupBtn').addEventListener('click', async () => {
     return;
   }
 
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  const { data, error } = await _supabase.auth.signUp({ email, password });
 
   if (error) {
     errorEl.textContent = error.message;
@@ -1819,7 +1820,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
     return;
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
     errorEl.textContent = error.message;
@@ -1835,7 +1836,7 @@ const navLogoutBtn = document.getElementById('navLogoutBtn');
 if (navLogoutBtn) {
   navLogoutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    await supabase.auth.signOut();
+    await _supabase.auth.signOut();
     updateAuthUI(null);
   });
 }
@@ -1851,12 +1852,12 @@ function updateAuthUI(user) {
 
 // Check if already logged in on page load
 (async () => {
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await _supabase.auth.getUser();
   updateAuthUI(user);
 })();
 
 // Listen for auth state changes (email confirm, etc.)
-supabase.auth.onAuthStateChange((event, session) => {
+_supabase.auth.onAuthStateChange((event, session) => {
   updateAuthUI(session?.user || null);
 });
 
