@@ -1019,9 +1019,13 @@ transition: transform 0.2s ease;
 }
 .money-card:hover img.fluent-emoji,
 .aff-card:hover img.fluent-emoji { transform: scale(1.12) translateY(-2px); }
-.stop-dot img.fluent-emoji {
+.stop-dot img.fluent-emoji,
+.stop-dot img.emoji,
+.stop-dot img {
 width: 14px; height: 14px;
 filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
+display: block;
+margin: 0 auto;
 }
 .blog-img img.fluent-emoji {
 width: 72px; height: 72px;
@@ -1304,8 +1308,7 @@ opacity: 0.6;
     <li>Exclusive hotel discounts</li>
     <li>Digital product downloads</li>
   </ul>
-  <!-- STRIPE: Replace href with your $19/mo Stripe Payment Link -->
-  <a href="YOUR_STRIPE_ADVENTURER_LINK_HERE" class="plan-btn" style="text-align:center;display:block;text-decoration:none;line-height:2.8">Join Adventurer</a>
+  <button class="plan-btn auth-trigger" data-plan="adventurer">Join Adventurer</button>
 </div>
 
 <div class="plan-card">
@@ -1322,8 +1325,7 @@ opacity: 0.6;
     <li>Featured in Instagram Stories</li>
     <li>Custom itinerary review before you depart</li>
   </ul>
-  <!-- STRIPE: Replace href with your $49/mo Stripe Payment Link -->
-  <a href="YOUR_STRIPE_PIONEER_LINK_HERE" class="plan-btn" style="text-align:center;display:block;text-decoration:none;line-height:2.8">Join Pioneer</a>
+  <button class="plan-btn auth-trigger" data-plan="pioneer">Join Pioneer</button>
 </div>
 
 </div>
@@ -1969,7 +1971,8 @@ if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 twemoji.parse(document.body, {
 folder: 'svg',
 ext: '.svg',
-base: 'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/assets/'
+base: 'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/assets/',
+className: 'fluent-emoji'
 });
 </script>
 </body>
