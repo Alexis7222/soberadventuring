@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sober Adventuring</title>
-<meta name="description" content="Travel deeper. Experience more. Sober Adventuring with Alexis.">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="One foot in front of the other. Sober Adventuring with Alexis.">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --orange:   #f05c1a;
-  --orange-2: #ff7a3a;
-  --yellow:   #f5b800;
-  --yellow-2: #ffd84d;
-  --green:    #1a4a2e;
-  --green-2:  #2d7a4a;
-  --green-3:  #4aaa6e;
-  --sand:     #fdf7ee;
-  --sand-2:   #f5e9d5;
-  --muted:    #7a8a78;
-  --dark:     #141f14;
+  --cream:    #f0e8d6;
+  --cream-2:  #e8dcc8;
+  --terra:    #c4533a;
+  --terra-2:  #d9614a;
+  --terra-bg: rgba(196,83,58,0.1);
+  --forest:   #1e3c28;
+  --forest-2: #2d5a3e;
+  --forest-bg: rgba(30,60,40,0.08);
+  --black:    #1a1a18;
+  --muted:    #6e7a6a;
+  --white:    #ffffff;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,8 +26,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--sand);
-  color: var(--dark);
+  background: var(--cream);
+  color: var(--black);
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -36,30 +36,14 @@ body {
   overflow-x: hidden;
 }
 
-/* ── BACKGROUND ── */
-.bg {
-  position: fixed; inset: 0; pointer-events: none; z-index: 0;
-}
-.bg-blob-1 {
-  position: absolute;
-  top: -120px; right: -100px;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,184,0,0.22) 0%, transparent 70%);
-}
-.bg-blob-2 {
-  position: absolute;
-  bottom: -80px; left: -120px;
-  width: 500px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(240,92,26,0.15) 0%, transparent 70%);
-}
-.bg-blob-3 {
-  position: absolute;
-  top: 40%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px; height: 300px;
-  background: radial-gradient(ellipse, rgba(45,122,74,0.07) 0%, transparent 70%);
+/* ── SUBTLE BG TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 85% 5%, rgba(196,83,58,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(30,60,40,0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
 }
 
 /* ── PAGE WRAP ── */
@@ -70,84 +54,144 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 56px 20px 64px;
-  gap: 0;
+  padding: 52px 22px 64px;
 }
 
-/* ── PROFILE ── */
+/* ── AVATAR / STICKER ── */
+.avatar-wrap {
+  position: relative;
+  margin-bottom: 18px;
+  animation: pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.avatar-blob {
+  width: 130px;
+  height: 130px;
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+.avatar-blob .avatar-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Placeholder if no image yet */
+.avatar-blob .avatar-placeholder {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--terra-bg), rgba(30,60,40,0.12));
+  border: 2px dashed rgba(196,83,58,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+}
+
+/* Tree decorations */
+.tree-left, .tree-right {
+  position: absolute;
+  bottom: 8px;
+  font-size: 22px;
+  opacity: 0.85;
+}
+.tree-left  { left: -4px; }
+.tree-right { right: -4px; }
+
+/* ── PROFILE TEXT ── */
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 40px;
-}
-
-.avatar-wrap {
-  position: relative;
-  margin-bottom: 22px;
-}
-
-.avatar {
-  width: 96px; height: 96px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--yellow-2), var(--orange), var(--green-2));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 44px;
-  box-shadow: 0 12px 40px rgba(240,92,26,0.25), 0 0 0 4px var(--sand), 0 0 0 6px rgba(240,92,26,0.15);
+  margin-bottom: 10px;
+  animation: fadeUp 0.45s 0.1s ease both;
 }
 
 .profile-name {
-  font-family: 'Fraunces', serif;
-  font-size: 30px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: var(--green);
-  margin-bottom: 5px;
-  line-height: 1;
+  font-family: 'Pacifico', cursive;
+  font-size: 32px;
+  color: var(--forest);
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  margin-bottom: 6px;
 }
 
-.profile-name .dot { color: var(--orange); }
+.profile-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--terra);
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
 
 .profile-handle {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--muted);
-  letter-spacing: 0.04em;
-  margin-bottom: 16px;
+  letter-spacing: 0.05em;
 }
 
-.profile-bio {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--green);
-  line-height: 1.65;
-  max-width: 300px;
-  opacity: 0.75;
+/* ── DIVIDER ── */
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  animation: fadeUp 0.45s 0.15s ease both;
+}
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--cream-2);
+  border-top: 1px solid rgba(30,60,40,0.15);
+}
+.divider-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
-/* ── TAG STRIP ── */
+/* ── TOPIC TAGS ── */
 .tag-strip {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.45s 0.18s ease both;
 }
 
 .tag {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 7px 14px;
   border-radius: 100px;
-  border: 1.5px solid;
+  border: 2px solid;
+  white-space: nowrap;
 }
 
-.tag-orange { color: var(--orange); border-color: rgba(240,92,26,0.3); background: rgba(240,92,26,0.06); }
-.tag-yellow { color: #b87e00; border-color: rgba(245,184,0,0.35); background: rgba(245,184,0,0.08); }
-.tag-green  { color: var(--green-2); border-color: rgba(45,122,74,0.3); background: rgba(45,122,74,0.07); }
+.tag-fill-green  { background: var(--forest);  color: var(--cream);  border-color: var(--forest); }
+.tag-fill-terra  { background: var(--terra);   color: var(--white);  border-color: var(--terra); }
+.tag-outline     { background: transparent;    color: var(--black);  border-color: rgba(30,60,40,0.3); }
+.tag-fill-green2 { background: var(--forest-2); color: var(--cream); border-color: var(--forest-2); }
 
 /* ── LINK BUTTONS ── */
 .links {
@@ -155,7 +199,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 11px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.45s 0.22s ease both;
 }
 
 .link-btn {
@@ -163,69 +208,43 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 16px 20px;
-  border-radius: 16px;
+  padding: 15px 18px;
+  border-radius: 14px;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  -webkit-tap-highlight-color: transparent;
-  border: none;
+  border: 2px solid var(--black);
   font-family: 'DM Sans', sans-serif;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 3px 3px 0 var(--black);
 }
 
-.link-btn:active { transform: scale(0.98); }
-
-/* Instagram — orange fill */
-.link-btn.instagram {
-  background: linear-gradient(135deg, var(--orange), var(--orange-2));
-  color: white;
-  box-shadow: 0 6px 24px rgba(240,92,26,0.3);
+.link-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--black);
 }
-.link-btn.instagram:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(240,92,26,0.4);
+.link-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--black);
 }
 
-/* Outlined green */
-.link-btn.outlined-green {
-  background: white;
-  border: 1.5px solid rgba(26,74,46,0.18);
-  color: var(--green);
-  box-shadow: 0 2px 12px rgba(26,74,46,0.06);
-}
-.link-btn.outlined-green:hover {
-  transform: translateY(-2px);
-  border-color: rgba(26,74,46,0.35);
-  box-shadow: 0 6px 20px rgba(26,74,46,0.1);
-}
-
-/* Yellow fill */
-.link-btn.yellow-fill {
-  background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
-  color: var(--dark);
-  box-shadow: 0 6px 24px rgba(245,184,0,0.25);
-}
-.link-btn.yellow-fill:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(245,184,0,0.35);
-}
+.link-btn.terra   { background: var(--terra);  color: var(--white); }
+.link-btn.forest  { background: var(--forest); color: var(--cream); }
+.link-btn.cream   { background: var(--white);  color: var(--black); }
+.link-btn.yellow  { background: #f5b800;       color: var(--black); }
 
 .link-icon-wrap {
-  width: 42px; height: 42px;
-  border-radius: 10px;
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
   display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  font-size: 18px;
   flex-shrink: 0;
 }
+.link-btn.cream .link-icon-wrap  { background: rgba(30,60,40,0.07); }
+.link-btn.yellow .link-icon-wrap { background: rgba(0,0,0,0.1); }
 
-.instagram .link-icon-wrap   { background: rgba(255,255,255,0.2); }
-.outlined-green .link-icon-wrap { background: rgba(26,74,46,0.07); }
-.yellow-fill .link-icon-wrap  { background: rgba(0,0,0,0.08); }
-
-.link-text-wrap {
-  flex: 1;
-  text-align: left;
-}
+.link-text-wrap { flex: 1; text-align: left; }
 
 .link-title {
   font-size: 15px;
@@ -237,49 +256,36 @@ body {
 .link-sub {
   font-size: 12px;
   font-weight: 300;
-  opacity: 0.6;
+  opacity: 0.65;
 }
 
-.link-caret {
-  font-size: 18px;
-  opacity: 0.5;
-  flex-shrink: 0;
-}
+.link-caret { font-size: 18px; opacity: 0.6; flex-shrink: 0; }
 
-/* ── COMING SOON CARD ── */
-.coming-card {
+/* ── COMING SOON BANNER ── */
+.coming-banner {
   width: 100%;
-  background: white;
-  border: 1.5px dashed rgba(26,74,46,0.18);
-  border-radius: 16px;
-  padding: 22px 24px;
+  border: 2px dashed rgba(30,60,40,0.25);
+  border-radius: 14px;
+  padding: 20px 22px;
   text-align: center;
   margin-bottom: 32px;
+  background: rgba(255,255,255,0.5);
+  animation: fadeUp 0.45s 0.28s ease both;
 }
 
-.coming-card-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 8px;
-}
-
-.coming-card-title {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
+.coming-banner-title {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--green);
-  margin-bottom: 6px;
-  letter-spacing: -0.3px;
+  color: var(--forest);
+  margin-bottom: 5px;
 }
 
-.coming-card p {
+.coming-banner p {
   font-size: 13px;
   font-weight: 300;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 /* ── FOOTER ── */
@@ -287,77 +293,79 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 6px;
+  animation: fadeUp 0.45s 0.32s ease both;
 }
 
 .footer-copy {
   font-size: 11px;
   color: var(--muted);
-  opacity: 0.5;
+  opacity: 0.55;
   letter-spacing: 0.04em;
 }
 
-/* ── ANIMATIONS ── */
-.page > * {
-  animation: fadeUp 0.5s ease both;
-}
-.profile   { animation-delay: 0s; }
-.tag-strip { animation-delay: 0.05s; }
-.links     { animation-delay: 0.1s; }
-.coming-card { animation-delay: 0.15s; }
-.page-footer { animation-delay: 0.2s; }
-
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── MOBILE ── */
 @media (max-width: 480px) {
-  .page { padding: 44px 16px 52px; }
-  .avatar { width: 84px; height: 84px; font-size: 38px; }
-  .profile-name { font-size: 26px; }
+  .page { padding: 40px 16px 52px; }
+  .profile-name { font-size: 28px; }
+  .avatar-blob { width: 116px; height: 116px; }
 }
 </style>
 </head>
 <body>
 
-<div class="bg">
-  <div class="bg-blob-1"></div>
-  <div class="bg-blob-2"></div>
-  <div class="bg-blob-3"></div>
-</div>
-
 <div class="page">
 
-  <div class="profile">
-    <div class="avatar-wrap">
-      <div class="avatar">🌿</div>
+  <!-- AVATAR -->
+  <div class="avatar-wrap">
+    <div class="avatar-blob">
+      <!-- Swap this img src for your actual character file when ready -->
+      <img src="avatar.png" class="avatar-img" alt="Sober Adventuring mascot"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="avatar-placeholder" style="display:none;">🌿</div>
+      <span class="tree-left">🌲</span>
+      <span class="tree-right">🌲</span>
     </div>
-    <div class="profile-name">Sober<span class="dot">.</span>Adventuring</div>
+  </div>
+
+  <!-- NAME + TAGLINE -->
+  <div class="profile">
+    <div class="profile-name">Sober Adventuring</div>
+    <div class="profile-tagline">one foot in front of the other.</div>
     <div class="profile-handle">@soberadventuring</div>
-    <p class="profile-bio">Traveling the world sober &amp; proving it&rsquo;s the better way to do it.</p>
+  </div>
+
+  <!-- WHAT I'M ABOUT -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-label">What I'm about</span>
+    <div class="divider-line"></div>
   </div>
 
   <div class="tag-strip">
-    <span class="tag tag-orange">Sober travel</span>
-    <span class="tag tag-yellow">Digital nomad</span>
-    <span class="tag tag-green">Remote life</span>
+    <span class="tag tag-fill-green">Personal Development</span>
+    <span class="tag tag-fill-terra">Coaching</span>
+    <span class="tag tag-outline">Travel</span>
+    <span class="tag tag-fill-green2">Sobriety Tidbits</span>
   </div>
 
+  <!-- LINKS -->
   <div class="links">
 
-    <a href="https://instagram.com/soberadventuring" class="link-btn instagram" target="_blank" rel="noopener noreferrer">
+    <a href="https://instagram.com/soberadventuring" class="link-btn terra" target="_blank" rel="noopener noreferrer">
       <div class="link-icon-wrap">📸</div>
       <div class="link-text-wrap">
-        <div class="link-title">Follow on Instagram</div>
+        <div class="link-title">Instagram</div>
         <div class="link-sub">@soberadventuring</div>
       </div>
       <div class="link-caret">↗</div>
     </a>
 
-    <a href="#" class="link-btn yellow-fill">
+    <a href="#" class="link-btn yellow">
       <div class="link-icon-wrap">🎵</div>
       <div class="link-text-wrap">
         <div class="link-title">TikTok</div>
@@ -366,7 +374,7 @@ body {
       <div class="link-caret">↗</div>
     </a>
 
-    <a href="#" class="link-btn outlined-green">
+    <a href="#" class="link-btn cream">
       <div class="link-icon-wrap">▶️</div>
       <div class="link-text-wrap">
         <div class="link-title">YouTube</div>
@@ -375,12 +383,21 @@ body {
       <div class="link-caret">↗</div>
     </a>
 
+    <a href="#" class="link-btn forest">
+      <div class="link-icon-wrap">📞</div>
+      <div class="link-text-wrap">
+        <div class="link-title">Work with me</div>
+        <div class="link-sub">Coaching &amp; consulting</div>
+      </div>
+      <div class="link-caret">↗</div>
+    </a>
+
   </div>
 
-  <div class="coming-card">
-    <div class="coming-card-label">Coming soon</div>
-    <div class="coming-card-title">Guides, coaching &amp; community.</div>
-    <p>Building something worth your time. Stay tuned.</p>
+  <!-- COMING SOON -->
+  <div class="coming-banner">
+    <div class="coming-banner-title">Guides, products &amp; community coming soon.</div>
+    <p>Building it out right now. Stay close.</p>
   </div>
 
   <div class="page-footer">
