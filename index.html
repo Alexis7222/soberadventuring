@@ -3,409 +3,949 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sober Adventuring</title>
-<meta name="description" content="One foot in front of the other. Sober Adventuring with Alexis.">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat+Brush&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
+<title>The Sober Pivot — with Lexi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@300;400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 :root {
-  --ink:      #142319;
-  --forest:   #1f3a2a;
-  --terra:    #d85a3c;
-  --cream:    #f5ebd6;
-  --paper:    #f9e8b5;
-  --terra-bg: rgba(216,90,60,0.1);
-  --forest-bg: rgba(31,58,42,0.08);
-  --muted:    #5e7060;
-  --white:    #ffffff;
+  --ink:        #1B0009;
+  --forest:     #2D3D24;
+  --terra:      #C5442C;
+  --terra-dark: #9e3320;
+  --cream:      #F4E8D0;
+  --paper:      #F0EDE8;
+  --white:      #FEFCF8;
+  --muted:      #6b5a4e;
 }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'Bricolage Grotesque', sans-serif;
   background: var(--paper);
   color: var(--ink);
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* ── SUBTLE BG TEXTURE ── */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 40% at 85% 5%, rgba(216,90,60,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(31,58,42,0.09) 0%, transparent 60%);
-  pointer-events: none; z-index: 0;
+/* —— ANNOUNCE BAR —— */
+.announce {
+  background: var(--terra);
+  color: var(--cream);
+  text-align: center;
+  padding: 10px 20px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
+.announce a { color: var(--cream); font-weight: 700; text-decoration: underline; }
 
-/* ── PAGE WRAP ── */
-.page {
-  position: relative; z-index: 1;
-  width: 100%;
-  max-width: 440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 52px 22px 64px;
-}
-
-/* ── BRAND LOCKUP ── */
-.lockup-wrap {
+/* —— NAV —— */
+nav {
+  background: var(--cream);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 14px 28px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-bottom: 24px;
-  animation: pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+.nav-logo .sober {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.nav-logo .pivot {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--terra);
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--terra) !important;
+  color: var(--cream) !important;
+  padding: 8px 16px;
+  font-weight: 600 !important;
+  border: none;
 }
 
-@keyframes pop {
-  from { opacity: 0; transform: scale(0.8); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-.lockup-avatar {
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 2.5px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+/* —— HERO —— */
+.hero {
+  background: var(--cream);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
   overflow: hidden;
 }
-
-.lockup-avatar-img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 50%;
+.hero-content {
+  padding: 56px 28px 48px;
+  max-width: 560px;
 }
-
-.lockup-avatar-fallback {
-  font-size: 34px;
-  display: none;
-}
-
-.lockup-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.lockup-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 30px;
-  line-height: 1;
-  letter-spacing: -0.5px;
-}
-
-.lockup-sober       { color: var(--forest); }
-.lockup-adventuring { color: var(--terra); }
-
-.lockup-tagline {
-  font-family: 'Caveat Brush', cursive;
-  font-size: 18px;
-  color: var(--terra);
-  line-height: 1.2;
-}
-
-/* ── PROFILE (handle + bio) ── */
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 10px;
-  animation: fadeUp 0.45s 0.1s ease both;
-}
-
-.profile-handle {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
-}
-
-.profile-bio {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--forest);
-  line-height: 1.65;
-  max-width: 340px;
-  opacity: 0.8;
-}
-
-/* ── DIVIDER ── */
-.divider {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 22px 0;
-  animation: fadeUp 0.45s 0.15s ease both;
-}
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: transparent;
-  border-top: 1px solid rgba(31,58,42,0.18);
-}
-.divider-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-/* ── TOPIC TAGS ── */
-.tag-strip {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 28px;
-  animation: fadeUp 0.45s 0.18s ease both;
-}
-
-.tag {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  padding: 7px 14px;
-  border-radius: 100px;
-  border: 2px solid;
-  white-space: nowrap;
-}
-
-.tag-fill-green  { background: var(--forest);  color: var(--cream);  border-color: var(--forest); }
-.tag-fill-terra  { background: var(--terra);   color: var(--white);  border-color: var(--terra); }
-.tag-outline     { background: transparent;    color: var(--ink);    border-color: rgba(31,58,42,0.35); }
-.tag-fill-green2 { background: var(--ink);     color: var(--cream);  border-color: var(--ink); }
-
-/* ── LINK BUTTONS ── */
-.links {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  margin-bottom: 20px;
-  animation: fadeUp 0.45s 0.22s ease both;
-}
-
-.link-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 15px 18px;
-  border-radius: 14px;
-  text-decoration: none;
-  cursor: pointer;
-  border: 2px solid var(--ink);
+.hero-eyebrow {
   font-family: 'Bricolage Grotesque', sans-serif;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  -webkit-tap-highlight-color: transparent;
-  box-shadow: 3px 3px 0 var(--ink);
-}
-
-.link-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 var(--ink);
-}
-.link-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--ink);
-}
-
-.link-btn.terra   { background: var(--terra);  color: var(--white); }
-.link-btn.forest  { background: var(--forest); color: var(--cream); }
-.link-btn.cream   { background: var(--cream);  color: var(--ink); }
-.link-btn.paper   { background: var(--paper);  color: var(--ink); }
-
-.link-icon-wrap {
-  width: 38px; height: 38px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-.link-btn.cream .link-icon-wrap  { background: rgba(31,58,42,0.08); }
-.link-btn.paper .link-icon-wrap  { background: rgba(31,58,42,0.08); }
-
-.link-text-wrap { flex: 1; text-align: left; }
-
-.link-title {
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1px;
-}
-
-.link-sub {
-  font-size: 12px;
-  font-weight: 300;
-  opacity: 0.65;
-}
-
-.link-caret { font-size: 18px; opacity: 0.6; flex-shrink: 0; }
-
-/* ── COMING SOON BANNER ── */
-.coming-banner {
-  width: 100%;
-  border: 2px dashed rgba(31,58,42,0.25);
-  border-radius: 14px;
-  padding: 20px 22px;
-  text-align: center;
-  margin-bottom: 32px;
-  background: rgba(245,235,214,0.6);
-  animation: fadeUp 0.45s 0.28s ease both;
-}
-
-.coming-banner-title {
-  font-family: 'Caveat Brush', cursive;
-  font-size: 22px;
-  color: var(--forest);
-  margin-bottom: 5px;
-}
-
-.coming-banner p {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-/* ── FOOTER ── */
-.page-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  animation: fadeUp 0.45s 0.32s ease both;
-}
-
-.footer-copy {
   font-size: 11px;
-  color: var(--muted);
-  opacity: 0.55;
-  letter-spacing: 0.04em;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 480px) {
-  .page { padding: 40px 16px 52px; }
-  .profile-name { font-size: 28px; }
-  .avatar-blob { width: 116px; height: 116px; }
-}
-
-/* ── WORDMARK LOCKUP (bottom) ── */
-.wordmark {
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1.5px;
+  background: var(--terra);
+  display: inline-block;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(52px, 12vw, 80px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin-bottom: 6px;
 }
-.wordmark-text {
-  font-family: 'DM Serif Display', serif;
-  font-size: 13px;
+.hero h1 em {
+  font-style: italic;
+  color: var(--terra);
+}
+.hero-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(18px, 4.5vw, 24px);
+  font-weight: 500;
   color: var(--ink);
-  opacity: 0.35;
+  margin-bottom: 24px;
+  opacity: 0.75;
+}
+.hero-body {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 36px;
+}
+.hero-body strong { color: var(--ink); font-weight: 600; }
+
+.hero-btns { display: flex; flex-direction: column; gap: 10px; max-width: 320px; }
+.btn-primary {
+  display: block;
+  background: var(--terra);
+  color: var(--cream);
+  text-decoration: none;
+  padding: 17px 24px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  border: 1.5px solid var(--terra-dark);
+  box-shadow: 3px 3px 0 var(--terra-dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--terra-dark); }
+.btn-primary:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--terra-dark); }
+.btn-ghost {
+  display: block;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: background 0.15s;
+}
+.btn-ghost:hover { background: var(--ink); color: var(--cream); }
+
+.hero-note {
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* —— TICKER —— */
+.ticker {
+  background: var(--forest);
+  padding: 11px 0;
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--ink);
+}
+.ticker-track {
+  display: flex;
+  gap: 36px;
+  animation: tick 26s linear infinite;
+  width: max-content;
+  white-space: nowrap;
+}
+.ticker-track span {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  flex-shrink: 0;
+}
+.ticker-track .gem { color: var(--terra); }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* —— SECTION UTILITY —— */
+.section { padding: 64px 28px; max-width: 700px; margin: 0 auto; }
+.full-bleed { padding: 64px 28px; }
+.full-bleed-inner { max-width: 700px; margin: 0 auto; }
+
+.section-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-tag::after { content:''; flex:1; height:1px; background:var(--terra); opacity:0.2; }
+
+.section-h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 7vw, 46px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.section-h2 em { color: var(--terra); font-style: italic; }
+
+.section-body {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+.section-body strong { color: var(--ink); font-weight: 600; }
+
+/* —— CATEGORY TAGS —— */
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.cat-tag {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 100px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.tag-forest { background: var(--forest); color: var(--cream); }
+.tag-terra  { background: var(--terra);  color: var(--cream); }
+.tag-outline{ background: transparent;  color: var(--ink); border: 1.5px solid var(--ink); }
+
+/* —— PROBLEM SECTION —— */
+.problem-bg {
+  background: var(--white);
+  border-top: 1.5px solid rgba(27,0,9,0.1);
+  border-bottom: 1.5px solid rgba(27,0,9,0.1);
+}
+.problem-grid { display: flex; flex-direction: column; gap: 2px; margin-bottom: 36px; }
+.problem-item {
+  background: var(--paper);
+  padding: 18px 20px 18px 52px;
+  position: relative;
+  border-bottom: 1px solid rgba(27,0,9,0.06);
+}
+.problem-item:last-child { border-bottom: none; }
+.problem-x {
+  position: absolute;
+  left: 18px; top: 17px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--terra);
+  line-height: 1;
+}
+.problem-item p { font-size: 15px; color: var(--ink); line-height: 1.5; margin-bottom: 3px; font-weight: 500; }
+.problem-item small { font-size: 13px; color: var(--muted); font-style: italic; }
+
+/* —— METHOD —— */
+.method-bg {
+  background: var(--ink);
+  color: var(--cream);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+.method-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.method-tag::after { content:''; flex:1; height:1px; background:var(--terra); opacity:0.3; }
+.method-h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 7vw, 48px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.method-h2 em { color: var(--terra); font-style: italic; }
+.method-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(244,232,208,0.5);
+  margin-bottom: 48px;
+}
+.method-steps { display: flex; flex-direction: column; }
+.method-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(244,232,208,0.08);
+  align-items: start;
+}
+.step-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  font-style: italic;
+  color: var(--terra);
+  opacity: 0.3;
+  line-height: 1;
+}
+.step-body h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.step-body p {
+  font-size: 14px;
+  color: rgba(244,232,208,0.6);
+  line-height: 1.7;
+}
+.step-body p strong { color: rgba(244,232,208,0.9); font-weight: 600; }
+
+/* —— ABOUT —— */
+.about-bg { background: var(--cream); border-bottom: 1.5px solid rgba(27,0,9,0.1); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+@media(min-width:600px){ .about-grid { grid-template-columns: 200px 1fr; align-items:start; } }
+
+.avatar-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.avatar-circle {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.avatar-initials {
+  font-family: 'DM Serif Display', serif;
+  font-size: 48px;
+  font-style: italic;
+  color: var(--terra);
+}
+.avatar-label {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--terra);
   letter-spacing: 0.04em;
+}
+.avatar-handle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.about-facts { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.fact {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 15px; color: var(--forest); line-height: 1.45;
+}
+.fact-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--terra);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* —— OFFERS —— */
+.offers-bg { background: var(--paper); border-bottom: 1.5px solid rgba(27,0,9,0.1); }
+.offers-grid { display: flex; flex-direction: column; gap: 12px; }
+.offer-card {
+  background: var(--white);
+  border: 1.5px solid rgba(27,0,9,0.12);
+  padding: 24px;
+  position: relative;
+}
+.offer-card.featured { border-color: var(--terra); border-width: 2px; }
+.offer-badge {
+  display: inline-block;
+  background: var(--forest);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+.offer-card.featured .offer-badge { background: var(--terra); }
+.offer-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.offer-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.offer-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.offer-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(27,0,9,0.2);
+  color: var(--ink);
+  padding: 4px 10px;
+}
+
+/* —— EMAIL —— */
+.email-bg {
+  background: var(--forest);
+  color: var(--cream);
+  border-top: 1.5px solid var(--ink);
+}
+.email-inner { max-width: 700px; margin: 0 auto; padding: 64px 28px; text-align: center; }
+.email-inner h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 7vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 8px;
+  color: var(--cream);
+}
+.email-inner h2 em { color: var(--terra); font-style: italic; }
+.email-caveat {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(244,232,208,0.55);
+  margin-bottom: 32px;
+}
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+  margin: 0 auto 16px;
+}
+.email-form input[type="email"] {
+  padding: 15px 18px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  border: 1.5px solid rgba(244,232,208,0.25);
+  background: rgba(244,232,208,0.08);
+  color: var(--cream);
+  outline: none;
+  width: 100%;
+}
+.email-form input::placeholder { color: rgba(244,232,208,0.35); }
+.email-form input:focus { border-color: var(--terra); }
+.email-form button {
+  padding: 15px 24px;
+  background: var(--terra);
+  color: var(--cream);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--terra-dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.email-form button:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--terra-dark); }
+.email-fine {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(244,232,208,0.35);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* —— CONTENT PREVIEW —— */
+.content-list { display: flex; flex-direction: column; }
+.content-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(27,0,9,0.08);
+  text-decoration: none;
+  color: var(--ink);
+  transition: padding-left 0.15s;
+}
+.content-row:hover { padding-left: 8px; }
+.content-row:last-child { border-bottom: none; }
+.c-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  font-style: italic;
+  color: var(--terra);
+  opacity: 0.3;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+}
+.c-body h4 { font-size: 15px; font-weight: 600; color: var(--forest); margin-bottom: 4px; line-height: 1.4; }
+.c-body p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* —— FINAL CTA —— */
+.final-bg {
+  background: var(--terra);
+  color: var(--cream);
+  border-top: 1.5px solid var(--terra-dark);
+}
+.final-inner { max-width: 700px; margin: 0 auto; padding: 72px 28px; text-align: center; }
+.final-inner h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(34px, 8vw, 58px);
+  letter-spacing: -0.025em;
+  line-height: 0.97;
+  margin-bottom: 10px;
+  color: var(--cream);
+}
+.final-inner h2 em { font-style: italic; color: var(--ink); }
+.final-caveat {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 500;
+  color: rgba(244,232,208,0.65);
+  margin-bottom: 36px;
+}
+.final-btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  padding: 20px 44px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 4px 4px 0 var(--terra-dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.final-btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--terra-dark); }
+.final-note {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(244,232,208,0.45);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* —— FOOTER —— */
+footer {
+  background: var(--ink);
+  color: rgba(244,232,208,0.45);
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.footer-wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  line-height: 1;
+}
+.footer-wordmark .s {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--cream);
+}
+.footer-wordmark .a {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--terra);
+}
+.footer-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(244,232,208,0.4);
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links a {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(244,232,208,0.4);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.footer-links a:hover { color: var(--cream); }
+footer small {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0.3;
+}
+
+/* —— DIVIDER —— */
+.ruled {
+  border: none;
+  border-top: 1.5px solid rgba(27,0,9,0.1);
 }
 </style>
 </head>
 <body>
 
-<div class="page">
-
-  <!-- BRAND LOCKUP (name + tagline only) -->
-  <div class="lockup-wrap">
-    <div class="lockup-text">
-      <div class="lockup-name">
-        <span class="lockup-sober">Sober</span><span class="lockup-adventuring">Adventuring</span>
-      </div>
-      <div class="lockup-tagline">one foot in front of the other.</div>
-    </div>
-  </div>
-
-  <!-- HANDLE + BIO -->
-  <div class="profile">
-    <div class="profile-handle">@soberadventuring</div>
-    <p class="profile-bio">Personal development, coaching, travel + sobriety tidbits, written from a friend that&rsquo;s been there. Lexi, <em>sober adventures</em></p>
-  </div>
-
-  <!-- WHAT I'M ABOUT -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <span class="divider-label">What I'm about</span>
-    <div class="divider-line"></div>
-  </div>
-
-  <div class="tag-strip">
-    <span class="tag tag-fill-green">Personal Development</span>
-    <span class="tag tag-fill-terra">Coaching</span>
-    <span class="tag tag-outline">Travel</span>
-    <span class="tag tag-fill-green2">Sobriety Tidbits</span>
-  </div>
-
-  <!-- LINKS -->
-  <div class="links">
-
-    <a href="https://instagram.com/soberadventuring" class="link-btn terra" target="_blank" rel="noopener noreferrer">
-      <div class="link-icon-wrap">📸</div>
-      <div class="link-text-wrap">
-        <div class="link-title">Instagram</div>
-        <div class="link-sub">@soberadventuring</div>
-      </div>
-      <div class="link-caret">↗</div>
-    </a>
-
-    <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="link-btn forest" target="_blank" rel="noopener noreferrer">
-      <div class="link-icon-wrap">📞</div>
-      <div class="link-text-wrap">
-        <div class="link-title">20 minute free clarity call!</div>
-        <div class="link-sub">Coaching &amp; consulting</div>
-      </div>
-      <div class="link-caret">↗</div>
-    </a>
-
-  </div>
-
-  <!-- COMING SOON -->
-  <div class="coming-banner">
-    <div class="coming-banner-title">Guides, products &amp; community coming soon.</div>
-    <p>Building it out right now. Stay close.</p>
-  </div>
-
-<div class="lockup-avatar" style="margin-bottom: 24px;">
-    <img src="avatar1.png" class="lockup-avatar-img" alt="Sober Adventuring"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-    <div class="lockup-avatar-fallback">🌿</div>
-  </div>
-
-  <div class="page-footer">
-    <div class="wordmark">
-      <span class="wordmark-text">SoberAdventuring</span>
-    </div>
-    <div class="footer-copy">&copy; 2026 Sober Adventuring</div>
-  </div>
-
+<!-- ANNOUNCE BAR -->
+<div class="announce">
+  ◆ Free 20-min clarity call — no pitch, just clarity — <a href="#">book your spot →</a>
 </div>
 
-<script async data-uid="010e6e576a" src="https://sober-adventuring.kit.com/010e6e576a/index.js"></script>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="sober">Sober</span><span class="pivot">Adventuring.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#method">The Method</a></li>
+    <li><a href="#coaching">Coaching</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#" class="nav-cta">Free Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="display:grid; grid-template-columns:1fr; background:var(--cream); border-bottom:1.5px solid var(--ink);">
+    <div style="display:flex; flex-direction:column; justify-content:center; padding:56px 28px 48px; max-width:640px;">
+      <p class="hero-eyebrow">@soberadventuring · with lexi</p>
+      <h1>The Sober<br><em>Pivot.</em></h1>
+      <p class="hero-tagline">one foot in front of the other.</p>
+
+      <div class="tag-row">
+        <span class="cat-tag tag-forest">Personal Development</span>
+        <span class="cat-tag tag-terra">Coaching</span>
+        <span class="cat-tag tag-outline">Travel</span>
+        <span class="cat-tag tag-outline">Sobriety Tidbits</span>
+      </div>
+
+      <p class="hero-body">
+        Quitting isn't the end of your social life or your career.<br>
+        It's the start of an <strong>entirely better one.</strong><br><br>
+        Personal development, coaching, travel + real talk — written from a friend that's been there.
+      </p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary">Book your free 20-min clarity call →</a>
+        <a href="#method" class="btn-ghost">See the Pivot Method →</a>
+      </div>
+      <p class="hero-note">Free · No pitch · Just clarity</p>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>The Sober Pivot</span><span class="gem">◆</span>
+    <span>Quitting isn't the end</span><span class="gem">◆</span>
+    <span>It's the beginning</span><span class="gem">◆</span>
+    <span>Career · Social · Identity</span><span class="gem">◆</span>
+    <span>Chiang Mai, Thailand</span><span class="gem">◆</span>
+    <span>Coaching · Method · Community</span><span class="gem">◆</span>
+    <span>@soberadventuring</span><span class="gem">◆</span>
+    <span>The Sober Pivot</span><span class="gem">◆</span>
+    <span>Quitting isn't the end</span><span class="gem">◆</span>
+    <span>It's the beginning</span><span class="gem">◆</span>
+    <span>Career · Social · Identity</span><span class="gem">◆</span>
+    <span>Chiang Mai, Thailand</span><span class="gem">◆</span>
+    <span>Coaching · Method · Community</span><span class="gem">◆</span>
+    <span>@soberadventuring</span><span class="gem">◆</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem-bg">
+  <div class="section">
+    <p class="section-tag">sound familiar?</p>
+    <h2 class="section-h2">The lies you were told<br>about <em>getting sober.</em></h2>
+    <p class="section-body">Most people quit and immediately start grieving — their identity, their social life, their career. But what if that's just the wrong frame?</p>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <span class="problem-x">×</span>
+        <p>"You'll never have fun at a party again."</p>
+        <small>You'll just stop pretending it was fun to begin with.</small>
+      </div>
+      <div class="problem-item">
+        <span class="problem-x">×</span>
+        <p>"Your professional network runs on happy hours."</p>
+        <small>You get sharper. That opens different — better — doors.</small>
+      </div>
+      <div class="problem-item">
+        <span class="problem-x">×</span>
+        <p>"You'll lose your personality."</p>
+        <small>False. You'll finally meet it.</small>
+      </div>
+      <div class="problem-item">
+        <span class="problem-x">×</span>
+        <p>"Sobriety is about sacrifice and willpower."</p>
+        <small>It's about deciding what you actually want. Then building it.</small>
+      </div>
+    </div>
+    <a href="#" class="btn-primary" style="max-width:300px;">Let's talk about your situation →</a>
+  </div>
+</div>
+
+<!-- METHOD -->
+<div class="method-bg" id="method">
+  <div class="full-bleed">
+    <div class="full-bleed-inner">
+      <p class="method-tag">the framework</p>
+      <h2 class="method-h2">The Sober<br><em>Pivot Method.</em></h2>
+      <p class="method-sub">Four moves. One direction: forward.</p>
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Name the Real Cost</h3>
+            <p>Not the health stuff — the <strong>life stuff</strong>. The relationships you numbed through, the career moves you didn't make, the version of yourself you kept postponing. Get honest about what alcohol was actually costing you.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Rebuild the Identity</h3>
+            <p>Sobriety creates a vacuum. <strong>You have to fill it on purpose</strong> — new rituals, new narratives, new ways to show up socially and professionally. This is the work most people skip. It's where most relapses live.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Own the Narrative</h3>
+            <p>Stop hiding it. Stop over-explaining it. Learn to talk about sobriety in a way that <strong>opens doors</strong> — in rooms, in relationships, in your career. It becomes an asset, not a liability.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Pivot Forward</h3>
+            <p>Design the actual life you want — the social life, the career, the travel, the relationships — that you're <strong>sober for</strong>. Not the absence of alcohol. The presence of everything else.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-bg" id="about">
+  <div class="section">
+    <p class="section-tag">who's behind this</p>
+    <div class="about-grid">
+      <div class="avatar-block">
+        <div class="avatar-circle">
+          <span class="avatar-initials">L</span>
+        </div>
+        <span class="avatar-label">lexi</span>
+        <span class="avatar-handle">@soberadventuring</span>
+      </div>
+      <div>
+        <h2 class="section-h2" style="font-size:clamp(26px,6vw,38px);">I didn't just quit.<br>I <em>pivoted.</em></h2>
+        <p class="section-body" style="margin-bottom:16px;">I'm Lexi. I got sober and then built a consulting business, moved to Southeast Asia, and started actually living the life I kept saying I'd live "someday."</p>
+        <p class="section-body" style="margin-bottom:20px;">I'm not a therapist. I'm not a program. I'm someone who figured out <strong>the career side, the social side, the identity side</strong> — and can show you how I did it.</p>
+        <div class="about-facts">
+          <div class="fact"><div class="fact-dot"></div><span>Living in Chiang Mai, Thailand</span></div>
+          <div class="fact"><div class="fact-dot"></div><span>Founder of Impello — a revenue ops consultancy</span></div>
+          <div class="fact"><div class="fact-dot"></div><span>Writes @soberadventuring — some posts have gone viral</span></div>
+          <div class="fact"><div class="fact-dot"></div><span>Self-taught. Not perfect. Proof you don't have to be.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFERS -->
+<div class="offers-bg" id="coaching">
+  <div class="section">
+    <p class="section-tag">work with lexi</p>
+    <h2 class="section-h2">How I can<br><em>help you pivot.</em></h2>
+    <div class="offers-grid">
+      <div class="offer-card featured">
+        <span class="offer-badge">Start here</span>
+        <h3>The Clarity Call</h3>
+        <p>20 minutes, free. We figure out where you're stuck, what's actually going on under it, and what one move changes everything. No agenda. No pitch. No upsell.</p>
+        <div class="offer-tags">
+          <span class="offer-tag">Free</span>
+          <span class="offer-tag">20 min</span>
+          <span class="offer-tag">No pitch</span>
+          <span class="offer-tag">Via Zoom</span>
+        </div>
+      </div>
+      <div class="offer-card">
+        <span class="offer-badge">1:1 Coaching</span>
+        <h3>The Pivot Package</h3>
+        <p>For people ready to do the real work — rebuilding identity, owning their narrative, and designing the life they actually want to be sober for. We work through the four steps together.</p>
+        <div class="offer-tags">
+          <span class="offer-tag">Identity</span>
+          <span class="offer-tag">Career</span>
+          <span class="offer-tag">Social</span>
+          <span class="offer-tag">Ongoing</span>
+        </div>
+      </div>
+      <div class="offer-card" style="opacity:0.65;">
+        <span class="offer-badge">Coming Soon</span>
+        <h3>Guides, Products &amp; Community</h3>
+        <p>Written resources, group programs, and a community for people doing sobriety unconventionally — the travelers, the founders, the ones who don't fit the mold.</p>
+        <div class="offer-tags">
+          <span class="offer-tag">Waitlist open</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT PREVIEW -->
+<div style="background:var(--white); border-bottom:1.5px solid rgba(27,0,9,0.08);">
+  <div class="section">
+    <p class="section-tag">real talk · no fluff</p>
+    <h2 class="section-h2">What I write<br>about on <em>Instagram.</em></h2>
+    <div class="content-list">
+      <a href="#" class="content-row">
+        <div class="c-num">01</div>
+        <div class="c-body">
+          <h4>Sobriety didn't end my social life. It upgraded it.</h4>
+          <p>What actually happens when you stop being the person who "needs a drink to have fun."</p>
+        </div>
+      </a>
+      <a href="#" class="content-row">
+        <div class="c-num">02</div>
+        <div class="c-body">
+          <h4>How I built a business abroad without a single networking happy hour</h4>
+          <p>The professional lie we've been sold — and what actually opens doors.</p>
+        </div>
+      </a>
+      <a href="#" class="content-row">
+        <div class="c-num">03</div>
+        <div class="c-body">
+          <h4>The identity gap nobody talks about when you quit drinking</h4>
+          <p>You stopped. Now what? Most people never fill this vacuum on purpose. That's where it falls apart.</p>
+        </div>
+      </a>
+    </div>
+    <div style="margin-top:28px;">
+      <a href="https://instagram.com/soberadventuring" class="btn-ghost" style="max-width:260px; display:block;">Follow @soberadventuring →</a>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL -->
+<div class="email-bg">
+  <div class="email-inner">
+    <h2>Get the <em>Pivot Letters.</em></h2>
+    <p class="email-caveat">written by a real human, not a therapist.</p>
+    <div class="email-form">
+      <input type="email" placeholder="your@email.com">
+      <button type="button">I'm in →</button>
+    </div>
+    <p class="email-fine">No spam · No perfection · Unsubscribe anytime</p>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-bg">
+  <div class="final-inner">
+    <h2>Ready to stop<br>waiting and <em>pivot?</em></h2>
+    <p class="final-caveat">one foot in front of the other.</p>
+    <a href="#" class="final-btn">Book the free clarity call →</a>
+    <p class="final-note">free · 20 minutes · no pitch · just clarity</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wordmark">
+    <span class="s">Sober</span><span class="a">Adventuring.</span>
+  </div>
+  <p class="footer-tagline">one foot in front of the other.</p>
+  <div class="footer-links">
+    <a href="#">The Method</a>
+    <a href="#">Coaching</a>
+    <a href="#">Instagram</a>
+    <a href="#">Book a Call</a>
+  </div>
+  <small>© 2026 Sober Adventuring · Chiang Mai, Thailand</small>
+</footer>
+
 </body>
 </html>
