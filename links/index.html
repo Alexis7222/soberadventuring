@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Links · Sober Adventuring</title>
+<meta name="description" content="Sober Adventuring — links coming soon.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1A3325;
+  --sage: #4A7C59;
+  --cream: #F7F0E3;
+  --warm-white: #FDFAF4;
+  --coral: #E8603A;
+  --gold: #C8A96E;
+  --charcoal: #1C1C1A;
+  --muted: #6B7B6E;
+  --border: rgba(26,51,37,0.12);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--forest);
+  color: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px 64px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(74,124,89,0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200,169,110,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 90% 60%, rgba(232,96,58,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(247,240,227,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247,240,227,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(247,240,227,0.08);
+  border: 2px solid rgba(247,240,227,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.profile-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,169,110,0.3);
+}
+
+.profile-name {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.profile-name span { color: var(--coral); }
+
+.profile-handle {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(247,240,227,0.45);
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.profile-bio {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(247,240,227,0.6);
+  line-height: 1.65;
+  max-width: 340px;
+}
+
+/* Coming soon banner */
+.coming-soon-banner {
+  width: 100%;
+  background: rgba(200,169,110,0.1);
+  border: 1px solid rgba(200,169,110,0.25);
+  border-radius: 14px;
+  padding: 18px 24px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.coming-soon-banner .cs-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.coming-soon-banner p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(247,240,227,0.6);
+  line-height: 1.5;
+}
+
+/* Link slots */
+.links-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.link-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Available link */
+.link-item.live {
+  background: rgba(247,240,227,0.07);
+  border: 1px solid rgba(247,240,227,0.14);
+  cursor: pointer;
+  color: var(--cream);
+}
+
+.link-item.live:hover {
+  background: rgba(247,240,227,0.12);
+  transform: translateY(-2px);
+}
+
+/* Coming soon link */
+.link-item.soon {
+  background: rgba(247,240,227,0.03);
+  border: 1px solid rgba(247,240,227,0.07);
+  cursor: default;
+  opacity: 0.55;
+}
+
+.link-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(247,240,227,0.07);
+  border: 1px solid rgba(247,240,227,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.link-item.live .link-icon {
+  background: rgba(232,96,58,0.15);
+  border-color: rgba(232,96,58,0.25);
+}
+
+.link-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.link-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-sub {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(247,240,227,0.4);
+}
+
+.link-arrow {
+  font-size: 16px;
+  color: rgba(247,240,227,0.3);
+  flex-shrink: 0;
+}
+
+.link-item.live .link-arrow {
+  color: rgba(247,240,227,0.5);
+}
+
+.soon-pill {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,240,227,0.35);
+  background: rgba(247,240,227,0.06);
+  border: 1px solid rgba(247,240,227,0.1);
+  padding: 3px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+/* Section divider */
+.links-label {
+  width: 100%;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247,240,227,0.25);
+  margin-bottom: 12px;
+  margin-top: 8px;
+  padding-left: 4px;
+}
+
+/* Back to site */
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(247,240,227,0.35);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.back-home:hover { color: rgba(247,240,227,0.7); }
+
+/* Footer note */
+.footer-note {
+  margin-top: 32px;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(247,240,227,0.2);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  body { padding: 36px 16px 48px; }
+  .profile-avatar { width: 72px; height: 72px; font-size: 30px; }
+  .profile-name { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="profile">
+    <div class="profile-avatar">🌿</div>
+    <div class="profile-name">Sober<span>.</span>Adventuring</div>
+    <div class="profile-handle">@soberadventuring</div>
+    <p class="profile-bio">Travel deeper. Experience more. A community for sober adventurers who prove the best journeys don't require a drink.</p>
+  </div>
+
+  <div class="coming-soon-banner">
+    <div class="cs-label">Links coming soon</div>
+    <p>Building this out now. Check back soon for courses, guides, coaching, and community.</p>
+  </div>
+
+  <div class="links-stack">
+
+    <div class="links-label">Find me here</div>
+
+    <a href="https://instagram.com/soberadventuring" class="link-item live" target="_blank" rel="noopener noreferrer">
+      <div class="link-icon">📸</div>
+      <div class="link-text">
+        <div class="link-title">Instagram</div>
+        <div class="link-sub">@soberadventuring</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <div class="link-item soon">
+      <div class="link-icon">🎵</div>
+      <div class="link-text">
+        <div class="link-title">TikTok</div>
+        <div class="link-sub">@soberadventuring</div>
+      </div>
+      <div class="soon-pill">Soon</div>
+    </div>
+
+    <div class="link-item soon">
+      <div class="link-icon">▶️</div>
+      <div class="link-text">
+        <div class="link-title">YouTube</div>
+        <div class="link-sub">Sober Adventuring</div>
+      </div>
+      <div class="soon-pill">Soon</div>
+    </div>
+
+    <div class="links-label">Community &amp; resources</div>
+
+    <div class="link-item soon">
+      <div class="link-icon">✉️</div>
+      <div class="link-text">
+        <div class="link-title">Newsletter</div>
+        <div class="link-sub">Weekly stories &amp; destination guides</div>
+      </div>
+      <div class="soon-pill">Soon</div>
+    </div>
+
+    <div class="link-item soon">
+      <div class="link-icon">🗺️</div>
+      <div class="link-text">
+        <div class="link-title">Destination Guides</div>
+        <div class="link-sub">City-by-city sober travel breakdowns</div>
+      </div>
+      <div class="soon-pill">Soon</div>
+    </div>
+
+    <div class="link-item soon">
+      <div class="link-icon">✨</div>
+      <div class="link-text">
+        <div class="link-title">Community Membership</div>
+        <div class="link-sub">Join thousands of sober travelers</div>
+      </div>
+      <div class="soon-pill">Soon</div>
+    </div>
+
+    <div class="link-item soon">
+      <div class="link-icon">📞</div>
+      <div class="link-text">
+        <div class="link-title">1:1 Travel Coaching</div>
+        <div class="link-sub">Book a session with Alexis</div>
+      </div>
+      <div class="soon-pill">Soon</div>
+    </div>
+
+  </div>
+
+  <a href="/" class="back-home">← soberadventuring.com</a>
+
+  <div class="footer-note">&copy; 2026 Sober Adventuring</div>
+
+</div>
+
+</body>
+</html>
