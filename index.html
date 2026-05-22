@@ -5,19 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sober Adventuring</title>
 <meta name="description" content="One foot in front of the other. Sober Adventuring with Alexis.">
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:    #f0e8d6;
-  --cream-2:  #e8dcc8;
-  --terra:    #c4533a;
-  --terra-2:  #d9614a;
-  --terra-bg: rgba(196,83,58,0.1);
-  --forest:   #1e3c28;
-  --forest-2: #2d5a3e;
-  --forest-bg: rgba(30,60,40,0.08);
-  --black:    #1a1a18;
-  --muted:    #6e7a6a;
+  --ink:      #142319;
+  --forest:   #1f3a2a;
+  --terra:    #d85a3c;
+  --cream:    #f5ebd6;
+  --paper:    #f9e8b5;
+  --terra-bg: rgba(216,90,60,0.1);
+  --forest-bg: rgba(31,58,42,0.08);
+  --muted:    #5e7060;
   --white:    #ffffff;
 }
 
@@ -26,8 +24,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--black);
+  background: var(--paper);
+  color: var(--ink);
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -41,8 +39,8 @@ body::before {
   content: '';
   position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 85% 5%, rgba(196,83,58,0.1) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(30,60,40,0.08) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 40% at 85% 5%, rgba(216,90,60,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(31,58,42,0.09) 0%, transparent 60%);
   pointer-events: none; z-index: 0;
 }
 
@@ -73,13 +71,13 @@ body::before {
   width: 130px;
   height: 130px;
   background: var(--white);
-  border: 3px solid var(--black);
+  border: 3px solid var(--ink);
   border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 4px 4px 0 var(--black);
+  box-shadow: 4px 4px 0 var(--ink);
 }
 
 .avatar-blob .avatar-img {
@@ -93,8 +91,8 @@ body::before {
 .avatar-blob .avatar-placeholder {
   width: 80px; height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--terra-bg), rgba(30,60,40,0.12));
-  border: 2px dashed rgba(196,83,58,0.35);
+  background: linear-gradient(135deg, var(--terra-bg), rgba(31,58,42,0.12));
+  border: 2px dashed rgba(216,90,60,0.35);
   display: flex; align-items: center; justify-content: center;
   font-size: 36px;
 }
@@ -120,11 +118,11 @@ body::before {
 }
 
 .profile-name {
-  font-family: 'Pacifico', cursive;
-  font-size: 32px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
   color: var(--forest);
-  letter-spacing: 0.5px;
-  line-height: 1.1;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
   margin-bottom: 6px;
 }
 
@@ -156,8 +154,8 @@ body::before {
 .divider-line {
   flex: 1;
   height: 1px;
-  background: var(--cream-2);
-  border-top: 1px solid rgba(30,60,40,0.15);
+  background: transparent;
+  border-top: 1px solid rgba(31,58,42,0.18);
 }
 .divider-label {
   font-size: 9px;
@@ -190,8 +188,8 @@ body::before {
 
 .tag-fill-green  { background: var(--forest);  color: var(--cream);  border-color: var(--forest); }
 .tag-fill-terra  { background: var(--terra);   color: var(--white);  border-color: var(--terra); }
-.tag-outline     { background: transparent;    color: var(--black);  border-color: rgba(30,60,40,0.3); }
-.tag-fill-green2 { background: var(--forest-2); color: var(--cream); border-color: var(--forest-2); }
+.tag-outline     { background: transparent;    color: var(--ink);    border-color: rgba(31,58,42,0.35); }
+.tag-fill-green2 { background: var(--ink);     color: var(--cream);  border-color: var(--ink); }
 
 /* ── LINK BUTTONS ── */
 .links {
@@ -212,26 +210,26 @@ body::before {
   border-radius: 14px;
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid var(--black);
+  border: 2px solid var(--ink);
   font-family: 'DM Sans', sans-serif;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   -webkit-tap-highlight-color: transparent;
-  box-shadow: 3px 3px 0 var(--black);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .link-btn:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 var(--black);
+  box-shadow: 5px 5px 0 var(--ink);
 }
 .link-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--black);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 .link-btn.terra   { background: var(--terra);  color: var(--white); }
 .link-btn.forest  { background: var(--forest); color: var(--cream); }
-.link-btn.cream   { background: var(--white);  color: var(--black); }
-.link-btn.yellow  { background: #f5b800;       color: var(--black); }
+.link-btn.cream   { background: var(--cream);  color: var(--ink); }
+.link-btn.paper   { background: var(--paper);  color: var(--ink); }
 
 .link-icon-wrap {
   width: 38px; height: 38px;
@@ -241,8 +239,8 @@ body::before {
   font-size: 18px;
   flex-shrink: 0;
 }
-.link-btn.cream .link-icon-wrap  { background: rgba(30,60,40,0.07); }
-.link-btn.yellow .link-icon-wrap { background: rgba(0,0,0,0.1); }
+.link-btn.cream .link-icon-wrap  { background: rgba(31,58,42,0.08); }
+.link-btn.paper .link-icon-wrap  { background: rgba(31,58,42,0.08); }
 
 .link-text-wrap { flex: 1; text-align: left; }
 
@@ -264,12 +262,12 @@ body::before {
 /* ── COMING SOON BANNER ── */
 .coming-banner {
   width: 100%;
-  border: 2px dashed rgba(30,60,40,0.25);
+  border: 2px dashed rgba(31,58,42,0.25);
   border-radius: 14px;
   padding: 20px 22px;
   text-align: center;
   margin-bottom: 32px;
-  background: rgba(255,255,255,0.5);
+  background: rgba(245,235,214,0.6);
   animation: fadeUp 0.45s 0.28s ease both;
 }
 
@@ -313,6 +311,21 @@ body::before {
   .page { padding: 40px 16px 52px; }
   .profile-name { font-size: 28px; }
   .avatar-blob { width: 116px; height: 116px; }
+}
+
+/* ── WORDMARK LOCKUP (bottom) ── */
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.wordmark-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 13px;
+  color: var(--ink);
+  opacity: 0.35;
+  letter-spacing: 0.04em;
 }
 </style>
 </head>
@@ -365,7 +378,7 @@ body::before {
       <div class="link-caret">↗</div>
     </a>
 
-    <a href="#" class="link-btn yellow">
+    <a href="#" class="link-btn paper">
       <div class="link-icon-wrap">🎵</div>
       <div class="link-text-wrap">
         <div class="link-title">TikTok</div>
@@ -401,6 +414,9 @@ body::before {
   </div>
 
   <div class="page-footer">
+    <div class="wordmark">
+      <span class="wordmark-text">SoberAdventuring</span>
+    </div>
     <div class="footer-copy">&copy; 2026 Sober Adventuring</div>
   </div>
 
