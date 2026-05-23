@@ -555,7 +555,7 @@ body,a,button{cursor:none}
       <p class="kit-error" id="kitError">Something went wrong — please try again.</p>
       <p class="kit-success" id="kitSuccess">You're in! Check your inbox for a confirmation email.</p>
     </form>
-    <p class="news-fine">Free · Biweekly · Unsubscribe anytime · Written by an actual human</p>
+    <p class="news-fine">Free · Biweekly · Unsubscribe anytime</p>
   </div>
 </div>
 
@@ -645,8 +645,6 @@ body,a,button{cursor:none}
         }
       })
       .catch(function() {
-        /* CORS may block reading the response — try no-cors as fallback.
-           The submission still reaches Kit; we just can't read the reply. */
         fetch(KIT_URL, {
           method: 'POST',
           mode: 'no-cors',
