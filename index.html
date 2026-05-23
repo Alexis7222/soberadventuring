@@ -61,7 +61,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
   .nav-links li:not(:last-child){border-bottom:1px solid rgba(27,0,9,0.06)}
   .nav-links a{display:block;padding:13px 20px;font-size:15px;color:var(--ink)}
   .nav-links .nav-cta{margin:10px 20px 0;text-align:center;display:block;padding:12px 20px!important}
-  /* keep sticky for the whole bar; absolute child positions relative to it */
   nav{position:sticky;top:0}
 }
 
@@ -203,13 +202,17 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .news-icon{font-family:'DM Serif Display',serif;font-size:20px;font-style:italic;color:var(--terra);flex-shrink:0;line-height:1.2}
 .news-item-body h4{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:3px}
 .news-item-body p{font-size:13px;color:rgba(244,232,208,0.45);line-height:1.5}
+
+/* KIT FORM — keep our styling, override Kit's resets */
 .news-form{display:flex;flex-direction:column;gap:10px;max-width:380px}
-.news-form input[type="email"]{padding:15px 18px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;border:1.5px solid rgba(244,232,208,0.2);background:rgba(244,232,208,0.06);color:var(--cream);outline:none;width:100%}
+.news-form input[type="email"]{padding:15px 18px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;border:1.5px solid rgba(244,232,208,0.2);background:rgba(244,232,208,0.06);color:var(--cream);outline:none;width:100%;border-radius:0}
 .news-form input::placeholder{color:rgba(244,232,208,0.3)}
 .news-form input:focus{border-color:var(--terra)}
-.news-form button{padding:15px 24px;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;border:none;cursor:pointer;box-shadow:3px 3px 0 var(--terra-dark);transition:transform 0.1s,box-shadow 0.1s}
-.news-form button:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--terra-dark)}
+.news-form button[type="submit"]{padding:15px 24px;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;border:none;cursor:pointer;box-shadow:3px 3px 0 var(--terra-dark);transition:transform 0.1s,box-shadow 0.1s;border-radius:0}
+.news-form button[type="submit"]:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--terra-dark)}
 .news-fine{margin-top:12px;font-size:11px;letter-spacing:0.06em;color:rgba(244,232,208,0.25);text-transform:uppercase;font-weight:500}
+.news-form .formkit-alert-error{list-style:none;color:#f2643b;font-size:12px;letter-spacing:0.04em;padding:0}
+.news-form .formkit-alert-error:empty{display:none}
 
 /* FINAL CTA */
 .final-bg{background:var(--terra);border-top:1.5px solid var(--terra-dark)}
@@ -235,24 +238,18 @@ footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
 /* ── MOBILE OVERRIDES ────────────────────────── */
 @media(max-width:480px){
   .announce{font-size:11px;padding:10px 14px}
-
   .hero{padding:40px 20px 36px}
   .hero-body{font-size:15px}
   .hero-btns{max-width:100%}
   .hero-note{font-size:10px}
-
   .section{padding:48px 20px}
   .lies-inner,.story-inner,.method-inner,.news-inner{padding:48px 20px}
   .final-inner{padding:52px 20px}
   footer{padding:32px 20px}
-
   .story-before{padding:20px}
-
   .final-btn{display:block;width:100%;padding:18px 20px;text-align:center}
-
   .news-form{max-width:100%}
   .news-fine{font-size:10px}
-
   .method-step{grid-template-columns:38px 1fr;gap:12px}
   .step-num{font-size:36px}
 }
@@ -404,15 +401,11 @@ footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
 <div class="method-bg textured" id="method">
   <div class="method-inner">
     <div class="method-layout">
-
-      <!-- sticky left column -->
       <div class="method-sticky-col">
         <p class="method-tag">A framework · five phases</p>
         <h2 class="method-h2">The Sober <em>Pivot Method.</em></h2>
         <p class="method-sub">Designed to circumvent stalling, jump into the uncomfy work and get things moving.</p>
       </div>
-
-      <!-- scrolling steps -->
       <div>
         <div class="method-steps">
           <div class="method-step">
@@ -456,7 +449,6 @@ footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
           <a href="#">Read the full framework →</a>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -534,10 +526,24 @@ footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
         </div>
       </div>
     </div>
-    <div class="news-form">
-      <input type="email" placeholder="your@email.com">
-      <button type="button">Send me the Freedom Brief →</button>
-    </div>
+
+    <!-- KIT FORM — submits to Kit, shows inline success via ck.5.js -->
+    <form class="news-form seva-form"
+          action="https://app.kit.com/forms/9474474/subscriptions"
+          method="post"
+          data-sv-form="9474474"
+          data-uid="010e6e576a"
+          data-format="inline"
+          data-version="5">
+      <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+      <div data-element="fields">
+        <input type="email"
+               name="email_address"
+               placeholder="your@email.com"
+               required>
+        <button type="submit" data-element="submit">Send me the Freedom Brief →</button>
+      </div>
+    </form>
     <p class="news-fine">Free · Biweekly · Unsubscribe anytime · Written by an actual human</p>
   </div>
 </div>
@@ -568,6 +574,7 @@ footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
   <small>© 2026 Sober Adventuring · Chiang Mai, Thailand</small>
 </footer>
 
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 <script>
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
