@@ -154,7 +154,7 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 }
 .textured>*{position:relative;z-index:1}
 
-/* METHOD — sticky sidebar on desktop */
+/* METHOD */
 .method-bg{background:var(--paper);border-bottom:1.5px solid rgba(27,0,9,0.1)}
 .method-inner{max-width:760px;margin:0 auto;padding:64px 28px}
 .method-layout{display:grid;grid-template-columns:1fr;gap:36px}
@@ -214,7 +214,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .news-form button[type="submit"]:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--terra-dark)}
 .news-form button:disabled{opacity:0.7;transform:none;box-shadow:3px 3px 0 var(--terra-dark)}
 .news-fine{margin-top:12px;font-size:11px;letter-spacing:0.06em;color:rgba(244,232,208,0.25);text-transform:uppercase;font-weight:500}
-.kit-error{color:#f2643b;font-size:12px;letter-spacing:0.04em;margin-top:4px;display:none}
 .kit-success{color:var(--cream);font-size:14px;font-weight:600;margin-top:8px;display:none}
 
 /* FINAL CTA */
@@ -280,6 +279,9 @@ body,a,button{cursor:none}
 </head>
 <body>
 <div id="cursor" aria-hidden="true"></div>
+
+<!-- hidden iframe — Kit's response loads here, page never redirects -->
+<iframe name="kitFrame" id="kitFrame" style="display:none" tabindex="-1" aria-hidden="true"></iframe>
 
 <!-- ANNOUNCE -->
 <div class="announce">
@@ -421,7 +423,7 @@ body,a,button{cursor:none}
   </div>
 </div>
 
-<!-- METHOD — sticky sidebar on desktop -->
+<!-- METHOD -->
 <div class="method-bg textured" id="method">
   <div class="method-inner">
     <div class="method-layout">
@@ -551,10 +553,14 @@ body,a,button{cursor:none}
       </div>
     </div>
 
-    <form class="news-form" id="kitForm" novalidate>
+    <!-- Posts to Kit via hidden iframe — no CORS, no redirect -->
+    <form class="news-form" id="kitForm"
+          action="https://app.kit.com/forms/9474474/subscriptions"
+          method="post"
+          target="kitFrame">
+      <input type="hidden" name="utf8" value="&#10003;">
       <input type="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
       <button type="submit" id="kitBtn">Send me the Freedom Brief →</button>
-      <p class="kit-error" id="kitError">Something went wrong — please try again.</p>
       <p class="kit-success" id="kitSuccess">You're in! Check your inbox for a confirmation email.</p>
     </form>
     <p class="news-fine">Free · Biweekly · Unsubscribe anytime</p>
@@ -614,56 +620,27 @@ body,a,button{cursor:none}
     el.addEventListener('mouseleave', function() { cur.classList.remove('big'); });
   });
 
-  /* KIT FORM — direct fetch to public submission endpoint */
+  /* KIT FORM — plain HTML POST to hidden iframe, zero CORS issues */
   (function() {
-    var form    = document.getElementById('kitForm');
-    var btn     = document.getElementById('kitBtn');
-    var errEl   = document.getElementById('kitError');
-    var successEl = document.getElementById('kitSuccess');
-    var KIT_URL = 'https://app.kit.com/forms/9474474/subscriptions';
+    var form       = document.getElementById('kitForm');
+    var btn        = document.getElementById('kitBtn');
+    var successEl  = document.getElementById('kitSuccess');
+    var submitted  = false;
 
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
       var email = form.querySelector('input[name="email_address"]').value.trim();
-      if (!email) return;
-
+      if (!email) { e.preventDefault(); return; }
+      submitted = true;
       btn.disabled = true;
       btn.textContent = 'Sending...';
-      errEl.style.display = 'none';
-      successEl.style.display = 'none';
-
-      fetch(KIT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'email_address=' + encodeURIComponent(email)
-      })
-      .then(function(res) {
-        if (res.ok) {
+      /* Show success after a short delay — Kit processes the POST in the iframe */
+      setTimeout(function() {
+        if (submitted) {
           successEl.style.display = 'block';
-          form.querySelector('input').value = '';
           btn.textContent = 'Sent!';
-        } else {
-          throw new Error('bad status');
+          submitted = false;
         }
-      })
-      .catch(function() {
-        fetch(KIT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: 'email_address=' + encodeURIComponent(email)
-        })
-        .then(function() {
-          successEl.style.display = 'block';
-          form.querySelector('input').value = '';
-          btn.textContent = 'Sent!';
-        })
-        .catch(function() {
-          errEl.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Send me the Freedom Brief →';
-        });
-      });
+      }, 1800);
     });
   })();
 </script>
