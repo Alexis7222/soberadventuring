@@ -73,10 +73,12 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .hero h1 em{color:var(--terra);font-style:italic;display:block}
 .hero-tagline{font-family:'Caveat',cursive;font-size:clamp(18px,4vw,24px);font-weight:500;color:var(--muted);margin-bottom:28px;line-height:1.3}
 .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
-.cat-tag{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;padding:7px 16px;border-radius:100px}
+.cat-tag{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;padding:7px 16px;border-radius:100px;text-decoration:none;display:inline-block}
 .tag-forest{background:var(--forest);color:var(--cream)}
 .tag-terra{background:var(--terra);color:var(--cream)}
 .tag-outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.tag-outline-link{background:transparent;color:var(--ink);border:1.5px solid var(--ink);transition:background 0.15s,color 0.15s}
+.tag-outline-link:hover{background:var(--ink);color:var(--cream)}
 .hero-body{font-size:17px;color:var(--muted);line-height:1.8;max-width:500px;margin-bottom:36px}
 .hero-body strong{color:var(--ink);font-weight:600}
 .hero-btns{display:flex;flex-direction:column;gap:10px;max-width:340px}
@@ -312,8 +314,8 @@ body,a,button{cursor:none}
     <div class="tag-row">
       <span class="cat-tag tag-forest">Freelancing Abroad</span>
       <span class="cat-tag tag-terra">Coaching</span>
-      <span class="cat-tag tag-outline">Chaotic Travel</span>
-      <span class="cat-tag tag-outline">Sobriety Tidbits</span>
+      <span class="cat-tag tag-outline">Sales Coaching</span>
+      <a href="https://impelloagency.com" target="_blank" rel="noopener" class="cat-tag tag-outline-link">Founder @ Impello Agency</a>
     </div>
     <p class="hero-body">
       I got sober <em>again</em> at 24, with little resources to help me in the workforce. There were gaps all over my resume and I'd cycled through over 20 jobs. With that record, I had mounds of diversified experience but it wasn't what the job market wanted. So I quit, focused on my transferable skills, and studied like I was studying for the hardest test on earth.<br><br>
