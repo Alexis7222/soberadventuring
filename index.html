@@ -179,15 +179,41 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 
 /* OFFERS */
 .offers-bg{background:var(--white);border-bottom:1.5px solid rgba(27,0,9,0.1)}
-.offers-grid{display:flex;flex-direction:column;gap:12px}
-.offer-card{background:var(--paper);border:1.5px solid rgba(27,0,9,0.1);padding:24px}
-.offer-card.featured{border-color:var(--terra);border-width:2px;background:var(--white)}
-.offer-badge{display:inline-block;background:var(--forest);color:var(--cream);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;margin-bottom:14px}
-.offer-card.featured .offer-badge{background:var(--terra)}
-.offer-card h3{font-family:'DM Serif Display',serif;font-size:22px;font-style:italic;color:var(--ink);margin-bottom:8px}
-.offer-card p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+.offers-tracks{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:720px){.offers-tracks{grid-template-columns:1fr 1fr}}
+.track{padding:48px 36px}
+.track-career{background:var(--white);border-right:1.5px solid rgba(27,0,9,0.08)}
+.track-sobriety{background:var(--paper)}
+@media(max-width:719px){.track-career{border-right:none;border-bottom:1.5px solid rgba(27,0,9,0.08)}}
+.track-label{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px}
+.track-career .track-label{color:var(--terra)}
+.track-sobriety .track-label{color:var(--forest)}
+.track-label::after{content:''}
+.track h2{font-family:'DM Serif Display',serif;font-size:clamp(22px,3.5vw,30px);line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px}
+.track h2 em{font-style:italic}
+.track-career h2 em{color:var(--terra)}
+.track-sobriety h2 em{color:var(--forest)}
+.track-intro{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:28px;max-width:340px}
+.track-divider{width:32px;height:2px;margin-bottom:28px}
+.track-career .track-divider{background:var(--terra)}
+.track-sobriety .track-divider{background:var(--forest)}
+.offers-stack{display:flex;flex-direction:column;gap:12px}
+.offer-card{background:var(--paper);border:1.5px solid rgba(27,0,9,0.1);padding:20px}
+.track-career .offer-card{background:var(--paper)}
+.track-sobriety .offer-card{background:var(--white)}
+.offer-card.featured{border-width:2px;background:var(--white)}
+.track-career .offer-card.featured{border-color:var(--terra)}
+.track-sobriety .offer-card.featured{border-color:var(--forest)}
+.offer-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;margin-bottom:12px;color:var(--cream)}
+.track-career .offer-badge{background:var(--terra)}
+.track-sobriety .offer-badge{background:var(--forest)}
+.offer-card h3{font-family:'DM Serif Display',serif;font-size:20px;font-style:italic;color:var(--ink);margin-bottom:6px}
+.offer-card p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:14px}
 .offer-tags{display:flex;flex-wrap:wrap;gap:6px}
 .offer-tag{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(27,0,9,0.18);color:var(--ink);padding:4px 10px}
+.offer-cta{display:inline-block;margin-top:4px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.01em}
+.track-career .offer-cta{color:var(--terra)}
+.track-sobriety .offer-cta{color:var(--forest)}
 
 /* NEWSLETTER */
 .news-bg{background:var(--forest);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
@@ -480,40 +506,75 @@ body,a,button{cursor:none}
 
 <!-- OFFERS -->
 <div class="offers-bg textured" id="coaching">
-  <div class="section">
+  <div style="max-width:1100px;margin:0 auto;padding:56px 28px 0;text-align:center">
     <p class="section-tag">work with Alexis</p>
-    <h2 class="section-h2"><em>help you pivot.</em></h2>
-    <div class="offers-grid">
-      <div class="offer-card featured">
-        <span class="offer-badge">Start here it's free</span>
-        <h3>The Clarity Call</h3>
-        <p>20 minutes and it's free. We figure out where you're stuck and work out the kinks &mdash; whether it's sobriety or career clarity. This just might be the most useful 20 minutes you'll spend this week.</p>
-        <div class="offer-tags">
-          <span class="offer-tag">Free</span>
-          <span class="offer-tag">20 min</span>
-          <span class="offer-tag">Zoom</span>
+    <h2 class="section-h2" style="margin-bottom:8px"><em>Two ways to get unstuck.</em></h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:0;font-style:italic;font-family:'DM Serif Display',serif">Pick the track that fits where you are right now.</p>
+  </div>
+  <div class="offers-tracks">
+
+    <!-- TRACK 1: CAREER -->
+    <div class="track track-career">
+      <p class="track-label">Career &amp; Freelance</p>
+      <h2>Build income<br><em>on your terms.</em></h2>
+      <div class="track-divider"></div>
+      <p class="track-intro">For people who want to freelance, work remotely, or build a real skill-based income &mdash; sober or not.</p>
+      <div class="offers-stack">
+        <div class="offer-card featured">
+          <span class="offer-badge">Start here &middot; free</span>
+          <h3>The Clarity Call</h3>
+          <p>20 minutes, free. We figure out where you're stuck career-wise and map the first real move. This might be the most useful 20 minutes you spend this week.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">Free</span>
+            <span class="offer-tag">20 min</span>
+            <span class="offer-tag">Zoom</span>
+          </div>
+          <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="offer-cta">Book the call &rarr;</a>
         </div>
-      </div>
-      <div class="offer-card">
-        <span class="offer-badge">1:1 Coaching</span>
-        <h3>The Pivot Package</h3>
-        <p>For people who are finally done coasting. This is not for you if you don't have the time and ability to fully show up. We build your freelance positioning and craft your Upwork profile 1:1. We write your first proposals, and build the discipline systems that make it stick.</p>
-        <div class="offer-tags">
-          <span class="offer-tag">Marketing yourself</span>
-          <span class="offer-tag">Freelance setup</span>
-          <span class="offer-tag">Accountability</span>
-          <span class="offer-tag">Real income</span>
-        </div>
-      </div>
-      <div class="offer-card" style="opacity:0.6">
-        <span class="offer-badge">Coming Soon</span>
-        <h3>Community + Guides</h3>
-        <p>For the ones doing this unconventionally who want to travel, freelance, and build something real without it looking like a recovery program. Group coaching, guides, and a community that gets it.</p>
-        <div class="offer-tags">
-          <span class="offer-tag">Waitlist open</span>
+        <div class="offer-card">
+          <span class="offer-badge">1:1 Coaching</span>
+          <h3>The Pivot Package</h3>
+          <p>For people who are finally done coasting. This is not for you if you don't have the time and ability to fully show up. We build your freelance positioning and craft your Upwork profile 1:1. We write your first proposals, and build the discipline systems that make it stick.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">Marketing yourself</span>
+            <span class="offer-tag">Freelance setup</span>
+            <span class="offer-tag">Accountability</span>
+            <span class="offer-tag">Real income</span>
+          </div>
+          <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="offer-cta">Apply &rarr;</a>
         </div>
       </div>
     </div>
+
+    <!-- TRACK 2: SOBRIETY -->
+    <div class="track track-sobriety">
+      <p class="track-label">Sobriety Coaching</p>
+      <h2>Navigate early<br><em>sobriety clearly.</em></h2>
+      <div class="track-divider"></div>
+      <p class="track-intro">For people in or approaching sobriety who want practical support &mdash; not a program, not a lecture.</p>
+      <div class="offers-stack">
+        <div class="offer-card featured">
+          <span class="offer-badge">Start here &middot; free</span>
+          <h3>The Clarity Call</h3>
+          <p>20 minutes, free. We figure out where you are in your sobriety, what's getting in the way, and I'll share resources that actually help. No judgment. No pitch.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">Free</span>
+            <span class="offer-tag">20 min</span>
+            <span class="offer-tag">Zoom</span>
+          </div>
+          <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="offer-cta">Book the call &rarr;</a>
+        </div>
+        <div class="offer-card" style="opacity:0.65">
+          <span class="offer-badge">Coming Soon</span>
+          <h3>Community + Guides</h3>
+          <p>For the ones doing this unconventionally who want to travel, freelance, and build something real without it looking like a recovery program. Group coaching, guides, and a community that gets it.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">Waitlist open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
