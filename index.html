@@ -268,23 +268,110 @@ footer{background:var(--ink);color:rgba(244,232,208,0.4);padding:40px 28px;displ
 .footer-links a:hover{color:var(--cream)}
 footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
 
-/* MOBILE OVERRIDES */
-@media(max-width:480px){
-  .announce{font-size:11px;padding:10px 14px}
+/* ══ MOBILE — phone-first (virtually all traffic) ══ */
+@media(max-width:640px){
+
+  /* Announce bar */
+  .announce{font-size:11px!important;padding:8px 14px!important;gap:10px!important}
+
+  /* Hero */
   .hero{padding:40px 20px 36px}
-  .hero-body{font-size:15px}
+  .hero-eyebrow{font-size:10px;margin-bottom:16px}
+  .hero-body{font-size:15px;line-height:1.75;margin-bottom:28px;max-width:100%}
   .hero-btns{max-width:100%}
+  .btn-primary{padding:16px 20px;font-size:15px}
+  .btn-ghost{padding:14px 20px;font-size:14px}
   .hero-note{font-size:10px}
-  .section{padding:48px 20px}
-  .lies-inner,.story-inner,.method-inner,.news-inner{padding:48px 20px}
-  .final-inner{padding:52px 20px}
-  footer{padding:32px 20px}
+  .cat-tag{font-size:11px;padding:6px 14px}
+
+  /* Sections */
+  .section{padding:44px 20px}
+
+  /* Lies */
+  .lies-subnav-inner{padding:0 14px}
+  .lies-pill{font-size:10px;padding:12px 12px}
+  .lies-inner{padding:44px 20px 52px}
+  .lies-sub{font-size:14px;margin-bottom:32px}
+  .lie-item{padding:28px 0;scroll-margin-top:108px}
+  .lie-claim{font-size:15px}
+  .lie-truth{font-size:14px}
+
+  /* Story */
+  .story-inner{padding:44px 20px}
   .story-before{padding:20px}
-  .final-btn{display:block;width:100%;padding:18px 20px;text-align:center}
-  .news-form{max-width:100%}
-  .news-fine{font-size:10px}
-  .method-step{grid-template-columns:38px 1fr;gap:12px}
+  .story-pullquote{font-size:18px}
+
+  /* Offers / Tracks */
+  .track{padding:32px 20px}
+  .track-intro{max-width:100%}
+  .offer-card{padding:18px}
+  .offer-cta{
+    display:flex!important;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    min-height:44px;
+    margin-top:10px;
+    border-top:1px solid rgba(27,0,9,0.08);
+    padding-top:12px;
+  }
+
+  /* Method */
+  .method-inner{padding:44px 20px}
+  .method-step{grid-template-columns:40px 1fr;gap:12px;padding:20px 0}
   .step-num{font-size:36px}
+  .step-body h3{font-size:18px}
+  .method-footer{flex-direction:column;align-items:flex-start;gap:10px}
+
+  /* Quiz CTA (inline-styled block) */
+  #quiz-cta{padding:44px 20px!important}
+  .quiz-take-btn{display:block!important;width:100%!important;padding:16px 20px!important;box-sizing:border-box!important;font-size:15px!important;text-align:center!important}
+
+  /* Newsletter */
+  .news-inner{padding:48px 20px}
+  .news-body{font-size:14px;margin-bottom:24px}
+  .news-what{gap:8px;margin-bottom:28px}
+  .news-item{padding:12px 14px}
+  .news-icon{font-size:17px}
+  .news-item-body h4{font-size:13px}
+  .news-item-body p{font-size:12px}
+  .news-form{max-width:100%}
+  /* 16px prevents iOS auto-zoom on focus */
+  .news-form input[type="email"]{font-size:16px;padding:16px 18px}
+  .news-form button[type="submit"]{font-size:16px;min-height:52px}
+  .news-fine{font-size:10px}
+
+  /* Digital Products */
+  .products-inner{padding:44px 20px!important}
+  .product-btn{
+    display:block!important;
+    width:100%!important;
+    padding:14px 20px!important;
+    text-align:center!important;
+    margin-top:16px!important;
+    box-sizing:border-box!important;
+    flex-shrink:0!important;
+  }
+
+  /* Final CTA */
+  .final-inner{padding:52px 20px}
+  .final-btn{display:block;width:100%;padding:18px 20px;text-align:center;font-size:15px}
+  .final-note{font-size:10px}
+
+  /* Footer */
+  footer{padding:32px 20px;gap:12px}
+  .footer-wordmark .s,.footer-wordmark .a{font-size:22px}
+  .footer-tagline{font-size:14px}
+  .footer-links a{font-size:11px}
+}
+
+/* Very small screens */
+@media(max-width:375px){
+  .announce{gap:7px!important;padding:7px 12px!important}
+  .hero h1{font-size:32px}
+  .hero-body{font-size:14px}
+  .lies-pill{font-size:9px;padding:10px 10px}
+  .step-num{font-size:30px}
 }
 
 /* CUSTOM CURSOR */
@@ -553,11 +640,11 @@ body,a,button{cursor:none}
 </div>
 
 <!-- QUIZ CTA -->
-<div style="background:var(--ink);padding:56px 28px;text-align:center;border-bottom:1.5px solid rgba(27,0,9,0.2)">
+<div id="quiz-cta" style="background:var(--ink);padding:56px 28px;text-align:center;border-bottom:1.5px solid rgba(27,0,9,0.2)">
   <p style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:12px;">2 minutes &middot; free &middot; instant result</p>
   <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,40px);line-height:1.05;letter-spacing:-0.02em;color:var(--cream);margin-bottom:12px;">Not sure if freelancing<br>is <em style='color:var(--terra);font-style:italic;'>right for you?</em></h2>
   <p style="font-size:15px;color:rgba(244,232,208,0.55);max-width:420px;margin:0 auto 28px;line-height:1.65;font-family:'DM Serif Display',serif;font-style:italic;">Five questions. We'll tell you exactly where you are and what to do next.</p>
-  <a href="/quiz/" style="display:inline-block;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.02em;text-decoration:none;padding:14px 28px;">Take the quiz &rarr;</a>
+  <a href="/quiz/" class="quiz-take-btn" style="display:inline-block;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.02em;text-decoration:none;padding:14px 28px;">Take the quiz &rarr;</a>
 </div>
 
 <!-- NEWSLETTER -->
@@ -610,7 +697,7 @@ body,a,button{cursor:none}
 
 <!-- DIGITAL PRODUCTS -->
 <div style="background:var(--paper);border-top:1.5px solid rgba(27,0,9,0.1);border-bottom:1.5px solid rgba(27,0,9,0.1)" id="products">
-  <div style="max-width:800px;margin:0 auto;padding:64px 28px">
+  <div class="products-inner" style="max-width:800px;margin:0 auto;padding:64px 28px">
     <p style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:12px;display:flex;align-items:center;gap:10px">Digital Products<span style="flex:1;height:1px;background:var(--terra);opacity:0.2;display:inline-block"></span></p>
     <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,5vw,36px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px">Do it yourself.<br><em style="color:var(--terra);font-style:italic">At your own pace.</em></h2>
     <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:480px;margin-bottom:40px;font-style:italic;font-family:'DM Serif Display',serif">For the ones who learn best by doing and want a clear roadmap they can run with on their own time.</p>
@@ -624,7 +711,7 @@ body,a,button{cursor:none}
             <h3 style="font-family:'DM Serif Display',serif;font-size:22px;font-style:italic;color:var(--ink);margin-bottom:6px">Upwork Starter Guide</h3>
             <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:480px">A step-by-step guide to setting up your Upwork profile, writing proposals that get responses, and landing your first paid client &mdash; even with no reviews. Priced to be accessible because everyone should taste what freelance freedom feels like.</p>
           </div>
-          <a href="https://antonelli74.gumroad.com/l/wfbmpv" target="_blank" rel="noopener" style="flex-shrink:0;display:inline-block;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;text-decoration:none;padding:12px 22px;white-space:nowrap">Get the guide &rarr;</a>
+          <a href="https://antonelli74.gumroad.com/l/wfbmpv" target="_blank" rel="noopener" class="product-btn" style="flex-shrink:0;display:inline-block;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;text-decoration:none;padding:12px 22px;white-space:nowrap">Get the guide &rarr;</a>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:6px">
           <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(27,0,9,0.18);color:var(--ink);padding:4px 10px">Self-paced</span>
