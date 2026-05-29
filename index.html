@@ -236,16 +236,7 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .news-item-body h4{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:3px}
 .news-item-body p{font-size:13px;color:rgba(244,232,208,0.45);line-height:1.5}
 
-/* NEWSLETTER FORM */
-.news-form{display:flex;flex-direction:column;gap:10px;max-width:380px}
-.news-form input[type="email"]{padding:15px 18px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;border:1.5px solid rgba(244,232,208,0.2);background:rgba(244,232,208,0.06);color:var(--cream);outline:none;width:100%;border-radius:0}
-.news-form input::placeholder{color:rgba(244,232,208,0.3)}
-.news-form input:focus{border-color:var(--terra)}
-.news-form button[type="submit"]{padding:15px 24px;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;border:none;cursor:none;box-shadow:3px 3px 0 var(--terra-dark);transition:transform 0.1s,box-shadow 0.1s;border-radius:0}
-.news-form button[type="submit"]:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--terra-dark)}
-.news-form button:disabled{opacity:0.7;transform:none;box-shadow:3px 3px 0 var(--terra-dark)}
-.news-fine{margin-top:12px;font-size:11px;letter-spacing:0.06em;color:rgba(244,232,208,0.25);text-transform:uppercase;font-weight:500}
-.kit-success{color:var(--cream);font-size:14px;font-weight:600;margin-top:8px;display:none}
+.news-fine{font-size:11px;letter-spacing:0.06em;color:rgba(244,232,208,0.25);text-transform:uppercase;font-weight:500}
 
 /* FINAL CTA */
 .final-bg{background:var(--terra);border-top:1.5px solid var(--terra-dark)}
@@ -335,10 +326,6 @@ footer small{font-size:11px;letter-spacing:0.04em;opacity:0.25}
   .news-icon{font-size:17px}
   .news-item-body h4{font-size:13px}
   .news-item-body p{font-size:12px}
-  .news-form{max-width:100%}
-  /* 16px prevents iOS auto-zoom on focus */
-  .news-form input[type="email"]{font-size:16px;padding:16px 18px}
-  .news-form button[type="submit"]{font-size:16px;min-height:52px}
   .news-fine{font-size:10px}
 
   /* Digital Products */
@@ -397,9 +384,6 @@ body,a,button{cursor:none}
 </head>
 <body>
 <div id="cursor" aria-hidden="true"></div>
-
-<!-- hidden iframe — Kit's response loads here, page never redirects -->
-<iframe name="kitFrame" id="kitFrame" style="display:none" tabindex="-1" aria-hidden="true"></iframe>
 
 <!-- ANNOUNCE -->
 <div class="announce" style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:10px 28px;background:var(--ink);border-bottom:1px solid rgba(244,232,208,0.08)">
@@ -665,33 +649,10 @@ body,a,button{cursor:none}
           <p>Hand-picked roles across industries, with notes on why they're worth your time and how to position your application.</p>
         </div>
       </div>
-      <div class="news-item">
-        <span class="news-icon">02</span>
-        <div class="news-item-body">
-          <h4>One Freelance Framework</h4>
-          <p>A tactic, script, or system from my own practice — proposals, pricing, client management, building a reputation from zero reviews.</p>
-        </div>
-      </div>
-      <div class="news-item">
-        <span class="news-icon">03</span>
-        <div class="news-item-body">
-          <h4>The Freedom Update</h4>
-          <p>Behind the scenes: what full-time travel as a freelancer looks like. The logistics, the discipline, the yucky and the yummy.</p>
-        </div>
-      </div>
     </div>
 
-    <!-- Posts to Kit via hidden iframe — no CORS, no redirect -->
-    <form class="news-form" id="kitForm"
-          action="https://app.kit.com/forms/9474474/subscriptions"
-          method="post"
-          target="kitFrame">
-      <input type="hidden" name="utf8" value="&#10003;">
-      <input type="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
-      <button type="submit" id="kitBtn">Send me the Freedom Brief →</button>
-      <p class="kit-success" id="kitSuccess">You're in! Check your inbox for a confirmation email.</p>
-    </form>
-    <p class="news-fine">Free · Biweekly · Unsubscribe anytime</p>
+    <a href="https://beacons.ai/soberadventuring?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" class="btn-primary" style="max-width:340px;box-sizing:border-box">Subscribe on Beacons &rarr;</a>
+    <p class="news-fine" style="margin-top:14px">Free &middot; Biweekly &middot; Unsubscribe anytime</p>
   </div>
 </div>
 
@@ -807,29 +768,6 @@ body,a,button{cursor:none}
     el.addEventListener('mouseleave', function() { cur.classList.remove('big'); });
   });
 
-  /* KIT FORM — plain HTML POST to hidden iframe, zero CORS issues */
-  (function() {
-    var form       = document.getElementById('kitForm');
-    var btn        = document.getElementById('kitBtn');
-    var successEl  = document.getElementById('kitSuccess');
-    var submitted  = false;
-
-    form.addEventListener('submit', function(e) {
-      var email = form.querySelector('input[name="email_address"]').value.trim();
-      if (!email) { e.preventDefault(); return; }
-      submitted = true;
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      /* Show success after a short delay — Kit processes the POST in the iframe */
-      setTimeout(function() {
-        if (submitted) {
-          successEl.style.display = 'block';
-          btn.textContent = 'Sent!';
-          submitted = false;
-        }
-      }, 1800);
-    });
-  })();
 </script>
 
 </body>
