@@ -106,14 +106,19 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 
 /* LIES */
 .lies-bg{background:var(--ink)}
-.lies-inner{max-width:700px;margin:0 auto;padding:64px 28px}
+.lies-subnav{position:sticky;top:54px;z-index:90;background:rgba(27,0,9,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(244,232,208,0.06);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.lies-subnav-inner{display:flex;gap:0;max-width:700px;margin:0 auto;padding:0 28px}
+.lies-pill{flex-shrink:0;font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.06em;color:rgba(244,232,208,0.35);text-decoration:none;padding:13px 16px;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
+.lies-pill:hover{color:rgba(244,232,208,0.7)}
+.lies-pill.active{color:var(--terra);border-bottom-color:var(--terra)}
+.lies-inner{max-width:700px;margin:0 auto;padding:56px 28px 64px}
 .lies-tag{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .lies-tag::after{content:'';flex:1;height:1px;background:var(--terra);opacity:0.3}
 .lies-h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,6.5vw,44px);line-height:1.02;letter-spacing:-0.02em;color:var(--cream);margin-bottom:8px}
 .lies-h2 em{color:var(--terra);font-style:italic}
 .lies-sub{font-size:15px;color:rgba(244,232,208,0.45);margin-bottom:40px;max-width:480px;line-height:1.65;font-style:italic;font-family:'DM Serif Display',serif}
 .lies-grid{display:flex;flex-direction:column;gap:0}
-.lie-item{padding:26px 0;border-bottom:1px solid rgba(244,232,208,0.07)}
+.lie-item{padding:32px 0;border-bottom:1px solid rgba(244,232,208,0.07);scroll-margin-top:120px}
 .lie-item:last-child{border-bottom:none}
 .lie-label{font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--terra);margin-bottom:8px}
 .lie-claim{font-size:16px;font-weight:600;color:var(--cream);line-height:1.35;margin-bottom:10px;text-decoration:line-through;text-decoration-color:var(--terra);text-decoration-thickness:2px;opacity:0.7}
@@ -325,6 +330,7 @@ body,a,button{cursor:none}
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#coaching">Work With Me</a></li>
+    <li><a href="#method">The Method</a></li>
     <li><a href="#newsletter">Newsletter</a></li>
     <li><a href="/quiz/" style="font-weight:700;color:var(--terra)">Take the Quiz</a></li>
     <li><a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-cta">Free Call</a></li>
@@ -379,28 +385,39 @@ body,a,button{cursor:none}
 </div>
 
 <!-- LIES -->
-<div class="lies-bg">
+<div class="lies-bg" id="straight">
+
+  <!-- STICKY SUB-NAV -->
+  <div class="lies-subnav">
+    <div class="lies-subnav-inner">
+      <a class="lies-pill active" href="#lie-fun">the fun lie</a>
+      <a class="lies-pill" href="#lie-personality">the personality lie</a>
+      <a class="lies-pill" href="#lie-networking">the networking lie</a>
+      <a class="lies-pill" href="#lie-employment">the employment lie</a>
+    </div>
+  </div>
+
   <div class="lies-inner">
     <p class="lies-tag">let's get something straight</p>
     <h2 class="lies-h2">Everything you think<br>sobriety <em>costs you</em> is a lie.</h2>
     <p class="lies-sub">I promise, it doesn't matter if you're sober, sober-curious, or just really done with the version of yourself that can't show up. You've been sold a story that isn't true, it may even be one of these:</p>
     <div class="lies-grid">
-      <div class="lie-item">
+      <div class="lie-item" id="lie-fun">
         <p class="lie-label">the fun lie</p>
         <p class="lie-claim">"You'll never have fun at a party again."</p>
         <p class="lie-truth">You'll just stop pretending the party was fun to begin with.</p>
       </div>
-      <div class="lie-item">
+      <div class="lie-item" id="lie-personality">
         <p class="lie-label">the personality lie</p>
         <p class="lie-claim">"You'll lose your personality."</p>
         <p class="lie-truth">False. You'll finally meet her.</p>
       </div>
-      <div class="lie-item">
+      <div class="lie-item" id="lie-networking">
         <p class="lie-label">the networking lie</p>
         <p class="lie-claim">"Alcohol is required for networking, travel, and a real career."</p>
-        <p class="lie-truth">I'm building a consulting business from Southeast Asia, sober, without a single networking happy hour. I've realized that the people worth knowing, will notice — and I'm willing to bet you'll realize that as well.</p>
+        <p class="lie-truth">I'm building a consulting business from Southeast Asia, sober, without a single networking happy hour. I've realized that the people worth knowing, will notice &mdash; and I'm willing to bet you'll realize that as well.</p>
       </div>
-      <div class="lie-item">
+      <div class="lie-item" id="lie-employment">
         <p class="lie-label">the employment lie</p>
         <p class="lie-claim">"No one will hire someone with your track record."</p>
         <p class="lie-truth">Stop trying to get hired and get clients. An employer may provide you benefits but your growth is capped and so is your pay. Freelancing cares about:<br><br>
@@ -443,62 +460,6 @@ body,a,button{cursor:none}
           <p>Sales consultant. Coach. Two years sober and based in Chiang Mai, Thailand, with paying clients and a life I actually chose on purpose.</p>
           <p class="story-pullquote">"Sobriety gave me back something I didn't know I'd lost &mdash; the ability to be genuinely delighted by things. Nature. Board games with my family. A really good mocktail. A well-made tiramisu."</p>
           <p>The people I work with are usually high-potential and stuck &mdash; whether that's addiction, career, or both. I help them get clear on what they're actually good at, build something real around it, and start making money from it. <a href="/story/" style="color:var(--terra);font-weight:600;text-decoration:none;">Read the full story &rarr;</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- METHOD -->
-<div class="method-bg textured" id="method">
-  <div class="method-inner">
-    <div class="method-layout">
-      <div class="method-sticky-col">
-        <p class="method-tag">A framework · five phases</p>
-        <h2 class="method-h2">The Sober <em>Pivot Method.</em></h2>
-        <p class="method-sub">Designed to circumvent stalling, jump into the uncomfy work and get things moving.</p>
-      </div>
-      <div>
-        <div class="method-steps">
-          <div class="method-step">
-            <div class="step-num">01</div>
-            <div class="step-body">
-              <h3>The Base <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Name what it cost you</span></h3>
-              <p>The shadow work that makes every other step actually stick.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">02</div>
-            <div class="step-body">
-              <h3>The Syrup <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Extract the skill from the chaos</span></h3>
-              <p>Every high-functioning disaster has a marketable skill buried in it. We find yours and package it so clients pay for it.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">03</div>
-            <div class="step-body">
-              <h3>The Citrus <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Build proof before you have clients</span></h3>
-              <p>Once we've determined "I have a skill" we establish credibility and social proof to move towards "I got paid." There's a methodical, professional way to fast track this in two weeks.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">04</div>
-            <div class="step-body">
-              <h3>The Build <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Get paid before you feel ready</span></h3>
-              <p>Nothing rewrites the internal story like someone paying you for something you built sober.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">05</div>
-            <div class="step-body">
-              <h3>The Garnish <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Design the life once the income is real</span></h3>
-              <p>Travel, remote work, living abroad.</p>
-            </div>
-          </div>
-        </div>
-        <div class="method-footer">
-          <p>Each phase has deliverables.</p>
-          <a href="/method/">Read the full framework →</a>
         </div>
       </div>
     </div>
@@ -576,6 +537,62 @@ body,a,button{cursor:none}
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- METHOD -->
+<div class="method-bg textured" id="method">
+  <div class="method-inner">
+    <div class="method-layout">
+      <div class="method-sticky-col">
+        <p class="method-tag">Ready to work together?</p>
+        <h2 class="method-h2">The Sober <em>Pivot Method.</em></h2>
+        <p class="method-sub">This is the framework behind every coaching engagement. If you're looking to work with Alexis, this is what we run through together.</p>
+      </div>
+      <div>
+        <div class="method-steps">
+          <div class="method-step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>The Base <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Name what it cost you</span></h3>
+              <p>The shadow work that makes every other step actually stick.</p>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>The Syrup <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Extract the skill from the chaos</span></h3>
+              <p>Every high-functioning disaster has a marketable skill buried in it. We find yours and package it so clients pay for it.</p>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>The Citrus <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Build proof before you have clients</span></h3>
+              <p>Once we've determined "I have a skill" we establish credibility and social proof to move towards "I got paid." There's a methodical, professional way to fast track this in two weeks.</p>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h3>The Build <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Get paid before you feel ready</span></h3>
+              <p>Nothing rewrites the internal story like someone paying you for something you built sober.</p>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">05</div>
+            <div class="step-body">
+              <h3>The Garnish <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Design the life once the income is real</span></h3>
+              <p>Travel, remote work, living abroad.</p>
+            </div>
+          </div>
+        </div>
+        <div class="method-footer">
+          <p>Each phase has deliverables.</p>
+          <a href="/method/">Read the full framework →</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -677,6 +694,30 @@ body,a,button{cursor:none}
     });
   });
 
+
+  /* LIES SUB-NAV — highlight active pill on scroll */
+  (function() {
+    var lies = ['lie-fun','lie-personality','lie-networking','lie-employment'];
+    var pills = {};
+    lies.forEach(function(id) {
+      pills[id] = document.querySelector('.lies-pill[href="#' + id + '"]');
+    });
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          lies.forEach(function(id) {
+            if (pills[id]) pills[id].classList.remove('active');
+          });
+          var active = pills[entry.target.id];
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    lies.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  })();
   /* CUSTOM CURSOR */
   var cur = document.getElementById('cursor');
   document.addEventListener('mousemove', function(e) {
