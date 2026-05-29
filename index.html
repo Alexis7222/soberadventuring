@@ -180,7 +180,29 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .step-body p strong{color:var(--ink);font-weight:600}
 .method-footer{margin-top:32px;padding-top:24px;border-top:1px solid rgba(27,0,9,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .method-footer p{font-size:13px;color:var(--muted);font-style:italic;font-family:'DM Serif Display',serif}
-.method-footer a{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;color:var(--terra);text-decoration:none;letter-spacing:0.02em}
+.method-footer a{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.02em}
+
+/* METHOD TWO-TRACK */
+.methods-tracks{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1.5px solid rgba(27,0,9,0.1)}
+@media(max-width:760px){.methods-tracks{grid-template-columns:1fr}}
+.method-track{padding:52px 40px 48px}
+.method-track-career{background:var(--white);border-right:1.5px solid rgba(27,0,9,0.08)}
+.method-track-sobriety{background:var(--paper)}
+@media(max-width:760px){
+  .method-track-career{border-right:none;border-bottom:1.5px solid rgba(27,0,9,0.08)}
+  .method-track{padding:40px 20px}
+}
+.method-track-label{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;display:block}
+.method-track-career .method-track-label{color:var(--terra)}
+.method-track-sobriety .method-track-label{color:var(--forest)}
+.method-track-h3{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,28px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:10px}
+.method-track-career .method-track-h3 em{color:var(--terra);font-style:italic}
+.method-track-sobriety .method-track-h3 em{color:var(--forest);font-style:italic}
+.method-track-divider{width:32px;height:3px;margin-bottom:18px}
+.method-track-career .method-track-divider{background:var(--terra)}
+.method-track-sobriety .method-track-divider{background:var(--forest)}
+.method-track-sub{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:28px;font-style:italic;font-family:'DM Serif Display',serif}
+.step-num-s{font-family:'DM Serif Display',serif;font-size:44px;font-style:italic;color:var(--forest);opacity:0.2;line-height:1}
 
 /* OFFERS */
 .offers-bg{background:var(--white);border-bottom:1.5px solid rgba(27,0,9,0.1)}
@@ -579,57 +601,111 @@ body,a,button{cursor:none}
 
 <!-- METHOD -->
 <div class="method-bg textured" id="method">
-  <div class="method-inner">
-    <div class="method-layout">
-      <div class="method-sticky-col">
-        <p class="method-tag">Ready to work together?</p>
-        <h2 class="method-h2">The <em>Pivot Method.</em></h2>
-        <p class="method-sub">This is the framework behind every <em style="color:var(--terra);font-style:italic">career</em> coaching engagement. If you're looking to work with Alexis, this is what we run through together.</p>
+  <div style="max-width:1200px;margin:0 auto;padding:56px 28px 0;text-align:center">
+    <p class="section-tag" style="justify-content:center;max-width:none">the frameworks</p>
+    <h2 class="section-h2" style="margin-bottom:8px">Two methods.<br><em>One for each track.</em></h2>
+    <p style="font-size:14px;color:var(--muted);font-style:italic;font-family:'DM Serif Display',serif;margin-bottom:0">Each built around where you actually are. Each with deliverables.</p>
+  </div>
+  <div class="methods-tracks">
+
+    <!-- ── PIVOT: CAREER (terra) ── -->
+    <div class="method-track method-track-career">
+      <span class="method-track-label">Career &amp; Freelance</span>
+      <h3 class="method-track-h3">The <em>Pivot Method.</em></h3>
+      <div class="method-track-divider"></div>
+      <p class="method-track-sub">This is the framework behind every <em style="color:var(--terra);font-style:italic">career</em> coaching engagement. If you're looking to work with Alexis, this is what we run through together.</p>
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="step-num">P</div>
+          <div class="step-body">
+            <h3>Pain <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Name what it cost you</span></h3>
+            <p>We get into a bit of shadow work here.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">I</div>
+          <div class="step-body">
+            <h3>Identify <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Find your transferable skill set</span></h3>
+            <p>Everyone has a skill set. We find all of yours and package it so clients pay for it.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">V</div>
+          <div class="step-body">
+            <h3>Validate <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Build proof before you have clients</span></h3>
+            <p>From "I have a skill" to "I got paid" &mdash; in a matter of weeks.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">O</div>
+          <div class="step-body">
+            <h3>Offer <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Get paid before you feel ready</span></h3>
+            <p>Nothing rewrites imposter syndrome like someone paying you for something you built and are proud of.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">T</div>
+          <div class="step-body">
+            <h3>Thrive <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Design the life on your own terms</span></h3>
+            <p>Design the life once the income is real. Freedom, balance, sustainability &mdash; this is where we play.</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="method-steps">
-          <div class="method-step">
-            <div class="step-num">P</div>
-            <div class="step-body">
-              <h3>Pain <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Name what it cost you</span></h3>
-              <p>We get into a bit of shadow work here.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">I</div>
-            <div class="step-body">
-              <h3>Identify <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Find your transferable skill set</span></h3>
-              <p>Everyone has a skill set. We find all of yours and package it so clients pay for it.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">V</div>
-            <div class="step-body">
-              <h3>Validate <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Build proof before you have clients</span></h3>
-              <p>From "I have a skill" to "I got paid" &mdash; in a matter of weeks.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">O</div>
-            <div class="step-body">
-              <h3>Offer <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Get paid before you feel ready</span></h3>
-              <p>Nothing rewrites imposter syndrome like someone paying you for something you built and are proud of.</p>
-            </div>
-          </div>
-          <div class="method-step">
-            <div class="step-num">T</div>
-            <div class="step-body">
-              <h3>Thrive <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--terra);opacity:0.7;letter-spacing:0.04em">Design the life on your own terms</span></h3>
-              <p>Design the life once the income is real. Freedom, balance, sustainability &mdash; this is where we play.</p>
-            </div>
-          </div>
-        </div>
-        <div class="method-footer">
-          <p>Each phase has deliverables.</p>
-          <a href="/method/">Read the full framework →</a>
-        </div>
+      <div class="method-footer">
+        <p>Each phase has deliverables.</p>
+        <a href="/method/" style="color:var(--terra)">Read the full framework &rarr;</a>
       </div>
     </div>
+
+    <!-- ── ALIVE: SOBRIETY (forest) ── -->
+    <div class="method-track method-track-sobriety">
+      <span class="method-track-label">Sobriety Coaching</span>
+      <h3 class="method-track-h3">The <em>ALIVE Method.</em></h3>
+      <div class="method-track-divider"></div>
+      <p class="method-track-sub">The framework behind every <em style="color:var(--forest);font-style:italic">sobriety</em> coaching engagement. Practical, trauma-informed, and built for real life.</p>
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="step-num-s">A</div>
+          <div class="step-body">
+            <h3>Assess <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--forest);opacity:0.7;letter-spacing:0.04em">Where are you actually stuck?</span></h3>
+            <p>Internal (shame, identity, grief) or external (people, environment)? We figure this out first so nothing we do is wasted effort.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num-s">L</div>
+          <div class="step-body">
+            <h3>Locate <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--forest);opacity:0.7;letter-spacing:0.04em">Find your people</span></h3>
+            <p>Isolation is the most common mistake in early sobriety. We identify who needs to go, who needs to come in, and where to find them.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num-s">I</div>
+          <div class="step-body">
+            <h3>Identity <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--forest);opacity:0.7;letter-spacing:0.04em">Not "I don't drink" but who you actually are</span></h3>
+            <p>We develop this through narrative and belief work, motivational interviewing, and values exercises that build the person underneath the sobriety.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num-s">V</div>
+          <div class="step-body">
+            <h3>Village <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--forest);opacity:0.7;letter-spacing:0.04em">Structure the environment around the life you want</span></h3>
+            <p>Routine and the physical and social spaces you move through.</p>
+          </div>
+        </div>
+        <div class="method-step">
+          <div class="step-num-s">E</div>
+          <div class="step-body">
+            <h3>Evolve <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-style:normal;font-weight:500;color:var(--forest);opacity:0.7;letter-spacing:0.04em">Build a life you actually want to be present for</span></h3>
+            <p>This is where it stops being about sobriety and starts being about your life.</p>
+          </div>
+        </div>
+      </div>
+      <div class="method-footer">
+        <p>Each phase has deliverables.</p>
+        <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" style="color:var(--forest)">Book a sobriety call &rarr;</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
