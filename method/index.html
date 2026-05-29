@@ -1,0 +1,878 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sober Pivot Method · Sober Adventuring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1714;
+    --muted: #6b6560;
+    --amber: #c8700a;
+    --amber-light: #fdefd8;
+    --amber-mid: #f5c878;
+    --teal: #0f6e56;
+    --teal-light: #e1f5ee;
+    --coral: #993c1d;
+    --coral-light: #faece7;
+    --purple: #534ab7;
+    --purple-light: #eeedfe;
+    --border: rgba(26,23,20,0.12);
+    --border-strong: rgba(26,23,20,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* BACK NAV */
+  .back-nav {
+    background: #2D3D24;
+    padding: 12px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,232,208,0.7);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .back-nav a:hover { color: #F4E8D0; }
+  .back-nav .site-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 16px;
+    color: #F4E8D0;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  @media(max-width:640px) { .back-nav { padding: 12px 24px; } }
+
+  /* HEADER */
+  .hero {
+    padding: 80px 48px 64px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(52px, 8vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+  h1 em { font-style: italic; color: var(--amber); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  .hero-truth {
+    border-left: 3px solid var(--amber);
+    padding: 16px 24px;
+    background: var(--amber-light);
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 620px;
+  }
+  .hero-truth strong { color: var(--amber); }
+
+  /* NAV PILLS */
+  .phase-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 48px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .phase-nav::-webkit-scrollbar { display: none; }
+
+  .nav-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border-strong);
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .nav-pill:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .nav-pill.p1:hover { background: var(--amber); border-color: var(--amber); color: white; }
+  .nav-pill.p2:hover { background: var(--teal); border-color: var(--teal); color: white; }
+  .nav-pill.p3:hover { background: var(--coral); border-color: var(--coral); color: white; }
+  .nav-pill.p4:hover { background: var(--purple); border-color: var(--purple); color: white; }
+  .nav-pill.p5:hover { background: var(--ink); border-color: var(--ink); color: white; }
+
+  /* MAIN CONTENT */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 120px;
+  }
+
+  /* PHASE BLOCK */
+  .phase {
+    margin-bottom: 80px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .phase-header {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 32px;
+  }
+
+  .phase-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    user-select: none;
+  }
+  .p1 .phase-number { color: var(--amber); }
+  .p2 .phase-number { color: var(--teal); }
+  .p3 .phase-number { color: var(--coral); }
+  .p4 .phase-number { color: var(--purple); }
+  .p5 .phase-number { color: var(--ink); }
+
+  .phase-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .p1 .phase-label { color: var(--amber); }
+  .p2 .phase-label { color: var(--teal); }
+  .p3 .phase-label { color: var(--coral); }
+  .p4 .phase-label { color: var(--purple); }
+  .p5 .phase-label { color: var(--ink); }
+
+  .phase-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .phase-tagline {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  /* REFRAME */
+  .reframe {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 24px;
+    padding: 24px 28px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid var(--border);
+  }
+  .reframe p + p { margin-top: 14px; }
+
+  /* TRUTH BOMB */
+  .truth-bomb {
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 12px;
+    align-items: start;
+  }
+  .truth-bomb::before { content: '⚡'; flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+  .p1 .truth-bomb { background: var(--amber-light); color: var(--coral); }
+  .p2 .truth-bomb { background: var(--teal-light); color: var(--teal); }
+  .p3 .truth-bomb { background: var(--coral-light); color: var(--coral); }
+  .p4 .truth-bomb { background: var(--purple-light); color: var(--purple); }
+  .p5 .truth-bomb { background: #f1efe8; color: var(--ink); }
+
+  /* DELIVERABLES */
+  .deliverables-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .deliverable {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.15s;
+  }
+  .deliverable:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+  .d-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .d-check.done {
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+  .d-check.done::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 9px;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+  .deliverable.done-row { opacity: 0.55; }
+  .deliverable.done-row .d-title { text-decoration: line-through; }
+
+  .d-content { min-width: 0; }
+  .d-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+    line-height: 1.4;
+  }
+  .d-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .d-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tag-doc { background: #e6f1fb; color: #185fa5; }
+  .tag-action { background: var(--coral-light); color: var(--coral); }
+  .tag-mindset { background: var(--purple-light); color: var(--purple); }
+  .tag-system { background: var(--teal-light); color: var(--teal); }
+  .tag-money { background: var(--amber-light); color: var(--amber); }
+
+  /* SABOTAGE PATTERN */
+  .sabotage {
+    border: 1px solid rgba(153,60,29,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    background: #fffaf8;
+  }
+  .sabotage-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sabotage-label::before { content: '⚠'; }
+  .sabotage p { font-size: 14px; color: #6b4040; line-height: 1.65; }
+  .sabotage strong { color: var(--coral); }
+
+  /* DIVIDER */
+  .phase-divider {
+    text-align: center;
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    color: var(--border-strong);
+    margin: 8px 0;
+    user-select: none;
+    letter-spacing: 0.2em;
+  }
+
+  /* MANIFESTO CLOSER */
+  .manifesto {
+    margin-top: 80px;
+    padding: 64px 48px;
+    background: var(--ink);
+    border-radius: 20px;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto::before {
+    content: 'SOBER PIVOT';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-family: 'Instrument Serif', serif;
+    font-size: 120px;
+    line-height: 0.85;
+    opacity: 0.05;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+  .manifesto h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+  .manifesto h2 em { font-style: italic; color: var(--amber-mid); }
+  .manifesto p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.7);
+    max-width: 600px;
+    margin-bottom: 16px;
+  }
+  .manifesto p:last-child { margin-bottom: 0; }
+
+  /* PROGRESS BAR */
+  .progress-bar-container {
+    margin: 32px 0 48px;
+    padding: 20px 24px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .pb-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pb-track {
+    height: 6px;
+    background: #eee;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .pb-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--amber), var(--teal));
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 0%;
+  }
+
+  @media (max-width: 640px) {
+    .hero, .content { padding-left: 24px; padding-right: 24px; }
+    .hero { padding-top: 48px; }
+    .phase-nav { padding-left: 24px; }
+    .phase-header { grid-template-columns: 48px 1fr; gap: 16px; }
+    .phase-number { font-size: 36px !important; }
+    .manifesto { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACK NAV -->
+<div class="back-nav">
+  <a href="/">&#8592; soberadventuring.com</a>
+  <span class="site-name">Sober<em style="font-style:italic;color:#C5442C;">Adventuring.</em></span>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">A Working Framework</div>
+  <h1>The Sober<br><em>Pivot</em><br>Method</h1>
+  <p class="hero-sub">
+    For the ones who are done waiting to feel ready. This is the operational system &mdash; not the inspiration speech.
+  </p>
+  <div class="hero-truth">
+    <strong>The real problem:</strong> You don't need more motivation. You need a clear sequence of uncomfortable, concrete actions &mdash; and a system that accounts for the fact that you will try to blow this up the moment it starts working.
+  </div>
+</div>
+
+<nav class="phase-nav">
+  <a class="nav-pill p1" href="#phase1">01 &middot; The Ledger</a>
+  <a class="nav-pill p2" href="#phase2">02 &middot; The Extract</a>
+  <a class="nav-pill p3" href="#phase3">03 &middot; The Proof</a>
+  <a class="nav-pill p4" href="#phase4">04 &middot; The Engine</a>
+  <a class="nav-pill p5" href="#phase5">05 &middot; The Architecture</a>
+</nav>
+
+<main class="content">
+
+  <div class="progress-bar-container">
+    <div class="pb-label">
+      <span>Your progress</span>
+      <span id="progress-text">0 of 20 complete</span>
+    </div>
+    <div class="pb-track">
+      <div class="pb-fill" id="pb-fill"></div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <section class="phase p1" id="phase1">
+    <div class="phase-header">
+      <div class="phase-number">01</div>
+      <div>
+        <div class="phase-label">Phase One</div>
+        <h2 class="phase-title">The Ledger</h2>
+        <div class="phase-tagline">Name what it actually cost you &mdash; with specificity</div>
+      </div>
+    </div>
+
+    <div class="reframe">
+      <p>Not the health stuff. The life stuff. The jobs you quit, the opportunities you torched, the version of yourself you kept postponing. The relationships you degraded, the money you vaporized, the years where you were physically present but operationally absent.</p>
+      <p>This isn't about shame. Shame is diffuse. It paralyzes. Specificity is different &mdash; specificity gives you <em>data</em>. And data tells you what the sober version of you is working to recover, build, or finally become. You're writing the problem statement for your own life.</p>
+    </div>
+
+    <div class="truth-bomb">
+      Most people rush this. They want to skip to the "building" part because sitting with the losses is uncomfortable. But a vague cost = vague motivation = you quit when it gets hard. The ledger is your anchor.
+    </div>
+
+    <div class="deliverables-label">Deliverables for this phase</div>
+    <div class="deliverables">
+      <div class="deliverable" data-id="1-1">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Write the 3-column cost audit</div>
+          <div class="d-desc">Three columns: Lost Opportunity / What It Would Be Worth Now / The Version of Me It Delayed. Fill every row with specific names, numbers, dates. No rounding. Aim for 10&ndash;15 rows minimum.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+      <div class="deliverable" data-id="1-2">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Identify the "proxy" career you kept almost-starting</div>
+          <div class="d-desc">There's a version of your skill set you were circling for years &mdash; freelance writing, sales, design, operations, whatever. Name it. It's almost certainly closer to market-ready than you think.</div>
+        </div>
+        <span class="d-tag tag-mindset">mindset</span>
+      </div>
+      <div class="deliverable" data-id="1-3">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Write your "enough" number &mdash; the one that changes everything</div>
+          <div class="d-desc">Not your dream income. The number where financial stress stops being the noise drowning everything else out. Write it down as a monthly figure. This is your Phase 4 target.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+      <div class="deliverable" data-id="1-4">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">The "I already know how to do this" list</div>
+          <div class="d-desc">Write 20 things you can do that someone else would pay for &mdash; go fast, no filters. Sales calls, organizing chaos, writing, cold outreach, making spreadsheets that actually work. This is raw material for Phase 2.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+    </div>
+
+    <div class="sabotage">
+      <div class="sabotage-label">The sabotage pattern to watch for</div>
+      <p><strong>Turning this into a shame spiral.</strong> You sit down to write the cost audit and end up in a 3-hour dissociation session about who you used to be. The ledger is a business document, not a therapy session &mdash; you can have feelings about it and still treat it like a spreadsheet. If you're spiraling, set a timer for 25 minutes, fill what you can, and stop.</p>
+    </div>
+  </section>
+
+  <div class="phase-divider">&middot; &middot; &middot;</div>
+
+  <!-- PHASE 2 -->
+  <section class="phase p2" id="phase2">
+    <div class="phase-header">
+      <div class="phase-number">02</div>
+      <div>
+        <div class="phase-label">Phase Two</div>
+        <h2 class="phase-title">The Extract</h2>
+        <div class="phase-tagline">Find the real skill set buried in the chaos &mdash; then package it</div>
+      </div>
+    </div>
+
+    <div class="reframe">
+      <p>Every high-functioning disaster has a real skill set inside it. The person who kept a job for three years while managing a serious dependency is operating high-level executive function under impossible conditions. The person who talked their way out of every consequence has sales skills. The person who managed to hold relationships together has emotional intelligence that most people never develop.</p>
+      <p>We're not packaging your story for sympathy. We're extracting the actual competency and positioning it in a way that freelance clients &mdash; who do not care about your journey &mdash; will pay for. Your story is the differentiator only after the skill is credible.</p>
+    </div>
+
+    <div class="truth-bomb">
+      The mistake is leading with the recovery narrative before you've established the skill. Clients hire people who can solve their problem. The narrative is what makes you memorable after they've already decided to trust you.
+    </div>
+
+    <div class="deliverables-label">Deliverables for this phase</div>
+    <div class="deliverables">
+      <div class="deliverable" data-id="2-1">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Run the skills &rarr; services translation exercise</div>
+          <div class="d-desc">Take your "I already know how to do this" list and convert each item into a service phrasing &mdash; the way a client would describe what they need. "I'm good at cold outreach" becomes "Cold email sequences that book calls for B2B founders." Do this for every viable item.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+      <div class="deliverable" data-id="2-2">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Pick one offer. One. Write a one-paragraph description.</div>
+          <div class="d-desc">Not a menu. One thing, for one type of client, that produces one specific outcome. "I help [X] get [Y] result by doing [Z]." The paragraph should be so specific that the right person reads it and thinks "that's me."</div>
+        </div>
+        <span class="d-tag tag-action">action</span>
+      </div>
+      <div class="deliverable" data-id="2-3">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Price it &mdash; pick a floor, commit to it</div>
+          <div class="d-desc">Use a project or retainer rate, not hourly. If you're new: $500 for a defined scope. If you have relevant experience: $1,500&ndash;$3,000. Write the number down. The number is not negotiable with yourself &mdash; it can be negotiated with clients, but you need a floor you believe in.</div>
+        </div>
+        <span class="d-tag tag-money">money</span>
+      </div>
+      <div class="deliverable" data-id="2-4">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Write your "why me" paragraph &mdash; the one that uses your story without leaning on it</div>
+          <div class="d-desc">This goes on your profile/proposal. The structure: establish the skill &mdash; state the result &mdash; drop one line of context that makes you human and specific. The recovery angle can live in that last line if it's relevant &mdash; but it earns its place, it doesn't substitute for proof.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+    </div>
+
+    <div class="sabotage">
+      <div class="sabotage-label">The sabotage pattern to watch for</div>
+      <p><strong>Picking everything.</strong> You'll be tempted to list six services because it feels "less risky" to cover more ground. It's actually maximum risk &mdash; it signals that you don't know what you're doing, dilutes your positioning, and makes every proposal harder to write. One offer is not a cage. It's a launchpad.</p>
+    </div>
+  </section>
+
+  <div class="phase-divider">&middot; &middot; &middot;</div>
+
+  <!-- PHASE 3 -->
+  <section class="phase p3" id="phase3">
+    <div class="phase-header">
+      <div class="phase-number">03</div>
+      <div>
+        <div class="phase-label">Phase Three</div>
+        <h2 class="phase-title">The Proof</h2>
+        <div class="phase-tagline">Build credibility before you have clients to prove it</div>
+      </div>
+    </div>
+
+    <div class="reframe">
+      <p>This is the phase most frameworks skip &mdash; and it's why people stall between "I have a service" and "I got paid." You need proof before you have clients, which sounds impossible until you understand what counts as proof: a portfolio piece you built yourself, a case study from something you did for free or at cost, a public artifact that demonstrates the thing you claim you can do.</p>
+      <p>You're not faking it. You're demonstrating it. A cold email writer who has written 50 cold emails in a sequence doc has proof. A social media manager who has run their own account for 6 weeks has proof. You create the sample before the client asks for it.</p>
+    </div>
+
+    <div class="truth-bomb">
+      The most common "I'm not ready yet" is actually "I don't have anything to show." This phase eliminates that excuse in 2 weeks or less. You can ship one proof-of-concept before you talk to a single client.
+    </div>
+
+    <div class="deliverables-label">Deliverables for this phase</div>
+    <div class="deliverables">
+      <div class="deliverable" data-id="3-1">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Build one speculative portfolio piece</div>
+          <div class="d-desc">Pick a real company you'd love to work with. Do the work for them &mdash; unpaid, without telling them &mdash; and document it. A cold email sequence for their product, an audit of their funnel, a rewrite of their homepage. This becomes your lead proposal attachment.</div>
+        </div>
+        <span class="d-tag tag-action">action</span>
+      </div>
+      <div class="deliverable" data-id="3-2">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Do one free or heavily discounted engagement, get a written testimonial</div>
+          <div class="d-desc">One person, defined scope, clear deliverable, hard deadline. The goal is not the money &mdash; it's the sentence: "Here's what Lexi did and what it produced." One real testimonial with a name attached is worth more than a perfect profile.</div>
+        </div>
+        <span class="d-tag tag-action">action</span>
+      </div>
+      <div class="deliverable" data-id="3-3">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Set up the professional infrastructure &mdash; no more than 2 hours</div>
+          <div class="d-desc">LinkedIn updated, Upwork profile live (if applicable), a way to send a proposal (even a Google Doc template). The infrastructure is not the business &mdash; do not spend a week on it. It has to exist; it doesn't have to be beautiful.</div>
+        </div>
+        <span class="d-tag tag-system">system</span>
+      </div>
+      <div class="deliverable" data-id="3-4">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Write 5 hyper-specific Upwork proposals (or 10 LinkedIn DMs)</div>
+          <div class="d-desc">Not templated blasts. Each one references something specific about the person's business, names the exact problem you solve, and ends with one question. Track response rate. The data matters &mdash; you'll iterate the message, not abandon the channel.</div>
+        </div>
+        <span class="d-tag tag-action">action</span>
+      </div>
+    </div>
+
+    <div class="sabotage">
+      <div class="sabotage-label">The sabotage pattern to watch for</div>
+      <p><strong>Indefinite proof-building instead of pitching.</strong> "I'll send proposals when the portfolio is better" is an infinite deferral. The portfolio is never done. You send the proposal with what you have <em>now</em>, and you keep building in parallel. Outreach and proof-building run simultaneously &mdash; they are not sequential.</p>
+    </div>
+  </section>
+
+  <div class="phase-divider">&middot; &middot; &middot;</div>
+
+  <!-- PHASE 4 -->
+  <section class="phase p4" id="phase4">
+    <div class="phase-header">
+      <div class="phase-number">04</div>
+      <div>
+        <div class="phase-label">Phase Four</div>
+        <h2 class="phase-title">The Engine</h2>
+        <div class="phase-tagline">Get paid before you feel ready &mdash; then build the machine</div>
+      </div>
+    </div>
+
+    <div class="reframe">
+      <p>Nothing builds a new identity like someone paying you for something you built sober. The first payment lands differently than any amount of self-belief. It's external confirmation of something you've been trying to prove to yourself, and it changes the internal narrative in a way that journaling and therapy and meditation simply cannot replicate.</p>
+      <p>But the payment is the beginning of the phase, not the end. The engine is the repeatable system that gets you to the second client, and the third, without burning through all your energy on delivery while your pipeline goes cold. You build the machine while it's running.</p>
+    </div>
+
+    <div class="truth-bomb">
+      Most people celebrate the first client and stop doing outreach. Six weeks later, the engagement ends and they have no pipeline. The rule: outreach never stops until you are at capacity and have a waitlist. Even then, don't fully stop.
+    </div>
+
+    <div class="deliverables-label">Deliverables for this phase</div>
+    <div class="deliverables">
+      <div class="deliverable" data-id="4-1">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Close your first paid engagement &mdash; any amount above your floor</div>
+          <div class="d-desc">Send the proposal. Follow up once if no response in 5 days. If they say no, ask one question: "What would have made this a yes?" Log the answer. Iterate. Repeat until someone says yes.</div>
+        </div>
+        <span class="d-tag tag-money">money</span>
+      </div>
+      <div class="deliverable" data-id="4-2">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Build a 90-day outreach cadence &mdash; treat it like a job</div>
+          <div class="d-desc">Pick a daily number: 5 outreach touchpoints minimum. LinkedIn DMs, Upwork proposals, warm intros, cold emails. Track them in a simple sheet: date / channel / response / outcome. Review weekly. The volume matters until conversion rate is your constraint, not quantity.</div>
+        </div>
+        <span class="d-tag tag-system">system</span>
+      </div>
+      <div class="deliverable" data-id="4-3">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Write a client delivery SOP after your first project</div>
+          <div class="d-desc">One page. What you do in week 1, week 2, week 3. What you deliver and when. What you need from the client. This document makes you look professional, sets expectations, and is the foundation of eventually delegating delivery.</div>
+        </div>
+        <span class="d-tag tag-system">system</span>
+      </div>
+      <div class="deliverable" data-id="4-4">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Hit your "enough" number for two consecutive months</div>
+          <div class="d-desc">Not one month &mdash; two. One month is luck. Two months is a pattern. When you hit it twice in a row, you have earned the right to design Phase 5. Not before.</div>
+        </div>
+        <span class="d-tag tag-money">money</span>
+      </div>
+    </div>
+
+    <div class="sabotage">
+      <div class="sabotage-label">The sabotage pattern to watch for</div>
+      <p><strong>Scope creep as self-punishment.</strong> The moment a client asks for something outside scope, you'll be tempted to say yes &mdash; because saying no feels ungrateful, or because you're afraid they'll leave. Over-delivering beyond what you're paid for is a form of self-sabotage that looks like generosity. Hold the scope, raise your rates at renewal, or let the client go. You are building a business, not making amends.</p>
+    </div>
+  </section>
+
+  <div class="phase-divider">&middot; &middot; &middot;</div>
+
+  <!-- PHASE 5 -->
+  <section class="phase p5" id="phase5">
+    <div class="phase-header">
+      <div class="phase-number">05</div>
+      <div>
+        <div class="phase-label">Phase Five</div>
+        <h2 class="phase-title">The Architecture</h2>
+        <div class="phase-tagline">Design the actual freedom &mdash; once the income is real</div>
+      </div>
+    </div>
+
+    <div class="reframe">
+      <p>Once income is real, you design around it. Full-time travel, living abroad, working from wherever &mdash; these aren't rewards you earn once you're successful enough. They're environments you build deliberately because you've proven you can generate income from anywhere. The freedom isn't the destination. The discipline is what makes it sustainable.</p>
+      <p>Sobriety is what made this possible. Not as a marketing angle. As an operational fact. You have more hours, more clarity, more follow-through, and more trust in your own word than you did before. That's not nothing. That's everything.</p>
+    </div>
+
+    <div class="truth-bomb">
+      The "freedom" that most digital nomad content sells is unsustainable because there's no system behind it. You don't move to Chiang Mai and figure it out. You build the income, then move. In that order.
+    </div>
+
+    <div class="deliverables-label">Deliverables for this phase</div>
+    <div class="deliverables">
+      <div class="deliverable" data-id="5-1">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Design your minimum viable lifestyle &mdash; with real numbers</div>
+          <div class="d-desc">Monthly housing, food, transport, software, health, discretionary &mdash; for the life you actually want, not a fantasy or a monk's existence. This is your operational floor. Your income target in Phase 4 should have cleared it. If it didn't, revise upward.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+      <div class="deliverable" data-id="5-2">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Document your work-from-anywhere stack</div>
+          <div class="d-desc">What tools, what timezone policy with clients, what working hours, what communication protocols. Write it so you could hand it to a new client and they'd understand exactly how you operate. Professionalism removes the "but I'm remote" anxiety.</div>
+        </div>
+        <span class="d-tag tag-system">system</span>
+      </div>
+      <div class="deliverable" data-id="5-3">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Identify your sobriety infrastructure &mdash; what travels with you</div>
+          <div class="d-desc">Meetings (online or local), sponsor/accountability contact in your timezone, the non-negotiables that hold you when everything else changes. The location changes; the infrastructure doesn't. Write it down before you move, not after.</div>
+        </div>
+        <span class="d-tag tag-mindset">mindset</span>
+      </div>
+      <div class="deliverable" data-id="5-4">
+        <div class="d-check" onclick="toggleCheck(this)"></div>
+        <div class="d-content">
+          <div class="d-title">Write your "what I'm building toward" one-pager</div>
+          <div class="d-desc">Not a vision board. A one-page document with: current income, target income, lifestyle target, what you'll stop doing, what you'll start doing, and a 6-month checkpoint. Read it every Sunday. Update it quarterly.</div>
+        </div>
+        <span class="d-tag tag-doc">document</span>
+      </div>
+    </div>
+
+    <div class="sabotage">
+      <div class="sabotage-label">The sabotage pattern to watch for</div>
+      <p><strong>Using freedom as an escape from discipline.</strong> When you get to Phase 5, there's a pull to relax the systems that got you here &mdash; fewer proposals, longer response times, looser boundaries. The freedom only works <em>because</em> the discipline exists. Remove the discipline and you're back in Phase 3 within six months, but now you're also in a new country with no anchor. The architecture holds the freedom. Don't dismantle the architecture.</p>
+    </div>
+  </section>
+
+  <div class="manifesto">
+    <h2>This is not a<br><em>rebrand.</em><br>It's a rebuild.</h2>
+    <p>The difference between a rebrand and a rebuild is that a rebrand changes the story you tell people. A rebuild changes the thing itself &mdash; the actual outputs, the systems, the daily choices that accumulate into a life that's structurally different from the one you had.</p>
+    <p>The Sober Pivot isn't about making sobriety your identity. It's about using the clarity it gave you to finally do the thing you kept almost doing. One phase at a time. With the work actually done.</p>
+    <p>You already know how to survive hard things. Now you're learning how to build something worth surviving for.</p>
+  </div>
+
+</main>
+
+<script>
+  const TOTAL = 20;
+
+  function getState() {
+    try {
+      const raw = localStorage.getItem('spm_state');
+      return raw ? JSON.parse(raw) : {};
+    } catch { return {}; }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem('spm_state', JSON.stringify(state)); } catch {}
+  }
+
+  function updateProgress() {
+    const state = getState();
+    const done = Object.values(state).filter(Boolean).length;
+    const pct = Math.round((done / TOTAL) * 100);
+    document.getElementById('pb-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = done + ' of ' + TOTAL + ' complete';
+  }
+
+  function toggleCheck(btn) {
+    const row = btn.closest('.deliverable');
+    const id = row.dataset.id;
+    const state = getState();
+    const isDone = !state[id];
+    state[id] = isDone;
+    saveState(state);
+    if (isDone) {
+      btn.classList.add('done');
+      row.classList.add('done-row');
+    } else {
+      btn.classList.remove('done');
+      row.classList.remove('done-row');
+    }
+    updateProgress();
+  }
+
+  (function init() {
+    const state = getState();
+    document.querySelectorAll('.deliverable').forEach(function(row) {
+      const id = row.dataset.id;
+      if (state[id]) {
+        row.querySelector('.d-check').classList.add('done');
+        row.classList.add('done-row');
+      }
+    });
+    updateProgress();
+  })();
+</script>
+</body>
+</html>
