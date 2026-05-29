@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Story · Sober Adventuring with Alexis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1B0009;
+    --forest: #2D3D24;
+    --terra: #C5442C;
+    --cream: #F4E8D0;
+    --paper: #FBF6EE;
+    --white: #FFFFFF;
+    --muted: #7a6155;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* BACK NAV */
+  .back-nav {
+    background: var(--forest);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .back-nav a {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .back-nav a:hover { opacity: 1; }
+  .back-nav .site-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--cream);
+    opacity: 0.5;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    padding: 72px 28px 60px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 7vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    color: var(--terra);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(244,232,208,0.55);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+    font-style: italic;
+    font-family: 'DM Serif Display', serif;
+  }
+
+  /* STORY BODY */
+  .story-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 28px 80px;
+  }
+
+  .story-wrap p {
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .story-wrap p:last-child { margin-bottom: 0; }
+
+  .story-wrap strong { font-weight: 700; }
+  .story-wrap em { font-style: italic; color: var(--terra); }
+
+  .pull-quote {
+    border-left: 3px solid var(--terra);
+    padding: 20px 28px;
+    margin: 40px 0;
+    background: var(--white);
+    border-radius: 0 8px 8px 0;
+  }
+  .pull-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .story-note {
+    background: rgba(197,68,44,0.06);
+    border: 1px solid rgba(197,68,44,0.15);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 40px 0;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .story-note strong { color: var(--ink); }
+
+  /* CTA */
+  .story-cta {
+    background: var(--forest);
+    padding: 56px 28px;
+    text-align: center;
+  }
+  .story-cta .caveat {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(244,232,208,0.45);
+    margin-bottom: 12px;
+  }
+  .story-cta h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(26px, 5vw, 38px);
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .story-cta h2 em { color: var(--terra); font-style: italic; }
+  .story-cta p {
+    font-size: 15px;
+    color: rgba(244,232,208,0.6);
+    max-width: 420px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--terra);
+    color: var(--cream);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    padding: 14px 28px;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+</style>
+</head>
+<body>
+
+<!-- BACK NAV -->
+<div class="back-nav">
+  <a href="/">&#8592; soberadventuring.com</a>
+  <span class="site-name">Sober<em style="font-style:italic;color:#C5442C;">Adventuring.</em></span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Alexis Antonelli &middot; My Story</p>
+  <h1>How I got here<br><em>from there.</em></h1>
+  <p class="hero-sub">Not a highlight reel. The actual sequence of events.</p>
+</div>
+
+<!-- STORY -->
+<div class="story-wrap">
+
+  <p>I got sober <em>again</em> at 24. No fanfare, no treatment center &mdash; just a Tuesday where I decided I was done. What followed wasn't a clean upward arc. It was the slow, unglamorous process of trying to figure out who I was without the thing that had organized my entire personality.</p>
+
+  <p>By that point, I'd cycled through over 20 jobs. The gaps in my resume weren't explainable in a cover letter. Fired, quit, ghosted, burned out &mdash; whatever the reason, I'd accumulated a record that no hiring manager was going to overlook. And I had mounds of diversified experience across industries, but none of it was packaged in a way the traditional job market wanted.</p>
+
+  <div class="pull-quote">
+    <p>"So I quit trying to fit into the structure that was rejecting me. I focused on what I could actually do, and studied like I was preparing for the hardest test of my life."</p>
+  </div>
+
+  <p>I found freelancing, and specifically Upwork. I built a profile around the skills that were actually marketable &mdash; sales systems, outreach, pipeline building &mdash; and I was amazed to find that <strong>I made $30k within my first 4 months</strong>. Not because I had the perfect background. Because I understood what the client actually needed and I could communicate it clearly.</p>
+
+  <p>Today I run Impello Agency, a sales agency with over 13 case studies. I also coach high-potential people &mdash; usually people who are a lot like I was &mdash; to get extremely clear on what they're genuinely good at, then build and execute a 60-day plan to start making money from it.</p>
+
+  <p>I do this from wherever I want to be. Right now, that's Thailand. Before this, other places. The location changes. The work &mdash; and the discipline behind it &mdash; stays consistent. That's not an accident. That's a system.</p>
+
+  <div class="pull-quote">
+    <p>"Sobriety didn't fix everything. But it gave me access to myself &mdash; my actual thinking, my real capacity &mdash; for the first time in years."</p>
+  </div>
+
+  <p>I started <strong>Sober Adventuring</strong> because I couldn't find what I needed when I was starting over. The content that existed either treated sobriety like a clinical condition or a spiritual awakening. I needed someone to tell me how to actually rebuild &mdash; practically, step by step, without pretending it wasn't hard.</p>
+
+  <p>So that's what I try to be for the people who find this.</p>
+
+  <div class="story-note">
+    <strong>A note:</strong> Although I'm trauma-informed and have built frameworks around this work, I am not a licensed therapist. I'm a person who went through something difficult, figured out a path forward, and is sharing what actually worked. If you're in active crisis, please reach out to a qualified professional &mdash; I can point you toward resources.
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="story-cta">
+  <p class="caveat">if this resonated</p>
+  <h2>Let's figure out<br><em>your</em> next move.</h2>
+  <p>20 minutes. Free. We'll identify where you're stuck and what the actual first step looks like.</p>
+  <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="btn-primary">Book a free clarity call &rarr;</a>
+</div>
+
+</body>
+</html>
