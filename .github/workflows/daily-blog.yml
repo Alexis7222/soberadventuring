@@ -1,0 +1,40 @@
+name: Daily Blog Post
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 8am UTC every day
+  workflow_dispatch:        # manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Anthropic SDK
+        run: pip install anthropic
+
+      - name: Generate blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python generate_post.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "Sober Adventuring Bot"
+          git config user.email "bot@soberadventuring.com"
+          git add blog/ generate_post.py
+          git diff --staged --quiet || git commit -m "Blog: $(date +%Y-%m-%d) post"
+          git push
