@@ -2,76 +2,117 @@ import anthropic
 import os
 import json
 import re
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 
-# ── Topic rotation ────────────────────────────────────────────────
+# ── SEO-researched topic rotation (35 titles from keyword report) ──
 TOPICS = [
-    # Recovery / Sobriety
-    {"keyword": "how to get sober without AA", "category": "Recovery"},
-    {"keyword": "sober curious what does it mean", "category": "Recovery"},
-    {"keyword": "harm reduction approach to sobriety", "category": "Recovery"},
-    {"keyword": "early sobriety tips first 90 days", "category": "Recovery"},
-    {"keyword": "who am I without alcohol sobriety identity", "category": "Recovery"},
-    {"keyword": "sobriety and relationships what actually changes", "category": "Recovery"},
-    {"keyword": "non 12 step recovery alternatives to AA", "category": "Recovery"},
-    {"keyword": "motivational interviewing sobriety coaching", "category": "Recovery"},
-    {"keyword": "trauma informed sobriety coaching", "category": "Recovery"},
-    {"keyword": "sober and lonely what to do isolation recovery", "category": "Recovery"},
-    {"keyword": "how to build a sober social life", "category": "Recovery"},
-    {"keyword": "sobriety and anxiety what helps", "category": "Recovery"},
-    # Freelance / Career
-    {"keyword": "how to start freelancing on Upwork with no experience", "category": "Freelance"},
-    {"keyword": "Upwork profile tips to get your first client", "category": "Freelance"},
-    {"keyword": "how to write Upwork proposals that get responses", "category": "Freelance"},
-    {"keyword": "freelancing while in recovery sobriety and work", "category": "Freelance"},
-    {"keyword": "how to build remote income from scratch", "category": "Freelance"},
-    {"keyword": "what skills can I sell on Upwork no experience", "category": "Freelance"},
-    {"keyword": "how to get clients as a freelancer beginner", "category": "Freelance"},
-    {"keyword": "freelance sales skills how to close clients", "category": "Freelance"},
-    # Travel / Lifestyle
-    {"keyword": "sober digital nomad how to travel without drinking", "category": "Lifestyle"},
-    {"keyword": "living in Chiang Mai Thailand as a freelancer", "category": "Lifestyle"},
-    {"keyword": "how to fund full time travel through freelancing", "category": "Lifestyle"},
-    {"keyword": "sober travel tips alcohol free travel", "category": "Lifestyle"},
+    # Sobriety / Lifestyle
+    {"title": "What Nobody Tells You About the First 30 Days of Sobriety",          "keyword": "early sobriety first 30 days sober",                            "category": "Recovery"},
+    {"title": "What Happens to Your Body When You Stop Drinking (Week by Week)",    "keyword": "what happens when you stop drinking",                           "category": "Recovery"},
+    {"title": "Sober Curious vs. Sober: What's the Difference and Which One Are You?", "keyword": "sober curious meaning sober curious vs sober",             "category": "Recovery"},
+    {"title": "Benefits of Sobriety at 30, 60, and 90 Days — A Real Timeline",     "keyword": "benefits of sobriety sobriety timeline",                       "category": "Recovery"},
+    {"title": "How to Get Sober Without Rock Bottom (You Don't Have to Wait)",      "keyword": "how to get sober sobriety tips",                               "category": "Recovery"},
+    {"title": "What Does It Actually Feel Like to Be Sober? Honest Answers",        "keyword": "sober lifestyle what is sobriety",                             "category": "Recovery"},
+    {"title": "How to Stop Drinking Alcohol on Your Own: A Practical Guide",        "keyword": "how to stop drinking on my own",                               "category": "Recovery"},
+    {"title": "When Do Cravings Go Away? What to Expect in Early Recovery",         "keyword": "when do cravings stop early sobriety symptoms",                "category": "Recovery"},
+    {"title": "Dry January vs. Permanent Sobriety: Which One Is Right for You?",   "keyword": "dry January sober curious movement",                           "category": "Recovery"},
+    {"title": "Alcohol and Anxiety: Why Getting Sober Might Be the Fix",            "keyword": "alcohol and anxiety sobriety benefits",                        "category": "Recovery"},
+    # Sobriety Coaching
+    {"title": "What Does a Sobriety Coach Actually Do? (It's Not Therapy)",         "keyword": "sobriety coach what is sobriety coaching",                     "category": "Sobriety Coaching"},
+    {"title": "Sobriety Coach vs. Therapist vs. AA: Which Support Is Right for You?", "keyword": "sobriety coach vs therapy alternatives to AA",             "category": "Sobriety Coaching"},
+    {"title": "How Much Does a Sober Coach Cost? Breaking Down the Investment",     "keyword": "sobriety coach cost sober coach online",                       "category": "Sobriety Coaching"},
+    {"title": "5 Signs You Might Benefit From a Sobriety Coach",                    "keyword": "sobriety coaching alcohol free coaching",                      "category": "Sobriety Coaching"},
+    {"title": "Can You Get Sober Online? What Remote Sobriety Coaching Looks Like", "keyword": "online sobriety support sober coach online",                   "category": "Sobriety Coaching"},
+    {"title": "The ALIVE Method: My Approach to Sobriety Coaching",                 "keyword": "sobriety coaching sobriety framework ALIVE method",            "category": "Sobriety Coaching"},
+    {"title": "How I Help People Build a Sober Life They Actually Want to Live",    "keyword": "sobriety coach sober accountability coach",                    "category": "Sobriety Coaching"},
+    # Sober Travel
+    {"title": "The Complete Guide to Sober Travel: Best Trip of Your Life",         "keyword": "sober travel sober travel tips",                               "category": "Sober Travel"},
+    {"title": "Sober in Chiang Mai: A Digital Nomad's Guide to Thriving Without Alcohol", "keyword": "sober in Thailand sober travel digital nomad",         "category": "Sober Travel"},
+    {"title": "How to Handle Social Drinking While Traveling (Without Caving)",     "keyword": "how to travel sober sober travel tips",                        "category": "Sober Travel"},
+    {"title": "The Best Destinations for Sober Travel in Southeast Asia",           "keyword": "sober travel alcohol free vacation Southeast Asia",             "category": "Sober Travel"},
+    {"title": "Dry Tripping: What It Is and Why Gen Z Is Leading This Revolution",  "keyword": "dry tripping sober travel trend",                              "category": "Sober Travel"},
+    {"title": "Can You Be a Digital Nomad and Stay Sober? Yes — Here's How",       "keyword": "digital nomad sober traveling in recovery",                    "category": "Sober Travel"},
+    {"title": "Sober Travel Packing List: Everything I Bring to Stay Grounded",     "keyword": "sober travel blog sober travel tips packing",                  "category": "Sober Travel"},
+    {"title": "What Happened When I Traveled to 10 Countries Sober",               "keyword": "sober travel blog traveling in recovery honest",               "category": "Sober Travel"},
+    # Non-12-Step / Secular
+    {"title": "Can You Get Sober Without AA? Yes — Here's What That Looks Like",   "keyword": "sobriety without AA alternatives to AA",                       "category": "Recovery"},
+    {"title": "Non-12-Step Recovery: Every Alternative Explained",                  "keyword": "non 12 step recovery alternatives to AA SMART LifeRing",       "category": "Recovery"},
+    {"title": "How to Get Sober If You're Not Religious",                           "keyword": "non religious sobriety secular sobriety no higher power",      "category": "Recovery"},
+    {"title": "Is There a Sobriety Group for Atheists and Agnostics? Yes — Several","keyword": "atheist sobriety secular sobriety alternatives to AA",         "category": "Recovery"},
+    {"title": "SMART Recovery vs. AA: An Honest Comparison",                        "keyword": "SMART recovery non 12 step recovery vs AA",                    "category": "Recovery"},
+    {"title": "Why I'm Building a Secular Recovery Community (And Who It's For)",   "keyword": "secular sobriety non religious sobriety recovery community",    "category": "Recovery"},
+    {"title": "The Problem With Traditional Recovery Spaces (And What We're Doing Instead)", "keyword": "alternatives to AA non religious sobriety",          "category": "Recovery"},
+    # Freelance / Lifestyle
+    {"title": "How I Quit Drinking and Built a Freelance Business From Scratch",    "keyword": "sober freelance sobriety lifestyle career change Upwork",      "category": "Freelance"},
+    {"title": "The Sober Pivot: Why Getting Sober Was the Best Career Move I Made", "keyword": "sobriety benefits sober lifestyle career sobriety tips",       "category": "Freelance"},
+    {"title": "How to Start Freelancing on Upwork With No Experience",              "keyword": "how to start freelancing on Upwork with no experience",        "category": "Freelance"},
 ]
 
-SYSTEM_PROMPT = """You write blog posts for soberadventuring.com — Alexis Antonelli's personal site.
+SYSTEM_PROMPT = """You write blog posts for soberadventuring.com — Alexis Antonelli's site.
 
-About Alexis:
-- 2 years fully sober. Got sober again at 24. No treatment center — just a Tuesday decision.
-- 9 years in recovery spaces: recovery support specialist, ABA therapist, case manager, sober house manager
-- Non-12-step, harm reduction oriented, trauma-informed, motivational interviewing
-- Made $30k in first 4 months freelancing on Upwork
-- Now runs Impello Agency from Chiang Mai, Thailand
-- Voice: warm, direct, honest, real. First person. Not clinical, not preachy. Occasionally blunt.
+══ WHO ALEXIS IS ══
+Got sober again at 24. No fanfare, no treatment center — just a Tuesday decision.
+9 years in recovery spaces: recovery support specialist, ABA therapist, case manager, sober house manager.
+Cycled through 20+ jobs before freelancing. No clean resume. Made it work anyway.
+Made $30k in first 4 months on Upwork starting from zero.
+Now runs Impello Agency and coaches high-potential people, living in Chiang Mai, Thailand.
+Non-12-step, harm reduction, motivational interviewing, trauma-informed. All pathways to recovery supported.
+Not a licensed therapist — a person who went through something hard, found a way forward, and shares what actually worked.
 
-Internal links to weave in where natural:
-- Free clarity call: https://calendly.com/alexis-m-antonelli/freediscoverycall
-- Telegram recovery group: https://t.me/+wJbhwv2ccS1hMjFh
-- Upwork Starter Guide ($14.99): https://antonelli74.gumroad.com/l/wfbmpv
-- The PIVOT Method (career): https://soberadventuring.com/method/
-- About Alexis: https://soberadventuring.com/story/
+══ VOICE — STUDY THESE EXACT EXAMPLES. MATCH THIS. ══
+"I got sober again at 24. No fanfare, no treatment center — just a Tuesday where I decided I was done."
+"What followed wasn't a clean upward arc. It was the slow, unglamorous process of trying to figure out who I was without the thing that had organized my entire personality."
+"Fired, quit, ghosted, burned out — whatever the reason, I'd accumulated a record that no hiring manager was going to overlook."
+"I made $30k within my first 4 months. Not because I had the perfect background. Because I understood what the client actually needed and I could communicate it clearly."
+"Sobriety didn't fix everything. But it gave me access to myself — my actual thinking, my real capacity — for the first time in years."
+"The content that existed either treated sobriety like a clinical condition or a spiritual awakening. I needed someone to tell me how to actually rebuild — practically, step by step, without pretending it wasn't hard."
 
-Output ONLY valid JSON — no markdown fences, no extra text. Use this exact structure:
+Voice rules — these are non-negotiable:
+- First person. Always.
+- Short sentences. Sentence fragments when they land harder. "Not because X. Because Y." is a good pattern.
+- Specific and concrete. Real numbers, real timelines, real situations.
+- No filler sentences. Every sentence earns its place. If it doesn't add anything, cut it.
+- Warm but direct. Not clinical. Not preachy. Not self-help-book energy.
+- Occasionally blunt. That's the brand.
+- Never moralize. Never lecture. Describe what happened, what worked, what didn't.
+- Do not wrap up sections with "the key takeaway is" or motivational summaries.
+
+══ BANNED PHRASES — NEVER WRITE ANY OF THESE ══
+delve into, delve deeper, it's important to note, in conclusion, to summarize, furthermore, moreover, additionally (as a paragraph opener), navigate (metaphorically), game-changer, transformative, journey (especially "recovery journey" or "freelance journey"), tapestry, in today's world, in today's fast-paced world, let's explore, holistic approach, leverage (as a verb for non-physical things), multifaceted, in essence, it goes without saying, needless to say, I cannot stress enough, at the end of the day, when it comes to, it's worth noting, comprehensive, robust, paramount, seamlessly, beacon, foster (as in "foster growth"), pivotal, embark on, realm, testament to, underscores the importance, unpack, dive into, dive deep, circle back, moving forward, the bottom line is, with that said, without further ado, having said that, it's crucial that, one thing to keep in mind
+
+Also avoid:
+- Starting a paragraph with a rhetorical question used as a hook ("Are you tired of feeling stuck?")
+- Padding openers: "When it comes to X..." / "One important thing to consider..."
+- Perfect parallel structure in every single list item — sounds robotic
+- Closing a section with a motivational one-liner
+
+══ STRUCTURE ══
+intro: 2-3 sentences. Hook immediately. Drop the reader into the real thing. No throat-clearing.
+sections: 3-5 sections with H2 headings. Each: 2-4 substantive paragraphs. No filler.
+conclusion: 2-3 sentences. Honest, not hype. Soft CTA with internal link as raw HTML <a href="URL">text</a>.
+Total: ~1000 words.
+Include the target keyword naturally in the first 100 words and in one H2 heading.
+
+══ INTERNAL LINKS — weave in where genuinely natural ══
+Free clarity call: https://calendly.com/alexis-m-antonelli/freediscoverycall
+Telegram recovery group: https://t.me/+wJbhwv2ccS1hMjFh
+Upwork Starter Guide ($14.99): https://antonelli74.gumroad.com/l/wfbmpv
+The PIVOT Method: https://soberadventuring.com/method/
+About Alexis: https://soberadventuring.com/story/
+
+Output ONLY valid JSON — no markdown fences, no extra text before or after:
 {
-  "title": "SEO title, under 60 chars, includes keyword",
-  "meta_description": "155-160 chars, includes keyword, compelling",
+  "title": "SEO title under 60 chars, includes keyword",
+  "meta_description": "155-160 chars, includes keyword, sounds human not robotic",
   "slug": "url-slug-with-hyphens",
-  "reading_time": 5,
-  "intro": "2-3 sentence hook. Pull the reader in immediately.",
+  "reading_time": 6,
+  "intro": "2-3 sentence hook in Alexis voice.",
   "sections": [
-    {"heading": "H2 heading", "paragraphs": ["paragraph 1", "paragraph 2", "paragraph 3"]}
+    {"heading": "H2 text", "paragraphs": ["paragraph 1", "paragraph 2", "paragraph 3"]}
   ],
-  "conclusion": "2-3 sentences. Soft CTA — relevant internal link."
-}
-
-Requirements:
-- 3-5 sections
-- Total ~1000 words across intro + sections + conclusion
-- Include keyword naturally in intro and one heading
-- Each section: 2-4 substantive paragraphs, no filler
-- Write as Alexis, first person, from lived experience"""
+  "conclusion": "2-3 sentences. Soft CTA with HTML <a href='URL'>anchor text</a> embedded."
+}"""
 
 
 def get_topic():
@@ -83,11 +124,17 @@ def call_claude(topic):
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     msg = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=4000,
+        max_tokens=4096,
         system=SYSTEM_PROMPT,
         messages=[{
             "role": "user",
-            "content": f"Write a blog post targeting: \"{topic['keyword']}\". Category: {topic['category']}."
+            "content": (
+                f"Write a blog post with this title: \"{topic['title']}\"\n"
+                f"Target keyword(s): {topic['keyword']}\n"
+                f"Category: {topic['category']}\n\n"
+                "Remember: write in Alexis's exact voice. Short sentences. Real specifics. "
+                "No AI filler phrases. No motivational padding."
+            )
         }]
     )
     text = msg.content[0].text.strip()
@@ -256,29 +303,25 @@ body{{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque'
 
 def main():
     topic = get_topic()
-    print(f"Generating post for: {topic['keyword']}")
+    print(f"Generating post for: {topic['title']}")
 
     data = call_claude(topic)
     print(f"Title: {data['title']}")
-    print(f"Slug: {data['slug']}")
+    print(f"Slug:  {data['slug']}")
 
     today = date.today()
     post_date_str = today.strftime("%B %d, %Y")
     post_date_iso = today.isoformat()
     slug = data["slug"]
 
-    # Write post HTML
     post_dir = Path(f"blog/{slug}")
     post_dir.mkdir(parents=True, exist_ok=True)
     post_path = post_dir / "index.html"
     post_path.write_text(render_post_html(data, topic, post_date_str), encoding="utf-8")
     print(f"Wrote: {post_path}")
 
-    # Update posts.json
     posts_json = Path("blog/posts.json")
     posts = json.loads(posts_json.read_text()) if posts_json.exists() else []
-
-    # Avoid duplicate slugs
     posts = [p for p in posts if p["slug"] != slug]
     posts.append({
         "slug": slug,
@@ -286,12 +329,11 @@ def main():
         "meta_description": data["meta_description"],
         "category": topic["category"],
         "date": post_date_iso,
-        "reading_time": data["reading_time"]
+        "reading_time": data["reading_time"],
     })
     posts.sort(key=lambda p: p["date"])
     posts_json.write_text(json.dumps(posts, indent=2), encoding="utf-8")
 
-    # Regenerate blog index
     blog_index = Path("blog/index.html")
     blog_index.write_text(render_index_html(posts), encoding="utf-8")
     print(f"Updated blog index — {len(posts)} total posts")
