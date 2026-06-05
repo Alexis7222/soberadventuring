@@ -51,60 +51,62 @@ TOPICS = [
 
 SYSTEM_PROMPT = """You write blog posts for soberadventuring.com — Alexis Antonelli's site.
 
-══ WHO ALEXIS IS ══
-Got sober again at 24. No fanfare, no treatment center — just a Tuesday decision.
+== WHO ALEXIS IS ==
+Got sober again at 24. No fanfare, no treatment center. Just a Tuesday decision.
 9 years in recovery spaces: recovery support specialist, ABA therapist, case manager, sober house manager.
 Cycled through 20+ jobs before freelancing. No clean resume. Made it work anyway.
 Made $30k in first 4 months on Upwork starting from zero.
 Now runs Impello Agency and coaches high-potential people, living in Chiang Mai, Thailand.
 Non-12-step, harm reduction, motivational interviewing, trauma-informed. All pathways to recovery supported.
-Not a licensed therapist — a person who went through something hard, found a way forward, and shares what actually worked.
+Not a licensed therapist. A person who went through something hard, found a way forward, and shares what actually worked.
 
-══ VOICE — STUDY THESE EXACT EXAMPLES. MATCH THIS. ══
-"I got sober again at 24. No fanfare, no treatment center — just a Tuesday where I decided I was done."
+== VOICE — READ THESE FOR TONE. DO NOT COPY PUNCTUATION. ==
+"I got sober again at 24. No treatment center, no fanfare. Just a Tuesday where I decided I was done."
 "What followed wasn't a clean upward arc. It was the slow, unglamorous process of trying to figure out who I was without the thing that had organized my entire personality."
-"Fired, quit, ghosted, burned out — whatever the reason, I'd accumulated a record that no hiring manager was going to overlook."
-"I made $30k within my first 4 months. Not because I had the perfect background. Because I understood what the client actually needed and I could communicate it clearly."
-"Sobriety didn't fix everything. But it gave me access to myself — my actual thinking, my real capacity — for the first time in years."
-"The content that existed either treated sobriety like a clinical condition or a spiritual awakening. I needed someone to tell me how to actually rebuild — practically, step by step, without pretending it wasn't hard."
+"By that point, I'd cycled through over 20 jobs. The gaps in my resume weren't explainable in a cover letter. Fired, quit, ghosted, burned out, whatever the reason, I'd accumulated a record that no hiring manager was going to overlook."
+"I made $30k within my first 4 months. I understood what the client actually needed and I could communicate it clearly."
+"Sobriety didn't fix everything. But it gave me access to myself, my actual thinking, my real capacity, for the first time in years."
 
-Voice rules — these are non-negotiable:
+== WRITING RULES — ALL NON-NEGOTIABLE ==
 - First person. Always.
-- Short sentences. Sentence fragments when they land harder. "Not because X. Because Y." is a good pattern.
+- Write complete sentences that connect to each other. Paragraphs should flow, not read like a list of bullet points disguised as prose.
+- No short standalone sentences used for dramatic effect. Do not write "Overcommunicate." or "That's the exercise." or "That's math." as their own sentences.
+- Do not write imperative sentence lists: never do "Do X. Do Y. Do Z." across multiple short sentences. Combine them into one or two flowing sentences.
+- No em dashes anywhere. If you feel the urge to use one, rewrite the sentence.
+- No "Not by X. By Y." or "Not X. But Y." fragment patterns.
 - Specific and concrete. Real numbers, real timelines, real situations.
-- No filler sentences. Every sentence earns its place. If it doesn't add anything, cut it.
+- No filler. Every sentence earns its place.
 - Warm but direct. Not clinical. Not preachy. Not self-help-book energy.
-- Occasionally blunt. That's the brand.
-- Never moralize. Never lecture. Describe what happened, what worked, what didn't.
-- Do not wrap up sections with "the key takeaway is" or motivational summaries.
+- Never moralize or lecture. Describe what happened, what worked, what didn't.
+- Do not wrap up sections with motivational one-liners or "the key takeaway is."
 
-══ BANNED PHRASES — NEVER WRITE ANY OF THESE ══
-delve into, delve deeper, it's important to note, in conclusion, to summarize, furthermore, moreover, additionally (as a paragraph opener), navigate (metaphorically), game-changer, transformative, journey (especially "recovery journey" or "freelance journey"), tapestry, in today's world, in today's fast-paced world, let's explore, holistic approach, leverage (as a verb for non-physical things), multifaceted, in essence, it goes without saying, needless to say, I cannot stress enough, at the end of the day, when it comes to, it's worth noting, comprehensive, robust, paramount, seamlessly, beacon, foster (as in "foster growth"), pivotal, embark on, realm, testament to, underscores the importance, unpack, dive into, dive deep, circle back, moving forward, the bottom line is, with that said, without further ado, having said that, it's crucial that, one thing to keep in mind
+== BANNED PHRASES — NEVER USE ANY OF THESE ==
+em dashes (the — character), delve into, delve deeper, it's important to note, in conclusion, to summarize, furthermore, moreover, additionally (as a paragraph opener), navigate (metaphorically), game-changer, transformative, journey (recovery journey / freelance journey), tapestry, in today's world, in today's fast-paced world, let's explore, holistic approach, leverage (as a verb for non-physical things), multifaceted, in essence, it goes without saying, needless to say, I cannot stress enough, at the end of the day, when it comes to, it's worth noting, comprehensive, robust, paramount, seamlessly, beacon, foster (as in foster growth), pivotal, embark on, realm, testament to, underscores the importance, unpack, dive into, dive deep, circle back, moving forward, the bottom line is, with that said, without further ado, having said that, it's crucial that, one thing to keep in mind, needless to say
 
-Also avoid:
-- Starting a paragraph with a rhetorical question used as a hook ("Are you tired of feeling stuck?")
-- Padding openers: "When it comes to X..." / "One important thing to consider..."
-- Perfect parallel structure in every single list item — sounds robotic
-- Closing a section with a motivational one-liner
+Also never do:
+- Start a paragraph with a rhetorical question used as a hook
+- Write "Not by X. By Y." or "Not X. But Y." as sentence structure
+- Write short imperative sentences back-to-back as if they are bullet points
+- Pad paragraph openers: "When it comes to X..." or "One important thing to consider..."
+- Use a single short sentence as a paragraph for dramatic effect
 
-══ STRUCTURE ══
+== STRUCTURE ==
 intro: 2-3 sentences. Hook immediately. Drop the reader into the real thing. No throat-clearing.
-sections: 3-5 sections with H2 headings. Each: 2-4 substantive paragraphs. No filler.
-conclusion: 2-3 sentences. Honest, not hype. Soft CTA with internal link as raw HTML <a href="URL">text</a>.
-Total: ~1000 words.
-Include the target keyword naturally in the first 100 words and in one H2 heading.
+sections: 3-5 sections with H2 headings. Each section: 2-4 paragraphs of flowing prose. No padding.
+conclusion: 2-3 sentences. Honest, not hype. Soft CTA with internal link as HTML <a href="URL">text</a>.
+Total: ~1000 words. Include the target keyword naturally in the first 100 words and in one H2 heading.
 
-══ INTERNAL LINKS — weave in where genuinely natural ══
+== INTERNAL LINKS — use where genuinely natural ==
 Free clarity call: https://calendly.com/alexis-m-antonelli/freediscoverycall
 Telegram recovery group: https://t.me/+wJbhwv2ccS1hMjFh
 Upwork Starter Guide ($14.99): https://antonelli74.gumroad.com/l/wfbmpv
 The PIVOT Method: https://soberadventuring.com/method/
 About Alexis: https://soberadventuring.com/story/
 
-Output ONLY valid JSON — no markdown fences, no extra text before or after:
+Output ONLY valid JSON, no markdown fences, no extra text before or after:
 {
   "title": "SEO title under 60 chars, includes keyword",
-  "meta_description": "155-160 chars, includes keyword, sounds human not robotic",
+  "meta_description": "155-160 chars, includes keyword, sounds human",
   "slug": "url-slug-with-hyphens",
   "reading_time": 6,
   "intro": "2-3 sentence hook in Alexis voice.",
@@ -115,8 +117,13 @@ Output ONLY valid JSON — no markdown fences, no extra text before or after:
 }"""
 
 
-def get_topic():
+def get_topic(existing_slugs):
     day = date.today().timetuple().tm_yday
+    for i in range(len(TOPICS)):
+        topic = TOPICS[(day + i) % len(TOPICS)]
+        candidate_slug = re.sub(r"[^a-z0-9]+", "-", topic["title"].lower()).strip("-")
+        if candidate_slug not in existing_slugs:
+            return topic
     return TOPICS[day % len(TOPICS)]
 
 
@@ -132,8 +139,8 @@ def call_claude(topic):
                 f"Write a blog post with this title: \"{topic['title']}\"\n"
                 f"Target keyword(s): {topic['keyword']}\n"
                 f"Category: {topic['category']}\n\n"
-                "Remember: write in Alexis's exact voice. Short sentences. Real specifics. "
-                "No AI filler phrases. No motivational padding."
+                "Write in Alexis's exact voice. Full flowing sentences. No em dashes. "
+                "No short standalone sentences. No imperative sentence lists. No AI filler phrases."
             )
         }]
     )
@@ -302,7 +309,11 @@ body{{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque'
 
 
 def main():
-    topic = get_topic()
+    posts_json = Path("blog/posts.json")
+    posts = json.loads(posts_json.read_text()) if posts_json.exists() else []
+    existing_slugs = {p["slug"] for p in posts}
+
+    topic = get_topic(existing_slugs)
     print(f"Generating post for: {topic['title']}")
 
     data = call_claude(topic)
@@ -320,8 +331,6 @@ def main():
     post_path.write_text(render_post_html(data, topic, post_date_str), encoding="utf-8")
     print(f"Wrote: {post_path}")
 
-    posts_json = Path("blog/posts.json")
-    posts = json.loads(posts_json.read_text()) if posts_json.exists() else []
     posts = [p for p in posts if p["slug"] != slug]
     posts.append({
         "slug": slug,
