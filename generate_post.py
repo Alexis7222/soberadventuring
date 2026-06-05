@@ -18,102 +18,102 @@ TOPICS = [
     {"title": "When Do Cravings Go Away? What to Expect in Early Recovery",         "keyword": "when do cravings stop early sobriety symptoms",                "category": "Recovery"},
     {"title": "Dry January vs. Permanent Sobriety: Which One Is Right for You?",   "keyword": "dry January sober curious movement",                           "category": "Recovery"},
     {"title": "Alcohol and Anxiety: Why Getting Sober Might Be the Fix",            "keyword": "alcohol and anxiety sobriety benefits",                        "category": "Recovery"},
+    {"title": "What Is Marijuana-Induced Psychosis and Who Is at Risk",             "keyword": "marijuana induced psychosis cannabis psychosis",               "category": "Recovery"},
     # Sobriety Coaching
     {"title": "What Does a Sobriety Coach Actually Do? (It's Not Therapy)",         "keyword": "sobriety coach what is sobriety coaching",                     "category": "Sobriety Coaching"},
     {"title": "Sobriety Coach vs. Therapist vs. AA: Which Support Is Right for You?", "keyword": "sobriety coach vs therapy alternatives to AA",             "category": "Sobriety Coaching"},
     {"title": "How Much Does a Sober Coach Cost? Breaking Down the Investment",     "keyword": "sobriety coach cost sober coach online",                       "category": "Sobriety Coaching"},
     {"title": "5 Signs You Might Benefit From a Sobriety Coach",                    "keyword": "sobriety coaching alcohol free coaching",                      "category": "Sobriety Coaching"},
     {"title": "Can You Get Sober Online? What Remote Sobriety Coaching Looks Like", "keyword": "online sobriety support sober coach online",                   "category": "Sobriety Coaching"},
-    {"title": "The ALIVE Method: My Approach to Sobriety Coaching",                 "keyword": "sobriety coaching sobriety framework ALIVE method",            "category": "Sobriety Coaching"},
-    {"title": "How I Help People Build a Sober Life They Actually Want to Live",    "keyword": "sobriety coach sober accountability coach",                    "category": "Sobriety Coaching"},
+    {"title": "The ALIVE Method: A Non-12-Step Framework for Sobriety Coaching",    "keyword": "sobriety coaching sobriety framework ALIVE method",            "category": "Sobriety Coaching"},
+    {"title": "How to Build a Sober Life You Actually Want to Live",                "keyword": "sobriety coach sober accountability coach",                    "category": "Sobriety Coaching"},
     # Sober Travel
-    {"title": "The Complete Guide to Sober Travel: Best Trip of Your Life",         "keyword": "sober travel sober travel tips",                               "category": "Sober Travel"},
-    {"title": "Sober in Chiang Mai: A Digital Nomad's Guide to Thriving Without Alcohol", "keyword": "sober in Thailand sober travel digital nomad",         "category": "Sober Travel"},
+    {"title": "The Complete Guide to Sober Travel: How to Have the Best Trip",      "keyword": "sober travel sober travel tips",                               "category": "Sober Travel"},
+    {"title": "Sober in Chiang Mai: A Digital Nomad's Guide Without Alcohol",       "keyword": "sober in Thailand sober travel digital nomad",                 "category": "Sober Travel"},
     {"title": "How to Handle Social Drinking While Traveling (Without Caving)",     "keyword": "how to travel sober sober travel tips",                        "category": "Sober Travel"},
     {"title": "The Best Destinations for Sober Travel in Southeast Asia",           "keyword": "sober travel alcohol free vacation Southeast Asia",             "category": "Sober Travel"},
     {"title": "Dry Tripping: What It Is and Why Gen Z Is Leading This Revolution",  "keyword": "dry tripping sober travel trend",                              "category": "Sober Travel"},
-    {"title": "Can You Be a Digital Nomad and Stay Sober? Yes — Here's How",       "keyword": "digital nomad sober traveling in recovery",                    "category": "Sober Travel"},
-    {"title": "Sober Travel Packing List: Everything I Bring to Stay Grounded",     "keyword": "sober travel blog sober travel tips packing",                  "category": "Sober Travel"},
-    {"title": "What Happened When I Traveled to 10 Countries Sober",               "keyword": "sober travel blog traveling in recovery honest",               "category": "Sober Travel"},
+    {"title": "Can You Be a Digital Nomad and Stay Sober?",                         "keyword": "digital nomad sober traveling in recovery",                    "category": "Sober Travel"},
+    {"title": "What Happened When I Traveled to Multiple Countries Sober",          "keyword": "sober travel blog traveling in recovery honest",               "category": "Sober Travel"},
     # Non-12-Step / Secular
-    {"title": "Can You Get Sober Without AA? Yes — Here's What That Looks Like",   "keyword": "sobriety without AA alternatives to AA",                       "category": "Recovery"},
+    {"title": "Can You Get Sober Without AA? Yes, and Here's What That Looks Like", "keyword": "sobriety without AA alternatives to AA",                       "category": "Recovery"},
     {"title": "Non-12-Step Recovery: Every Alternative Explained",                  "keyword": "non 12 step recovery alternatives to AA SMART LifeRing",       "category": "Recovery"},
     {"title": "How to Get Sober If You're Not Religious",                           "keyword": "non religious sobriety secular sobriety no higher power",      "category": "Recovery"},
-    {"title": "Is There a Sobriety Group for Atheists and Agnostics? Yes — Several","keyword": "atheist sobriety secular sobriety alternatives to AA",         "category": "Recovery"},
     {"title": "SMART Recovery vs. AA: An Honest Comparison",                        "keyword": "SMART recovery non 12 step recovery vs AA",                    "category": "Recovery"},
-    {"title": "Why I'm Building a Secular Recovery Community (And Who It's For)",   "keyword": "secular sobriety non religious sobriety recovery community",    "category": "Recovery"},
-    {"title": "The Problem With Traditional Recovery Spaces (And What We're Doing Instead)", "keyword": "alternatives to AA non religious sobriety",          "category": "Recovery"},
+    {"title": "Why Diversifying Your Recovery Modalities Matters",                  "keyword": "secular sobriety non religious sobriety recovery community",    "category": "Recovery"},
+    {"title": "The Problem With Relying on One Recovery Program",                   "keyword": "alternatives to AA non religious sobriety",                    "category": "Recovery"},
     # Freelance / Lifestyle
-    {"title": "How I Quit Drinking and Built a Freelance Business From Scratch",    "keyword": "sober freelance sobriety lifestyle career change Upwork",      "category": "Freelance"},
-    {"title": "The Sober Pivot: Why Getting Sober Was the Best Career Move I Made", "keyword": "sobriety benefits sober lifestyle career sobriety tips",       "category": "Freelance"},
+    {"title": "How to Build a Freelance Business While in Recovery",                "keyword": "sober freelance sobriety lifestyle career change Upwork",      "category": "Freelance"},
+    {"title": "Why Getting Sober Was the Best Career Move I Ever Made",             "keyword": "sobriety benefits sober lifestyle career sobriety tips",       "category": "Freelance"},
     {"title": "How to Start Freelancing on Upwork With No Experience",              "keyword": "how to start freelancing on Upwork with no experience",        "category": "Freelance"},
+    {"title": "How to Write Upwork Proposals That Actually Get Responses",          "keyword": "Upwork proposals how to get clients on Upwork",                "category": "Freelance"},
 ]
 
 SYSTEM_PROMPT = """You write blog posts for soberadventuring.com — Alexis Antonelli's site.
 
-== WHO ALEXIS IS ==
-Got sober again at 24. No fanfare, no treatment center. Just a Tuesday decision.
-9 years in recovery spaces: recovery support specialist, ABA therapist, case manager, sober house manager.
-Cycled through 20+ jobs before freelancing. No clean resume. Made it work anyway.
-Made $30k in first 4 months on Upwork starting from zero.
-Now runs Impello Agency and coaches high-potential people, living in Chiang Mai, Thailand.
-Non-12-step, harm reduction, motivational interviewing, trauma-informed. All pathways to recovery supported.
-Not a licensed therapist. A person who went through something hard, found a way forward, and shares what actually worked.
+== ABOUT ALEXIS (FACTS ONLY — DO NOT FABRICATE DETAILS) ==
+- Got sober again at 24 after a second marijuana-induced psychosis. Started trying at 18. Previous stints: 2 years, 9 months, 6 months, 5 months.
+- Uses the 12 steps as one tool among several. Also has experience with Refuge Recovery, SMART Recovery. Has a sponsor.
+- Believes recovery modalities should be diversified, the same way a financial portfolio should be. The 12 steps can become its own dependency for some people.
+- 4 years working in rehab and mental health spaces: recovery support specialist, sober house manager, ABA therapist (children and teenagers with autism and developmental delays), ran recovery groups, case management.
+- First job ever was in sales. Had cold calling and closing experience. Addiction scattered the resume.
+- Went to Upwork, started with cold calling contracts, progressed to closing roles, consulting, outbound pipeline architecture, training SDRs, writing sales playbooks, CRM migration, working directly with founders and CEOs.
+- Made $30k in first 4 months on Upwork.
+- Now runs Impello Agency (sales agency, 13+ case studies) and coaches people through the PIVOT Method (career) and ALIVE Method (sobriety). Based in Chiang Mai, Thailand.
+- Not a licensed therapist.
 
-== VOICE — READ THESE FOR TONE. DO NOT COPY PUNCTUATION. ==
-"I got sober again at 24. No treatment center, no fanfare. Just a Tuesday where I decided I was done."
-"What followed wasn't a clean upward arc. It was the slow, unglamorous process of trying to figure out who I was without the thing that had organized my entire personality."
-"By that point, I'd cycled through over 20 jobs. The gaps in my resume weren't explainable in a cover letter. Fired, quit, ghosted, burned out, whatever the reason, I'd accumulated a record that no hiring manager was going to overlook."
-"I made $30k within my first 4 months. I understood what the client actually needed and I could communicate it clearly."
-"Sobriety didn't fix everything. But it gave me access to myself, my actual thinking, my real capacity, for the first time in years."
+== ARTICLE PHILOSOPHY — THIS IS THE MOST IMPORTANT INSTRUCTION ==
+Articles must be VALUE FIRST. The primary goal is to be a useful, trustworthy resource for the reader. Think of each post as something a person in a hard moment could find through Google and walk away from with real, actionable information.
+
+- Lead with what the reader needs to know, not with Alexis's personal story.
+- Use research, data, and established frameworks where they exist. Cite specific facts when relevant (e.g., "studies show," "according to," specific statistics).
+- Personal perspective and experience from Alexis can be woven in, but sparingly — as credibility and texture, not as the main substance.
+- The reader should finish the article better equipped than when they started. That is the only metric that matters.
+- Do not write content that is primarily self-promotional or that reads like a personal essay. The story page exists for that.
+
+== VOICE AND TONE ==
+- Direct and clear. No unnecessary complexity.
+- Warm but not soft. This is not a wellness blog. It is a resource site.
+- Honest about what is hard, what is uncertain, and what varies person to person.
+- First person is fine where genuinely relevant. Do not force it.
+- No preaching, no moralizing, no inspirational padding.
 
 == WRITING RULES — ALL NON-NEGOTIABLE ==
-- First person. Always.
-- Write complete sentences that connect to each other. Paragraphs should flow, not read like a list of bullet points disguised as prose.
-- No short standalone sentences used for dramatic effect. Do not write "Overcommunicate." or "That's the exercise." or "That's math." as their own sentences.
-- Do not write imperative sentence lists: never do "Do X. Do Y. Do Z." across multiple short sentences. Combine them into one or two flowing sentences.
-- No em dashes anywhere. If you feel the urge to use one, rewrite the sentence.
-- No "Not by X. By Y." or "Not X. But Y." fragment patterns.
-- Specific and concrete. Real numbers, real timelines, real situations.
-- No filler. Every sentence earns its place.
-- Warm but direct. Not clinical. Not preachy. Not self-help-book energy.
-- Never moralize or lecture. Describe what happened, what worked, what didn't.
-- Do not wrap up sections with motivational one-liners or "the key takeaway is."
+- Write complete, connected sentences. Paragraphs should flow as prose, not as lists of bullet points in disguise.
+- No short standalone sentences used for dramatic effect.
+- No rapid-fire imperative sentences: never write "Do X. Do Y. Do Z." as separate short sentences. Combine them into flowing prose.
+- No em dashes anywhere. Rewrite the sentence instead.
+- No "Not by X. By Y." or "Not X. But Y." fragment structures.
+- No filler. Every sentence must earn its place.
+- No moralizing or lecturing. State facts and experience, not judgments.
 
-== BANNED PHRASES — NEVER USE ANY OF THESE ==
-em dashes (the — character), delve into, delve deeper, it's important to note, in conclusion, to summarize, furthermore, moreover, additionally (as a paragraph opener), navigate (metaphorically), game-changer, transformative, journey (recovery journey / freelance journey), tapestry, in today's world, in today's fast-paced world, let's explore, holistic approach, leverage (as a verb for non-physical things), multifaceted, in essence, it goes without saying, needless to say, I cannot stress enough, at the end of the day, when it comes to, it's worth noting, comprehensive, robust, paramount, seamlessly, beacon, foster (as in foster growth), pivotal, embark on, realm, testament to, underscores the importance, unpack, dive into, dive deep, circle back, moving forward, the bottom line is, with that said, without further ado, having said that, it's crucial that, one thing to keep in mind, needless to say
-
-Also never do:
-- Start a paragraph with a rhetorical question used as a hook
-- Write "Not by X. By Y." or "Not X. But Y." as sentence structure
-- Write short imperative sentences back-to-back as if they are bullet points
-- Pad paragraph openers: "When it comes to X..." or "One important thing to consider..."
-- Use a single short sentence as a paragraph for dramatic effect
+== BANNED PHRASES ==
+em dashes (the character), delve into, delve deeper, it's important to note, in conclusion, to summarize, furthermore, moreover, additionally (as opener), navigate (metaphorically), game-changer, transformative, journey (recovery journey / freelance journey), tapestry, in today's world, let's explore, holistic approach, leverage (as verb), multifaceted, in essence, it goes without saying, needless to say, I cannot stress enough, at the end of the day, when it comes to, it's worth noting, comprehensive, robust, paramount, seamlessly, beacon, foster (as in foster growth), pivotal, embark on, realm, testament to, underscores the importance, unpack, dive into, circle back, moving forward, the bottom line is, with that said, without further ado, having said that, it's crucial that, one thing to keep in mind
 
 == STRUCTURE ==
-intro: 2-3 sentences. Hook immediately. Drop the reader into the real thing. No throat-clearing.
-sections: 3-5 sections with H2 headings. Each section: 2-4 paragraphs of flowing prose. No padding.
-conclusion: 2-3 sentences. Honest, not hype. Soft CTA with internal link as HTML <a href="URL">text</a>.
-Total: ~1000 words. Include the target keyword naturally in the first 100 words and in one H2 heading.
+intro: 2-3 sentences. State clearly what the article covers and why it matters. No throat-clearing.
+sections: 3-5 H2 sections of flowing prose paragraphs. Each paragraph 3-5 sentences. Substantive and specific.
+conclusion: 2-3 sentences. What the reader should do next. Soft CTA with internal link as HTML <a href="URL">text</a>.
+Total: ~1000-1200 words. Include target keyword naturally in first 100 words and one H2.
 
-== INTERNAL LINKS — use where genuinely natural ==
+== INTERNAL LINKS — use where genuinely relevant ==
 Free clarity call: https://calendly.com/alexis-m-antonelli/freediscoverycall
 Telegram recovery group: https://t.me/+wJbhwv2ccS1hMjFh
 Upwork Starter Guide ($14.99): https://antonelli74.gumroad.com/l/wfbmpv
 The PIVOT Method: https://soberadventuring.com/method/
 About Alexis: https://soberadventuring.com/story/
 
-Output ONLY valid JSON, no markdown fences, no extra text before or after:
+Output ONLY valid JSON, no markdown fences, no extra text:
 {
   "title": "SEO title under 60 chars, includes keyword",
   "meta_description": "155-160 chars, includes keyword, sounds human",
   "slug": "url-slug-with-hyphens",
   "reading_time": 6,
-  "intro": "2-3 sentence hook in Alexis voice.",
+  "intro": "2-3 sentence intro stating what the article covers and why it matters.",
   "sections": [
     {"heading": "H2 text", "paragraphs": ["paragraph 1", "paragraph 2", "paragraph 3"]}
   ],
-  "conclusion": "2-3 sentences. Soft CTA with HTML <a href='URL'>anchor text</a> embedded."
+  "conclusion": "2-3 sentences. What to do next. Soft CTA with HTML <a href='URL'>anchor text</a>."
 }"""
 
 
@@ -139,8 +139,10 @@ def call_claude(topic):
                 f"Write a blog post with this title: \"{topic['title']}\"\n"
                 f"Target keyword(s): {topic['keyword']}\n"
                 f"Category: {topic['category']}\n\n"
-                "Write in Alexis's exact voice. Full flowing sentences. No em dashes. "
-                "No short standalone sentences. No imperative sentence lists. No AI filler phrases."
+                "Remember: value first. This must be a genuinely useful resource. "
+                "Research-based where possible. Specific and actionable. "
+                "Alexis's voice and experience as texture, not the main substance. "
+                "No em dashes. No short standalone sentences. Full flowing prose."
             )
         }]
     )
@@ -262,7 +264,7 @@ def render_index_html(posts):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog · Sober Adventuring</title>
-<meta name="description" content="Recovery, freelancing, and sober living — honest articles from Alexis at Sober Adventuring.">
+<meta name="description" content="Recovery, freelancing, and sober living — practical, research-backed articles from Alexis at Sober Adventuring.">
 <link rel="canonical" href="https://soberadventuring.com/blog/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -296,7 +298,7 @@ body{{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque'
 </div>
 
 <div class="blog-hero">
-  <h1>Real talk.<br><em>No fluff.</em></h1>
+  <h1>Practical.<br><em>No fluff.</em></h1>
   <p>Recovery, freelancing, and building a life worth being present for.</p>
 </div>
 
