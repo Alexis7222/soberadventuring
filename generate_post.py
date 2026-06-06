@@ -87,6 +87,13 @@ Articles must be VALUE FIRST. The primary goal is to be a useful, trustworthy re
 - No filler. Every sentence must earn its place.
 - No moralizing or lecturing. State facts and experience, not judgments.
 
+== FORMATTING FOR READABILITY ==
+Use these HTML elements sparingly and intentionally. Every instance needs a reason — do not use them for decoration.
+- <strong>text</strong> — bold key facts, specific numbers, and the most actionable phrases. No more than 2-4 per section.
+- <u>term</u> — underline key terms when first introduced, or to flag a critical caveat the reader must not miss. No more than 1-2 per section.
+- <span class="hl">text</span> — highlight the single most important insight per section, like a text highlighter. Use at most once per section, often not at all. Reserve for the one sentence a skimmer absolutely must read.
+Overuse destroys the effect. When in doubt, leave it plain.
+
 == BANNED PHRASES ==
 em dashes (the character), delve into, delve deeper, it's important to note, in conclusion, to summarize, furthermore, moreover, additionally (as opener), navigate (metaphorically), game-changer, transformative, journey (recovery journey / freelance journey), tapestry, in today's world, let's explore, holistic approach, leverage (as verb), multifaceted, in essence, it goes without saying, needless to say, I cannot stress enough, at the end of the day, when it comes to, it's worth noting, comprehensive, robust, paramount, seamlessly, beacon, foster (as in foster growth), pivotal, embark on, realm, testament to, underscores the importance, unpack, dive into, circle back, moving forward, the bottom line is, with that said, without further ado, having said that, it's crucial that, one thing to keep in mind
 
@@ -142,7 +149,8 @@ def call_claude(topic):
                 "Remember: value first. This must be a genuinely useful resource. "
                 "Research-based where possible. Specific and actionable. "
                 "Alexis's voice and experience as texture, not the main substance. "
-                "No em dashes. No short standalone sentences. Full flowing prose."
+                "No em dashes. No short standalone sentences. Full flowing prose. "
+                "Use <strong>, <u>, and <span class=\"hl\"> sparingly where they genuinely help the reader scan — not for decoration."
             )
         }]
     )
@@ -205,6 +213,11 @@ body{{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque'
 .post-h2{{font-family:'DM Serif Display',serif;font-size:clamp(22px,4vw,30px);line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin:48px 0 16px;padding-top:8px;border-top:1px solid rgba(27,0,9,0.08)}}
 p{{font-size:16px;line-height:1.85;color:var(--ink);margin-bottom:20px}}
 a{{color:var(--terra);font-weight:600}}
+strong{{font-weight:700}}
+u{{text-decoration-color:var(--terra);text-decoration-thickness:2px;text-underline-offset:3px}}
+.hl{{background:rgba(197,68,44,0.1);padding:1px 5px;border-radius:2px}}
+.fact-box{{background:var(--white);border:1.5px solid rgba(27,0,9,0.1);border-left:3px solid var(--terra);padding:20px 24px;margin:28px 0;font-size:15px;line-height:1.9}}
+.fact-box strong{{display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;font-weight:700}}
 .post-conclusion{{margin-top:48px;padding:28px 32px;background:var(--white);border-left:3px solid var(--terra);font-size:16px;line-height:1.8}}
 .post-cta{{background:var(--forest);padding:52px 28px;text-align:center;margin-top:0}}
 .post-cta h2{{font-family:'DM Serif Display',serif;font-size:clamp(24px,5vw,36px);color:var(--cream);margin-bottom:10px;line-height:1.1}}
@@ -250,7 +263,7 @@ def render_index_html(posts):
     cards = ""
     for p in reversed(posts):
         cards += f"""
-    <a href="/blog/{p['slug']}/" class="post-card">
+    <a href="/blog/{p['slug']}/" class="post-card" data-cat="{p['category']}">
       <span class="card-cat">{p['category']}</span>
       <h2 class="card-title">{p['title']}</h2>
       <p class="card-meta">{p['date']} &nbsp;·&nbsp; {p['reading_time']} min read</p>
@@ -279,8 +292,12 @@ body{{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque'
 .blog-hero h1{{font-family:'DM Serif Display',serif;font-size:clamp(34px,7vw,56px);line-height:1.0;letter-spacing:-0.025em;color:var(--cream);margin-bottom:12px}}
 .blog-hero h1 em{{color:var(--terra);font-style:italic}}
 .blog-hero p{{font-size:16px;color:rgba(244,232,208,0.5);max-width:420px;margin:0 auto;font-family:'DM Serif Display',serif;font-style:italic}}
-.blog-grid{{max-width:900px;margin:0 auto;padding:56px 28px 80px;display:grid;grid-template-columns:1fr 1fr;gap:20px}}
-@media(max-width:640px){{.blog-grid{{grid-template-columns:1fr;padding:40px 20px 64px}}}}
+.filter-bar{{max-width:900px;margin:0 auto;padding:28px 28px 0;display:flex;gap:8px;flex-wrap:wrap}}
+.filter-btn{{background:none;border:1.5px solid rgba(27,0,9,0.15);padding:7px 16px;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);transition:all 0.15s}}
+.filter-btn.active,.filter-btn:hover{{border-color:var(--terra);color:var(--terra)}}
+.filter-btn.active{{background:rgba(197,68,44,0.07)}}
+.blog-grid{{max-width:900px;margin:0 auto;padding:24px 28px 80px;display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:640px){{.blog-grid{{grid-template-columns:1fr;padding:20px 20px 64px}}.blog-hero{{padding:44px 20px 40px}}.filter-bar{{padding:20px 20px 0}}}}
 .post-card{{background:var(--white);border:1.5px solid rgba(27,0,9,0.1);padding:28px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color 0.15s,transform 0.15s}}
 .post-card:hover{{border-color:var(--terra);transform:translateY(-2px)}}
 .card-cat{{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra)}}
@@ -298,13 +315,34 @@ body{{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque'
 </div>
 
 <div class="blog-hero">
-  <h1>Practical.<br><em>No fluff.</em></h1>
+  <h1>Real talk.<br><em>Practical resources.</em></h1>
   <p>Recovery, freelancing, and building a life worth being present for.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-cat="all">All</button>
+  <button class="filter-btn" data-cat="Recovery">Recovery</button>
+  <button class="filter-btn" data-cat="Sobriety Coaching">Sobriety Coaching</button>
+  <button class="filter-btn" data-cat="Sober Travel">Sober Travel</button>
+  <button class="filter-btn" data-cat="Freelance">Freelance</button>
 </div>
 
 <div class="blog-grid">
   {cards}
 </div>
+
+<script>
+document.querySelectorAll('.filter-btn').forEach(function(btn) {{
+  btn.addEventListener('click', function() {{
+    document.querySelectorAll('.filter-btn').forEach(function(b) {{ b.classList.remove('active'); }});
+    this.classList.add('active');
+    var cat = this.dataset.cat;
+    document.querySelectorAll('.post-card').forEach(function(card) {{
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+    }});
+  }});
+}});
+</script>
 
 </body>
 </html>"""
