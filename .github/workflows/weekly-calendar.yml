@@ -1,0 +1,30 @@
+name: Weekly Content Calendar
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 9am UTC (4pm Chiang Mai)
+  workflow_dispatch:
+
+jobs:
+  generate-calendar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic requests
+
+      - name: Generate content calendar
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
+        run: python generate_calendar.py
