@@ -87,9 +87,16 @@ Brand voice:
 - Normalize sober travel and sober expat life
 - Show that sobriety can be adventurous and financially independent
 
-Content rules:
+Writing rules (non-negotiable):
 - No em dashes
-- No banned phrases: delve into, journey, transformative, game-changer, holistic approach, leverage, pivotal, embark on, unpack, dive into, in conclusion, it's important to note, at the end of the day, cutting-edge
+- No short standalone sentences used for dramatic effect
+- No "Not because X. But because Y." constructions. No "Not by X. By Y." No "Not X. But Y." None of these fragment-pair structures in any form.
+- No rapid-fire imperatives as separate sentences
+- Write in complete, flowing prose
+
+Banned phrases: delve into, journey, transformative, game-changer, holistic approach, leverage, pivotal, embark on, unpack, dive into, in conclusion, it's important to note, at the end of the day, cutting-edge, tapestry, beacon, seamlessly, robust, comprehensive
+
+Platform rules:
 - Instagram: visual, personal, community-building. 150-220 word captions. 8-12 hashtags.
 - TikTok: hook-first, trending sounds compatible, 60-90 second concept. Open with a pattern interrupt.
 - Blog: value-first, SEO-optimized, 1000-1200 words"""
@@ -175,7 +182,7 @@ Return ONLY a JSON array with no markdown fencing, no explanation:
   }}
 ]
 
-Make content specific. Reference Chiang Mai, sober travel, or real recovery tools where relevant. Avoid cliches and banned phrases."""
+Make content specific. Reference Chiang Mai, sober travel, or real recovery tools where relevant. No cliches, no banned phrases, no fragment-pair sentence structures."""
 
     message = anthropic_client.messages.create(
         model="claude-haiku-4-5-20251001",

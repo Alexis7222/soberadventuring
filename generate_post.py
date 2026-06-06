@@ -83,7 +83,7 @@ Articles must be VALUE FIRST. The primary goal is to be a useful, trustworthy re
 - No short standalone sentences used for dramatic effect.
 - No rapid-fire imperative sentences: never write "Do X. Do Y. Do Z." as separate short sentences. Combine them into flowing prose.
 - No em dashes anywhere. Rewrite the sentence instead.
-- No "Not by X. By Y." or "Not X. But Y." fragment structures.
+- No "Not because X. But because Y." constructions. No "Not by X. By Y." No "Not X. But Y." None of these fragment-pair structures in any form.
 - No filler. Every sentence must earn its place.
 - No moralizing or lecturing. State facts and experience, not judgments.
 
@@ -150,6 +150,7 @@ def call_claude(topic):
                 "Research-based where possible. Specific and actionable. "
                 "Alexis's voice and experience as texture, not the main substance. "
                 "No em dashes. No short standalone sentences. Full flowing prose. "
+                "No 'Not because X. But because Y.' or any fragment-pair structures. "
                 "Use <strong>, <u>, and <span class=\"hl\"> sparingly where they genuinely help the reader scan — not for decoration."
             )
         }]
