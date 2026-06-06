@@ -6,9 +6,9 @@ import requests
 from datetime import datetime
 from pathlib import Path
 
-APOFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN", "")
-APOFY_BASE_URL = "https://api.apify.com/v2"
-APOFY_ACTOR = "apify~instagram-scraper"
+APIFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN", "")
+APIFY_BASE_URL = "https://api.apify.com/v2"
+APIFY_ACTOR = "apify~instagram-scraper"
 
 HASHTAGS = [
     "soberlife",
