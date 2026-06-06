@@ -118,7 +118,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .seg-heading em{color:var(--terra);font-style:italic}
 .seg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-/* Card base */
 .seg-card{
   border:1.5px solid rgba(27,0,9,0.12);
   padding:32px 28px;
@@ -128,7 +127,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
   overflow:hidden;
   transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-/* Color fill layer */
 .seg-card::before{
   content:'';
   position:absolute;
@@ -141,7 +139,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .seg-card-terra::before{background:var(--terra)}
 .seg-card-blue::before{background:var(--blue)}
 
-/* Bottom accent bar */
 .seg-card::after{
   content:'';
   position:absolute;
@@ -163,7 +160,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .seg-card:hover::before,.seg-card.selected::before{opacity:1}
 .seg-card>*{position:relative;z-index:1}
 
-/* Number label */
 .seg-num{
   display:block;
   font-family:'DM Serif Display',serif;
@@ -183,7 +179,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .seg-card-sub{font-size:14px;color:var(--muted);line-height:1.6;transition:color 0.2s ease}
 .seg-card:hover .seg-card-sub,.seg-card.selected .seg-card-sub{color:rgba(244,232,208,0.7)}
 
-/* Arrow */
 .seg-arrow{
   display:inline-block;
   margin-top:20px;
@@ -510,7 +505,7 @@ body,a,button{cursor:none}
       <div class="magnet-block magnet-block-guide reveal">
         <span class="magnet-accent">free guide</span>
         <h3 class="magnet-title">25 Things Nobody Tells You About Getting Sober</h3>
-        <p class="magnet-desc">Four years working in recovery spaces as a recovery support specialist, sober house manager, and ABA therapist, then getting sober myself. This is what I actually tell people when they&rsquo;re starting out: what the first weeks feel like, why year two tends to be harder than year one, what helps people stay sober long-term versus what just looks helpful. The stuff that doesn&rsquo;t make it into the official guides.</p>
+        <p class="magnet-desc">Four years working in recovery spaces as a recovery support specialist, sober house manager, and ABA therapist, then getting sober myself. This is what I actually tell people when they&rsquo;re starting out: what the first weeks feel like, why year two tends to be harder than year one, and what helps people stay sober long-term versus what just looks helpful.</p>
         <form class="magnet-form" id="guideForm" novalidate>
           <input type="text" name="name" placeholder="First name" autocomplete="given-name" required>
           <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
@@ -679,11 +674,11 @@ body,a,button{cursor:none}
       <span class="coaching-track-label">Sobriety Coaching</span>
       <h3 class="coaching-track-h3">The <em>ALIVE Method.</em></h3>
       <div class="coaching-track-divider"></div>
-      <p class="coaching-track-sub">For people in or approaching sobriety who want practical support, not just a framework. Built on 4 years in clinical recovery spaces as a recovery support specialist, ABA therapist, case manager, and sober house manager. All pathways supported.</p>
+      <p class="coaching-track-sub">For people in or approaching sobriety who want practical, hands-on support from someone who&rsquo;s been in the space. Built on 4 years in clinical recovery as a recovery support specialist, ABA therapist, case manager, and sober house manager, and all pathways are supported.</p>
       <div class="coaching-offer featured-forest">
         <span class="coaching-offer-badge">Start here &middot; free</span>
         <h4>The Clarity Call</h4>
-        <p>It&rsquo;s 20 minutes where we figure out where you are in your sobriety, what&rsquo;s getting in the way, and what the actual next step looks like, and nothing here is a setup for a sales conversation.</p>
+        <p>It&rsquo;s 20 minutes where we figure out where you are in your sobriety, what&rsquo;s getting in the way, and what the actual next step looks like.</p>
         <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="coaching-offer-cta">Book the free call &rarr;</a>
       </div>
       <div class="coaching-offer">
@@ -699,7 +694,7 @@ body,a,button{cursor:none}
       <span class="coaching-track-label">Career &amp; Freelance</span>
       <h3 class="coaching-track-h3">The <em>PIVOT Method.</em></h3>
       <div class="coaching-track-divider"></div>
-      <p class="coaching-track-sub">For people who want to freelance, work remotely, or build a real skill-based income. Whether you&rsquo;re sober or not, this is about building work that doesn&rsquo;t require an escape. I made $30k in my first 4 months on Upwork. Here&rsquo;s how.</p>
+      <p class="coaching-track-sub">For people who want to freelance, work remotely, or build a real skill-based income, whether you&rsquo;re sober or not, this is about building work that actually fits your life. I made $30k in my first 4 months on Upwork and can show you how I did it.</p>
       <div class="coaching-offer featured-career">
         <span class="coaching-offer-badge">Start here &middot; free</span>
         <h4>The Clarity Call</h4>
