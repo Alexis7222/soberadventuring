@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leads · Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1B0009;--forest:#2D3D24;--terra:#C5442C;--cream:#F4E8D0;--paper:#F0EDE8;--white:#FEFCF8;--muted:#6b5a4e}
+body{background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* GATE */
+#gate{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 20px}
+.gate-logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);margin-bottom:40px}
+.gate-logo em{color:var(--terra);font-style:italic}
+.gate-box{background:var(--white);border:1.5px solid rgba(27,0,9,.1);padding:40px 36px;max-width:360px;width:100%;text-align:center}
+.gate-box h2{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);margin-bottom:8px}
+.gate-box p{font-size:13px;color:var(--muted);margin-bottom:24px}
+.gate-input{width:100%;border:1.5px solid rgba(27,0,9,.15);background:var(--paper);padding:12px 16px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;color:var(--ink);outline:none;margin-bottom:12px}
+.gate-input:focus{border-color:var(--terra)}
+.gate-btn{width:100%;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;border:none;padding:14px;cursor:pointer;transition:opacity .2s}
+.gate-btn:hover{opacity:.88}
+.gate-error{font-size:12px;color:var(--terra);margin-top:8px;display:none}
+
+/* DASHBOARD */
+#dashboard{display:none;padding:0 0 80px}
+.dash-nav{background:var(--forest);padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+.dash-nav span{font-family:'DM Serif Display',serif;font-size:16px;color:var(--cream)}
+.dash-nav span em{color:var(--terra);font-style:italic}
+.dash-nav button{background:none;border:1px solid rgba(244,232,208,.3);color:rgba(244,232,208,.7);font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;padding:6px 12px;cursor:pointer}
+.dash-nav button:hover{border-color:var(--cream);color:var(--cream)}
+.dash-hero{background:var(--ink);padding:40px 28px 32px}
+.dash-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,40px);color:var(--cream);margin-bottom:4px}
+.dash-hero h1 em{color:var(--terra);font-style:italic}
+.dash-hero p{font-size:13px;color:rgba(244,232,208,.45)}
+.stats-row{max-width:960px;margin:32px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.stat-card{background:var(--white);border:1.5px solid rgba(27,0,9,.1);padding:20px 22px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:32px;color:var(--terra);line-height:1}
+.stat-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.dash-toolbar{max-width:960px;margin:24px auto 0;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.dash-toolbar input{flex:1;min-width:180px;border:1.5px solid rgba(27,0,9,.12);background:var(--white);padding:10px 14px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;color:var(--ink);outline:none}
+.dash-toolbar input:focus{border-color:var(--terra)}
+.export-btn{background:none;border:1.5px solid rgba(27,0,9,.2);color:var(--muted);font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;padding:10px 16px;cursor:pointer;white-space:nowrap}
+.export-btn:hover{border-color:var(--terra);color:var(--terra)}
+.leads-wrap{max-width:960px;margin:20px auto 0;padding:0 28px}
+table{width:100%;border-collapse:collapse;background:var(--white);border:1.5px solid rgba(27,0,9,.1)}
+thead tr{border-bottom:2px solid rgba(27,0,9,.1)}
+th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:14px 16px}
+td{padding:14px 16px;font-size:14px;color:var(--ink);border-bottom:1px solid rgba(27,0,9,.06)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(197,68,44,.03)}
+.result-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.badge-a{background:rgba(45,61,36,.1);color:#2D3D24}
+.badge-b{background:rgba(197,68,44,.1);color:var(--terra)}
+.badge-c{background:rgba(27,0,9,.08);color:var(--ink)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-state strong{display:block;font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:8px}
+.setup-note{max-width:960px;margin:20px auto 0;padding:0 28px}
+.setup-box{background:var(--white);border:1.5px solid rgba(197,68,44,.2);border-left:3px solid var(--terra);padding:20px 24px;font-size:14px;line-height:1.8;color:var(--muted)}
+.setup-box strong{color:var(--ink)}
+.setup-box code{background:rgba(27,0,9,.06);padding:2px 6px;font-size:13px;font-family:monospace}
+@media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}.leads-wrap{padding:0 16px}.dash-toolbar{padding:0 16px}.setup-note{padding:0 16px}table{font-size:13px}th,td{padding:10px 12px}}
+</style>
+</head>
+<body>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="gate-logo">Sober<em>Adventuring.</em></div>
+  <div class="gate-box">
+    <h2>Admin Access</h2>
+    <p>Enter your admin key to view quiz leads.</p>
+    <input type="password" id="keyInput" class="gate-input" placeholder="Admin key" onkeydown="if(event.key==='Enter')loadLeads()">
+    <button class="gate-btn" onclick="loadLeads()">Access dashboard &rarr;</button>
+    <p class="gate-error" id="gateError">Incorrect key. Try again.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="dash-nav">
+    <span>Sober<em>Adventuring.</em> &nbsp;·&nbsp; Leads</span>
+    <button onclick="logout()">Sign out</button>
+  </div>
+
+  <div class="dash-hero">
+    <h1>Quiz <em>Leads</em></h1>
+    <p id="lastUpdated">Loading...</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="statTotal">—</div>
+      <div class="stat-label">Total leads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statWeek">—</div>
+      <div class="stat-label">This week</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statClarity">—</div>
+      <div class="stat-label">Clarity call</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statGuide">—</div>
+      <div class="stat-label">Starter guide</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statPivot">—</div>
+      <div class="stat-label">Pivot package</div>
+    </div>
+  </div>
+
+  <div class="setup-note" id="setupNote" style="display:none">
+    <div class="setup-box">
+      <strong>Finish setup in ~5 minutes to start capturing leads:</strong><br>
+      1. Go to <strong>workers.cloudflare.com</strong> (free account) &rarr; Create Worker &rarr; paste the code from <code>workers/leads-worker.js</code> in your repo &rarr; Deploy.<br>
+      2. In the Worker settings, add a <strong>KV namespace</strong> bound as <code>LEADS</code>, and an environment variable <code>ADMIN_KEY</code> set to any password.<br>
+      3. Copy the Worker URL and replace <code>YOUR_CLOUDFLARE_WORKER_URL_HERE</code> in <code>quiz/index.html</code> and this file.<br>
+      4. That's it — leads from the quiz will show up here automatically.
+    </div>
+  </div>
+
+  <div class="dash-toolbar">
+    <input type="text" id="searchInput" placeholder="Search by email or name..." oninput="filterTable()">
+    <button class="export-btn" onclick="exportCSV()">Export CSV</button>
+  </div>
+
+  <div class="leads-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Result</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="leadsBody">
+        <tr><td colspan="4" class="empty-state"><strong>Loading leads...</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// TODO: Replace with your Cloudflare Worker URL after setup (see workers/leads-worker.js)
+var WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
+
+var allLeads = [];
+var adminKey = '';
+
+var resultMap = {
+  'result-a': { label: 'Clarity Call',   cls: 'badge-a' },
+  'result-b': { label: 'Starter Guide',  cls: 'badge-b' },
+  'result-c': { label: 'Pivot Package',  cls: 'badge-c' }
+};
+
+function loadLeads() {
+  adminKey = document.getElementById('keyInput').value.trim();
+  if (!adminKey) return;
+
+  if (WORKER_URL === 'YOUR_CLOUDFLARE_WORKER_URL_HERE') {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('setupNote').style.display = 'block';
+    document.getElementById('lastUpdated').textContent = 'Worker not configured yet — set it up to see live leads.';
+    renderLeads([]);
+    return;
+  }
+
+  fetch(WORKER_URL, {
+    headers: { 'Authorization': 'Bearer ' + adminKey }
+  })
+  .then(function(r) {
+    if (r.status === 401) {
+      document.getElementById('gateError').style.display = 'block';
+      return null;
+    }
+    return r.json();
+  })
+  .then(function(leads) {
+    if (!leads) return;
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    allLeads = leads;
+    renderLeads(leads);
+    document.getElementById('lastUpdated').textContent = 'Last loaded ' + new Date().toLocaleTimeString();
+  })
+  .catch(function() {
+    document.getElementById('gateError').style.display = 'block';
+    document.getElementById('gateError').textContent = 'Could not connect to the Worker. Check the URL.';
+  });
+}
+
+function renderLeads(leads) {
+  var now = new Date();
+  var weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
+  var counts = { total: leads.length, week: 0, a: 0, b: 0, c: 0 };
+
+  leads.forEach(function(l) {
+    if (new Date(l.ts) > weekAgo) counts.week++;
+    if (l.result === 'result-a') counts.a++;
+    if (l.result === 'result-b') counts.b++;
+    if (l.result === 'result-c') counts.c++;
+  });
+
+  document.getElementById('statTotal').textContent   = counts.total;
+  document.getElementById('statWeek').textContent    = counts.week;
+  document.getElementById('statClarity').textContent = counts.a;
+  document.getElementById('statGuide').textContent   = counts.b;
+  document.getElementById('statPivot').textContent   = counts.c;
+
+  if (!leads.length) {
+    document.getElementById('leadsBody').innerHTML =
+      '<tr><td colspan="4"><div class="empty-state"><strong>No leads yet.</strong>Complete quiz setup and leads will appear here.</div></td></tr>';
+    return;
+  }
+
+  document.getElementById('leadsBody').innerHTML = leads.map(function(l) {
+    var d = new Date(l.ts);
+    var dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    var res = resultMap[l.result] || { label: l.result || '—', cls: '' };
+    return '<tr>' +
+      '<td>' + escHtml(l.email) + '</td>' +
+      '<td>' + escHtml(l.name || '—') + '</td>' +
+      '<td><span class="result-badge ' + res.cls + '">' + res.label + '</span></td>' +
+      '<td>' + dateStr + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function filterTable() {
+  var q = document.getElementById('searchInput').value.toLowerCase();
+  var filtered = allLeads.filter(function(l) {
+    return l.email.toLowerCase().includes(q) || (l.name || '').toLowerCase().includes(q);
+  });
+  renderLeads(filtered);
+}
+
+function exportCSV() {
+  if (!allLeads.length) { alert('No leads to export.'); return; }
+  var rows = [['Email','Name','Result','Date']].concat(
+    allLeads.map(function(l) {
+      var res = resultMap[l.result] ? resultMap[l.result].label : (l.result || '');
+      return [l.email, l.name || '', res, new Date(l.ts).toLocaleString()];
+    })
+  );
+  var csv = rows.map(function(r) {
+    return r.map(function(c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(',');
+  }).join('\n');
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'quiz-leads-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+function logout() {
+  adminKey = '';
+  allLeads = [];
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('gate').style.display = 'flex';
+  document.getElementById('keyInput').value = '';
+  document.getElementById('gateError').style.display = 'none';
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+document.getElementById('keyInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') loadLeads();
+});
+</script>
+</body>
+</html>
