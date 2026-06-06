@@ -58,11 +58,7 @@ tr:hover td{background:rgba(197,68,44,.03)}
 .badge-c{background:rgba(27,0,9,.08);color:var(--ink)}
 .empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
 .empty-state strong{display:block;font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:8px}
-.setup-note{max-width:960px;margin:20px auto 0;padding:0 28px}
-.setup-box{background:var(--white);border:1.5px solid rgba(197,68,44,.2);border-left:3px solid var(--terra);padding:20px 24px;font-size:14px;line-height:1.8;color:var(--muted)}
-.setup-box strong{color:var(--ink)}
-.setup-box code{background:rgba(27,0,9,.06);padding:2px 6px;font-size:13px;font-family:monospace}
-@media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}.leads-wrap{padding:0 16px}.dash-toolbar{padding:0 16px}.setup-note{padding:0 16px}table{font-size:13px}th,td{padding:10px 12px}}
+@media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}.leads-wrap{padding:0 16px}.dash-toolbar{padding:0 16px}table{font-size:13px}th,td{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -114,16 +110,6 @@ tr:hover td{background:rgba(197,68,44,.03)}
     </div>
   </div>
 
-  <div class="setup-note" id="setupNote" style="display:none">
-    <div class="setup-box">
-      <strong>Finish setup in ~5 minutes to start capturing leads:</strong><br>
-      1. Go to <strong>workers.cloudflare.com</strong> (free account) &rarr; Create Worker &rarr; paste the code from <code>workers/leads-worker.js</code> in your repo &rarr; Deploy.<br>
-      2. In the Worker settings, add a <strong>KV namespace</strong> bound as <code>LEADS</code>, and an environment variable <code>ADMIN_KEY</code> set to any password.<br>
-      3. Copy the Worker URL and replace <code>YOUR_CLOUDFLARE_WORKER_URL_HERE</code> in <code>quiz/index.html</code> and this file.<br>
-      4. That's it — leads from the quiz will show up here automatically.
-    </div>
-  </div>
-
   <div class="dash-toolbar">
     <input type="text" id="searchInput" placeholder="Search by email or name..." oninput="filterTable()">
     <button class="export-btn" onclick="exportCSV()">Export CSV</button>
@@ -147,8 +133,7 @@ tr:hover td{background:rgba(197,68,44,.03)}
 </div>
 
 <script>
-// TODO: Replace with your Cloudflare Worker URL after setup (see workers/leads-worker.js)
-var WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
+var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 
 var allLeads = [];
 var adminKey = '';
@@ -162,15 +147,6 @@ var resultMap = {
 function loadLeads() {
   adminKey = document.getElementById('keyInput').value.trim();
   if (!adminKey) return;
-
-  if (WORKER_URL === 'YOUR_CLOUDFLARE_WORKER_URL_HERE') {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    document.getElementById('setupNote').style.display = 'block';
-    document.getElementById('lastUpdated').textContent = 'Worker not configured yet — set it up to see live leads.';
-    renderLeads([]);
-    return;
-  }
 
   fetch(WORKER_URL, {
     headers: { 'Authorization': 'Bearer ' + adminKey }
@@ -216,7 +192,7 @@ function renderLeads(leads) {
 
   if (!leads.length) {
     document.getElementById('leadsBody').innerHTML =
-      '<tr><td colspan="4"><div class="empty-state"><strong>No leads yet.</strong>Complete quiz setup and leads will appear here.</div></td></tr>';
+      '<tr><td colspan="4"><div class="empty-state"><strong>No leads yet.</strong> Quiz completions with email will appear here.</div></td></tr>';
     return;
   }
 
