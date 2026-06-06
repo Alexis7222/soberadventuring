@@ -262,6 +262,55 @@
   .btn-next.visible { opacity: 1; pointer-events: all; }
   .btn-next:hover { opacity: 0.88; }
 
+  /* EMAIL CAPTURE */
+  .email-input {
+    width: 100%;
+    max-width: 400px;
+    border: 1.5px solid rgba(27,0,9,0.15);
+    background: var(--white);
+    padding: 14px 16px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .email-input:focus { border-color: var(--terra); }
+  .email-error {
+    font-size: 12px;
+    color: var(--terra);
+    margin-bottom: 8px;
+    display: none;
+  }
+  .email-submit {
+    background: var(--terra);
+    color: var(--cream);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    display: block;
+    margin-top: 4px;
+  }
+  .email-submit:hover { opacity: 0.88; }
+  .email-skip {
+    background: none;
+    border: none;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 12px;
+    display: block;
+  }
+  .email-skip:hover { color: var(--ink); }
+
   /* RESULTS */
   .result-block {
     display: none;
@@ -375,7 +424,6 @@
   <p>Answer honestly. Remember that teacher that always told you there are no right answers? The same applies here.</p>
   <div class="quiz-meta">
     <span>Free</span>
-    <span>No email required</span>
     <span>Instant result</span>
   </div>
 </div>
@@ -539,7 +587,19 @@
         </div>
       </div>
     </div>
-    <button class="btn-next" onclick="showResult()">See my result &rarr;</button>
+    <button class="btn-next" onclick="onQ5Next()">See my result &rarr;</button>
+  </div>
+
+  <!-- EMAIL CAPTURE -->
+  <div class="question-block" id="email-capture">
+    <p class="question-num">Last step</p>
+    <h2 class="question-text">Where should we send your <em>personalized resources?</em></h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;">Based on your answers, I'll point you to the right next step. No generic stuff.</p>
+    <input type="email" id="leadEmail" class="email-input" placeholder="Your email address" oninput="document.getElementById('emailError').style.display='none'">
+    <p id="emailError" class="email-error">Please enter a valid email address.</p>
+    <input type="text" id="leadName" class="email-input" placeholder="First name (optional)">
+    <button class="email-submit" onclick="submitLead()">Get my result &rarr;</button>
+    <button class="email-skip" onclick="skipEmail()">Skip, just show my result</button>
   </div>
 
   <!-- RESULT A: Discovery Call -->
@@ -608,20 +668,22 @@
 </div>
 
 <script>
+  // TODO: Replace with your Cloudflare Worker URL after setup (see workers/leads-worker.js)
+  var WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
+
   var answers = {};
+  var computedResult = '';
 
   // Option click handling
   document.querySelectorAll('.option').forEach(function(opt) {
     opt.addEventListener('click', function() {
       var q = this.dataset.q;
       var val = this.dataset.val;
-      // deselect others in same question
       document.querySelectorAll('.option[data-q="' + q + '"]').forEach(function(o) {
         o.classList.remove('selected');
       });
       this.classList.add('selected');
       answers[q] = val;
-      // show next button
       var btn = document.querySelector('#q' + q + ' .btn-next');
       if (btn) btn.classList.add('visible');
     });
@@ -642,28 +704,54 @@
     document.getElementById('progressCount').textContent = 'Question ' + q + ' of 5';
   }
 
-  function showResult() {
+  function onQ5Next() {
     if (!answers[5]) return;
 
-    // Score: a=1, b=2, c=3
     var score = 0;
     var map = { a: 1, b: 2, c: 3 };
     for (var q in answers) { score += map[answers[q]] || 0; }
 
-    // 5 questions, max 15, min 5
-    // 5-8  → result-a (discovery call)
-    // 9-12 → result-b (digital product)
-    // 13-15 → result-c (coaching container)
-
-    var result;
-    if (score <= 8)       result = 'result-a';
-    else if (score <= 12) result = 'result-b';
-    else                  result = 'result-c';
+    if (score <= 8)       computedResult = 'result-a';
+    else if (score <= 12) computedResult = 'result-b';
+    else                  computedResult = 'result-c';
 
     document.getElementById('q5').classList.remove('active');
-    document.getElementById(result).classList.add('active');
+    document.getElementById('email-capture').classList.add('active');
 
-    // update progress to 100%
+    document.getElementById('progressFill').style.width = '90%';
+    document.getElementById('progressCount').textContent = 'Last step';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function submitLead() {
+    var email = document.getElementById('leadEmail').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailError').style.display = 'block';
+      return;
+    }
+    document.getElementById('emailError').style.display = 'none';
+    var name = document.getElementById('leadName').value.trim();
+
+    if (WORKER_URL !== 'YOUR_CLOUDFLARE_WORKER_URL_HERE') {
+      fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, name: name, result: computedResult })
+      }).catch(function() {});
+    }
+
+    showResultBlock();
+  }
+
+  function skipEmail() {
+    showResultBlock();
+  }
+
+  function showResultBlock() {
+    document.getElementById('email-capture').classList.remove('active');
+    document.getElementById(computedResult).classList.add('active');
+
     document.getElementById('progressFill').style.width = '100%';
     document.getElementById('progressCount').textContent = 'Complete';
 
@@ -672,15 +760,16 @@
 
   function retake() {
     answers = {};
-    // hide all results and questions
+    computedResult = '';
     document.querySelectorAll('.question-block, .result-block').forEach(function(el) {
       el.classList.remove('active');
     });
-    // deselect all options
+    document.getElementById('email-capture').classList.remove('active');
     document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
-    // hide all next buttons
     document.querySelectorAll('.btn-next').forEach(function(b) { b.classList.remove('visible'); });
-    // show q1
+    document.getElementById('leadEmail').value = '';
+    document.getElementById('leadName').value = '';
+    document.getElementById('emailError').style.display = 'none';
     document.getElementById('q1').classList.add('active');
     updateProgress(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
