@@ -29,7 +29,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
   .back-nav {
     background: var(--forest);
     padding: 14px 28px;
@@ -53,7 +52,6 @@
     opacity: 0.45;
   }
 
-  /* HERO */
   .quiz-hero {
     background: var(--ink);
     padding: 64px 28px 56px;
@@ -103,7 +101,6 @@
   }
   .quiz-meta span::before { content: '◆'; color: var(--terra); font-size: 8px; }
 
-  /* PROGRESS */
   .progress-wrap {
     max-width: 640px;
     margin: 0 auto;
@@ -142,14 +139,12 @@
     width: 0%;
   }
 
-  /* QUIZ CONTAINER */
   .quiz-wrap {
     max-width: 640px;
     margin: 0 auto;
     padding: 40px 28px 80px;
   }
 
-  /* QUESTION */
   .question-block {
     display: none;
     animation: fadeUp 0.35s ease both;
@@ -179,7 +174,6 @@
   }
   .question-text em { color: var(--terra); font-style: italic; }
 
-  /* OPTIONS */
   .options {
     display: flex;
     flex-direction: column;
@@ -242,7 +236,6 @@
     line-height: 1.4;
   }
 
-  /* NEXT BUTTON */
   .btn-next {
     margin-top: 24px;
     display: inline-block;
@@ -262,7 +255,6 @@
   .btn-next.visible { opacity: 1; pointer-events: all; }
   .btn-next:hover { opacity: 0.88; }
 
-  /* EMAIL CAPTURE */
   .email-input {
     width: 100%;
     max-width: 400px;
@@ -311,7 +303,6 @@
   }
   .email-skip:hover { color: var(--ink); }
 
-  /* RESULTS */
   .result-block {
     display: none;
     animation: fadeUp 0.4s ease both;
@@ -421,7 +412,7 @@
 <div class="quiz-hero">
   <p class="quiz-eyebrow">5 questions &middot; 2 minutes</p>
   <h1>Is freelancing<br><em>your next move?</em></h1>
-  <p>Answer honestly. Remember that teacher that always told you there are no right answers? The same applies here.</p>
+  <p>Answer honestly. That teacher who told you there are no right answers was telling the truth here.</p>
   <div class="quiz-meta">
     <span>Free</span>
     <span>Instant result</span>
@@ -594,7 +585,7 @@
   <div class="question-block" id="email-capture">
     <p class="question-num">Last step</p>
     <h2 class="question-text">Where should we send your <em>personalized resources?</em></h2>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;">Based on your answers, I'll point you to the right next step. No generic stuff.</p>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;">Based on your answers, I'll send you directly to the resources that fit where you actually are in the process &mdash; not a one-size-fits-all recommendation.</p>
     <input type="email" id="leadEmail" class="email-input" placeholder="Your email address" oninput="document.getElementById('emailError').style.display='none'">
     <p id="emailError" class="email-error">Please enter a valid email address.</p>
     <input type="text" id="leadName" class="email-input" placeholder="First name (optional)">
@@ -606,16 +597,16 @@
   <div class="result-block" id="result-a">
     <p class="caveat-note">your result</p>
     <p class="result-eyebrow">You need clarity first</p>
-    <h2 class="result-heading">Freelancing <em>could</em> be your path &mdash;<br>let's find out together.</h2>
+    <h2 class="result-heading">Freelancing <em>could</em> be your path &mdash;<br>let&rsquo;s find out together.</h2>
     <p class="result-body">
-      You're not stuck because you're not capable &mdash; you're stuck because you don't have enough information yet. Before you invest time or money into building something, you need 20 minutes with someone who can help you see what's actually there.
+      You&rsquo;re not stuck because you&rsquo;re not capable &mdash; you&rsquo;re stuck because you don&rsquo;t have enough information yet, and trying to build something without that clarity is how people waste months going in the wrong direction. Before you invest time or money into building something, you need 20 minutes with someone who can actually see what&rsquo;s there.
       <br><br>
-      <strong>That's what the Clarity Call is for.</strong> No pitch, no pressure. Just an honest conversation about where you are and what the next real move looks like.
+      <strong>That&rsquo;s what the Clarity Call is for</strong> &mdash; an honest conversation where the only goal is figuring out where you are and what the next real move looks like, regardless of whether we end up working together after.
     </p>
     <div class="result-card">
       <p class="result-card-label">Recommended for you</p>
       <h3>The Clarity Call</h3>
-      <p>20 minutes. Free. This is an honest conversation about where you are and what the next best move for you would look like.</p>
+      <p>20 minutes, free &mdash; an honest look at where you are and what the first real move looks like. You leave with something useful whether or not you work with me.</p>
       <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta">Book your free call &rarr;</a>
     </div>
     <button class="retake" onclick="retake()">Retake the quiz</button>
@@ -624,37 +615,37 @@
   <!-- RESULT B: Digital Product -->
   <div class="result-block" id="result-b">
     <p class="caveat-note">your result</p>
-    <p class="result-eyebrow">You're closer than you think</p>
-    <h2 class="result-heading">You don't need more convincing<br>but you do need a <em>roadmap.</em></h2>
+    <p class="result-eyebrow">You&rsquo;re closer than you think</p>
+    <h2 class="result-heading">You don&rsquo;t need more convincing<br>but you do need a <em>roadmap.</em></h2>
     <p class="result-body">
-      You've got the drive and a rough sense of direction. What you're missing is a clear, step-by-step path from "I think I can do this" to "I have a profile, a proposal, and my first client."
+      You&rsquo;ve got the drive and a rough sense of direction, and what&rsquo;s missing is the clear path from &ldquo;I think I can do this&rdquo; to &ldquo;I have a profile, a proposal, and my first client.&rdquo;
       <br><br>
-      <strong>The Upwork Starter Guide</strong> walks you through exactly how Alexis built $30k in her first 4 months including the profile setup, the positioning, and the outreach. I've priced this to be extremely affordable because I genuinely believe everyone should taste the freedom that freelance offers.
+      <strong>The Upwork Starter Guide</strong> walks you through exactly how Alexis built $30k in her first 4 months &mdash; profile setup, positioning, outreach. It&rsquo;s priced to be accessible because everyone should get to experience what freelance freedom actually feels like.
     </p>
     <div class="result-card">
       <p class="result-card-label">Recommended for you</p>
       <h3>Upwork Starter Guide</h3>
-      <p>A step-by-step guide to setting up your Upwork profile, writing proposals that get responses, and landing your first paid client &mdash; even with no reviews.</p>
+      <p>A step-by-step guide to setting up your profile, writing proposals that actually get responses, and landing your first paid client &mdash; even with no existing reviews.</p>
       <a href="https://antonelli74.gumroad.com/l/wfbmpv" class="result-cta">Get the guide &rarr;</a>
     </div>
     <div class="result-card" style="border-color:rgba(27,0,9,0.15);margin-top:12px">
       <p class="result-card-label" style="color:var(--muted)">Or if you want company</p>
       <h3>The Clarity Call</h3>
-      <p>Free 20-minute call with Alexis to talk through your specific situation before you dive in.</p>
+      <p>Free 20-minute call to talk through your specific situation before you dive in.</p>
       <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta ghost">Book a free call &rarr;</a>
     </div>
     <button class="retake" onclick="retake()">Retake the quiz</button>
   </div>
 
-  <!-- RESULT C: Coaching Container -->
+  <!-- RESULT C: Coaching -->
   <div class="result-block" id="result-c">
     <p class="caveat-note">your result</p>
-    <p class="result-eyebrow">You're ready</p>
-    <h2 class="result-heading">Stop waiting to feel ready.<br><em>You already are.</em></h2>
+    <p class="result-eyebrow">You&rsquo;re ready</p>
+    <h2 class="result-heading">You&rsquo;re not waiting on information &mdash;<br>you&rsquo;re waiting for someone <em>to hold you to it.</em></h2>
     <p class="result-body">
-      You know what you want. You have a sense of what you can offer. What you need isn't more information, it's someone in your corner with a proven system who's holding you accountable to actually doing the work.
+      You know what you want and you have a sense of what you can offer &mdash; what&rsquo;s missing isn&rsquo;t a plan, it&rsquo;s someone in your corner with a proven system who&rsquo;s actually going to hold you accountable to doing the work.
       <br><br>
-      <strong>The Pivot Package</strong> is built for exactly where you are. 1:1 with Alexis: positioning, Upwork profile, first proposals, and the discipline systems that set you up for success.
+      <strong>The Pivot Package</strong> is built for exactly where you are: 1:1 with Alexis, covering positioning, your Upwork profile, first proposals, and the discipline systems that turn this into consistent income.
     </p>
     <div class="result-card">
       <p class="result-card-label">Recommended for you</p>
@@ -669,7 +660,6 @@
 
 <script>
   var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
-
   var answers = {};
   var computedResult = '';
 
@@ -704,21 +694,16 @@
 
   function onQ5Next() {
     if (!answers[5]) return;
-
     var score = 0;
     var map = { a: 1, b: 2, c: 3 };
     for (var q in answers) { score += map[answers[q]] || 0; }
-
     if (score <= 8)       computedResult = 'result-a';
     else if (score <= 12) computedResult = 'result-b';
     else                  computedResult = 'result-c';
-
     document.getElementById('q5').classList.remove('active');
     document.getElementById('email-capture').classList.add('active');
-
     document.getElementById('progressFill').style.width = '90%';
     document.getElementById('progressCount').textContent = 'Last step';
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -730,27 +715,21 @@
     }
     document.getElementById('emailError').style.display = 'none';
     var name = document.getElementById('leadName').value.trim();
-
     fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, name: name, result: computedResult })
     }).catch(function() {});
-
     showResultBlock();
   }
 
-  function skipEmail() {
-    showResultBlock();
-  }
+  function skipEmail() { showResultBlock(); }
 
   function showResultBlock() {
     document.getElementById('email-capture').classList.remove('active');
     document.getElementById(computedResult).classList.add('active');
-
     document.getElementById('progressFill').style.width = '100%';
     document.getElementById('progressCount').textContent = 'Complete';
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
