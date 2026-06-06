@@ -117,38 +117,101 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .seg-heading{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,40px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:40px}
 .seg-heading em{color:var(--terra);font-style:italic}
 .seg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.seg-card{border:1.5px solid rgba(27,0,9,0.12);padding:32px 28px;cursor:none;transition:transform 0.15s,box-shadow 0.15s,background 0.15s,border-color 0.15s;background:var(--white);position:relative;overflow:hidden}
-.seg-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.2s}
+
+/* Card base */
+.seg-card{
+  border:1.5px solid rgba(27,0,9,0.12);
+  padding:32px 28px;
+  cursor:none;
+  background:var(--white);
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+/* Color fill layer */
+.seg-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity 0.25s ease;
+  z-index:0;
+}
 .seg-card-forest::before{background:var(--forest)}
 .seg-card-terra::before{background:var(--terra)}
 .seg-card-blue::before{background:var(--blue)}
-.seg-card:hover,.seg-card.selected{transform:translateY(-3px);box-shadow:0 8px 28px rgba(27,0,9,0.12)}
+
+/* Bottom accent bar — grows left-to-right on hover */
+.seg-card::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;
+  height:3px;
+  width:0;
+  transition:width 0.3s ease;
+  z-index:2;
+}
+.seg-card-forest::after{background:var(--forest)}
+.seg-card-terra::after{background:var(--terra)}
+.seg-card-blue::after{background:var(--blue)}
+
+.seg-card:hover::after,.seg-card.selected::after{width:100%}
+.seg-card:hover,.seg-card.selected{
+  transform:translateY(-4px);
+  box-shadow:0 10px 32px rgba(27,0,9,0.13);
+}
 .seg-card:hover::before,.seg-card.selected::before{opacity:1}
 .seg-card>*{position:relative;z-index:1}
+
+/* Number label — large italic, faint by default */
+.seg-num{
+  display:block;
+  font-family:'DM Serif Display',serif;
+  font-size:56px;
+  font-style:italic;
+  line-height:1;
+  letter-spacing:-0.04em;
+  color:var(--ink);
+  opacity:0.07;
+  margin-bottom:16px;
+  transition:opacity 0.2s ease, color 0.2s ease;
+}
+.seg-card:hover .seg-num,.seg-card.selected .seg-num{opacity:0.3;color:var(--cream)}
+
+.seg-card-label{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,22px);font-style:italic;color:var(--ink);margin-bottom:8px;transition:color 0.2s ease;line-height:1.15}
 .seg-card:hover .seg-card-label,.seg-card.selected .seg-card-label{color:var(--cream)}
+.seg-card-sub{font-size:14px;color:var(--muted);line-height:1.6;transition:color 0.2s ease}
 .seg-card:hover .seg-card-sub,.seg-card.selected .seg-card-sub{color:rgba(244,232,208,0.7)}
-.seg-card:hover .seg-icon,.seg-card.selected .seg-icon{opacity:1}
-.seg-icon{font-size:32px;margin-bottom:16px;opacity:0.7;transition:opacity 0.15s;display:block}
-.seg-card-label{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,22px);font-style:italic;color:var(--ink);margin-bottom:8px;transition:color 0.15s;line-height:1.15}
-.seg-card-sub{font-size:14px;color:var(--muted);line-height:1.6;transition:color 0.15s}
-.seg-arrow{display:inline-block;margin-top:20px;font-size:13px;font-weight:700;letter-spacing:0.04em;opacity:0;transition:opacity 0.15s;color:var(--cream)}
-.seg-card:hover .seg-arrow,.seg-card.selected .seg-arrow{opacity:1}
+
+/* Arrow — slides in from left on hover */
+.seg-arrow{
+  display:inline-block;
+  margin-top:20px;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  color:var(--cream);
+  opacity:0;
+  transform:translateX(-8px);
+  transition:opacity 0.2s ease, transform 0.2s ease;
+}
+.seg-card:hover .seg-arrow,.seg-card.selected .seg-arrow{opacity:1;transform:translateX(0)}
 
 /* LEAD MAGNETS */
 .magnets-section{background:var(--cream);padding:72px 28px;border-bottom:1.5px solid rgba(27,0,9,0.1)}
 .magnets-inner{max-width:880px;margin:0 auto}
 .section-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .section-eyebrow::after{content:'';flex:1;height:1px;background:var(--terra);opacity:0.25;max-width:60px}
-.magnets-heading{font-family:'DM Serif Display',serif;font-size:clamp(26px,4.5vw,38px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px}
+.magnets-heading{font-family:'DM Serif Display',serif;font-size:clamp(26px,4.5vw,38px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:16px}
 .magnets-heading em{color:var(--terra);font-style:italic}
-.magnets-sub{font-size:15px;color:var(--muted);font-style:italic;font-family:'DM Serif Display',serif;margin-bottom:44px}
+.magnets-sub{font-size:16px;color:var(--muted);line-height:1.7;max-width:560px;margin-bottom:44px;font-family:'DM Serif Display',serif;font-style:italic}
 .magnets-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .magnet-block{background:var(--white);border:1.5px solid rgba(27,0,9,0.1);padding:36px 32px;position:relative}
 .magnet-block-guide{border-top:4px solid var(--forest)}
 .magnet-block-quiz{border-top:4px solid var(--terra)}
 .magnet-accent{font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--terra);margin-bottom:6px;display:block}
-.magnet-title{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,26px);font-style:italic;color:var(--ink);line-height:1.15;margin-bottom:8px}
-.magnet-sub{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px}
+.magnet-title{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,26px);font-style:italic;color:var(--ink);line-height:1.15;margin-bottom:12px}
+.magnet-desc{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px}
 .magnet-form{display:flex;flex-direction:column;gap:10px}
 .magnet-form input{width:100%;padding:13px 16px;border:1.5px solid rgba(27,0,9,0.15);background:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color 0.15s}
 .magnet-form input:focus{border-color:var(--forest)}
@@ -169,11 +232,10 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .hub-layout.reverse{grid-template-columns:1fr 280px}
 .hub-layout.reverse .hub-header{order:2}
 .hub-layout.reverse .hub-posts{order:1}
-.hub-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px}
+.hub-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px}
 .hub-forest .hub-tag{color:var(--forest)}
 .hub-terra .hub-tag{color:var(--terra)}
 .hub-blue .hub-tag{color:var(--blue)}
-.hub-icon{font-size:40px;margin-bottom:16px;display:block}
 .hub-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,40px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink);margin-bottom:16px}
 .hub-forest .hub-title em{color:var(--forest);font-style:italic}
 .hub-terra .hub-title em{color:var(--terra);font-style:italic}
@@ -186,6 +248,9 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .hub-terra .hub-cta:hover{background:var(--terra);color:var(--cream)}
 .hub-blue .hub-cta{color:var(--blue);border-color:var(--blue)}
 .hub-blue .hub-cta:hover{background:var(--blue);color:var(--cream)}
+.hub-forest{background:var(--paper)}
+.hub-terra{background:var(--white)}
+.hub-blue{background:var(--paper)}
 .hub-posts{display:flex;flex-direction:column;gap:16px}
 .post-card{background:var(--white);border:1.5px solid rgba(27,0,9,0.08);padding:24px;text-decoration:none;display:block;transition:transform 0.12s,box-shadow 0.12s;position:relative}
 .hub-forest .post-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,61,36,0.12);border-color:rgba(45,61,36,0.2)}
@@ -201,9 +266,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .hub-forest .post-card-read{color:var(--forest)}
 .hub-terra .post-card-read{color:var(--terra)}
 .hub-blue .post-card-read{color:var(--blue)}
-.hub-forest{background:var(--paper)}
-.hub-terra{background:var(--white)}
-.hub-blue{background:var(--paper)}
 
 /* COMMUNITY */
 .community-section{background:var(--ink);padding:80px 28px;border-bottom:1.5px solid rgba(27,0,9,0.3)}
@@ -227,11 +289,11 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 
 /* COACHING */
 .coaching-section{background:var(--paper);padding:80px 28px 0;border-top:1.5px solid rgba(27,0,9,0.1)}
-.coaching-header{max-width:880px;margin:0 auto 0;text-align:center;padding-bottom:56px}
+.coaching-header{max-width:880px;margin:0 auto;text-align:center;padding-bottom:56px}
 .coaching-header h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,44px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink);margin-bottom:10px}
 .coaching-header h2 em{color:var(--terra);font-style:italic}
 .coaching-header p{font-size:16px;color:var(--muted);font-family:'DM Serif Display',serif;font-style:italic;max-width:480px;margin:0 auto}
-.coaching-tracks{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1.5px solid rgba(27,0,9,0.1);max-width:none}
+.coaching-tracks{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1.5px solid rgba(27,0,9,0.1)}
 .coaching-track{padding:52px 40px 56px}
 .coaching-track-career{background:var(--white);border-right:1.5px solid rgba(27,0,9,0.08)}
 .coaching-track-sobriety{background:var(--paper)}
@@ -312,6 +374,7 @@ body,a,button{cursor:none}
   .seg-section{padding:52px 20px 48px}
   .seg-cards{grid-template-columns:1fr;gap:12px}
   .seg-card{padding:24px 20px}
+  .seg-num{font-size:44px}
   .magnets-section{padding:52px 20px}
   .magnet-block{padding:28px 20px}
   .hub{padding:52px 20px}
@@ -411,24 +474,24 @@ body,a,button{cursor:none}
     <div class="seg-cards">
 
       <div class="seg-card seg-card-forest reveal" data-target="hub-sober-life" role="button" tabindex="0" aria-label="I'm getting sober">
-        <span class="seg-icon">🌿</span>
-        <p class="seg-card-label">I'm getting sober</p>
+        <span class="seg-num">01</span>
+        <p class="seg-card-label">I&rsquo;m getting sober</p>
         <p class="seg-card-sub">You want support, community, and a reason to stay.</p>
-        <span class="seg-arrow">See what's here &rarr;</span>
+        <span class="seg-arrow">See what&rsquo;s here &rarr;</span>
       </div>
 
       <div class="seg-card seg-card-terra reveal reveal-delay-1" data-target="hub-sober-travel" role="button" tabindex="0" aria-label="I want more freedom">
-        <span class="seg-icon">🧳</span>
+        <span class="seg-num">02</span>
         <p class="seg-card-label">I want more freedom</p>
         <p class="seg-card-sub">You&rsquo;re done with the old life. You&rsquo;re ready to build something.</p>
-        <span class="seg-arrow">See what's here &rarr;</span>
+        <span class="seg-arrow">See what&rsquo;s here &rarr;</span>
       </div>
 
       <div class="seg-card seg-card-blue reveal reveal-delay-2" data-target="hub-remote-work" role="button" tabindex="0" aria-label="I want to work remotely">
-        <span class="seg-icon">💻</span>
+        <span class="seg-num">03</span>
         <p class="seg-card-label">I want to work remotely</p>
         <p class="seg-card-sub">You want location independence and a real income online.</p>
-        <span class="seg-arrow">See what's here &rarr;</span>
+        <span class="seg-arrow">See what&rsquo;s here &rarr;</span>
       </div>
 
     </div>
@@ -440,14 +503,14 @@ body,a,button{cursor:none}
   <div class="magnets-inner">
     <p class="section-eyebrow">Start here &mdash; no commitment</p>
     <h2 class="magnets-heading">A free guide.<br><em>A two-minute quiz.</em></h2>
-    <p class="magnets-sub">Both are free. Both give you something useful today.</p>
+    <p class="magnets-sub">Pick the one that makes sense where you are right now. Neither requires a commitment, and neither is going to pitch you anything.</p>
     <div class="magnets-grid">
 
       <!-- GUIDE -->
       <div class="magnet-block magnet-block-guide reveal">
         <span class="magnet-accent">free guide</span>
         <h3 class="magnet-title">25 Things Nobody Tells You About Getting Sober</h3>
-        <p class="magnet-sub">The honest guide for people doing it their way.</p>
+        <p class="magnet-desc">Four years working in recovery spaces — as a recovery support specialist, sober house manager, ABA therapist — and then getting sober myself. This is what I actually tell people when they&rsquo;re starting out. What the first weeks feel like, why year two tends to be harder than year one, what helps people stay sober long-term versus what just looks helpful. The stuff that doesn&rsquo;t make it into the official guides.</p>
         <form class="magnet-form" id="guideForm" novalidate>
           <input type="text" name="name" placeholder="First name" autocomplete="given-name" required>
           <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
@@ -463,11 +526,10 @@ body,a,button{cursor:none}
           <div>
             <span class="magnet-accent" style="color:var(--terra)">2-minute quiz</span>
             <h3 class="magnet-title">What Stage of Recovery Are You In?</h3>
-            <p class="magnet-sub">Take the quiz. Get a personalized next step.</p>
             <div class="magnet-quiz-visual">
               <span>5 questions &middot; instant result &middot; free</span>
             </div>
-            <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px">Whether you&rsquo;re brand new or a few years in, the quiz tells you exactly where you are and what to focus on next. No email required to see your result.</p>
+            <p class="magnet-desc">The quiz is five questions. It tells you where you are in the recovery process and gives you a specific next step based on your result — not a generic one. Whether you&rsquo;re a week in or a few years out and feeling stuck, it&rsquo;s worth the two minutes. No email required to see your result.</p>
           </div>
           <a href="/quiz/" class="magnet-cta">Take the Quiz &rarr;</a>
         </div>
@@ -483,7 +545,6 @@ body,a,button{cursor:none}
     <div class="hub-layout">
       <div class="hub-header reveal">
         <p class="hub-tag">Sober Life</p>
-        <span class="hub-icon">🌿</span>
         <h2 class="hub-title">Getting sober.<br><em>Staying that way.</em></h2>
         <p class="hub-desc">For people in early recovery — or anyone who&rsquo;s curious what life without alcohol actually looks like. What it costs, what it gives back, and what nobody tells you about year two.</p>
         <a href="/blog/" class="hub-cta">Explore Sober Life &rarr;</a>
@@ -518,9 +579,8 @@ body,a,button{cursor:none}
     <div class="hub-layout reverse">
       <div class="hub-header reveal">
         <p class="hub-tag">Sober Travel</p>
-        <span class="hub-icon">🧳</span>
         <h2 class="hub-title">The world is better<br><em>when you&rsquo;re present.</em></h2>
-        <p class="hub-desc">Stories and practical guides for traveling sober. Chiang Mai, the night market problem, how to tell people you don&rsquo;t drink without making it a whole thing.</p>
+        <p class="hub-desc">Stories and guides for traveling sober. Chiang Mai, the night market problem, how to tell people you don&rsquo;t drink without making it a whole thing.</p>
         <a href="/blog/" class="hub-cta">Explore Sober Travel &rarr;</a>
       </div>
       <div class="hub-posts">
@@ -553,7 +613,6 @@ body,a,button{cursor:none}
     <div class="hub-layout">
       <div class="hub-header reveal">
         <p class="hub-tag">Remote Work &amp; Freedom</p>
-        <span class="hub-icon">💻</span>
         <h2 class="hub-title">Build income<br><em>on your own terms.</em></h2>
         <p class="hub-desc">How to build location-independent income — for people who want a life that doesn&rsquo;t require an escape. Upwork, cold calling, pipeline architecture. I did this from scratch.</p>
         <a href="/blog/" class="hub-cta">Explore Remote Work &rarr;</a>
@@ -731,17 +790,14 @@ document.querySelectorAll('.seg-card').forEach(function(card) {
   card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
 });
 
-/* GUIDE FORM — POST to Cloudflare Worker */
+/* GUIDE FORM */
 var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 document.getElementById('guideForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = e.target;
   var name  = form.querySelector('[name="name"]').value.trim();
   var email = form.querySelector('[name="email"]').value.trim();
-  if (!email || !email.includes('@')) {
-    form.querySelector('[name="email"]').focus();
-    return;
-  }
+  if (!email || !email.includes('@')) { form.querySelector('[name="email"]').focus(); return; }
   var btn = form.querySelector('.magnet-submit');
   btn.textContent = 'Sending…';
   btn.disabled = true;
@@ -761,16 +817,10 @@ document.getElementById('guideForm').addEventListener('submit', function(e) {
 /* ENTRANCE ANIMATIONS */
 (function() {
   var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(function(el) { el.classList.add('visible'); });
-    return;
-  }
+  if (!('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('visible'); }); return; }
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
     });
   }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
   els.forEach(function(el) { obs.observe(el); });
