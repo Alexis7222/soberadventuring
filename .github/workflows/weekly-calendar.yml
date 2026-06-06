@@ -5,6 +5,9 @@ on:
     - cron: '0 9 * * 1'  # Every Monday at 9am UTC (4pm Chiang Mai)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   generate-calendar:
     runs-on: ubuntu-latest
