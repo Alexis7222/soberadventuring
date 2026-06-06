@@ -668,13 +668,11 @@
 </div>
 
 <script>
-  // TODO: Replace with your Cloudflare Worker URL after setup (see workers/leads-worker.js)
-  var WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
+  var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 
   var answers = {};
   var computedResult = '';
 
-  // Option click handling
   document.querySelectorAll('.option').forEach(function(opt) {
     opt.addEventListener('click', function() {
       var q = this.dataset.q;
@@ -733,13 +731,11 @@
     document.getElementById('emailError').style.display = 'none';
     var name = document.getElementById('leadName').value.trim();
 
-    if (WORKER_URL !== 'YOUR_CLOUDFLARE_WORKER_URL_HERE') {
-      fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, name: name, result: computedResult })
-      }).catch(function() {});
-    }
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, name: name, result: computedResult })
+    }).catch(function() {});
 
     showResultBlock();
   }
@@ -775,7 +771,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // init progress
   updateProgress(1);
 </script>
 </body>
