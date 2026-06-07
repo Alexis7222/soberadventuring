@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sober Adventuring | Build a Life You Don't Want to Escape</title>
-<meta name="description" content="Sobriety coaching, sober travel, and remote work, for people building a life so interesting they don't want to escape it. Recovery support, freelance coaching, free guides. Based in Chiang Mai.">
+<meta name="description" content="Sobriety coaching, sober travel, + remote work for people building a life so interesting they don't want to escape it. Recovery support, freelance coaching, free guides. Based in Chiang Mai.">
 <meta property="og:title" content="Sober Adventuring | Build a Life You Don't Want to Escape">
 <meta property="og:description" content="Helping people build a life so interesting they don't want to escape it. Sobriety coaching, sober travel guides, remote work coaching.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://soberadventuring.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sober Adventuring | Build a Life You Don't Want to Escape">
-<meta name="twitter:description" content="Sobriety coaching, sober travel, and remote work for people done escaping.">
+<meta name="twitter:description" content="Sobriety coaching, sober travel, + remote work for people done escaping.">
 <link rel="canonical" href="https://soberadventuring.com">
 <script type="application/ld+json">
 {
@@ -21,7 +21,7 @@
   "url": "https://soberadventuring.com",
   "sameAs": ["https://www.instagram.com/soberadventuring/"],
   "jobTitle": "Recovery Coach & Freelance Career Coach",
-  "description": "Sobriety coach and remote work coach. 4 years in clinical recovery spaces. ALIVE Method for sobriety, PIVOT Method for freelance careers.",
+  "description": "Sobriety coach + remote work coach. 4 years in clinical recovery spaces. ALIVE Method for sobriety, PIVOT Method for freelance careers.",
   "knowsAbout": ["sobriety coaching","harm reduction","motivational interviewing","freelance coaching","Upwork","remote work","sober travel"],
   "offers": [
     {"@type":"Offer","name":"Free Clarity Call","price":"0","priceCurrency":"USD"},
@@ -96,7 +96,7 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,9vw,80px);line-height:0.95;letter-spacing:-0.03em;color:var(--ink);max-width:620px}
 .hero h1 em{color:var(--terra);font-style:italic;display:block}
 .hero-annotation{font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--terra);opacity:0.65;position:absolute;bottom:-8px;right:20px;transform:rotate(-2deg)}
-.hero-sub{font-size:clamp(16px,2.5vw,20px);color:var(--muted);line-height:1.55;max-width:500px;margin:28px 0 40px;font-family:'DM Serif Display',serif;font-style:italic}
+.hero-sub{font-size:clamp(16px,2.5vw,20px);color:var(--muted);line-height:1.55;max-width:520px;margin:28px 0 40px;font-family:'DM Serif Display',serif;font-style:italic}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
 .btn-primary{display:inline-block;background:var(--terra);color:var(--cream);text-decoration:none;padding:17px 32px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;border:1.5px solid var(--terra-dark);box-shadow:3px 3px 0 var(--terra-dark);transition:transform 0.1s,box-shadow 0.1s}
 .btn-primary:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--terra-dark)}
@@ -110,79 +110,26 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .seg-heading{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,40px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:40px}
 .seg-heading em{color:var(--terra);font-style:italic}
 .seg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-
-.seg-card{
-  border:1.5px solid rgba(27,0,9,0.12);
-  padding:32px 28px;
-  cursor:none;
-  background:var(--white);
-  position:relative;
-  overflow:hidden;
-  transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.seg-card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transition:opacity 0.25s ease;
-  z-index:0;
-}
+.seg-card{border:1.5px solid rgba(27,0,9,0.12);padding:32px 28px;cursor:none;background:var(--white);position:relative;overflow:hidden;transition:transform 0.2s ease,box-shadow 0.2s ease,border-color 0.2s ease}
+.seg-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.25s ease;z-index:0}
 .seg-card-forest::before{background:var(--forest)}
 .seg-card-terra::before{background:var(--terra)}
 .seg-card-blue::before{background:var(--blue)}
-
-.seg-card::after{
-  content:'';
-  position:absolute;
-  bottom:0;left:0;
-  height:3px;
-  width:0;
-  transition:width 0.3s ease;
-  z-index:2;
-}
+.seg-card::after{content:'';position:absolute;bottom:0;left:0;height:3px;width:0;transition:width 0.3s ease;z-index:2}
 .seg-card-forest::after{background:var(--forest)}
 .seg-card-terra::after{background:var(--terra)}
 .seg-card-blue::after{background:var(--blue)}
-
 .seg-card:hover::after,.seg-card.selected::after{width:100%}
-.seg-card:hover,.seg-card.selected{
-  transform:translateY(-4px);
-  box-shadow:0 10px 32px rgba(27,0,9,0.13);
-}
+.seg-card:hover,.seg-card.selected{transform:translateY(-4px);box-shadow:0 10px 32px rgba(27,0,9,0.13)}
 .seg-card:hover::before,.seg-card.selected::before{opacity:1}
 .seg-card>*{position:relative;z-index:1}
-
-.seg-num{
-  display:block;
-  font-family:'DM Serif Display',serif;
-  font-size:56px;
-  font-style:italic;
-  line-height:1;
-  letter-spacing:-0.04em;
-  color:var(--ink);
-  opacity:0.07;
-  margin-bottom:16px;
-  transition:opacity 0.2s ease, color 0.2s ease;
-}
+.seg-num{display:block;font-family:'DM Serif Display',serif;font-size:56px;font-style:italic;line-height:1;letter-spacing:-0.04em;color:var(--ink);opacity:0.07;margin-bottom:16px;transition:opacity 0.2s ease,color 0.2s ease}
 .seg-card:hover .seg-num,.seg-card.selected .seg-num{opacity:0.3;color:var(--cream)}
-
 .seg-card-label{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,22px);font-style:italic;color:var(--ink);margin-bottom:8px;transition:color 0.2s ease;line-height:1.15}
 .seg-card:hover .seg-card-label,.seg-card.selected .seg-card-label{color:var(--cream)}
 .seg-card-sub{font-size:14px;color:var(--muted);line-height:1.6;transition:color 0.2s ease}
 .seg-card:hover .seg-card-sub,.seg-card.selected .seg-card-sub{color:rgba(244,232,208,0.7)}
-
-.seg-arrow{
-  display:inline-block;
-  margin-top:20px;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:0.04em;
-  color:var(--cream);
-  opacity:0;
-  transform:translateX(-8px);
-  transition:opacity 0.2s ease, transform 0.2s ease;
-}
+.seg-arrow{display:inline-block;margin-top:20px;font-size:13px;font-weight:700;letter-spacing:0.04em;color:var(--cream);opacity:0;transform:translateX(-8px);transition:opacity 0.2s ease,transform 0.2s ease}
 .seg-card:hover .seg-arrow,.seg-card.selected .seg-arrow{opacity:1;transform:translateX(0)}
 
 /* LEAD MAGNETS */
@@ -213,67 +160,41 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .magnet-cta{display:block;width:100%;padding:14px 24px;background:var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;text-decoration:none;text-align:center;box-shadow:3px 3px 0 var(--terra-dark);transition:transform 0.1s,box-shadow 0.1s;margin-top:auto}
 .magnet-cta:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--terra-dark)}
 
-/* HUB SECTIONS */
-.hub{padding:80px 28px;border-bottom:1.5px solid rgba(27,0,9,0.08)}
-.hub-inner{max-width:1080px;margin:0 auto}
-.hub-layout{display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start}
-.hub-layout.reverse{grid-template-columns:1fr 280px}
-.hub-layout.reverse .hub-header{order:2}
-.hub-layout.reverse .hub-posts{order:1}
-.hub-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px}
-.hub-forest .hub-tag{color:var(--forest)}
-.hub-terra .hub-tag{color:var(--terra)}
-.hub-blue .hub-tag{color:var(--blue)}
-.hub-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,40px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink);margin-bottom:16px}
-.hub-forest .hub-title em{color:var(--forest);font-style:italic}
-.hub-terra .hub-title em{color:var(--terra);font-style:italic}
-.hub-blue .hub-title em{color:var(--blue);font-style:italic}
-.hub-desc{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px}
-.hub-cta{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.02em;padding:11px 20px;border-width:1.5px;border-style:solid;transition:background 0.15s,color 0.15s}
-.hub-forest .hub-cta{color:var(--forest);border-color:var(--forest)}
-.hub-forest .hub-cta:hover{background:var(--forest);color:var(--cream)}
-.hub-terra .hub-cta{color:var(--terra);border-color:var(--terra)}
-.hub-terra .hub-cta:hover{background:var(--terra);color:var(--cream)}
-.hub-blue .hub-cta{color:var(--blue);border-color:var(--blue)}
-.hub-blue .hub-cta:hover{background:var(--blue);color:var(--cream)}
-.hub-forest{background:var(--paper)}
-.hub-terra{background:var(--white)}
-.hub-blue{background:var(--paper)}
-.hub-posts{display:flex;flex-direction:column;gap:16px}
-.post-card{background:var(--white);border:1.5px solid rgba(27,0,9,0.08);padding:24px;text-decoration:none;display:block;transition:transform 0.12s,box-shadow 0.12s;position:relative}
-.hub-forest .post-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,61,36,0.12);border-color:rgba(45,61,36,0.2)}
-.hub-terra .post-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(197,68,44,0.1);border-color:rgba(197,68,44,0.2)}
-.hub-blue .post-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(44,58,90,0.1);border-color:rgba(44,58,90,0.2)}
-.post-card-accent{width:32px;height:3px;margin-bottom:14px}
-.hub-forest .post-card-accent{background:var(--forest)}
-.hub-terra .post-card-accent{background:var(--terra)}
-.hub-blue .post-card-accent{background:var(--blue)}
-.post-card-title{font-family:'DM Serif Display',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.25;margin-bottom:6px}
-.post-card-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px}
-.post-card-read{font-size:12px;font-weight:700;letter-spacing:0.04em}
-.hub-forest .post-card-read{color:var(--forest)}
-.hub-terra .post-card-read{color:var(--terra)}
-.hub-blue .post-card-read{color:var(--blue)}
+/* CONTENT GRID */
+.content-section{background:var(--paper);padding:72px 28px 64px;border-bottom:1.5px solid rgba(27,0,9,0.08)}
+.content-inner{max-width:980px;margin:0 auto}
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.content-col{padding:28px 24px;border:1.5px solid rgba(27,0,9,0.08);background:var(--white);display:flex;flex-direction:column}
+.content-col-forest{border-top:3px solid var(--forest)}
+.content-col-terra{border-top:3px solid var(--terra)}
+.content-col-blue{border-top:3px solid var(--blue)}
+.content-col-tag{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px}
+.content-col-forest .content-col-tag{color:var(--forest)}
+.content-col-terra .content-col-tag{color:var(--terra)}
+.content-col-blue .content-col-tag{color:var(--blue)}
+.content-col h3{font-family:'DM Serif Display',serif;font-size:clamp(17px,2vw,20px);font-style:italic;color:var(--ink);margin-bottom:10px;line-height:1.2}
+.content-col-body{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:18px;flex:1}
+.content-col-links{display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(27,0,9,0.07);padding-top:14px}
+.content-col-links a{font-size:13px;font-weight:600;text-decoration:none;line-height:1.4}
+.content-col-forest .content-col-links a{color:var(--forest)}
+.content-col-terra .content-col-links a{color:var(--terra)}
+.content-col-blue .content-col-links a{color:var(--blue)}
+.content-col-links a:hover{text-decoration:underline}
+.content-col-links a.dim{font-weight:400;color:var(--muted);opacity:0.55;font-size:12px}
 
 /* COMMUNITY */
 .community-section{background:var(--ink);padding:80px 28px;border-bottom:1.5px solid rgba(27,0,9,0.3)}
-.community-inner{max-width:880px;margin:0 auto}
+.community-inner{max-width:680px;margin:0 auto}
 .community-heading{font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,42px);line-height:1.05;letter-spacing:-0.025em;color:var(--cream);margin-bottom:8px}
 .community-heading em{color:var(--terra);font-style:italic}
-.community-sub{font-size:16px;color:rgba(244,232,208,0.5);font-family:'DM Serif Display',serif;font-style:italic;margin-bottom:48px}
-.community-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.comm-card{background:rgba(244,232,208,0.04);border:1.5px solid rgba(244,232,208,0.1);padding:36px 32px;transition:border-color 0.15s,background 0.15s}
-.comm-card:hover{border-color:rgba(244,232,208,0.25);background:rgba(244,232,208,0.07)}
-.comm-card-label{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px}
-.comm-card-forest .comm-card-label{color:var(--forest)}
-.comm-card-terra .comm-card-label{color:var(--terra)}
-.comm-card-title{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,26px);font-style:italic;color:var(--cream);margin-bottom:10px;line-height:1.2}
-.comm-card-desc{font-size:14px;color:rgba(244,232,208,0.5);line-height:1.65;margin-bottom:24px}
-.comm-cta{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;padding:11px 20px;border:1.5px solid;transition:background 0.15s,color 0.15s;letter-spacing:0.02em}
-.comm-card-forest .comm-cta{color:var(--forest);border-color:var(--forest)}
-.comm-card-forest .comm-cta:hover{background:var(--forest);color:var(--cream)}
-.comm-card-terra .comm-cta{color:var(--terra);border-color:var(--terra)}
-.comm-card-terra .comm-cta:hover{background:var(--terra);color:var(--cream)}
+.community-sub{font-size:15px;color:rgba(244,232,208,0.45);font-family:'DM Serif Display',serif;font-style:italic;margin-bottom:40px}
+.comm-single{background:rgba(244,232,208,0.05);border:1.5px solid rgba(244,232,208,0.15);padding:40px;transition:border-color 0.15s,background 0.15s}
+.comm-single:hover{border-color:rgba(244,232,208,0.3);background:rgba(244,232,208,0.07)}
+.comm-card-label{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;color:var(--forest)}
+.comm-card-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,28px);font-style:italic;color:var(--cream);margin-bottom:12px;line-height:1.2}
+.comm-card-desc{font-size:15px;color:rgba(244,232,208,0.5);line-height:1.7;margin-bottom:28px}
+.comm-cta{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;padding:12px 22px;border:1.5px solid var(--forest);color:var(--forest);transition:background 0.15s,color 0.15s;letter-spacing:0.02em}
+.comm-cta:hover{background:var(--forest);color:var(--cream)}
 
 /* COACHING */
 .coaching-section{background:var(--paper);padding:80px 28px 0;border-top:1.5px solid rgba(27,0,9,0.1)}
@@ -345,14 +266,11 @@ body,a,button{cursor:none}
 
 /* RESPONSIVE */
 @media(max-width:860px){
-  .hub-layout,.hub-layout.reverse{grid-template-columns:1fr;gap:36px}
-  .hub-layout.reverse .hub-header{order:1}
-  .hub-layout.reverse .hub-posts{order:2}
   .coaching-tracks{grid-template-columns:1fr}
   .coaching-track-career{border-right:none;border-bottom:1.5px solid rgba(27,0,9,0.08)}
   .coaching-track{padding:40px 28px}
-  .community-cards{grid-template-columns:1fr}
   .magnets-grid{grid-template-columns:1fr}
+  .content-grid{grid-template-columns:1fr;gap:14px}
 }
 @media(max-width:640px){
   .hero{padding:52px 20px 48px}
@@ -365,9 +283,9 @@ body,a,button{cursor:none}
   .seg-num{font-size:44px}
   .magnets-section{padding:52px 20px}
   .magnet-block{padding:28px 20px}
-  .hub{padding:52px 20px}
+  .content-section{padding:52px 20px 48px}
   .community-section{padding:52px 20px}
-  .comm-card{padding:28px 20px}
+  .comm-single{padding:28px 20px}
   .coaching-track{padding:36px 20px 40px}
   .final-inner{padding:56px 20px}
   .final-btn{display:block;width:100%;text-align:center}
@@ -387,7 +305,7 @@ body,a,button{cursor:none}
   <span class="dot">◆</span>
   <a href="#guide">Free guide: 25 things nobody tells you about getting sober</a>
   <span class="dot">&middot;</span>
-  <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Join the Telegram community &rarr;</a>
+  <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Join Common Ground on Telegram &rarr;</a>
 </div>
 
 <!-- NAV -->
@@ -418,7 +336,7 @@ body,a,button{cursor:none}
       </h1>
       <span class="hero-annotation">yes, really.</span>
     </div>
-    <p class="hero-sub">Helping people build a life so interesting they don&rsquo;t want to escape it.</p>
+    <p class="hero-sub">Helping people build a life so interesting they don&rsquo;t want to escape it. (turns out that&rsquo;s ACTUALLY a thing, + not in a cheesy way.)</p>
     <div class="hero-ctas">
       <a href="#where-are-you" class="btn-primary">Start Here &darr;</a>
       <a href="#guide" class="btn-secondary">Get the Free Guide</a>
@@ -429,28 +347,28 @@ body,a,button{cursor:none}
 <!-- SELF-SEGMENTATION -->
 <section class="seg-section" id="where-are-you">
   <div class="seg-inner">
-    <p class="seg-label">Where are you right now?</p>
+    <p class="seg-label">okay so. where are you right now?</p>
     <h2 class="seg-heading">Pick the one that <em>fits.</em></h2>
     <div class="seg-cards">
 
-      <div class="seg-card seg-card-forest reveal" data-target="hub-sober-life" role="button" tabindex="0" aria-label="I'm getting sober">
+      <div class="seg-card seg-card-forest reveal" data-target="hub-content" role="button" tabindex="0" aria-label="I'm getting sober">
         <span class="seg-num">01</span>
         <p class="seg-card-label">I&rsquo;m getting sober</p>
-        <p class="seg-card-sub">You want support, community, and a reason to stay.</p>
+        <p class="seg-card-sub">You want support + community + a real reason to keep going (not just &ldquo;stay strong&rdquo; energy from people who&rsquo;ve never been there).</p>
         <span class="seg-arrow">See what&rsquo;s here &rarr;</span>
       </div>
 
-      <div class="seg-card seg-card-terra reveal reveal-delay-1" data-target="hub-sober-travel" role="button" tabindex="0" aria-label="I want more freedom">
+      <div class="seg-card seg-card-terra reveal reveal-delay-1" data-target="hub-content" role="button" tabindex="0" aria-label="I want more freedom">
         <span class="seg-num">02</span>
         <p class="seg-card-label">I want more freedom</p>
-        <p class="seg-card-sub">You&rsquo;re done with the old life and ready to build something.</p>
+        <p class="seg-card-sub">You&rsquo;re done with the old life + ready to build something that actually fits. (no, not a vision board.)</p>
         <span class="seg-arrow">See what&rsquo;s here &rarr;</span>
       </div>
 
-      <div class="seg-card seg-card-blue reveal reveal-delay-2" data-target="hub-remote-work" role="button" tabindex="0" aria-label="I want to work remotely">
+      <div class="seg-card seg-card-blue reveal reveal-delay-2" data-target="hub-content" role="button" tabindex="0" aria-label="I want to work remotely">
         <span class="seg-num">03</span>
         <p class="seg-card-label">I want to work remotely</p>
-        <p class="seg-card-sub">You want location independence and a real income online.</p>
+        <p class="seg-card-sub">You want income that doesn&rsquo;t require you in an office at 8am, + yeah, that&rsquo;s ACTUALLY possible.</p>
         <span class="seg-arrow">See what&rsquo;s here &rarr;</span>
       </div>
 
@@ -461,16 +379,16 @@ body,a,button{cursor:none}
 <!-- LEAD MAGNETS -->
 <section class="magnets-section" id="guide">
   <div class="magnets-inner">
-    <p class="section-eyebrow">Start here, no commitment</p>
+    <p class="section-eyebrow">start here. genuinely free.</p>
     <h2 class="magnets-heading">A free guide.<br><em>A two-minute quiz.</em></h2>
-    <p class="magnets-sub">Pick the one that makes sense where you are right now. Neither requires a commitment, and neither is going to pitch you anything.</p>
+    <p class="magnets-sub">Pick whichever one makes sense for where you are, because both may be ACTUALLY useful + neither will try to sell you anything the second you click.</p>
     <div class="magnets-grid">
 
       <!-- GUIDE -->
       <div class="magnet-block magnet-block-guide reveal">
         <span class="magnet-accent">free guide</span>
         <h3 class="magnet-title">25 Things Nobody Tells You About Getting Sober</h3>
-        <p class="magnet-desc">Four years working in recovery spaces as a recovery support specialist, sober house manager, and ABA therapist, then getting sober myself. This is what I actually tell people when they&rsquo;re starting out: what the first weeks might feel like, why year two can be harder than year one, and what tends to help people stay sober long-term.</p>
+        <p class="magnet-desc">Four years in recovery spaces as a recovery support specialist, sober house manager, + ABA therapist, then getting sober myself. This is what I ACTUALLY tell people when they&rsquo;re starting out: what the first weeks might feel like, why year two can be harder than year one, + what tends to help people stay sober long-term. (No fluff, just the stuff that may actually help.)</p>
         <form class="magnet-form" id="guideForm" novalidate>
           <input type="text" name="name" placeholder="First name" autocomplete="given-name" required>
           <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
@@ -489,7 +407,7 @@ body,a,button{cursor:none}
             <div class="magnet-quiz-visual">
               <span>5 questions &middot; instant result &middot; free</span>
             </div>
-            <p class="magnet-desc">Five questions about where you are right now, and a specific next step based on your result. Whether you&rsquo;re a week in or a few years out and feeling stuck, it may be worth the two minutes. No email required to see your result.</p>
+            <p class="magnet-desc">Five questions about where you are right now + a specific next step based on your result, because &ldquo;you&rsquo;ve got this&rdquo; from a stranger isn&rsquo;t ACTUALLY a strategy. (No email required to see your result, + we&rsquo;re not going to make you hand over your inbox just to find out.)</p>
           </div>
           <a href="/quiz/recovery/" class="magnet-cta">Take the Quiz &rarr;</a>
         </div>
@@ -499,104 +417,42 @@ body,a,button{cursor:none}
   </div>
 </section>
 
-<!-- HUB 1: SOBER LIFE -->
-<section class="hub hub-forest" id="hub-sober-life">
-  <div class="hub-inner">
-    <div class="hub-layout">
-      <div class="hub-header reveal">
-        <p class="hub-tag">Sober Life</p>
-        <h2 class="hub-title">Getting sober.<br><em>Staying that way.</em></h2>
-        <p class="hub-desc">For people in early recovery, or anyone who&rsquo;s curious what life without alcohol actually looks like. What it costs, what it gives back, and what nobody tells you about year two.</p>
-        <a href="/blog/" class="hub-cta">Explore Sober Life &rarr;</a>
-      </div>
-      <div class="hub-posts">
-        <a href="/blog/sober-life-coaching-approach/" class="post-card reveal">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">What a Sobriety Coach Actually Does (and Doesn&rsquo;t Do)</p>
-          <p class="post-card-desc">The practical difference between a coach, a therapist, and a sponsor, and when you need which one.</p>
-          <span class="post-card-read">Read &rarr;</span>
-        </a>
-        <div class="post-card reveal reveal-delay-1" style="opacity:0.55;cursor:default">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">Dry and Stuck: What Nobody Warns You About Year Two</p>
-          <p class="post-card-desc">You stayed sober and nothing replaced the drinking. Here&rsquo;s what that actually looks like and what to do about it.</p>
-          <span class="post-card-read" style="color:var(--muted);font-weight:400">Coming soon</span>
-        </div>
-        <div class="post-card reveal reveal-delay-2" style="opacity:0.55;cursor:default">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">Why Getting Sober at 24 Changed What I Thought I Knew About Fun</p>
-          <p class="post-card-desc">Turns out the parties were never that fun, and I just couldn&rsquo;t tell while I was drinking.</p>
-          <span class="post-card-read" style="color:var(--muted);font-weight:400">Coming soon</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- CONTENT GRID -->
+<section class="content-section" id="hub-content">
+  <div class="content-inner">
+    <p class="section-eyebrow">what&rsquo;s on the site</p>
+    <h2 class="magnets-heading">Organized by <em>where you are.</em></h2>
+    <div class="content-grid">
 
-<!-- HUB 2: SOBER TRAVEL -->
-<section class="hub hub-terra" id="hub-sober-travel">
-  <div class="hub-inner">
-    <div class="hub-layout reverse">
-      <div class="hub-header reveal">
-        <p class="hub-tag">Sober Travel</p>
-        <h2 class="hub-title">The world is better<br><em>when you&rsquo;re present.</em></h2>
-        <p class="hub-desc">Stories and guides for traveling sober. Chiang Mai, the night market problem, how to tell people you don&rsquo;t drink without making it a whole thing.</p>
-        <a href="/blog/" class="hub-cta">Explore Sober Travel &rarr;</a>
-      </div>
-      <div class="hub-posts">
-        <div class="post-card reveal" style="opacity:0.55;cursor:default">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">Sober in Chiang Mai: A Brutally Honest Field Report</p>
-          <p class="post-card-desc">The temples are a 10-minute walk and the backpacker bars are right next door, and this is what navigating that sober actually looks like.</p>
-          <span class="post-card-read" style="color:var(--muted);font-weight:400">Coming soon</span>
-        </div>
-        <div class="post-card reveal reveal-delay-1" style="opacity:0.55;cursor:default">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">How to Tell People You Don&rsquo;t Drink (Without Making It Weird)</p>
-          <p class="post-card-desc">A short answer, a medium answer, and when to just not explain yourself at all.</p>
-          <span class="post-card-read" style="color:var(--muted);font-weight:400">Coming soon</span>
-        </div>
-        <div class="post-card reveal reveal-delay-2" style="opacity:0.55;cursor:default">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">Travel Triggers Nobody Mentions: The Night Market Problem</p>
-          <p class="post-card-desc">The hardest moments are usually when you&rsquo;re surrounded by people who look like they&rsquo;re having a better time, and nothing obvious set it off.</p>
-          <span class="post-card-read" style="color:var(--muted);font-weight:400">Coming soon</span>
+      <div class="content-col content-col-forest reveal">
+        <p class="content-col-tag">Sober Life</p>
+        <h3>Getting sober + staying that way.</h3>
+        <p class="content-col-body">For people in or approaching sobriety who want actual information about what recovery feels like, what the harder parts are, + what tends to help people stay sober long-term. (The honest version, not the highlight reel.)</p>
+        <div class="content-col-links">
+          <a href="/blog/sober-life-coaching-approach/">What a Sobriety Coach Actually Does &rarr;</a>
+          <a href="/blog/" class="dim">More posts coming &rarr;</a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- HUB 3: REMOTE WORK -->
-<section class="hub hub-blue" id="hub-remote-work">
-  <div class="hub-inner">
-    <div class="hub-layout">
-      <div class="hub-header reveal">
-        <p class="hub-tag">Remote Work &amp; Freedom</p>
-        <h2 class="hub-title">Build income<br><em>on your own terms.</em></h2>
-        <p class="hub-desc">How to build location-independent income, for people who want a life that doesn&rsquo;t require an escape. Upwork, cold calling, pipeline architecture. I did this from scratch.</p>
-        <a href="/blog/" class="hub-cta">Explore Remote Work &rarr;</a>
-      </div>
-      <div class="hub-posts">
-        <a href="/blog/how-to-start-freelancing-upwork-no-experience/" class="post-card reveal">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">How to Start Freelancing on Upwork With No Experience</p>
-          <p class="post-card-desc">What the algorithm actually rewards, why honesty beats credentials, and how I made $30k in 4 months starting from zero.</p>
-          <span class="post-card-read">Read &rarr;</span>
-        </a>
-        <a href="https://antonelli74.gumroad.com/l/wfbmpv" target="_blank" rel="noopener" class="post-card reveal reveal-delay-1">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">The Upwork Starter Guide, $14.99</p>
-          <p class="post-card-desc">Step-by-step setup, proposals that get replies, and landing your first paid client. Do it yourself, at your pace.</p>
-          <span class="post-card-read">Get the guide &rarr;</span>
-        </a>
-        <div class="post-card reveal reveal-delay-2" style="opacity:0.55;cursor:default">
-          <div class="post-card-accent"></div>
-          <p class="post-card-title">Cold Calling From a Coffee Shop: Building a Sales Pipeline as a Digital Nomad</p>
-          <p class="post-card-desc">The logistics of SDR work and pipeline architecture when your office is a corner table in Chiang Mai.</p>
-          <span class="post-card-read" style="color:var(--muted);font-weight:400">Coming soon</span>
+      <div class="content-col content-col-terra reveal reveal-delay-1">
+        <p class="content-col-tag">Sober Travel</p>
+        <h3>The world is better when you&rsquo;re present.</h3>
+        <p class="content-col-body">Stories + guides for traveling sober: Chiang Mai, the night market problem, + how to tell people you don&rsquo;t drink without making it a whole thing. (Field reports in progress, real-time stuff on Instagram.)</p>
+        <div class="content-col-links">
+          <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Real-time on Instagram &rarr;</a>
         </div>
       </div>
+
+      <div class="content-col content-col-blue reveal reveal-delay-2">
+        <p class="content-col-tag">Remote Work</p>
+        <h3>Build income on your own terms.</h3>
+        <p class="content-col-body">How to build location-independent income starting from scratch: Upwork, cold calling, + pipeline architecture. Made $30k in my first four months starting from zero + the whole process is documented.</p>
+        <div class="content-col-links">
+          <a href="/blog/how-to-start-freelancing-upwork-no-experience/">How to Start Freelancing on Upwork &rarr;</a>
+          <a href="https://antonelli74.gumroad.com/l/wfbmpv" target="_blank" rel="noopener">The Upwork Starter Guide, $14.99 &rarr;</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -605,24 +461,15 @@ body,a,button{cursor:none}
 <section class="community-section" id="community">
   <div class="community-inner">
     <h2 class="community-heading">You don&rsquo;t have to figure<br>this out <em>alone.</em></h2>
-    <p class="community-sub">Two ways in, and neither requires you to label yourself.</p>
-    <div class="community-cards">
+    <p class="community-sub">(+ we mean that in the actual sense, not the motivational poster sense)</p>
 
-      <div class="comm-card comm-card-forest reveal">
-        <p class="comm-card-label">Weekly Meetings</p>
-        <h3 class="comm-card-title">Common Ground</h3>
-        <p class="comm-card-desc">Weekly online recovery meetings. No specific program required, no labels, no shame. Just people working on staying sober and building something real.</p>
-        <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener" class="comm-cta">Join Common Ground &rarr;</a>
-      </div>
-
-      <div class="comm-card comm-card-terra reveal reveal-delay-1">
-        <p class="comm-card-label">Daily Community</p>
-        <h3 class="comm-card-title">Telegram Group</h3>
-        <p class="comm-card-desc">The Telegram community is where people share what&rsquo;s actually going on, not the polished version, and it&rsquo;s genuinely judgment-free.</p>
-        <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener" class="comm-cta">Join the Group &rarr;</a>
-      </div>
-
+    <div class="comm-single reveal">
+      <p class="comm-card-label">Community + Weekly Meetings</p>
+      <h3 class="comm-card-title">Common Ground</h3>
+      <p class="comm-card-desc">Common Ground is a Telegram group, + that&rsquo;s where everything lives: the weekly online recovery meetings, daily conversation with people who actually get it, + resources that may help depending on where you are. No specific program required, no label needed, + no pressure to show up as anything other than yourself. Join on Telegram + you&rsquo;ll get the meeting info there.</p>
+      <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener" class="comm-cta">Join Common Ground on Telegram &rarr;</a>
     </div>
+
   </div>
 </section>
 
@@ -630,7 +477,7 @@ body,a,button{cursor:none}
 <section class="coaching-section" id="coaching">
   <div class="coaching-header reveal">
     <p style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:12px">Work With Alexis</p>
-    <h2>Ready to actually<br><em>change something?</em></h2>
+    <h2>Ready to ACTUALLY<br><em>change something?</em></h2>
     <p>One-on-one coaching for people building a sober, free, unconventional life, with two tracks depending on where you are.</p>
   </div>
   <div class="coaching-tracks">
@@ -639,11 +486,11 @@ body,a,button{cursor:none}
       <span class="coaching-track-label">Sobriety Coaching</span>
       <h3 class="coaching-track-h3">The <em>ALIVE Method.</em></h3>
       <div class="coaching-track-divider"></div>
-      <p class="coaching-track-sub">For people in or approaching sobriety who want practical, hands-on support from someone who&rsquo;s been in the space. Built on 4 years in clinical recovery as a recovery support specialist, ABA therapist, case manager, and sober house manager, and all pathways are supported.</p>
+      <p class="coaching-track-sub">For people in or approaching sobriety who want practical, hands-on support from someone who&rsquo;s been in the space. Built on four years in clinical recovery work + all pathways are supported (yes, that means you, regardless of what you&rsquo;ve tried before).</p>
       <div class="coaching-offer featured-forest">
         <span class="coaching-offer-badge">Start here &middot; free</span>
         <h4>The Clarity Call</h4>
-        <p>It&rsquo;s 20 minutes where we figure out where you are in your sobriety, what&rsquo;s getting in the way, and what the actual next step looks like.</p>
+        <p>Twenty minutes where we figure out where you are in your sobriety, what&rsquo;s getting in the way, + what the actual next step looks like.</p>
         <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="coaching-offer-cta">Book the free call &rarr;</a>
       </div>
       <div class="coaching-offer">
@@ -659,18 +506,18 @@ body,a,button{cursor:none}
       <span class="coaching-track-label">Career &amp; Freelance</span>
       <h3 class="coaching-track-h3">The <em>PIVOT Method.</em></h3>
       <div class="coaching-track-divider"></div>
-      <p class="coaching-track-sub">For people who want to freelance, work remotely, or build a real skill-based income, whether you&rsquo;re sober or not, this is about building work that actually fits your life. I made $30k in my first 4 months on Upwork and can show you how I did it.</p>
+      <p class="coaching-track-sub">For people who want to freelance, work remotely, or build skill-based income. Made $30k in my first four months on Upwork starting from zero + the whole process is documented. (not bragging, just proving it works.)</p>
       <div class="coaching-offer featured-career">
         <span class="coaching-offer-badge">Start here &middot; free</span>
         <h4>The Clarity Call</h4>
-        <p>20 minutes where we figure out where you&rsquo;re stuck career-wise and map the first real move, and it&rsquo;s probably the most useful thing you&rsquo;ll do this week.</p>
+        <p>Twenty minutes where we figure out where you&rsquo;re stuck career-wise + map the first real move.</p>
         <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="coaching-offer-cta">Book the free call &rarr;</a>
       </div>
       <div class="coaching-offer">
         <span class="coaching-offer-badge">1:1 Coaching</span>
         <h4>The Pivot Package</h4>
         <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:var(--terra);margin-bottom:10px">2 month engagement &middot; $997 flat</p>
-        <p>We build your freelance positioning, craft your Upwork profile, write your first proposals, and build the discipline systems that make it stick.</p>
+        <p>We build your freelance positioning, craft your Upwork profile, write your first proposals, + build the discipline systems that make it stick.</p>
         <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="coaching-offer-cta">Apply &rarr;</a>
       </div>
     </div>
@@ -682,7 +529,7 @@ body,a,button{cursor:none}
 <div class="final-bg">
   <div class="final-inner">
     <h2>Ready to find out what<br><em>sober you</em> is capable of?</h2>
-    <p class="final-caveat">The clearest thinking of your life is on the other side.</p>
+    <p class="final-caveat">the clearest thinking of your life is on the other side. (no, REALLY.)</p>
     <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="final-btn">Book the free clarity call &rarr;</a>
     <p class="final-note">free &middot; 20 minutes &middot; honest conversation</p>
   </div>
