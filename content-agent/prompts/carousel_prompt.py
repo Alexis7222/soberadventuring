@@ -56,6 +56,9 @@ Return ONLY a valid JSON array. No markdown fencing. No explanation.
 
 CAROUSEL_USER_TEMPLATE = """Generate 6 carousel concepts for the week of {week_date}.
 
+LEXI'S OWN TOP PERFORMING POSTS THIS WEEK (use these as your primary signal — model new concepts on what's already working for her specific audience):
+{own_posts_summary}
+
 MANDATORY DISTRIBUTION — every run, no exceptions:
 - 2 of the 6 must use the "By age X" Failure Archive structure with real numbers from Lexi's life (16 jobs, 7 cars, $20k debt, 10 schools, etc). These are the share-drivers.
 - 1 must be a Contrarian Recovery Take that goes against received sober wisdom (e.g. pushback on AA, on "just don't drink", on toxic positivity in recovery spaces)
@@ -68,7 +71,7 @@ All 6 rules:
 - Every carousel requires a personal story anchor — if it could have been posted by any sober creator, it's rejected
 - Tie each concept to the trend data below
 
-TREND RESEARCH THIS WEEK:
+TREND RESEARCH THIS WEEK (niche-wide):
 {trend_summary}
 
 Return only a valid JSON array.
