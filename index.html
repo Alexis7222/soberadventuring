@@ -103,13 +103,6 @@ nav{background:var(--cream);border-bottom:1.5px solid var(--ink);padding:14px 28
 .btn-secondary{display:inline-block;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;padding:15px 28px;font-size:14px;font-weight:500;font-family:'Bricolage Grotesque',sans-serif;transition:background 0.15s,color 0.15s}
 .btn-secondary:hover{background:var(--ink);color:var(--cream)}
 
-/* TICKER */
-.ticker{background:var(--terra);padding:11px 0;overflow:hidden;border-bottom:1.5px solid var(--terra-dark)}
-.ticker-track{display:flex;gap:36px;animation:tick 28s linear infinite;width:max-content;white-space:nowrap}
-.ticker-track span{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);flex-shrink:0;opacity:0.9}
-.ticker-track .gem{opacity:0.5}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
 /* SEGMENTATION */
 .seg-section{background:var(--paper);padding:72px 28px 64px;border-bottom:1.5px solid rgba(27,0,9,0.1)}
 .seg-inner{max-width:920px;margin:0 auto}
@@ -408,7 +401,7 @@ body,a,button{cursor:none}
   <ul class="nav-links" id="navLinks">
     <li><a href="/story/">About</a></li>
     <li><a href="/blog/">Blog</a></li>
-    <li><a href="/quiz/" style="font-weight:700;color:var(--terra)">Take the Quiz</a></li>
+    <li><a href="/quiz/recovery/" style="font-weight:700;color:var(--terra)">Take the Quiz</a></li>
     <li><a href="#coaching">Work With Me</a></li>
     <li><a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-cta">Free Call</a></li>
   </ul>
@@ -432,34 +425,6 @@ body,a,button{cursor:none}
     </div>
   </div>
 </section>
-
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Aloha Technology</span><span class="gem">◆</span>
-    <span>Speech Blubs</span><span class="gem">◆</span>
-    <span>Kew Data</span><span class="gem">◆</span>
-    <span>Altiro</span><span class="gem">◆</span>
-    <span>Alderwood Wholesale Eggs</span><span class="gem">◆</span>
-    <span>Ready Set Mushrooms</span><span class="gem">◆</span>
-    <span>Reasonate Studio</span><span class="gem">◆</span>
-    <span>Practice Management Consultants</span><span class="gem">◆</span>
-    <span>13+ case studies</span><span class="gem">◆</span>
-    <span>$30k in first 4 months on Upwork</span><span class="gem">◆</span>
-    <span>4 years in clinical recovery spaces</span><span class="gem">◆</span>
-    <span>Aloha Technology</span><span class="gem">◆</span>
-    <span>Speech Blubs</span><span class="gem">◆</span>
-    <span>Kew Data</span><span class="gem">◆</span>
-    <span>Altiro</span><span class="gem">◆</span>
-    <span>Alderwood Wholesale Eggs</span><span class="gem">◆</span>
-    <span>Ready Set Mushrooms</span><span class="gem">◆</span>
-    <span>Reasonate Studio</span><span class="gem">◆</span>
-    <span>Practice Management Consultants</span><span class="gem">◆</span>
-    <span>13+ case studies</span><span class="gem">◆</span>
-    <span>$30k in first 4 months on Upwork</span><span class="gem">◆</span>
-    <span>4 years in clinical recovery spaces</span><span class="gem">◆</span>
-  </div>
-</div>
 
 <!-- SELF-SEGMENTATION -->
 <section class="seg-section" id="where-are-you">
@@ -505,7 +470,7 @@ body,a,button{cursor:none}
       <div class="magnet-block magnet-block-guide reveal">
         <span class="magnet-accent">free guide</span>
         <h3 class="magnet-title">25 Things Nobody Tells You About Getting Sober</h3>
-        <p class="magnet-desc">Four years working in recovery spaces as a recovery support specialist, sober house manager, and ABA therapist, then getting sober myself. This is what I actually tell people when they&rsquo;re starting out: what the first weeks feel like, why year two tends to be harder than year one, and what helps people stay sober long-term versus what just looks helpful.</p>
+        <p class="magnet-desc">Four years working in recovery spaces as a recovery support specialist, sober house manager, and ABA therapist, then getting sober myself. This is what I actually tell people when they&rsquo;re starting out: what the first weeks might feel like, why year two can be harder than year one, and what tends to help people stay sober long-term.</p>
         <form class="magnet-form" id="guideForm" novalidate>
           <input type="text" name="name" placeholder="First name" autocomplete="given-name" required>
           <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
@@ -524,9 +489,9 @@ body,a,button{cursor:none}
             <div class="magnet-quiz-visual">
               <span>5 questions &middot; instant result &middot; free</span>
             </div>
-            <p class="magnet-desc">The quiz is five questions. It tells you where you are in the recovery process and gives you a specific next step based on your result, not a generic one. Whether you&rsquo;re a week in or a few years out and feeling stuck, it&rsquo;s worth the two minutes. No email required to see your result.</p>
+            <p class="magnet-desc">Five questions about where you are right now, and a specific next step based on your result. Whether you&rsquo;re a week in or a few years out and feeling stuck, it may be worth the two minutes. No email required to see your result.</p>
           </div>
-          <a href="/quiz/" class="magnet-cta">Take the Quiz &rarr;</a>
+          <a href="/quiz/recovery/" class="magnet-cta">Take the Quiz &rarr;</a>
         </div>
       </div>
 
@@ -732,7 +697,8 @@ body,a,button{cursor:none}
   <div class="footer-links">
     <a href="/story/">About</a>
     <a href="/blog/">Blog</a>
-    <a href="/quiz/">Quiz</a>
+    <a href="/quiz/recovery/">Recovery Quiz</a>
+    <a href="/quiz/">Freelance Quiz</a>
     <a href="#coaching">Work With Me</a>
     <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Telegram</a>
     <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
@@ -799,7 +765,7 @@ document.getElementById('guideForm').addEventListener('submit', function(e) {
   fetch(WORKER_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, email: email, result: 'Free Guide: 25 Things Nobody Tells You' })
+    body: JSON.stringify({ name: name, email: email, result: 'guide' })
   }).then(function() {
     form.style.display = 'none';
     document.getElementById('guideConfirm').style.display = 'block';
