@@ -26,6 +26,9 @@ Return ONLY a valid JSON array. No markdown fencing. No explanation.
 
 REEL_USER_TEMPLATE = """Generate 4 x 6-9 second reel concepts for the week of {week_date}.
 
+LEXI'S OWN TOP PERFORMING POSTS THIS WEEK (use as signal for what's resonating with her audience):
+{own_posts_summary}
+
 Requirements:
 - Every concept must work for a completely cold audience — no prior knowledge of Lexi needed
 - Mix of pillars — no two from the same one
@@ -33,7 +36,7 @@ Requirements:
 - At least one must use a before/after contrast (active addiction vs now)
 - Audio mood must match the emotional tone of the overlay text
 
-TREND RESEARCH THIS WEEK:
+TREND RESEARCH THIS WEEK (niche-wide):
 {trend_summary}
 
 Return only a valid JSON array.
