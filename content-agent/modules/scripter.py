@@ -18,14 +18,28 @@ MODEL = "claude-sonnet-4-6"
 def _build_trend_summary(research: dict) -> str:
     hooks = research.get("top_hooks", [])
     posts = research.get("top_posts", [])
-    lines = ["Top performing hooks this week (by engagement rate):"]
+    lines = ["Top performing hooks this week in the niche (by engagement rate):"]
     for i, hook in enumerate(hooks[:5], 1):
         lines.append(f"{i}. {hook}")
     if posts:
         top_ers = [p["engagement_rate"] for p in posts[:3]]
-        lines.append(f"\nTop engagement rates: {top_ers}%")
+        lines.append(f"\nTop engagement rates in niche: {top_ers}%")
     lines.append(f"Total posts analyzed: {research.get('total_analyzed', 0)}")
     lines.append(f"Source: {research.get('scraped_at', 'unknown')}")
+    return "\n".join(lines)
+
+
+def _build_own_posts_summary(research: dict) -> str:
+    own_posts = research.get("own_top_posts", [])
+    if not own_posts:
+        return "No own post data available this week — use character brief analytics."
+    lines = ["@soberadventuring TOP PERFORMING POSTS (ranked by engagement rate):"]
+    for i, p in enumerate(own_posts[:10], 1):
+        lines.append(
+            f"{i}. [{p.get('type', '?').upper()}] ER: {p.get('engagement_rate', 0)}% | "
+            f"{p.get('likes', 0)} likes, {p.get('comments', 0)} comments\n"
+            f"   Hook: {p.get('hook', '')[:120]}"
+        )
     return "\n".join(lines)
 
 
@@ -46,13 +60,21 @@ def _call_claude(system: str, user: str) -> list | dict:
     return json.loads(raw.strip())
 
 
-def generate_carousels(week_date: str, trend_summary: str) -> list:
-    user = CAROUSEL_USER_TEMPLATE.format(week_date=week_date, trend_summary=trend_summary)
+def generate_carousels(week_date: str, trend_summary: str, own_posts_summary: str) -> list:
+    user = CAROUSEL_USER_TEMPLATE.format(
+        week_date=week_date,
+        trend_summary=trend_summary,
+        own_posts_summary=own_posts_summary,
+    )
     return _call_claude(CAROUSEL_SYSTEM, user)
 
 
-def generate_reels(week_date: str, trend_summary: str) -> list:
-    user = REEL_USER_TEMPLATE.format(week_date=week_date, trend_summary=trend_summary)
+def generate_reels(week_date: str, trend_summary: str, own_posts_summary: str) -> list:
+    user = REEL_USER_TEMPLATE.format(
+        week_date=week_date,
+        trend_summary=trend_summary,
+        own_posts_summary=own_posts_summary,
+    )
     return _call_claude(REEL_SYSTEM, user)
 
 
@@ -64,12 +86,13 @@ def generate_monthly(month_year: str) -> dict:
 
 def generate_content(research: dict, week_date: str) -> dict:
     trend_summary = _build_trend_summary(research)
+    own_posts_summary = _build_own_posts_summary(research)
 
     print("  Generating carousels...")
-    carousels = generate_carousels(week_date, trend_summary)
+    carousels = generate_carousels(week_date, trend_summary, own_posts_summary)
 
     print("  Generating reels...")
-    reels = generate_reels(week_date, trend_summary)
+    reels = generate_reels(week_date, trend_summary, own_posts_summary)
 
     monthly = None
     today = datetime.today()
@@ -80,6 +103,7 @@ def generate_content(research: dict, week_date: str) -> dict:
     return {
         "week_date": week_date,
         "trend_summary": trend_summary,
+        "own_posts_summary": own_posts_summary,
         "carousels": carousels,
         "reels": reels,
         "monthly": monthly,
