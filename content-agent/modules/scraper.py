@@ -10,6 +10,8 @@ APIFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN", "")
 APIFY_BASE_URL = "https://api.apify.com/v2"
 APIFY_ACTOR = "apify~instagram-scraper"
 
+OWN_ACCOUNT = "soberadventuring"
+
 HASHTAGS = [
     "soberlife",
     "sobriety",
@@ -22,7 +24,6 @@ HASHTAGS = [
 COMPETITOR_ACCOUNTS = [
     "sobergirlsociety",
     "thisnakedmind",
-    "soberadventuring",
 ]
 
 ROOT = Path(__file__).parent.parent
@@ -37,7 +38,6 @@ logging.basicConfig(
 
 
 def _run_actor(actor_input: dict) -> list:
-    """Start Apify actor, wait for completion, return dataset items."""
     run_resp = requests.post(
         f"{APIFY_BASE_URL}/acts/{APIFY_ACTOR}/runs",
         params={"token": APIFY_API_TOKEN},
@@ -82,7 +82,24 @@ def _extract_hook(caption: str) -> str:
     return caption.strip().split("\n")[0][:150]
 
 
-def _analyze(posts: list) -> dict:
+def _analyze_own_posts(posts: list) -> list:
+    scored = []
+    for p in posts:
+        if p.get("ownerUsername", "").lower() != OWN_ACCOUNT:
+            continue
+        scored.append({
+            "hook": _extract_hook(p.get("caption", "")),
+            "likes": p.get("likesCount", 0) or 0,
+            "comments": p.get("commentsCount", 0) or 0,
+            "engagement_rate": _engagement_rate(p),
+            "type": p.get("type", "unknown"),
+            "url": p.get("url", ""),
+        })
+    scored.sort(key=lambda x: x["engagement_rate"], reverse=True)
+    return scored[:10]
+
+
+def _analyze_trend_posts(posts: list) -> dict:
     scored = []
     for p in posts:
         scored.append({
@@ -99,7 +116,6 @@ def _analyze(posts: list) -> dict:
         "top_posts": top,
         "top_hooks": [p["hook"] for p in top if p["hook"]],
         "total_analyzed": len(scored),
-        "scraped_at": datetime.utcnow().isoformat(),
     }
 
 
@@ -115,18 +131,27 @@ def _load_fallback() -> dict:
             "4 childhood behaviors that predicted my addiction",
         ],
         "top_posts": [],
+        "own_top_posts": [],
         "total_analyzed": 0,
         "scraped_at": "fallback",
     }
 
 
 def run_research() -> dict:
-    """Scrape hashtags and competitor accounts. Falls back to stored hooks on failure."""
     if not APIFY_API_TOKEN:
         logging.warning("APIFY_API_TOKEN not set — using fallback")
         return _load_fallback()
 
     try:
+        # Pull Lexi's own posts — this is the analytics source
+        own_posts_raw = _run_actor({
+            "usernames": [OWN_ACCOUNT],
+            "resultsType": "posts",
+            "resultsLimit": 50,
+        })
+        own_top_posts = _analyze_own_posts(own_posts_raw)
+
+        # Pull hashtag trends
         hashtag_urls = [f"https://www.instagram.com/explore/tags/{h}/" for h in HASHTAGS]
         hashtag_posts = _run_actor({
             "directUrls": hashtag_urls,
@@ -134,13 +159,20 @@ def run_research() -> dict:
             "resultsLimit": 15,
         })
 
+        # Pull competitor posts
         competitor_posts = _run_actor({
             "usernames": COMPETITOR_ACCOUNTS,
             "resultsType": "posts",
             "resultsLimit": 20,
         })
 
-        results = _analyze(hashtag_posts + competitor_posts)
+        trend_data = _analyze_trend_posts(hashtag_posts + competitor_posts)
+
+        results = {
+            **trend_data,
+            "own_top_posts": own_top_posts,
+            "scraped_at": datetime.utcnow().isoformat(),
+        }
         FALLBACK_PATH.write_text(json.dumps(results, indent=2))
         return results
 
