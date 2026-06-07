@@ -1,18 +1,170 @@
 import os
 import json
 import logging
+import requests
 from datetime import datetime
 from pathlib import Path
 
 LOG_PATH = Path(__file__).parent.parent / "errors.log"
 logging.basicConfig(filename=str(LOG_PATH), level=logging.ERROR, format="%(asctime)s %(levelname)s %(message)s")
 
+NOTION_API_KEY = os.environ.get("NOTION_API_KEY", "")
+NOTION_PARENT_PAGE_ID = os.environ.get("NOTION_PARENT_PAGE_ID", "")
+NOTION_VERSION = "2022-06-28"
+
 GOOGLE_SERVICE_ACCOUNT_JSON = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON", "")
 GOOGLE_DRIVE_FOLDER_ID = os.environ.get("GOOGLE_DRIVE_FOLDER_ID", "")
 SCOPES = ["https://www.googleapis.com/auth/documents", "https://www.googleapis.com/auth/drive"]
 
 
-def _get_services():
+# ── Notion helpers ──────────────────────────────────────────────────────────
+
+def _notion_headers():
+    return {
+        "Authorization": f"Bearer {NOTION_API_KEY}",
+        "Notion-Version": NOTION_VERSION,
+        "Content-Type": "application/json",
+    }
+
+
+def _text(content: str, bold=False) -> dict:
+    return {"type": "text", "text": {"content": content}, "annotations": {"bold": bold}}
+
+
+def _heading2(text: str) -> dict:
+    return {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [_text(text)]}}
+
+
+def _heading3(text: str) -> dict:
+    return {"object": "block", "type": "heading_3", "heading_3": {"rich_text": [_text(text)]}}
+
+
+def _paragraph(text: str, bold=False) -> dict:
+    return {"object": "block", "type": "paragraph", "paragraph": {"rich_text": [_text(text, bold=bold)]}}
+
+
+def _divider() -> dict:
+    return {"object": "block", "type": "divider", "divider": {}}
+
+
+def _callout(text: str, emoji: str = "📌") -> dict:
+    return {
+        "object": "block",
+        "type": "callout",
+        "callout": {
+            "rich_text": [_text(text)],
+            "icon": {"type": "emoji", "emoji": emoji},
+        },
+    }
+
+
+def _build_carousel_blocks(c: dict, index: int) -> list:
+    pillar = c.get("pillar", "").upper()
+    blocks = [
+        _divider(),
+        _heading2(f"CAROUSEL {index} — {pillar}"),
+        _callout(f"Hook: {c.get('slide_1_hook', '')}", "🎯"),
+        _paragraph(f"Visual: {c.get('visual_direction', '')}"),
+        _paragraph(f"Trend link: {c.get('trend_link', '')}"),
+        _heading3("Slides"),
+    ]
+    for i, slide in enumerate(c.get("slides", []), 2):
+        blocks.append(_paragraph(f"Slide {i}: {slide}"))
+    blocks += [
+        _paragraph(f"Final slide: {c.get('final_slide', '')}"),
+        _heading3("Caption"),
+        _paragraph(c.get("caption", "")),
+        _heading3("Share Hook"),
+        _paragraph(c.get("share_hook", "")),
+    ]
+    if c.get("secondary_pillar"):
+        blocks.append(_paragraph(f"Also covers: {c['secondary_pillar']}"))
+    return blocks
+
+
+def _build_reel_blocks(r: dict, index: int) -> list:
+    pillar = r.get("pillar", "").upper()
+    return [
+        _divider(),
+        _heading2(f"REEL {index} — {pillar}"),
+        _callout(f"Text overlay: {r.get('text_overlay', '')}", "🎬"),
+        _paragraph(f"Visual: {r.get('visual_direction', '')}"),
+        _paragraph(f"Audio mood: {r.get('audio_mood', '')}"),
+        _paragraph(f"Why now: {r.get('why_now', '')}"),
+    ]
+
+
+def _build_monthly_blocks(m: dict) -> list:
+    blocks = [
+        _divider(),
+        _heading2("MONTHLY LONG-FORM — MUSEUM OF FAILURES"),
+        _callout(f"Hook: {m.get('slide_1_hook', '')}", "🏛️"),
+    ]
+    for slide in m.get("slides", []):
+        blocks.append(_paragraph(f"Slide {slide.get('slide_number', '')}: {slide.get('text', '')}"))
+        if slide.get("visual"):
+            blocks.append(_paragraph(f"  Visual: {slide['visual']}"))
+    blocks += [
+        _heading3("Final Slide"),
+        _paragraph(m.get("final_slide_identity", "")),
+        _heading3("Caption"),
+        _paragraph(m.get("caption", "")),
+    ]
+    return blocks
+
+
+def _save_to_notion(content: dict) -> str:
+    week_date = content["week_date"]
+    title = f"Week of {week_date} — @soberadventuring"
+
+    blocks = [
+        _callout(f"Generated {datetime.now().strftime('%B %d, %Y %H:%M UTC')} | {content.get('own_posts_summary', '')[:200]}", "📊"),
+        _heading2("TREND REPORT"),
+        _paragraph(content.get("trend_summary", "")),
+        _divider(),
+        _heading2("CAROUSELS (6)"),
+    ]
+
+    for i, c in enumerate(content.get("carousels", []), 1):
+        blocks.extend(_build_carousel_blocks(c, i))
+
+    blocks += [_divider(), _heading2("SHORT REELS — 6-9 SECONDS (4)")]
+    for i, r in enumerate(content.get("reels", []), 1):
+        blocks.extend(_build_reel_blocks(r, i))
+
+    if content.get("monthly"):
+        blocks.extend(_build_monthly_blocks(content["monthly"]))
+
+    # Notion API caps children at 100 blocks per request — chunk if needed
+    page_resp = requests.post(
+        "https://api.notion.com/v1/pages",
+        headers=_notion_headers(),
+        json={
+            "parent": {"page_id": NOTION_PARENT_PAGE_ID},
+            "properties": {"title": {"title": [_text(title)]}},
+            "children": blocks[:100],
+        },
+    )
+    page_resp.raise_for_status()
+    page_id = page_resp.json()["id"]
+
+    # Append remaining blocks if over 100
+    remaining = blocks[100:]
+    if remaining:
+        requests.patch(
+            f"https://api.notion.com/v1/blocks/{page_id}/children",
+            headers=_notion_headers(),
+            json={"children": remaining[:100]},
+        )
+
+    url = f"https://notion.so/{page_id.replace('-', '')}"
+    print(f"  Notion page: {url}")
+    return url
+
+
+# ── Google Docs fallback ─────────────────────────────────────────────────────
+
+def _get_google_services():
     from google.oauth2 import service_account
     from googleapiclient.discovery import build
     creds = service_account.Credentials.from_service_account_info(
@@ -21,99 +173,74 @@ def _get_services():
     return build("docs", "v1", credentials=creds), build("drive", "v3", credentials=creds)
 
 
-def _format_carousel(c: dict, index: int) -> str:
-    lines = [f"\n{'=' * 50}"]
-    lines.append(f"CAROUSEL {index} — {c.get('pillar', '').upper()}")
-    if c.get("secondary_pillar"):
-        lines.append(f"Also: {c['secondary_pillar']}")
-    lines.append(f"Trend link: {c.get('trend_link', '')}")
-    lines.append(f"\nSLIDE 1 HOOK: {c.get('slide_1_hook', '')}")
-    lines.append(f"Visual direction: {c.get('visual_direction', '')}\n")
-    for i, slide in enumerate(c.get("slides", []), 2):
-        lines.append(f"SLIDE {i}: {slide}")
-    lines.append(f"\nFINAL SLIDE: {c.get('final_slide', '')}")
-    lines.append(f"\nCAPTION:\n{c.get('caption', '')}")
-    return "\n".join(lines)
-
-
-def _format_reel(r: dict, index: int) -> str:
-    lines = [f"\n{'=' * 50}"]
-    lines.append(f"REEL {index} — {r.get('pillar', '').upper()}")
-    lines.append(f"Why now: {r.get('why_now', '')}")
-    lines.append(f"\nTEXT OVERLAY: {r.get('text_overlay', '')}")
-    lines.append(f"VISUAL: {r.get('visual_direction', '')}")
-    lines.append(f"AUDIO MOOD: {r.get('audio_mood', '')}")
-    return "\n".join(lines)
-
-
-def _format_monthly(m: dict) -> str:
-    lines = [f"\n{'=' * 50}", "MONTHLY LONG-FORM — MUSEUM OF FAILURES"]
-    lines.append(f"\nSLIDE 1 HOOK: {m.get('slide_1_hook', '')}\n")
-    for slide in m.get("slides", []):
-        lines.append(f"SLIDE {slide.get('slide_number', '')}: {slide.get('text', '')}")
-        if slide.get("visual"):
-            lines.append(f"  Visual: {slide['visual']}")
-    lines.append(f"\nFINAL SLIDE:\n{m.get('final_slide_identity', '')}")
-    lines.append(f"\nCAPTION:\n{m.get('caption', '')}")
-    return "\n".join(lines)
-
-
-def _build_doc_text(content: dict) -> str:
+def _build_plain_text(content: dict) -> str:
     week_date = content["week_date"]
-    parts = [
+    lines = [
         f"CONTENT WEEK OF {week_date.upper()}",
-        f"@soberadventuring — Lexi Morgan",
-        f"Generated: {datetime.now().strftime('%B %d, %Y %H:%M UTC')}\n",
+        f"@soberadventuring | Generated {datetime.now().strftime('%B %d, %Y %H:%M UTC')}",
         "=" * 60,
         "\nTREND REPORT\n",
         content.get("trend_summary", ""),
-        "\n\n" + "=" * 60,
-        "\nCARROUSELS (6)\n",
+        "\n\n" + "=" * 60 + "\nCARROUSELS (6)\n",
     ]
     for i, c in enumerate(content.get("carousels", []), 1):
-        parts.append(_format_carousel(c, i))
-    parts += ["\n\n" + "=" * 60, "\nSHORT REELS — 6-9 SECONDS (4)\n"]
+        lines += [
+            f"\n--- CAROUSEL {i} — {c.get('pillar', '').upper()} ---",
+            f"HOOK: {c.get('slide_1_hook', '')}",
+            f"Visual: {c.get('visual_direction', '')}",
+        ]
+        for j, slide in enumerate(c.get("slides", []), 2):
+            lines.append(f"Slide {j}: {slide}")
+        lines += [f"Final: {c.get('final_slide', '')}", f"Caption: {c.get('caption', '')}"]
+
+    lines.append("\n" + "=" * 60 + "\nREELS (4)\n")
     for i, r in enumerate(content.get("reels", []), 1):
-        parts.append(_format_reel(r, i))
-    if content.get("monthly"):
-        parts += ["\n\n" + "=" * 60]
-        parts.append(_format_monthly(content["monthly"]))
-    return "\n".join(parts)
+        lines += [
+            f"\n--- REEL {i} — {r.get('pillar', '').upper()} ---",
+            f"Overlay: {r.get('text_overlay', '')}",
+            f"Visual: {r.get('visual_direction', '')}",
+            f"Audio: {r.get('audio_mood', '')}",
+        ]
+    return "\n".join(lines)
 
 
-def save_output(content: dict) -> str:
-    """Try Google Docs first, fall back to local .md file."""
+def _save_to_google_docs(content: dict) -> str:
     week_date = content["week_date"]
     title = f"Content Week of {week_date} — @soberadventuring"
-    doc_text = _build_doc_text(content)
+    doc_text = _build_plain_text(content)
+    docs, drive = _get_google_services()
+    doc = docs.documents().create(body={"title": title}).execute()
+    doc_id = doc["documentId"]
+    if GOOGLE_DRIVE_FOLDER_ID:
+        drive.files().update(fileId=doc_id, addParents=GOOGLE_DRIVE_FOLDER_ID, fields="id, parents").execute()
+    docs.documents().batchUpdate(
+        documentId=doc_id,
+        body={"requests": [{"insertText": {"location": {"index": 1}, "text": doc_text}}]},
+    ).execute()
+    url = f"https://docs.google.com/document/d/{doc_id}"
+    print(f"  Google Doc: {url}")
+    return url
+
+
+# ── Main entry ───────────────────────────────────────────────────────────────
+
+def save_output(content: dict) -> str:
+    if NOTION_API_KEY and NOTION_PARENT_PAGE_ID:
+        try:
+            return _save_to_notion(content)
+        except Exception as exc:
+            logging.error(f"Notion failed: {exc}")
+            print(f"  Notion failed ({exc}) — trying Google Docs")
 
     if GOOGLE_SERVICE_ACCOUNT_JSON:
         try:
-            docs, drive = _get_services()
-            doc = docs.documents().create(body={"title": title}).execute()
-            doc_id = doc["documentId"]
-
-            if GOOGLE_DRIVE_FOLDER_ID:
-                drive.files().update(
-                    fileId=doc_id,
-                    addParents=GOOGLE_DRIVE_FOLDER_ID,
-                    fields="id, parents",
-                ).execute()
-
-            docs.documents().batchUpdate(
-                documentId=doc_id,
-                body={"requests": [{"insertText": {"location": {"index": 1}, "text": doc_text}}]},
-            ).execute()
-
-            url = f"https://docs.google.com/document/d/{doc_id}"
-            print(f"  Google Doc: {url}")
-            return url
-
+            return _save_to_google_docs(content)
         except Exception as exc:
             logging.error(f"Google Docs failed: {exc}")
             print(f"  Google Docs failed ({exc}) — saving locally")
 
+    week_date = content["week_date"]
     fallback = Path(f"content_{week_date.replace(' ', '_').replace(',', '')}.md")
-    fallback.write_text(doc_text)
+    fallback.write_text(_build_plain_text(content))
     print(f"  Saved locally: {fallback}")
     return str(fallback)
