@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Stage of Recovery Are You In? · Sober Adventuring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1B0009;
+    --forest: #2D3D24;
+    --terra: #C5442C;
+    --cream: #F4E8D0;
+    --paper: #FBF6EE;
+    --white: #FFFFFF;
+    --muted: #7a6155;
+    --border: rgba(27,0,9,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Bricolage Grotesque', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  .back-nav { background: var(--forest); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+  .back-nav a { font-size: 13px; font-weight: 600; color: var(--cream); text-decoration: none; opacity: 0.8; transition: opacity 0.2s; }
+  .back-nav a:hover { opacity: 1; }
+  .back-nav .site-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--cream); opacity: 0.45; }
+
+  .quiz-hero { background: var(--forest); padding: 64px 28px 56px; text-align: center; }
+  .quiz-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,232,208,0.55); margin-bottom: 18px; }
+  .quiz-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(32px, 6vw, 54px); line-height: 1.05; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 16px; }
+  .quiz-hero h1 em { color: #a8c494; font-style: italic; }
+  .quiz-hero p { font-size: 15px; color: rgba(244,232,208,0.5); max-width: 440px; margin: 0 auto 32px; line-height: 1.65; font-style: italic; font-family: 'DM Serif Display', serif; }
+  .quiz-meta { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .quiz-meta span { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,232,208,0.35); display: flex; align-items: center; gap: 6px; }
+  .quiz-meta span::before { content: '◆'; color: #a8c494; font-size: 8px; }
+
+  .progress-wrap { max-width: 640px; margin: 0 auto; padding: 32px 28px 0; }
+  .progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .progress-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .progress-count { font-family: 'DM Serif Display', serif; font-size: 13px; font-style: italic; color: var(--muted); }
+  .progress-track { height: 3px; background: rgba(27,0,9,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--forest); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+
+  .quiz-wrap { max-width: 640px; margin: 0 auto; padding: 40px 28px 80px; }
+
+  .question-block { display: none; animation: fadeUp 0.35s ease both; }
+  .question-block.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  .question-num { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); margin-bottom: 10px; }
+  .question-text { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 4vw, 30px); line-height: 1.2; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.01em; }
+  .question-text em { color: var(--forest); font-style: italic; }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; cursor: pointer; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s; display: flex; align-items: flex-start; gap: 14px; text-align: left; }
+  .option:hover { border-color: var(--forest); box-shadow: 0 2px 16px rgba(45,61,36,0.1); }
+  .option.selected { border-color: var(--forest); background: rgba(45,61,36,0.04); }
+  .option-dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(27,0,9,0.25); flex-shrink: 0; margin-top: 1px; transition: all 0.18s; display: flex; align-items: center; justify-content: center; }
+  .option.selected .option-dot { background: var(--forest); border-color: var(--forest); }
+  .option.selected .option-dot::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
+  .option-text { font-size: 15px; line-height: 1.5; color: var(--ink); font-weight: 500; }
+  .option-sub { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 400; line-height: 1.4; }
+
+  .btn-next { margin-top: 24px; display: inline-block; background: var(--forest); color: var(--cream); font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.02em; border: none; padding: 14px 28px; cursor: pointer; transition: opacity 0.2s; opacity: 0; pointer-events: none; }
+  .btn-next.visible { opacity: 1; pointer-events: all; }
+  .btn-next:hover { opacity: 0.88; }
+
+  .email-input { width: 100%; max-width: 400px; border: 1.5px solid rgba(27,0,9,0.15); background: var(--white); padding: 14px 16px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; color: var(--ink); outline: none; display: block; margin-bottom: 10px; }
+  .email-input:focus { border-color: var(--forest); }
+  .email-error { font-size: 12px; color: var(--terra); margin-bottom: 8px; display: none; }
+  .email-submit { background: var(--forest); color: var(--cream); font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; border: none; padding: 14px 28px; cursor: pointer; transition: opacity 0.2s; display: block; margin-top: 4px; }
+  .email-submit:hover { opacity: 0.88; }
+  .email-skip { background: none; border: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; padding: 0; margin-top: 12px; display: block; }
+  .email-skip:hover { color: var(--ink); }
+
+  .result-block { display: none; animation: fadeUp 0.4s ease both; }
+  .result-block.active { display: block; }
+  .result-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); margin-bottom: 10px; }
+  .result-heading { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 42px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; }
+  .result-heading em { color: var(--forest); font-style: italic; }
+  .result-body { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 32px; max-width: 500px; }
+  .result-body strong { color: var(--ink); font-weight: 600; }
+  .result-card { background: var(--white); border: 2px solid var(--forest); border-radius: 12px; padding: 28px; margin-bottom: 16px; }
+  .result-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--forest); margin-bottom: 6px; }
+  .result-card h3 { font-family: 'DM Serif Display', serif; font-size: 22px; font-style: italic; color: var(--ink); margin-bottom: 8px; }
+  .result-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+  .result-cta { display: inline-block; background: var(--forest); color: var(--cream); font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; padding: 13px 24px; transition: opacity 0.2s; }
+  .result-cta:hover { opacity: 0.88; }
+  .result-cta.ghost { background: transparent; border: 1.5px solid var(--forest); color: var(--forest); }
+  .retake { margin-top: 24px; font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; background: none; border: none; font-family: 'Bricolage Grotesque', sans-serif; }
+  .retake:hover { color: var(--ink); }
+  .caveat-note { font-family: 'Caveat', cursive; font-size: 18px; font-weight: 700; color: rgba(27,0,9,0.3); margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<div class="back-nav">
+  <a href="/">&#8592; soberadventuring.com</a>
+  <span class="site-name">Sober<em style="font-style:italic;color:#a8c494;">Adventuring.</em></span>
+</div>
+
+<div class="quiz-hero">
+  <p class="quiz-eyebrow">5 questions &middot; 2 minutes</p>
+  <h1>What stage of recovery<br><em>are you in?</em></h1>
+  <p>There are no wrong answers here, and the result will point you toward something actually useful for where you are.</p>
+  <div class="quiz-meta">
+    <span>Free</span>
+    <span>Instant result</span>
+    <span>No labels required</span>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-row">
+    <span class="progress-label">Your progress</span>
+    <span class="progress-count" id="progressCount">Question 1 of 5</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<div class="quiz-wrap">
+
+  <!-- Q1 -->
+  <div class="question-block active" id="q1">
+    <p class="question-num">Question 01</p>
+    <h2 class="question-text">Where are you in your <em>sobriety right now?</em></h2>
+    <div class="options">
+      <div class="option" data-q="1" data-val="a">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">I&rsquo;m just starting out or seriously thinking about it</div>
+          <div class="option-sub">First few weeks, or still figuring out if this is what I want</div>
+        </div>
+      </div>
+      <div class="option" data-q="1" data-val="b">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">I&rsquo;ve been sober for a few months and want to stay that way</div>
+          <div class="option-sub">The foundation is there but it still feels fragile some days</div>
+        </div>
+      </div>
+      <div class="option" data-q="1" data-val="c">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">I&rsquo;ve been sober for a while and feel stuck or like something&rsquo;s off</div>
+          <div class="option-sub">Sober for a year or more, but life hasn&rsquo;t changed as much as I hoped</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-next" onclick="nextQ(1)">Next &rarr;</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-block" id="q2">
+    <p class="question-num">Question 02</p>
+    <h2 class="question-text">What&rsquo;s your biggest challenge <em>day to day?</em></h2>
+    <div class="options">
+      <div class="option" data-q="2" data-val="a">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Cravings and getting through each day without drinking</div>
+          <div class="option-sub">The pull is still strong and I don&rsquo;t always know what to do with it</div>
+        </div>
+      </div>
+      <div class="option" data-q="2" data-val="b">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">The emotions are more intense than I expected</div>
+          <div class="option-sub">Things I used to numb are coming up and I don&rsquo;t always know what to do with them</div>
+        </div>
+      </div>
+      <div class="option" data-q="2" data-val="c">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">I&rsquo;m staying sober but something still feels empty or off</div>
+          <div class="option-sub">The drinking stopped but life doesn&rsquo;t feel that different yet</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-next" onclick="nextQ(2)">Next &rarr;</button>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-block" id="q3">
+    <p class="question-num">Question 03</p>
+    <h2 class="question-text">What kind of support <em>feels most useful?</em></h2>
+    <div class="options">
+      <div class="option" data-q="3" data-val="a">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Someone to check in with and basic tools to stay on track</div>
+          <div class="option-sub">I need structure and a point of contact more than anything</div>
+        </div>
+      </div>
+      <div class="option" data-q="3" data-val="b">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Accountability and help making sense of the harder feelings</div>
+          <div class="option-sub">I want to work through what&rsquo;s underneath the drinking</div>
+        </div>
+      </div>
+      <div class="option" data-q="3" data-val="c">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Deeper work on who I want to be and what I actually want</div>
+          <div class="option-sub">I&rsquo;m past the basics and need help building something real</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-next" onclick="nextQ(3)">Next &rarr;</button>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-block" id="q4">
+    <p class="question-num">Question 04</p>
+    <h2 class="question-text">How&rsquo;s your <em>support system?</em></h2>
+    <div class="options">
+      <div class="option" data-q="4" data-val="a">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Mostly going at this alone right now</div>
+          <div class="option-sub">I don&rsquo;t have many people in my life who understand what this is like</div>
+        </div>
+      </div>
+      <div class="option" data-q="4" data-val="b">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">I have some people but nobody who really gets it</div>
+          <div class="option-sub">Support exists but it&rsquo;s surface-level and I need something more</div>
+        </div>
+      </div>
+      <div class="option" data-q="4" data-val="c">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">I have support but I&rsquo;ve kind of outgrown some of it</div>
+          <div class="option-sub">The connections are there but I&rsquo;m ready for something different</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-next" onclick="nextQ(4)">Next &rarr;</button>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-block" id="q5">
+    <p class="question-num">Question 05</p>
+    <h2 class="question-text">What would make the <em>biggest difference</em> right now?</h2>
+    <div class="options">
+      <div class="option" data-q="5" data-val="a">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Knowing what to expect and having a clear, simple plan</div>
+          <div class="option-sub">I just need to know I&rsquo;m doing this right and what comes next</div>
+        </div>
+      </div>
+      <div class="option" data-q="5" data-val="b">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Someone in my corner who can help me work through the hard parts</div>
+          <div class="option-sub">Real support from someone who understands what this actually involves</div>
+        </div>
+      </div>
+      <div class="option" data-q="5" data-val="c">
+        <div class="option-dot"></div>
+        <div>
+          <div class="option-text">Building a life I&rsquo;m actually excited about being present for</div>
+          <div class="option-sub">Sobriety is the foundation, and I&rsquo;m ready to build something on top of it</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-next" onclick="onQ5Next()">See my result &rarr;</button>
+  </div>
+
+  <!-- EMAIL CAPTURE -->
+  <div class="question-block" id="email-capture">
+    <p class="question-num">Last step</p>
+    <h2 class="question-text">Where should we send your <em>result and resources?</em></h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;">Based on your answers, you&rsquo;ll get a specific next step and the resources that may actually be useful for where you are, rather than a generic recommendation.</p>
+    <input type="email" id="leadEmail" class="email-input" placeholder="Your email address" oninput="document.getElementById('emailError').style.display='none'">
+    <p id="emailError" class="email-error">Please enter a valid email address.</p>
+    <input type="text" id="leadName" class="email-input" placeholder="First name (optional)">
+    <button class="email-submit" onclick="submitLead()">Get my result &rarr;</button>
+    <button class="email-skip" onclick="skipEmail()">Skip, just show my result</button>
+  </div>
+
+  <!-- RESULT A: Early Stage -->
+  <div class="result-block" id="result-a">
+    <p class="caveat-note">your result</p>
+    <p class="result-eyebrow">Early stage</p>
+    <h2 class="result-heading">You&rsquo;re doing harder things<br>than you <em>might realize.</em></h2>
+    <p class="result-body">
+      The first stretch of sobriety may be the most disorienting part, because you&rsquo;re dealing with the physical side, the emotional side, and the identity question all at once, and most people try to do it without enough support. The goal at this stage tends to be simple: stay sober today, and have somewhere to go when it gets hard.
+      <br><br>
+      <strong>The free guide and the community are both good places to start,</strong> and if you want to talk to someone one-on-one about where you are, the Clarity Call is 20 minutes and genuinely free.
+    </p>
+    <div class="result-card">
+      <p class="result-card-label">Good starting points for you</p>
+      <h3>Free Guide + Community</h3>
+      <p>The guide covers 25 things that may actually help in early sobriety, and the Telegram community is where people who get it are talking. Neither requires anything from you.</p>
+      <a href="/#guide" class="result-cta">Get the free guide &rarr;</a>
+    </div>
+    <div class="result-card" style="border-color:rgba(27,0,9,0.15);margin-top:12px">
+      <p class="result-card-label" style="color:var(--muted)">If you want to talk to someone</p>
+      <h3>The Clarity Call</h3>
+      <p>Free 20-minute conversation about where you are and what the next real step might look like.</p>
+      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta ghost">Book the free call &rarr;</a>
+    </div>
+    <button class="retake" onclick="retake()">Retake the quiz</button>
+  </div>
+
+  <!-- RESULT B: Building Stage -->
+  <div class="result-block" id="result-b">
+    <p class="caveat-note">your result</p>
+    <p class="result-eyebrow">Building stage</p>
+    <h2 class="result-heading">You&rsquo;ve got the foundation.<br>Now you may need <em>to build on it.</em></h2>
+    <p class="result-body">
+      Getting through the early stage is real work, and you&rsquo;ve done it, and the next challenge tends to be different: it&rsquo;s less about surviving each day and more about actually processing what was underneath the drinking, and building habits and connections that make sobriety feel worth it. This is where coaching can help more than most people expect.
+      <br><br>
+      <strong>The ALIVE Method</strong> is built for exactly where you are: practical, structured, and focused on building a life worth being present for rather than just staying sober.
+    </p>
+    <div class="result-card">
+      <p class="result-card-label">Recommended for you</p>
+      <h3>Sobriety Coaching: ALIVE Method</h3>
+      <p>1:1 coaching with Alexis, built on 4 years in clinical recovery spaces and her own sobriety. Three months, all pathways supported, payment plans available.</p>
+      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta">Book a free clarity call &rarr;</a>
+    </div>
+    <button class="retake" onclick="retake()">Retake the quiz</button>
+  </div>
+
+  <!-- RESULT C: Growth Stage -->
+  <div class="result-block" id="result-c">
+    <p class="caveat-note">your result</p>
+    <p class="result-eyebrow">Growth stage</p>
+    <h2 class="result-heading">You&rsquo;re ready for<br>the <em>next chapter.</em></h2>
+    <p class="result-body">
+      You&rsquo;ve built real sobriety and you know it, and what may be missing now is a life that actually matches what you&rsquo;re capable of. This stage tends to be about identity and direction rather than survival, and having someone to work through that with who understands the recovery context can make a significant difference.
+      <br><br>
+      <strong>A Clarity Call</strong> is a good place to start, because it&rsquo;s 20 minutes of honest conversation about where you actually are and what the next move might look like, and it costs nothing.
+    </p>
+    <div class="result-card">
+      <p class="result-card-label">Recommended for you</p>
+      <h3>The Clarity Call</h3>
+      <p>Free 20 minutes with Alexis to figure out where you are, what&rsquo;s getting in the way, and what building the next chapter might actually look like for you.</p>
+      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta">Book the free call &rarr;</a>
+    </div>
+    <button class="retake" onclick="retake()">Retake the quiz</button>
+  </div>
+
+</div>
+
+<script>
+  var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
+  var answers = {};
+  var computedResult = '';
+
+  document.querySelectorAll('.option').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      var q = this.dataset.q;
+      document.querySelectorAll('.option[data-q="' + q + '"]').forEach(function(o) { o.classList.remove('selected'); });
+      this.classList.add('selected');
+      answers[q] = this.dataset.val;
+      var btn = document.querySelector('#q' + q + ' .btn-next');
+      if (btn) btn.classList.add('visible');
+    });
+  });
+
+  function nextQ(current) {
+    if (!answers[current]) return;
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('q' + (current + 1)).classList.add('active');
+    updateProgress(current + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress(q) {
+    document.getElementById('progressFill').style.width = (((q - 1) / 5) * 100) + '%';
+    document.getElementById('progressCount').textContent = 'Question ' + q + ' of 5';
+  }
+
+  function onQ5Next() {
+    if (!answers[5]) return;
+    var score = 0;
+    var map = { a: 1, b: 2, c: 3 };
+    for (var q in answers) { score += map[answers[q]] || 0; }
+    if (score <= 8)       computedResult = 'result-a';
+    else if (score <= 11) computedResult = 'result-b';
+    else                  computedResult = 'result-c';
+    document.getElementById('q5').classList.remove('active');
+    document.getElementById('email-capture').classList.add('active');
+    document.getElementById('progressFill').style.width = '90%';
+    document.getElementById('progressCount').textContent = 'Last step';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function submitLead() {
+    var email = document.getElementById('leadEmail').value.trim();
+    if (!email || !email.includes('@')) { document.getElementById('emailError').style.display = 'block'; return; }
+    var name = document.getElementById('leadName').value.trim();
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, name: name, result: computedResult })
+    }).catch(function() {});
+    showResultBlock();
+  }
+
+  function skipEmail() { showResultBlock(); }
+
+  function showResultBlock() {
+    document.getElementById('email-capture').classList.remove('active');
+    document.getElementById(computedResult).classList.add('active');
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressCount').textContent = 'Complete';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function retake() {
+    answers = {}; computedResult = '';
+    document.querySelectorAll('.question-block, .result-block').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
+    document.querySelectorAll('.btn-next').forEach(function(b) { b.classList.remove('visible'); });
+    document.getElementById('leadEmail').value = '';
+    document.getElementById('leadName').value = '';
+    document.getElementById('emailError').style.display = 'none';
+    document.getElementById('q1').classList.add('active');
+    updateProgress(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  updateProgress(1);
+</script>
+</body>
+</html>
