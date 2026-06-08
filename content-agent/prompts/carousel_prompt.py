@@ -58,12 +58,11 @@ When to use: The Failure Archive, peak addiction stories, rock bottom moments.
 - Best posting days: Tuesday, Wednesday, Thursday
 
 ## OUTPUT FORMAT:
-Return a JSON array of exactly 6 carousel concepts. Each object:
+Return a JSON array of carousel concepts. Each object:
 {
   "pillar": "one of the 5 pillar names",
-  "secondary_pillar": "second pillar if it hits two, or null",
+  "calendar_topic": "title of the calendar topic this scripts, or 'original' if no calendar",
   "performance_pattern": "which verified pattern this replicates (Pattern 1-6 from above)",
-  "trend_link": "which trend data point or own post pattern suggested this topic",
   "slide_1_hook": "max 8 words, bold overlay style",
   "visual_direction": "what the first slide photo should look like — face/expression/setting or childhood photo type",
   "slides": ["slide 2 text", "slide 3 text", "slide 4 text", "slide 5 text"],
@@ -75,10 +74,15 @@ Return a JSON array of exactly 6 carousel concepts. Each object:
 Return ONLY a valid JSON array. No markdown fencing. No explanation.
 """
 
-CAROUSEL_USER_TEMPLATE = """Generate 6 carousel concepts for the week of {week_date}.
+CAROUSEL_CALENDAR_SECTION = """CONTENT CALENDAR FROM NOTION — script these topics specifically (one carousel per topic):
+{topic_list}
 
-LEXI'S OWN TOP PERFORMING POSTS (PRIMARY SIGNAL — model new concepts on what's already working):
-{own_posts_summary}
+Generate exactly {count} carousel scripts — one per calendar topic above.
+Match each carousel's pillar, content_type, and feeds_offer to its calendar topic.
+Use the "Seed draft" as creative direction — expand it into a full carousel with Lexi's voice and the verified performance patterns.
+Set "calendar_topic" field to the title of the topic it scripts."""
+
+CAROUSEL_FREEFORM_SECTION = """NO CALENDAR TOPICS FOUND — generate 6 original carousel concepts.
 
 MANDATORY DISTRIBUTION — every run, no exceptions:
 - 1 must replicate Pattern 1 (Radical Inclusivity) — validate all recovery paths, "I'm just glad you're here" energy
@@ -88,10 +92,19 @@ MANDATORY DISTRIBUTION — every run, no exceptions:
 - 1 must replicate Pattern 5 (Childhood Predictors) — childhood photo slide 1, educational framework
 - 1 must replicate Pattern 6 (Raw Vulnerability) — specific age, specific incident, zero distance
 
-Rules for all 6:
+Set "calendar_topic" to "original" for all 6."""
+
+CAROUSEL_USER_TEMPLATE = """Generate carousel scripts for the week of {week_date}.
+
+{calendar_section}
+
+LEXI'S OWN TOP PERFORMING POSTS (PRIMARY SIGNAL — model new concepts on what's already working):
+{own_posts_summary}
+
+Rules for every carousel:
 - Every slide 1 hook under 8 words
 - Every carousel must require Lexi's specific history, numbers, or location — if any sober creator could post it, reject and rewrite
-- "performance_pattern" field must name which of the 6 patterns it replicates and cite the relevant verified post
+- "performance_pattern" field must name which of the 6 verified patterns it replicates
 
 TREND RESEARCH THIS WEEK (niche-wide):
 {trend_summary}
