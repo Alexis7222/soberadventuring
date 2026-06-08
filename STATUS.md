@@ -28,7 +28,7 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 
 | Variable | Value | Purpose |
 |----------|-------|---------|
-| `ADMIN_KEY` | Set this yourself | Password for `/alexis7222` admin dashboard GET requests |
+| `ADMIN_KEY` | `soberadventuring2026` | Password for `/alexis7222` admin dashboard GET requests |
 
 ### KV Namespace (set in Cloudflare dashboard)
 
@@ -36,14 +36,7 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 |---------|---------------|---------|
 | `LEADS` | LEADS | Stores every lead submitted through any form |
 
-**Setup required (one-time):**
-1. Cloudflare dashboard → Workers & Pages → KV → Create namespace named `LEADS`
-2. Copy the namespace ID
-3. Replace `REPLACE_WITH_YOUR_KV_NAMESPACE_ID` in `sa-worker/wrangler.toml` with the real ID
-4. Go to Workers & Pages → bitter-star-c87e → Settings → Variables → Add `ADMIN_KEY` (plain text secret, any password you choose)
-5. Run `wrangler deploy` from `C:\Users\Alexis\sa-worker\`
-
-Until KV is set up, the worker still handles Kit subscriptions and Resend email — it just won't store leads in KV or let the admin dashboard load them.
+**Setup complete as of 2026-06-08.** KV namespace ID: `c40f0fc7a633497d9a62116cdbcc1e06`. ADMIN_KEY set. Worker deployed.
 
 ### API Keys (hardcoded in worker.js)
 
