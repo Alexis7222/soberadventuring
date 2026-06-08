@@ -60,38 +60,62 @@ def _callout(text: str, emoji: str = "📌") -> dict:
 
 def _build_carousel_blocks(c: dict, index: int) -> list:
     pillar = c.get("pillar", "").upper()
+    fmt = c.get("format", "")
+    calendar_topic = c.get("calendar_topic", "")
+    topic_label = f" | {calendar_topic}" if calendar_topic and calendar_topic != "original" else ""
     blocks = [
         _divider(),
-        _heading2(f"CAROUSEL {index} — {pillar}"),
-        _callout(f"Hook: {c.get('slide_1_hook', '')}", "🎯"),
-        _paragraph(f"Visual: {c.get('visual_direction', '')}"),
-        _paragraph(f"Trend link: {c.get('trend_link', '')}"),
+        _heading2(f"CAROUSEL {index} — {pillar}{topic_label}"),
+        _callout(f"Format: {fmt} | Pattern: {c.get('performance_pattern', '')}", "🎯"),
+        _paragraph(f"Cover hook: {c.get('cover_hook', '')}"),
+        _paragraph(f"Cover visual: {c.get('cover_visual', '')}"),
         _heading3("Slides"),
     ]
-    for i, slide in enumerate(c.get("slides", []), 2):
-        blocks.append(_paragraph(f"Slide {i}: {slide}"))
+    for i, slide in enumerate(c.get("slides", []), 1):
+        if isinstance(slide, dict):
+            header_line = f"[{slide.get('header', f'Slide {i}')}] {slide.get('text', '')}"
+            blocks.append(_paragraph(header_line))
+            blocks.append(_paragraph(f"  Visual: {slide.get('visual', '')}"))
+        else:
+            blocks.append(_paragraph(f"Slide {i}: {slide}"))
     blocks += [
-        _paragraph(f"Final slide: {c.get('final_slide', '')}"),
         _heading3("Caption"),
         _paragraph(c.get("caption", "")),
         _heading3("Share Hook"),
         _paragraph(c.get("share_hook", "")),
     ]
-    if c.get("secondary_pillar"):
-        blocks.append(_paragraph(f"Also covers: {c['secondary_pillar']}"))
     return blocks
 
 
 def _build_reel_blocks(r: dict, index: int) -> list:
     pillar = r.get("pillar", "").upper()
+    calendar_topic = r.get("calendar_topic", "")
+    topic_label = f" | {calendar_topic}" if calendar_topic and calendar_topic != "original" else ""
     return [
         _divider(),
-        _heading2(f"REEL {index} — {pillar}"),
+        _heading2(f"REEL {index} — {pillar}{topic_label}"),
         _callout(f"Text overlay: {r.get('text_overlay', '')}", "🎬"),
         _paragraph(f"Visual: {r.get('visual_direction', '')}"),
         _paragraph(f"Audio mood: {r.get('audio_mood', '')}"),
         _paragraph(f"Why now: {r.get('why_now', '')}"),
     ]
+
+
+def _build_story_blocks(s: dict, index: int) -> list:
+    day = s.get("day", f"Day {index}")
+    stype = s.get("type", "").replace("_", " ")
+    blocks = [
+        _divider(),
+        _heading2(f"STORY {index} — {day.upper()} ({stype})"),
+        _callout(f"Intention: {s.get('intention', '')}", "💬"),
+    ]
+    for j, slide in enumerate(s.get("slides", []), 1):
+        blocks.append(_heading3(f"Slide {j}"))
+        blocks.append(_paragraph(f"Text overlay: {slide.get('text_overlay', '')}"))
+        blocks.append(_paragraph(f"Visual: {slide.get('visual', '')}"))
+        if slide.get("engagement"):
+            blocks.append(_paragraph(f"Engagement: {slide['engagement']}", bold=True))
+    return blocks
 
 
 def _build_monthly_blocks(m: dict) -> list:
@@ -113,29 +137,66 @@ def _build_monthly_blocks(m: dict) -> list:
     return blocks
 
 
+def _append_blocks(page_id: str, blocks: list):
+    """Append blocks to a Notion page in 100-block chunks (API limit)."""
+    offset = 0
+    while offset < len(blocks):
+        chunk = blocks[offset:offset + 100]
+        resp = requests.patch(
+            f"https://api.notion.com/v1/blocks/{page_id}/children",
+            headers=_notion_headers(),
+            json={"children": chunk},
+        )
+        resp.raise_for_status()
+        offset += 100
+
+
 def _save_to_notion(content: dict) -> str:
     week_date = content["week_date"]
     title = f"Week of {week_date} — @soberadventuring"
+    vault_alerts = content.get("vault_alerts", [])
 
     blocks = [
-        _callout(f"Generated {datetime.now().strftime('%B %d, %Y %H:%M UTC')} | {content.get('own_posts_summary', '')[:200]}", "📊"),
+        _callout(
+            f"Generated {datetime.now().strftime('%B %d, %Y %H:%M UTC')} | {content.get('own_posts_summary', '')[:200]}",
+            "📊",
+        ),
+    ]
+
+    if vault_alerts:
+        alert_lines = [
+            "🔥 GOLD VAULT ALERT — these posts hit 300+ likes and aren't in the vault yet. Grab the slides and add them:"
+        ]
+        for a in vault_alerts:
+            alert_lines.append(f"  • {a['likes']} likes: \"{a['hook']}\"")
+        blocks.append(_callout("\n".join(alert_lines), "🔥"))
+
+    carousel_count = len(content.get("carousels", []))
+    reel_count = len(content.get("reels", []))
+    story_count = len(content.get("stories", []))
+
+    blocks += [
         _heading2("TREND REPORT"),
         _paragraph(content.get("trend_summary", "")),
         _divider(),
-        _heading2("CAROUSELS (6)"),
+        _heading2(f"CAROUSELS ({carousel_count})"),
     ]
 
     for i, c in enumerate(content.get("carousels", []), 1):
         blocks.extend(_build_carousel_blocks(c, i))
 
-    blocks += [_divider(), _heading2("SHORT REELS — 6-9 SECONDS (4)")]
+    blocks += [_divider(), _heading2(f"REELS — 6-9 SECONDS ({reel_count})")]
     for i, r in enumerate(content.get("reels", []), 1):
         blocks.extend(_build_reel_blocks(r, i))
+
+    if content.get("stories"):
+        blocks += [_divider(), _heading2(f"STORIES — MON–FRI ({story_count})")]
+        for i, s in enumerate(content.get("stories", []), 1):
+            blocks.extend(_build_story_blocks(s, i))
 
     if content.get("monthly"):
         blocks.extend(_build_monthly_blocks(content["monthly"]))
 
-    # Notion API caps children at 100 blocks per request — chunk if needed
     page_resp = requests.post(
         "https://api.notion.com/v1/pages",
         headers=_notion_headers(),
@@ -148,14 +209,8 @@ def _save_to_notion(content: dict) -> str:
     page_resp.raise_for_status()
     page_id = page_resp.json()["id"]
 
-    # Append remaining blocks if over 100
-    remaining = blocks[100:]
-    if remaining:
-        requests.patch(
-            f"https://api.notion.com/v1/blocks/{page_id}/children",
-            headers=_notion_headers(),
-            json={"children": remaining[:100]},
-        )
+    if len(blocks) > 100:
+        _append_blocks(page_id, blocks[100:])
 
     url = f"https://notion.so/{page_id.replace('-', '')}"
     print(f"  Notion page: {url}")
@@ -179,21 +234,31 @@ def _build_plain_text(content: dict) -> str:
         f"CONTENT WEEK OF {week_date.upper()}",
         f"@soberadventuring | Generated {datetime.now().strftime('%B %d, %Y %H:%M UTC')}",
         "=" * 60,
-        "\nTREND REPORT\n",
-        content.get("trend_summary", ""),
-        "\n\n" + "=" * 60 + "\nCARROUSELS (6)\n",
     ]
+
+    vault_alerts = content.get("vault_alerts", [])
+    if vault_alerts:
+        lines.append("\n🔥 GOLD VAULT ALERTS:")
+        for a in vault_alerts:
+            lines.append(f"  {a['likes']} likes: \"{a['hook']}\"")
+
+    lines += ["\nTREND REPORT\n", content.get("trend_summary", ""), "\n\n" + "=" * 60 + "\nCARROUSELS\n"]
+
     for i, c in enumerate(content.get("carousels", []), 1):
         lines += [
-            f"\n--- CAROUSEL {i} — {c.get('pillar', '').upper()} ---",
-            f"HOOK: {c.get('slide_1_hook', '')}",
-            f"Visual: {c.get('visual_direction', '')}",
+            f"\n--- CAROUSEL {i} — {c.get('pillar', '').upper()} ({c.get('format', '')}) ---",
+            f"Cover hook: {c.get('cover_hook', '')}",
+            f"Cover visual: {c.get('cover_visual', '')}",
         ]
-        for j, slide in enumerate(c.get("slides", []), 2):
-            lines.append(f"Slide {j}: {slide}")
-        lines += [f"Final: {c.get('final_slide', '')}", f"Caption: {c.get('caption', '')}"]
+        for j, slide in enumerate(c.get("slides", []), 1):
+            if isinstance(slide, dict):
+                lines.append(f"  [{slide.get('header', '')}] {slide.get('text', '')}")
+                lines.append(f"    Visual: {slide.get('visual', '')}")
+            else:
+                lines.append(f"  Slide {j}: {slide}")
+        lines.append(f"Caption: {c.get('caption', '')}")
 
-    lines.append("\n" + "=" * 60 + "\nREELS (4)\n")
+    lines.append("\n" + "=" * 60 + "\nREELS\n")
     for i, r in enumerate(content.get("reels", []), 1):
         lines += [
             f"\n--- REEL {i} — {r.get('pillar', '').upper()} ---",
@@ -201,6 +266,20 @@ def _build_plain_text(content: dict) -> str:
             f"Visual: {r.get('visual_direction', '')}",
             f"Audio: {r.get('audio_mood', '')}",
         ]
+
+    if content.get("stories"):
+        lines.append("\n" + "=" * 60 + "\nSTORIES\n")
+        for i, s in enumerate(content.get("stories", []), 1):
+            lines.append(
+                f"\n--- STORY {i} — {s.get('day', '').upper()} ({s.get('type', '').replace('_', ' ')}) ---"
+            )
+            lines.append(f"Intention: {s.get('intention', '')}")
+            for j, slide in enumerate(s.get("slides", []), 1):
+                lines.append(f"  Slide {j}: {slide.get('text_overlay', '')}")
+                lines.append(f"    Visual: {slide.get('visual', '')}")
+                if slide.get("engagement"):
+                    lines.append(f"    Engagement: {slide['engagement']}")
+
     return "\n".join(lines)
 
 
