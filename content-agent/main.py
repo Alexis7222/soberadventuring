@@ -3,14 +3,15 @@
 @soberadventuring Content Agent
 
 Weekly flow:
-  1. Scrape trending sobriety content via Apify (hashtags + competitor accounts)
-  2. Analyze top hooks and engagement patterns
-  3. Generate 6 carousels + 4 short reels (+ monthly long-form on first Monday)
-  4. Save to Google Doc (falls back to local .md)
-  5. Email summary with doc link
+  1. Calendar runs Monday 1am UTC — writes this week's topics to Notion
+  2. Scrape trending sobriety content via Apify (hashtags + competitor accounts)
+  3. Read Notion calendar for this week's Instagram topics
+  4. Generate full carousel scripts for those topics (or 6 originals if calendar unavailable)
+  5. Generate 4 reels from trend research
+  6. Save to Notion page (falls back to Google Doc, then local .md)
+  7. Email summary
 
-Runs every Monday 8am GMT+7 via GitHub Actions.
-Run manually: python manual_run.py
+Runs every Monday 3am UTC via GitHub Actions (2 hours after calendar).
 """
 
 import sys
@@ -27,8 +28,10 @@ from modules.emailer import send_summary
 
 def main():
     today = datetime.today()
-    days_until_monday = (7 - today.weekday()) % 7
-    week_start = today if days_until_monday == 0 else today + timedelta(days=days_until_monday)
+    days_to_next_monday = (7 - today.weekday()) % 7
+    if days_to_next_monday == 0:
+        days_to_next_monday = 7
+    week_start = today + timedelta(days=days_to_next_monday)
     week_date = week_start.strftime("%B %d, %Y")
 
     print(f"\n@soberadventuring Content Agent — Week of {week_date}")
@@ -43,7 +46,11 @@ def main():
     carousel_count = len(content.get("carousels", []))
     reel_count = len(content.get("reels", []))
     has_monthly = content.get("monthly") is not None
-    label = f"{carousel_count} carousels, {reel_count} reels" + (" + monthly long-form" if has_monthly else "")
+    calendar_count = content.get("calendar_topics_count", 0)
+    source = f"{calendar_count} calendar topics" if calendar_count else "freeform generation"
+    label = f"{carousel_count} carousels ({source}), {reel_count} reels"
+    if has_monthly:
+        label += " + monthly long-form"
     print(f"  Generated: {label}")
 
     print("\n[3/4] Saving output...")
