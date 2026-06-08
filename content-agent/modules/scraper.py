@@ -49,23 +49,30 @@ def _run_actor(actor_input: dict) -> list:
     run_id = run["id"]
     dataset_id = run["defaultDatasetId"]
 
-    for _ in range(60):
+    print(f"  Apify run {run_id} started — waiting for results...")
+    for attempt in range(60):
         time.sleep(10)
-        status = requests.get(
+        status_resp = requests.get(
             f"{APIFY_BASE_URL}/actor-runs/{run_id}",
             params={"token": APIFY_API_TOKEN},
             timeout=15,
-        ).json()["data"]["status"]
+        )
+        status_resp.raise_for_status()
+        status = status_resp.json()["data"]["status"]
+        print(f"  [{attempt * 10}s] Status: {status}")
         if status == "SUCCEEDED":
             break
         if status in ("FAILED", "ABORTED", "TIMED-OUT"):
-            raise RuntimeError(f"Apify run {run_id} ended: {status}")
+            raise RuntimeError(f"Apify run {run_id} ended with status: {status}")
 
-    items = requests.get(
+    items_resp = requests.get(
         f"{APIFY_BASE_URL}/datasets/{dataset_id}/items",
         params={"token": APIFY_API_TOKEN, "limit": 200},
         timeout=30,
-    ).json()
+    )
+    items_resp.raise_for_status()
+    items = items_resp.json()
+    print(f"  Got {len(items) if isinstance(items, list) else 0} items from Apify")
     return items if isinstance(items, list) else []
 
 
@@ -121,7 +128,10 @@ def _analyze_trend_posts(posts: list) -> dict:
 
 def _load_fallback() -> dict:
     if FALLBACK_PATH.exists():
-        return json.loads(FALLBACK_PATH.read_text())
+        data = json.loads(FALLBACK_PATH.read_text())
+        print("  Using fallback hooks from previous successful scrape")
+        return data
+    print("  Using hardcoded fallback hooks")
     return {
         "top_hooks": [
             "My museum of failures as a 26 year old addict",
@@ -139,27 +149,27 @@ def _load_fallback() -> dict:
 
 def run_research() -> dict:
     if not APIFY_API_TOKEN:
-        logging.warning("APIFY_API_TOKEN not set — using fallback")
+        print("  APIFY_API_TOKEN not set — using fallback")
         return _load_fallback()
 
     try:
-        # Pull Lexi's own posts — this is the analytics source
+        print("  Scraping @soberadventuring own posts...")
         own_posts_raw = _run_actor({
             "usernames": [OWN_ACCOUNT],
             "resultsType": "posts",
             "resultsLimit": 50,
         })
         own_top_posts = _analyze_own_posts(own_posts_raw)
+        print(f"  Own posts scraped: {len(own_top_posts)} top performers identified")
 
-        # Pull hashtag trends
-        hashtag_urls = [f"https://www.instagram.com/explore/tags/{h}/" for h in HASHTAGS]
+        print("  Scraping hashtag trends...")
         hashtag_posts = _run_actor({
-            "directUrls": hashtag_urls,
+            "hashtags": HASHTAGS,
             "resultsType": "posts",
             "resultsLimit": 15,
         })
 
-        # Pull competitor posts
+        print("  Scraping competitor accounts...")
         competitor_posts = _run_actor({
             "usernames": COMPETITOR_ACCOUNTS,
             "resultsType": "posts",
@@ -174,8 +184,10 @@ def run_research() -> dict:
             "scraped_at": datetime.utcnow().isoformat(),
         }
         FALLBACK_PATH.write_text(json.dumps(results, indent=2))
+        print("  Fallback hooks updated with fresh data")
         return results
 
     except Exception as exc:
         logging.error(f"Scraper error: {exc}")
+        print(f"  Scraper failed: {exc} — using fallback")
         return _load_fallback()
