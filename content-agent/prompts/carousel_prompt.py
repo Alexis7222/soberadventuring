@@ -1,75 +1,36 @@
 from prompts.character_brief import LEXI_BRIEF
+from prompts.gold_vault import GOLD_VAULT_PROMPT
 
-CAROUSEL_SYSTEM = LEXI_BRIEF + """
+CAROUSEL_SYSTEM = LEXI_BRIEF + "\n\n" + GOLD_VAULT_PROMPT + """
 
-## VERIFIED TOP PERFORMING PATTERNS — MODEL NEW CAROUSELS ON THESE
+## OUTPUT FORMAT
+Return a JSON array of carousel concepts. Each object must match the structure of the gold vault posts exactly.
 
-These are real numbers from @soberadventuring. Study the pattern, then replicate it with fresh material.
-
-PATTERN 1: RADICAL INCLUSIVITY (9,472 likes — highest in account history)
-Hook: "This page supports all pathways to recovery... I'm just glad you're here"
-Structure: Validate every recovery path. Zero gatekeeping. AA, SMART, therapy, cold turkey, harm reduction — all welcome.
-Closer: "I'm just glad you're here" — warm, personal, never preachy.
-WHY IT WORKED: People shared it to friends who were still deciding whether recovery was "for them."
-When to use: Community, belonging, first step in sobriety, "is recovery for me" content.
-
-PATTERN 2: EDUCATIONAL + SPECIFIC NUMBERS (4,041 likes)
-Hook: "Feb–April, the air turns apocalyptic. AQI regularly hits 300–500+"
-Structure: Lead with a surprising fact or number. Build with data. Connect personally to the recovery story.
-WHY IT WORKED: Specific numbers = shareable. Gave people something to quote. Personal connection made it human.
-When to use: Any topic with real statistics — childhood addiction predictors, relapse rates, the Rat Park study,
-sobriety science, freelance income numbers, cost of drinking vs. sobriety.
-
-PATTERN 3: CONTRARIAN RECOVERY TAKE (776 likes)
-Hook: "Most sober people I've met stay away from bars. I don't."
-Structure: State personal opinion as personal fact. "IF and only if" language. Anchor in specific experience.
-WHY IT WORKED: Creates comment debate. People tag their sober friends who've had the same thought.
-When to use: Any received sober wisdom that Lexi actually disagrees with from lived experience.
-
-PATTERN 4: DARK HUMOUR / MEME (386 likes, highly shareable)
-Hook: "Wym addiction? martha was just stressed about office politics…"
-Structure: One sentence, meme energy, cultural reference, zero effort aesthetic.
-WHY IT WORKED: Instantly shareable. Sent to people who won't recognise the problem described about themselves.
-When to use: Denial, the "not that bad" phase, addiction humour that hits too close to home.
-
-PATTERN 5: CHILDHOOD PREDICTORS — childhood photo slide 1 (214 likes, high saves)
-Structure: Childhood photo on slide 1. Educational framework (predicts addiction, neuroscience, Rat Park).
-Academic + deeply personal = saves and follow prompt.
-When to use: Childhood behaviors, family patterns, intergenerational trauma, neurodivergence + addiction.
-
-PATTERN 6: RAW VULNERABILITY STORY (155 likes, 18 comments — confessional comment section)
-Hook: Start in the worst of it. Specific age, specific incident. No distance.
-WHY IT WORKED: Zero performance. Comments were "me too" not "great post."
-When to use: The Failure Archive, peak addiction stories, rock bottom moments.
-
-## WHAT KILLS ENGAGEMENT (real data from the account):
-- Pure lifestyle with no recovery angle: 49-168 likes max
-- Generic lists any sober creator could post: low saves, no comments, no shares
-- Travel content disconnected from the recovery story: underperforms
-- Content that doesn't require Lexi's specific history: rewrite it
-
-## CAROUSEL FORMAT RULES:
-- First slide: FACE photo or CHILDHOOD photo direction — never a graphic or text-only image
-- Bold serif or handwritten-style font, warm amber or dark background
-- Slide 1 hook: MAX 8 words. Challenges a belief or creates curiosity. Does not explain itself.
-- Slides 2-6: 1-2 punchy lines each. Short. Line breaks. No filler.
-- Final slide: ONE statement or question. No hard sell. No call to action.
-- Total: 5-8 slides
-- Best posting days: Tuesday, Wednesday, Thursday
-
-## OUTPUT FORMAT:
-Return a JSON array of carousel concepts. Each object:
 {
+  "format": "FORMAT_A_MEMOIR_CHAPTERS or FORMAT_B_CONTRARIAN_REASONS",
   "pillar": "one of the 5 pillar names",
   "calendar_topic": "title of the calendar topic this scripts, or 'original' if no calendar",
-  "performance_pattern": "which verified pattern this replicates (Pattern 1-6 from above)",
-  "slide_1_hook": "max 8 words, bold overlay style",
-  "visual_direction": "what the first slide photo should look like — face/expression/setting or childhood photo type",
-  "slides": ["slide 2 text", "slide 3 text", "slide 4 text", "slide 5 text"],
-  "final_slide": "one statement or open question",
-  "caption": "under 150 words. Opens with a specific fact or statement, never a feeling or question. Lexi's voice throughout — dark humour, specific numbers, no inspirational-poster energy. Ends with follow prompt or open statement.",
-  "share_hook": "one sentence explaining why someone would share this to tag someone they love or someone who is struggling"
+  "performance_pattern": "which gold vault pattern this replicates and why",
+  "cover_hook": "max 8 words — the title overlay on slide 1",
+  "cover_visual": "describe the slide 1 photo — face selfie, childhood photo, or other. Be specific about expression, setting, mood.",
+  "slides": [
+    {
+      "header": "Chapter name (2-5 words) — for Format A: clinical or experiential label. For Format B: the reason stated as a short phrase.",
+      "text": "Body text for this slide. 1-3 sentences max. Lexi's voice. Specific detail only she could give.",
+      "visual": "Photo direction for this slide — what's in the image, mood, setting."
+    }
+  ],
+  "caption": "Under 150 words. Opens with specific fact or statement — never a question, never an emotion. Lexi's voice throughout. Ends with one follow prompt, open statement, or 'IF and only if' qualifier. No emoji sign-off.",
+  "share_hook": "One sentence: why would someone send this to a specific person in their life?"
 }
+
+CRITICAL FORMAT RULES:
+- "slides" array does NOT include the cover slide — that is covered by cover_hook and cover_visual
+- Every slide must have a header (short chapter name) AND body text AND visual direction
+- Format A slides: chapter headers are clinical labels OR experiential names (Wild Delusions, Conduct disorder, Codependency)
+- Format B slides: chapter headers are the reason stated as a phrase (NA beverages slap!, To set an example)
+- Final slide in the array is always the closing slide
+- Body text per slide: 1-3 sentences, specific detail, voice is always Lexi's
 
 Return ONLY a valid JSON array. No markdown fencing. No explanation.
 """
@@ -79,18 +40,16 @@ CAROUSEL_CALENDAR_SECTION = """CONTENT CALENDAR FROM NOTION — script these top
 
 Generate exactly {count} carousel scripts — one per calendar topic above.
 Match each carousel's pillar, content_type, and feeds_offer to its calendar topic.
-Use the "Seed draft" as creative direction — expand it into a full carousel with Lexi's voice and the verified performance patterns.
+Use the "Seed draft" as creative direction — expand it into a full carousel using Format A or Format B from the gold vault.
 Set "calendar_topic" field to the title of the topic it scripts."""
 
 CAROUSEL_FREEFORM_SECTION = """NO CALENDAR TOPICS FOUND — generate 6 original carousel concepts.
 
 MANDATORY DISTRIBUTION — every run, no exceptions:
-- 1 must replicate Pattern 1 (Radical Inclusivity) — validate all recovery paths, "I'm just glad you're here" energy
-- 1 must replicate Pattern 2 (Educational + Specific Numbers) — surprising stat as the hook, personal recovery tie-in
-- 1 must replicate Pattern 3 (Contrarian Take) — Lexi's personal opinion against received sober wisdom
-- 1 must replicate Pattern 4 (Dark Humour / Meme) — one-liner, highly shareable, sent to someone in denial
-- 1 must replicate Pattern 5 (Childhood Predictors) — childhood photo slide 1, educational framework
-- 1 must replicate Pattern 6 (Raw Vulnerability) — specific age, specific incident, zero distance
+- 2 must use Format A (memoir chapters) — one with childhood photo cover, one with raw current Lexi face
+- 2 must use Format B (contrarian reasons) — "N reasons I [do thing most sober people avoid]"
+- 1 must be the radical inclusivity / "I'm just glad you're here" pattern — all recovery pathways, zero gatekeeping
+- 1 must lead with a clinical label + absurd personal example (the Miley Cyrus / disco floor / Acacia twin formula)
 
 Set "calendar_topic" to "original" for all 6."""
 
@@ -98,13 +57,15 @@ CAROUSEL_USER_TEMPLATE = """Generate carousel scripts for the week of {week_date
 
 {calendar_section}
 
-LEXI'S OWN TOP PERFORMING POSTS (PRIMARY SIGNAL — model new concepts on what's already working):
+LEXI'S OWN TOP PERFORMING POSTS THIS WEEK (use as primary signal — what's resonating with her audience right now):
 {own_posts_summary}
 
 Rules for every carousel:
-- Every slide 1 hook under 8 words
-- Every carousel must require Lexi's specific history, numbers, or location — if any sober creator could post it, reject and rewrite
-- "performance_pattern" field must name which of the 6 verified patterns it replicates
+- Every cover_hook under 8 words
+- Every carousel must require Lexi's specific history, numbers, or location — if any sober creator could post it, rewrite it
+- Photo directions must be specific — not "face photo" but "close-up mirror selfie, dark outfit, serious expression, tattoo visible"
+- Chapter headers must be 2-5 words max
+- Body text must have at least one specific detail only Lexi could provide (a real name, a real number, a real place, a real absurd incident)
 
 TREND RESEARCH THIS WEEK (niche-wide):
 {trend_summary}
