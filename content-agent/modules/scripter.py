@@ -5,9 +5,15 @@ from datetime import datetime
 from pathlib import Path
 import anthropic
 
-from prompts.carousel_prompt import CAROUSEL_SYSTEM, CAROUSEL_USER_TEMPLATE
+from prompts.carousel_prompt import (
+    CAROUSEL_SYSTEM,
+    CAROUSEL_USER_TEMPLATE,
+    CAROUSEL_CALENDAR_SECTION,
+    CAROUSEL_FREEFORM_SECTION,
+)
 from prompts.reel_prompt import REEL_SYSTEM, REEL_USER_TEMPLATE
 from prompts.monthly_prompt import MONTHLY_SYSTEM, MONTHLY_USER_TEMPLATE
+from modules.notion_reader import fetch_this_weeks_calendar_topics
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 LOG_PATH = Path(__file__).parent.parent / "errors.log"
@@ -33,14 +39,35 @@ def _build_own_posts_summary(research: dict) -> str:
     own_posts = research.get("own_top_posts", [])
     if not own_posts:
         return "No own post data available this week — use character brief analytics."
-    lines = ["@soberadventuring TOP PERFORMING POSTS (ranked by engagement rate):"]
+    lines = ["@soberadventuring TOP PERFORMING POSTS (ranked by likes):"]
     for i, p in enumerate(own_posts[:10], 1):
         lines.append(
-            f"{i}. [{p.get('type', '?').upper()}] ER: {p.get('engagement_rate', 0)}% | "
-            f"{p.get('likes', 0)} likes, {p.get('comments', 0)} comments\n"
+            f"{i}. [{p.get('type', '?').upper()}] {p.get('likes', 0)} likes, {p.get('comments', 0)} comments | "
+            f"ER: {p.get('engagement_rate', 0)}%\n"
             f"   Hook: {p.get('hook', '')[:120]}"
         )
     return "\n".join(lines)
+
+
+def _build_calendar_section(topics: list) -> str:
+    if not topics:
+        return CAROUSEL_FREEFORM_SECTION
+
+    topic_lines = []
+    for i, t in enumerate(topics, 1):
+        draft_excerpt = (t.get("draft", "") or "")[:200]
+        lines = [
+            f"{i}. \"{t['title']}\" | {t.get('content_type', '')} | Pillar: {t.get('pillar', '')}",
+            f"   Date: {t.get('date', '')} | Feeds: {t.get('feeds_offer', '')}",
+        ]
+        if draft_excerpt:
+            lines.append(f"   Seed draft: {draft_excerpt}")
+        topic_lines.append("\n".join(lines))
+
+    return CAROUSEL_CALENDAR_SECTION.format(
+        topic_list="\n\n".join(topic_lines),
+        count=len(topics),
+    )
 
 
 def _call_claude(system: str, user: str) -> list | dict:
@@ -60,9 +87,11 @@ def _call_claude(system: str, user: str) -> list | dict:
     return json.loads(raw.strip())
 
 
-def generate_carousels(week_date: str, trend_summary: str, own_posts_summary: str) -> list:
+def generate_carousels(week_date: str, trend_summary: str, own_posts_summary: str, calendar_topics: list) -> list:
+    calendar_section = _build_calendar_section(calendar_topics)
     user = CAROUSEL_USER_TEMPLATE.format(
         week_date=week_date,
+        calendar_section=calendar_section,
         trend_summary=trend_summary,
         own_posts_summary=own_posts_summary,
     )
@@ -88,8 +117,15 @@ def generate_content(research: dict, week_date: str) -> dict:
     trend_summary = _build_trend_summary(research)
     own_posts_summary = _build_own_posts_summary(research)
 
+    print("  Reading Notion content calendar for this week's topics...")
+    calendar_topics = fetch_this_weeks_calendar_topics()
+    if calendar_topics:
+        print(f"  Scripting {len(calendar_topics)} calendar-planned topics")
+    else:
+        print("  No calendar topics — generating 6 original carousel concepts")
+
     print("  Generating carousels...")
-    carousels = generate_carousels(week_date, trend_summary, own_posts_summary)
+    carousels = generate_carousels(week_date, trend_summary, own_posts_summary, calendar_topics)
 
     print("  Generating reels...")
     reels = generate_reels(week_date, trend_summary, own_posts_summary)
@@ -102,6 +138,7 @@ def generate_content(research: dict, week_date: str) -> dict:
 
     return {
         "week_date": week_date,
+        "calendar_topics_count": len(calendar_topics),
         "trend_summary": trend_summary,
         "own_posts_summary": own_posts_summary,
         "carousels": carousels,
