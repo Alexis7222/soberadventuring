@@ -32,36 +32,30 @@ def _get_prop(props: dict, name: str) -> str:
     return ""
 
 
-def fetch_this_weeks_calendar_topics() -> list:
-    """Read next week's Instagram posts from the Notion content calendar.
-
-    The calendar runs Monday 1am and plans the week starting next Monday.
-    The content agent runs Monday 3am and reads those same entries to script them.
-    """
-    if not NOTION_DATABASE_ID or not NOTION_API_KEY:
-        print("  Notion calendar unavailable — NOTION_DATABASE_ID or NOTION_API_KEY not set")
-        return []
-
+def _next_week_range() -> tuple:
     today = datetime.today()
     days_to_next_monday = (7 - today.weekday()) % 7
     if days_to_next_monday == 0:
         days_to_next_monday = 7
     next_monday = today + timedelta(days=days_to_next_monday)
     following_monday = next_monday + timedelta(days=7)
+    return next_monday, following_monday
+
+
+def _fetch_calendar_topics(platform: str) -> list:
+    if not NOTION_DATABASE_ID or not NOTION_API_KEY:
+        print(f"  Notion calendar unavailable — NOTION_DATABASE_ID or NOTION_API_KEY not set")
+        return []
+
+    next_monday, following_monday = _next_week_range()
 
     url = f"{NOTION_BASE_URL}/databases/{NOTION_DATABASE_ID}/query"
     payload = {
         "filter": {
             "and": [
-                {"property": "Platform", "select": {"equals": "Instagram"}},
-                {
-                    "property": "Date",
-                    "date": {"on_or_after": next_monday.strftime("%Y-%m-%d")},
-                },
-                {
-                    "property": "Date",
-                    "date": {"before": following_monday.strftime("%Y-%m-%d")},
-                },
+                {"property": "Platform", "select": {"equals": platform}},
+                {"property": "Date", "date": {"on_or_after": next_monday.strftime("%Y-%m-%d")}},
+                {"property": "Date", "date": {"before": following_monday.strftime("%Y-%m-%d")}},
             ]
         },
         "sorts": [{"property": "Date", "direction": "ascending"}],
@@ -83,8 +77,22 @@ def fetch_this_weeks_calendar_topics() -> list:
                 "draft": _get_prop(props, "Hook / Caption Draft"),
                 "target_keyword": _get_prop(props, "Target Keyword"),
             })
-        print(f"  Notion calendar: {len(topics)} Instagram topics found for week of {next_monday.strftime('%B %d')}")
+        print(f"  Notion calendar: {len(topics)} {platform} topics found for week of {next_monday.strftime('%B %d')}")
         return topics
     except Exception as exc:
-        print(f"  Notion calendar read failed: {exc} — content agent will generate original topics")
+        print(f"  Notion {platform} calendar read failed: {exc} — will generate original topics")
         return []
+
+
+def fetch_this_weeks_calendar_topics() -> list:
+    """Read next week's Instagram posts from the Notion content calendar.
+
+    Calendar runs Monday 1am and plans the week starting next Monday.
+    Content agent runs Monday 3am and reads those entries to script them.
+    """
+    return _fetch_calendar_topics("Instagram")
+
+
+def fetch_this_weeks_tiktok_topics() -> list:
+    """Read next week's TikTok posts from the Notion content calendar."""
+    return _fetch_calendar_topics("TikTok")
