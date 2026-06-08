@@ -7,6 +7,13 @@ Read it before touching anything.
 
 ## CRITICAL RULES — DO NOT VIOLATE
 
+### index.html IS LOCKED — DO NOT TOUCH
+**`index.html` must never be modified, rewritten, or replaced without the user explicitly saying "edit index.html" or "rewrite the homepage."**
+
+This file has been rebuilt multiple times by accident. It is the production homepage. Treat it as read-only unless you have a direct, unambiguous instruction to change it. Voice passes, SEO fixes, content agent updates, blog work, and general cleanup tasks do NOT qualify as permission to touch this file.
+
+If the user asks about the website or the homepage in general terms, do not assume that means edit `index.html`.
+
 ### Kit API Key
 The Kit API key (`BaTfF2IFpZdAuoig0JYgIg`) is for **lead capture subscribers ONLY**.
 It is the list of people who opted in at soberadventuring.com for the lead magnet.
