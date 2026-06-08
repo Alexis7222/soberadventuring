@@ -6,211 +6,304 @@
 <title>Sober Adventuring | Remembering Life Is Kinda Incredible</title>
 <meta name="description" content="Helping people build a life so interesting they don't want to escape it. Recovery coaching, sober travel, and freelance income — with Alexis Antonelli.">
 <meta property="og:title" content="Sober Adventuring | Remembering Life Is Kinda Incredible">
-<meta property="og:description" content="Helping people build a life so interesting they don't want to escape it. Recovery coaching, sober travel, and freelance income.">
+<meta property="og:description" content="Helping people build a life so interesting they don't want to escape it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://soberadventuring.com">
 <link rel="canonical" href="https://soberadventuring.com">
+
+<!-- GA4 — replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Alexis Antonelli",
-  "url": "https://soberadventuring.com",
-  "sameAs": ["https://www.instagram.com/soberadventuring/"],
-  "jobTitle": "Recovery Coach & Freelance Career Coach",
-  "description": "Non-12-step recovery coach and freelance career coach based in Chiang Mai, Thailand.",
-  "offers": [
-    {"@type":"Offer","name":"Free Clarity Call","price":"0","priceCurrency":"USD"},
-    {"@type":"Offer","name":"The Pivot Package","price":"997","priceCurrency":"USD"},
-    {"@type":"Offer","name":"Sobriety Coaching — ALIVE Method","price":"395","priceCurrency":"USD"}
-  ]
-}
+{"@context":"https://schema.org","@type":"Person","name":"Alexis Antonelli","url":"https://soberadventuring.com","sameAs":["https://www.instagram.com/soberadventuring/"],"jobTitle":"Recovery Coach & Freelance Career Coach"}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink:    #1B0009;
-  --forest: #2D3D24;
-  --terra:  #C5442C;
-  --cream:  #F4E8D0;
-  --paper:  #F0EDE8;
-  --muted:  #6b5a4e;
-  --blue:   #2C3A5A;
-  --white:  #FEFCF8;
+:root{
+  --ink:#1B0009;--forest:#2D3D24;--terra:#C5442C;
+  --cream:#F4E8D0;--paper:#F0EDE8;--muted:#6b5a4e;
+  --blue:#2C3A5A;--white:#FEFCF8;
 }
-
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Bricolage Grotesque',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 
-/* ── ANNOUNCE ── */
-.announce{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding:9px 24px;background:var(--forest)}
-.announce span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,232,208,0.5)}
-.announce a{font-size:12px;font-weight:700;color:var(--cream);text-decoration:none;opacity:0.9}
+/* ─── GATE ─── */
+#gate{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;transition:opacity 0.5s ease,visibility 0.5s ease}
+#gate.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.gate-eyebrow{font-family:'Caveat',cursive;font-size:20px;font-weight:700;color:rgba(244,232,208,0.5);margin-bottom:12px;text-align:center}
+.gate-h{font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,48px);color:var(--cream);text-align:center;margin-bottom:40px;line-height:1.08}
+.gate-h em{color:var(--terra);font-style:italic}
+.gate-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:760px}
+.gate-card{background:rgba(244,232,208,0.05);border:1.5px solid rgba(244,232,208,0.1);padding:28px 22px 32px;cursor:pointer;text-decoration:none;display:block;transition:all 0.22s;position:relative}
+.gate-card .g-num{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gc);margin-bottom:14px;display:block}
+.gate-card .g-title{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,22px);color:var(--cream);margin-bottom:8px;line-height:1.2;transition:color 0.2s}
+.gate-card .g-sub{font-size:13px;color:rgba(244,232,208,0.45);line-height:1.6;transition:color 0.2s}
+.gate-card:hover{background:var(--gc);border-color:var(--gc);transform:translateY(-3px)}
+.gate-card:hover .g-title,.gate-card:hover .g-sub{color:var(--cream)}
+.gate-card.green{--gc:var(--forest)}
+.gate-card.orange{--gc:var(--terra)}
+.gate-card.navy{--gc:var(--blue)}
+.gate-skip{margin-top:32px;font-size:12px;color:rgba(244,232,208,0.3);cursor:pointer;background:none;border:none;font-family:'Bricolage Grotesque',sans-serif;transition:color 0.2s}
+.gate-skip:hover{color:rgba(244,232,208,0.6)}
+
+/* ─── POPUP ─── */
+#popup{position:fixed;inset:0;z-index:900;background:rgba(27,0,9,0.7);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity 0.35s ease,visibility 0.35s ease}
+#popup.show{opacity:1;visibility:visible}
+.popup-box{background:var(--white);padding:44px 40px;max-width:420px;width:100%;position:relative}
+.popup-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;transition:color 0.2s}
+.popup-close:hover{color:var(--ink)}
+.popup-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:block}
+.popup-h{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,28px);color:var(--ink);margin-bottom:8px;line-height:1.18}
+.popup-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65}
+.popup-accent{font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--forest);display:block;margin-bottom:18px}
+.popup-confirm{display:none;font-size:14px;color:var(--forest);font-weight:600;padding:12px 0;line-height:1.5}
+
+/* ─── ANNOUNCE ─── */
+.announce{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px 20px;background:var(--forest)}
+.announce span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,232,208,0.45)}
+.announce a{font-size:12px;font-weight:700;color:var(--cream);text-decoration:none;opacity:0.9;white-space:nowrap}
 .announce a:hover{opacity:1;text-decoration:underline}
 .announce-dot{color:rgba(244,232,208,0.2);font-size:10px}
 
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(27,0,9,0.08);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:54px}
-.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em}
+/* ─── NAV ─── */
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(27,0,9,0.08);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;white-space:nowrap}
 .nav-logo .green{color:var(--forest)}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.2s}
-.nav-links{list-style:none;display:flex;align-items:center;gap:24px}
-.nav-links a{font-size:13px;color:var(--ink);text-decoration:none;font-weight:500;opacity:0.65;transition:opacity 0.2s}
+.nav-links{list-style:none;display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:13px;color:var(--ink);text-decoration:none;font-weight:500;opacity:0.65;transition:opacity 0.2s;white-space:nowrap}
 .nav-links a:hover{opacity:1}
 .nav-links .quiz-link{color:var(--terra);opacity:1;font-weight:700}
-.nav-cta{background:var(--terra);color:var(--cream)!important;opacity:1!important;padding:7px 16px;font-size:12px!important;font-weight:700!important;transition:opacity 0.2s!important}
+.nav-cta{background:var(--terra);color:var(--cream)!important;opacity:1!important;padding:7px 14px;font-size:12px!important;font-weight:700!important;transition:opacity 0.2s!important}
 .nav-cta:hover{opacity:0.85!important}
 
-/* ── HERO ── */
+/* ─── HERO ─── */
 .hero{min-height:88vh;display:flex;align-items:center;background:var(--paper);position:relative;overflow:hidden}
-.hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.028;pointer-events:none}
-.hero-blob{position:absolute;top:-160px;right:-80px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(197,68,44,0.09) 0%,transparent 68%);pointer-events:none}
-.hero-blob-2{position:absolute;bottom:-120px;left:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(45,61,36,0.07) 0%,transparent 68%);pointer-events:none}
-.hero-inner{max-width:800px;padding:80px 48px;position:relative;z-index:1}
+.hero-blob{position:absolute;top:-160px;right:-80px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(197,68,44,0.09) 0%,transparent 68%);pointer-events:none}
+.hero-blob-2{position:absolute;bottom:-100px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(45,61,36,0.07) 0%,transparent 68%);pointer-events:none}
+.hero-inner{max-width:760px;padding:72px 40px;position:relative;z-index:1}
 .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:block}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(42px,7.5vw,80px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink);margin-bottom:0}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,7vw,76px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink)}
 .hero h1 em{color:var(--terra);font-style:italic}
-.hero-annotation{font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--forest);display:block;margin-top:6px;margin-bottom:28px;transform:rotate(-1.2deg);margin-left:4px}
-.hero-sub{font-size:18px;line-height:1.65;color:rgba(27,0,9,0.6);max-width:500px;margin-bottom:44px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn-primary{background:var(--ink);color:var(--cream);padding:14px 30px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:opacity 0.2s;letter-spacing:0.01em}
+.hero-annotation{font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--forest);display:block;margin-top:6px;margin-bottom:26px;transform:rotate(-1.2deg);margin-left:4px}
+.hero-sub{font-size:clamp(16px,2.2vw,19px);line-height:1.65;color:rgba(27,0,9,0.6);max-width:480px;margin-bottom:40px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--ink);color:var(--cream);padding:15px 28px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:opacity 0.2s;letter-spacing:0.01em;min-height:48px;display:inline-flex;align-items:center}
 .btn-primary:hover{opacity:0.82}
-.btn-ghost{border:1.5px solid rgba(27,0,9,0.35);color:var(--ink);padding:14px 30px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;letter-spacing:0.01em}
+.btn-ghost{border:1.5px solid rgba(27,0,9,0.35);color:var(--ink);padding:15px 28px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:all 0.2s;letter-spacing:0.01em}
 .btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
 
-/* ── SEGMENTATION ── */
-.seg-section{padding:80px 48px;background:var(--white)}
+/* ─── SHARED SECTION LABELS ─── */
 .section-eyebrow{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--muted);display:block;margin-bottom:10px}
-.section-h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,44px);color:var(--ink);margin-bottom:44px;line-height:1.08}
+.section-h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,42px);color:var(--ink);margin-bottom:44px;line-height:1.08}
 .section-h2 em{color:var(--terra);font-style:italic}
-.seg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px}
-.seg-card{padding:30px 26px 34px;border:1.5px solid rgba(27,0,9,0.1);background:var(--paper);cursor:pointer;text-decoration:none;display:block;transition:all 0.22s;position:relative}
-.seg-card .card-num{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c);margin-bottom:18px;display:block;font-family:'Bricolage Grotesque',sans-serif}
-.seg-card .card-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);margin-bottom:10px;line-height:1.2;transition:color 0.22s}
-.seg-card .card-sub{font-size:14px;color:var(--muted);line-height:1.65;transition:color 0.22s}
-.seg-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,0,9,0.12);background:var(--c);border-color:var(--c)}
-.seg-card:hover .card-num,.seg-card:hover .card-title,.seg-card:hover .card-sub{color:var(--cream)}
-.seg-card.green{--c:var(--forest)}
-.seg-card.orange{--c:var(--terra)}
-.seg-card.navy{--c:var(--blue)}
 
-/* ── LEAD MAGNETS ── */
-.lead-section{padding:80px 48px;background:var(--paper)}
-.lead-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px}
-.lead-card{background:var(--white);padding:40px 36px;border:1px solid rgba(27,0,9,0.07)}
-.lead-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:18px;display:block}
-.lead-h{font-family:'DM Serif Display',serif;font-size:24px;color:var(--ink);margin-bottom:8px;line-height:1.2}
-.lead-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.65}
-.lead-accent{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--forest);display:block;margin-bottom:18px}
-.form-field{width:100%;border:1.5px solid rgba(27,0,9,0.13);background:var(--paper);padding:12px 16px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;color:var(--ink);outline:none;margin-bottom:10px;transition:border-color 0.2s}
+/* ─── LEAD MAGNETS ─── */
+.lead-section{padding:72px 40px;background:var(--paper)}
+.lead-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:840px}
+.lead-card{background:var(--white);padding:38px 34px;border:1px solid rgba(27,0,9,0.07)}
+.lead-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:block}
+.lead-h{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,24px);color:var(--ink);margin-bottom:8px;line-height:1.2}
+.lead-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65}
+.lead-accent{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--forest);display:block;margin-bottom:16px}
+.form-field{width:100%;border:1.5px solid rgba(27,0,9,0.13);background:var(--paper);padding:13px 16px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;color:var(--ink);outline:none;margin-bottom:10px;-webkit-appearance:none;border-radius:0;transition:border-color 0.2s}
 .form-field:focus{border-color:var(--forest)}
-.form-submit{width:100%;background:var(--forest);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;border:none;padding:14px;cursor:pointer;transition:opacity 0.2s;letter-spacing:0.02em}
+.form-submit{width:100%;background:var(--forest);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;border:none;padding:15px;cursor:pointer;transition:opacity 0.2s;letter-spacing:0.02em;min-height:50px;-webkit-appearance:none;border-radius:0}
 .form-submit:hover{opacity:0.85}
 .form-submit:disabled{opacity:0.6;cursor:not-allowed}
 .form-confirm{display:none;font-size:14px;color:var(--forest);font-weight:600;padding:14px 0;line-height:1.5}
-.quiz-btn{display:inline-block;background:var(--terra);color:var(--cream);padding:14px 28px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.2s;letter-spacing:0.02em}
+.quiz-btn{display:inline-flex;align-items:center;min-height:50px;background:var(--terra);color:var(--cream);padding:14px 26px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.2s;letter-spacing:0.02em}
 .quiz-btn:hover{opacity:0.85}
 
-/* ── HUBS ── */
-.hubs-section{padding:80px 48px;background:var(--white)}
-.hub{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:80px}
+/* ─── HUBS ─── */
+.hubs-section{padding:72px 40px;background:var(--white)}
+.hub{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-bottom:72px}
 .hub:last-child{margin-bottom:0}
 .hub.flip{direction:rtl}
 .hub.flip>*{direction:ltr}
-.hub-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--hc);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.hub-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--hc);margin-bottom:16px;display:flex;align-items:center;gap:12px}
 .hub-tag::after{content:'';flex:1;height:1px;background:var(--hc);opacity:0.3}
-.hub-h{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.5vw,40px);color:var(--ink);margin-bottom:14px;line-height:1.08}
+.hub-h{font-family:'DM Serif Display',serif;font-size:clamp(24px,3.5vw,38px);color:var(--ink);margin-bottom:12px;line-height:1.1}
 .hub-h em{color:var(--hc);font-style:italic}
-.hub-desc{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:26px;max-width:380px}
+.hub-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:24px;max-width:360px}
 .hub-cta{font-size:13px;font-weight:700;color:var(--hc);text-decoration:none;letter-spacing:0.04em;border-bottom:1px solid transparent;transition:border-color 0.2s}
 .hub-cta:hover{border-bottom-color:var(--hc)}
-.hub-posts{display:flex;flex-direction:column;gap:14px}
-.post-card{background:var(--paper);padding:20px 22px;border-left:3px solid var(--hc)}
-.post-tag{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--hc);margin-bottom:6px;display:block}
-.post-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);margin-bottom:5px;line-height:1.3}
-.post-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:8px}
+.hub-posts{display:flex;flex-direction:column;gap:12px}
+.post-card{background:var(--paper);padding:18px 20px;border-left:3px solid var(--hc)}
+.post-tag{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--hc);margin-bottom:5px;display:block}
+.post-title{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ink);margin-bottom:4px;line-height:1.3}
+.post-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:7px}
 .post-link{font-size:12px;font-weight:700;color:var(--hc);text-decoration:none}
 .post-link:hover{text-decoration:underline}
 
-/* ── COMMUNITY ── */
-.community-section{padding:80px 48px;background:var(--ink)}
-.community-h{font-family:'DM Serif Display',serif;font-size:clamp(30px,4.5vw,52px);color:var(--cream);margin-bottom:8px;line-height:1.06;max-width:520px}
+/* ─── COMMUNITY ─── */
+.community-section{padding:72px 40px;background:var(--ink)}
+.community-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--cream);margin-bottom:8px;line-height:1.06;max-width:500px}
 .community-h em{color:var(--terra);font-style:italic}
-.community-sub{font-size:15px;color:rgba(244,232,208,0.5);margin-bottom:52px;line-height:1.65}
-.community-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px}
-.comm-card{background:rgba(244,232,208,0.05);border:1px solid rgba(244,232,208,0.09);padding:34px 30px}
-.comm-tag{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:block}
-.comm-h{font-family:'DM Serif Display',serif;font-size:23px;color:var(--cream);margin-bottom:10px;line-height:1.2}
-.comm-sub{font-size:14px;color:rgba(244,232,208,0.48);line-height:1.7;margin-bottom:26px}
+.community-sub{font-size:15px;color:rgba(244,232,208,0.5);margin-bottom:48px;line-height:1.65}
+.community-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:680px}
+.comm-card{background:rgba(244,232,208,0.05);border:1px solid rgba(244,232,208,0.09);padding:30px 26px}
+.comm-tag{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:block}
+.comm-h{font-family:'DM Serif Display',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.2}
+.comm-sub{font-size:13px;color:rgba(244,232,208,0.45);line-height:1.7;margin-bottom:22px}
 .comm-cta{display:inline-block;color:var(--cream);font-size:13px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--terra);padding-bottom:2px;transition:color 0.2s}
 .comm-cta:hover{color:var(--terra)}
 
-/* ── COACHING ── */
-.coaching-section{padding:80px 48px;background:var(--paper)}
-.coaching-h{font-family:'DM Serif Display',serif;font-size:clamp(30px,4.5vw,52px);color:var(--ink);margin-bottom:8px;line-height:1.06}
+/* ─── COACHING ─── */
+.coaching-section{padding:72px 40px 0;background:var(--paper)}
+.coaching-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--ink);margin-bottom:8px;line-height:1.06}
 .coaching-h em{color:var(--terra);font-style:italic}
-.coaching-sub{font-size:15px;color:var(--muted);margin-bottom:52px;line-height:1.65;max-width:500px}
-.coaching-tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin-bottom:44px}
-.c-track{background:var(--white);padding:38px 34px;border:1px solid rgba(27,0,9,0.07)}
-.c-track-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--tc);margin-bottom:18px;display:block}
-.c-track-h{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);margin-bottom:6px;line-height:1.18}
+.coaching-sub{font-size:15px;color:var(--muted);margin-bottom:48px;line-height:1.65;max-width:500px}
+.coaching-tracks{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:840px;margin-bottom:0}
+.c-track{background:var(--white);padding:34px 30px;border:1px solid rgba(27,0,9,0.07)}
+.c-track-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--tc);margin-bottom:16px;display:block}
+.c-track-h{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,26px);color:var(--ink);margin-bottom:6px;line-height:1.18}
 .c-track-h em{color:var(--tc);font-style:italic}
-.c-method{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--tc);margin-bottom:14px;display:block;opacity:0.75}
-.c-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:24px}
-.c-items{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
-.c-items li{font-size:13px;color:var(--ink);padding-left:18px;position:relative;line-height:1.5}
+.c-method{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--tc);margin-bottom:12px;display:block;opacity:0.75}
+.c-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:22px}
+.c-items{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:26px}
+.c-items li{font-size:13px;color:var(--ink);padding-left:16px;position:relative;line-height:1.5}
 .c-items li::before{content:'→';position:absolute;left:0;color:var(--tc);font-size:11px;top:1px}
-.c-cta{display:inline-block;background:var(--tc);color:var(--cream);padding:12px 22px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;transition:opacity 0.2s}
+.c-cta{display:inline-block;background:var(--tc);color:var(--cream);padding:12px 20px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;transition:opacity 0.2s;min-height:44px;display:inline-flex;align-items:center}
 .c-cta:hover{opacity:0.85}
-.coaching-footer{text-align:center;padding-top:48px;border-top:1px solid rgba(27,0,9,0.08)}
-.coaching-footer p{font-family:'DM Serif Display',serif;font-size:15px;color:var(--muted);font-style:italic;margin-bottom:20px}
-.final-cta{display:inline-block;background:var(--ink);color:var(--cream);padding:16px 40px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:opacity 0.2s;letter-spacing:0.02em}
-.final-cta:hover{opacity:0.82}
 
-/* ── FOOTER ── */
-footer{background:var(--ink);padding:40px 48px}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
-.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:rgba(244,232,208,0.75);text-decoration:none}
-.footer-links{display:flex;gap:22px;flex-wrap:wrap}
-.footer-links a{font-size:12px;color:rgba(244,232,208,0.4);text-decoration:none;transition:color 0.2s}
+/* ─── COACHING FOOTER (dark band) ─── */
+.coaching-footer{background:var(--ink);padding:60px 40px;text-align:center;margin-top:48px}
+.coaching-footer p{font-family:'DM Serif Display',serif;font-size:clamp(20px,3vw,30px);color:var(--cream);margin-bottom:28px;line-height:1.25;font-style:italic}
+.coaching-footer p em{color:var(--terra)}
+.final-cta{display:inline-flex;align-items:center;background:var(--terra);color:var(--cream);padding:16px 36px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:opacity 0.2s;letter-spacing:0.02em;min-height:52px}
+.final-cta:hover{opacity:0.85}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232,208,0.06)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:rgba(244,232,208,0.7);text-decoration:none}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(244,232,208,0.38);text-decoration:none;transition:color 0.2s}
 .footer-links a:hover{color:var(--cream)}
-.footer-copy{font-size:11px;color:rgba(244,232,208,0.22)}
+.footer-copy{font-size:11px;color:rgba(244,232,208,0.2);width:100%}
 
-/* ── SCROLL ANIMATIONS ── */
+/* ─── SCROLL ANIMATIONS ─── */
 .fade-up{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
-/* ── MOBILE ── */
+/* ─── MOBILE ─── */
 @media(max-width:768px){
-  nav{padding:0 20px}
+  /* Nav */
+  nav{padding:0 16px;height:52px}
   .nav-hamburger{display:flex}
-  .nav-links{display:none;position:absolute;top:54px;left:0;right:0;background:var(--white);flex-direction:column;padding:20px;border-bottom:1px solid rgba(27,0,9,0.08);gap:16px;box-shadow:0 8px 24px rgba(27,0,9,0.08)}
+  .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 20px;border-bottom:1px solid rgba(27,0,9,0.08);gap:20px;box-shadow:0 12px 32px rgba(27,0,9,0.1)}
   .nav-links.open{display:flex}
-  .hero-inner{padding:60px 24px 72px}
-  .seg-section,.lead-section,.hubs-section,.community-section,.coaching-section{padding:60px 24px}
-  .seg-cards{grid-template-columns:1fr}
+  .nav-links a{font-size:15px;opacity:0.75;padding:4px 0}
+  .nav-cta{padding:10px 16px;font-size:13px!important;text-align:center}
+
+  /* Gate */
+  .gate-cards{grid-template-columns:1fr;gap:10px}
+  .gate-card{padding:22px 18px 26px}
+  .gate-h{font-size:clamp(22px,6vw,32px);margin-bottom:28px}
+
+  /* Popup */
+  .popup-box{padding:36px 24px}
+
+  /* Hero */
+  .hero{min-height:auto;padding:0}
+  .hero-inner{padding:56px 20px 64px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{justify-content:center;width:100%}
+
+  /* Sections */
+  .lead-section,.hubs-section,.community-section,.coaching-section{padding:56px 20px}
+  .coaching-section{padding:56px 20px 0}
+  .coaching-footer{padding:48px 20px;margin-top:40px}
+
+  /* Lead cards */
   .lead-cards{grid-template-columns:1fr}
-  .hub{grid-template-columns:1fr;gap:36px;margin-bottom:60px}
-  .hub.flip{direction:ltr}
+  .lead-card{padding:28px 22px}
+
+  /* Hubs */
+  .hub{grid-template-columns:1fr;gap:28px;margin-bottom:56px;direction:ltr!important}
+  .hub.flip>*{direction:ltr}
+
+  /* Community */
   .community-cards{grid-template-columns:1fr}
+
+  /* Coaching */
   .coaching-tracks{grid-template-columns:1fr}
-  footer{padding:36px 24px}
-  .announce{gap:10px;padding:8px 20px}
+  .c-track{padding:26px 22px}
+
+  /* Footer */
+  footer{padding:28px 20px}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:14px}
+
+  /* Announce */
+  .announce{gap:8px;padding:8px 16px;justify-content:center}
+  .announce a,.announce span{font-size:11px}
 }
+
 @media(max-width:480px){
-  .hero-btns{flex-direction:column;align-items:flex-start}
-  .btn-primary,.btn-ghost{width:100%;text-align:center}
+  .hero h1{font-size:36px}
+  .hero-annotation{font-size:19px}
+  .hero-sub{font-size:15px}
+  .gate-h{font-size:24px}
+  .section-h2{font-size:26px}
 }
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCE BAR -->
+<!-- ════ GATE ════ -->
+<div id="gate" role="dialog" aria-modal="true" aria-label="Where are you right now?">
+  <p class="gate-eyebrow">okay so.</p>
+  <h2 class="gate-h">Where are you<br>right <em>now?</em></h2>
+  <div class="gate-cards">
+    <a href="#guides" class="gate-card green" data-dest="sober-life">
+      <span class="g-num">01</span>
+      <p class="g-title">I'm getting sober</p>
+      <p class="g-sub">You want support, community, and a reason to stay.</p>
+    </a>
+    <a href="#guides" class="gate-card orange" data-dest="sober-travel">
+      <span class="g-num">02</span>
+      <p class="g-title">I want more freedom</p>
+      <p class="g-sub">You're done with the old life. You're ready to build something.</p>
+    </a>
+    <a href="#guides" class="gate-card navy" data-dest="remote-work">
+      <span class="g-num">03</span>
+      <p class="g-title">I want to work remotely</p>
+      <p class="g-sub">You want location independence and a real income online.</p>
+    </a>
+  </div>
+  <button class="gate-skip" id="gateSkip">just browsing &rarr;</button>
+</div>
+
+<!-- ════ POPUP ════ -->
+<div id="popup" role="dialog" aria-modal="true" aria-label="Free guide">
+  <div class="popup-box">
+    <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
+    <span class="popup-tag">Free guide</span>
+    <h3 class="popup-h">25 Things Nobody Tells You About Getting Sober</h3>
+    <p class="popup-sub">The honest version. Written by someone who's been in recovery spaces for four years — sober house manager, ABA therapist, case manager.</p>
+    <span class="popup-accent">free.</span>
+    <form id="popupForm" novalidate>
+      <input type="text" name="name" placeholder="First name" class="form-field" autocomplete="given-name">
+      <input type="email" name="email" placeholder="Email address" class="form-field" required autocomplete="email">
+      <button type="submit" class="form-submit" id="popupBtn">Send It My Way &rarr;</button>
+    </form>
+    <p class="popup-confirm" id="popupConfirm">You're in. Check your inbox &mdash; the guide is on its way.</p>
+  </div>
+</div>
+
+<!-- ════ ANNOUNCE ════ -->
 <div class="announce">
   <span>Free guide &amp; quiz</span>
   <span class="announce-dot">◆</span>
@@ -219,7 +312,7 @@ footer{background:var(--ink);padding:40px 48px}
   <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Join us on Telegram</a>
 </div>
 
-<!-- NAV -->
+<!-- ════ NAV ════ -->
 <nav>
   <a href="/" class="nav-logo"><span class="green">Sober</span>Adventuring.</a>
   <button class="nav-hamburger" id="navToggle" aria-label="Open menu">
@@ -234,9 +327,8 @@ footer{background:var(--ink);padding:40px 48px}
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ════ HERO ════ -->
 <section class="hero" id="top">
-  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-blob" aria-hidden="true"></div>
   <div class="hero-blob-2" aria-hidden="true"></div>
   <div class="hero-inner">
@@ -245,36 +337,13 @@ footer{background:var(--ink);padding:40px 48px}
     <span class="hero-annotation">yes, really.</span>
     <p class="hero-sub">Helping people build a life so interesting they don&rsquo;t want to escape it.</p>
     <div class="hero-btns">
-      <a href="#start" class="btn-primary">Start Here &rarr;</a>
+      <a href="#guides" class="btn-primary">Start Here &rarr;</a>
       <a href="#guides" class="btn-ghost">Get the Free Guide</a>
     </div>
   </div>
 </section>
 
-<!-- SELF-SEGMENTATION -->
-<section class="seg-section" id="start">
-  <span class="section-eyebrow">okay so. where are you right now?</span>
-  <h2 class="section-h2">Pick the one that <em>fits.</em></h2>
-  <div class="seg-cards">
-    <a href="#sober-life" class="seg-card green fade-up">
-      <span class="card-num">01</span>
-      <p class="card-title">I&rsquo;m getting sober</p>
-      <p class="card-sub">You want support, community, and a reason to stay.</p>
-    </a>
-    <a href="#sober-travel" class="seg-card orange fade-up" style="transition-delay:0.1s">
-      <span class="card-num">02</span>
-      <p class="card-title">I want more freedom</p>
-      <p class="card-sub">You&rsquo;re done with the old life. You&rsquo;re ready to build something.</p>
-    </a>
-    <a href="#remote-work" class="seg-card navy fade-up" style="transition-delay:0.2s">
-      <span class="card-num">03</span>
-      <p class="card-title">I want to work remotely</p>
-      <p class="card-sub">You want location independence and a real income online.</p>
-    </a>
-  </div>
-</section>
-
-<!-- LEAD MAGNETS -->
+<!-- ════ LEAD MAGNETS ════ -->
 <section class="lead-section" id="guides">
   <span class="section-eyebrow">start here. no commitment required.</span>
   <h2 class="section-h2">A free guide. <em>A two-minute quiz.</em></h2>
@@ -284,7 +353,7 @@ footer{background:var(--ink);padding:40px 48px}
     <div class="lead-card fade-up">
       <span class="lead-tag">Free guide</span>
       <h3 class="lead-h">25 Things Nobody Tells You About Getting Sober</h3>
-      <p class="lead-sub">Four years in recovery spaces as a recovery support specialist — sober house manager, ABA therapist, case manager. This is what I tell people when they&rsquo;re starting out, because it should have existed earlier.</p>
+      <p class="lead-sub">Four years in recovery spaces as a recovery support specialist, sober house manager, ABA therapist, case manager. This is what I tell people when they're starting out.</p>
       <span class="lead-accent">free.</span>
       <form id="guideForm" novalidate>
         <input type="text" name="name" placeholder="First name" class="form-field" autocomplete="given-name">
@@ -295,10 +364,10 @@ footer{background:var(--ink);padding:40px 48px}
     </div>
 
     <!-- QUIZ -->
-    <div class="lead-card fade-up" style="transition-delay:0.12s">
-      <span class="lead-tag">5 month quiz</span>
+    <div class="lead-card fade-up" style="transition-delay:0.1s">
+      <span class="lead-tag">5 question quiz</span>
       <h3 class="lead-h">What Stage of Recovery Are You In?</h3>
-      <p class="lead-sub">Five questions about where you are right now — a specific next step based on your result, because &ldquo;you&rsquo;ve got this&rdquo; from a stranger isn&rsquo;t a strategy. This quiz was designed to ask your result — I&rsquo;m not going to bait-and-switch you.</p>
+      <p class="lead-sub">Five questions about where you are right now &mdash; a specific next step based on your result. Designed to ask your result, not bait-and-switch you.</p>
       <span class="lead-accent">2 minutes.</span>
       <a href="/quiz/" class="quiz-btn">Take the Quiz &rarr;</a>
     </div>
@@ -306,7 +375,7 @@ footer{background:var(--ink);padding:40px 48px}
   </div>
 </section>
 
-<!-- CONTENT HUBS -->
+<!-- ════ CONTENT HUBS ════ -->
 <section class="hubs-section" id="hubs">
   <span class="section-eyebrow">what&rsquo;s on the site</span>
   <h2 class="section-h2">Organized by <em>where you are.</em></h2>
@@ -316,7 +385,7 @@ footer{background:var(--ink);padding:40px 48px}
     <div class="hub-info fade-up">
       <p class="hub-tag">Sober Life</p>
       <h3 class="hub-h">Getting sober.<br><em>Staying that way.</em></h3>
-      <p class="hub-desc">For people in early recovery — or anyone approaching sobriety who wants real information about what the harder parts are. The honest version, not the highlight reel.</p>
+      <p class="hub-desc">For people in early recovery &mdash; or anyone approaching sobriety who wants real information about what the harder parts are. The honest version, not the highlight reel.</p>
       <a href="/blog/" class="hub-cta">Explore Sober Life &rarr;</a>
     </div>
     <div class="hub-posts fade-up" style="transition-delay:0.1s">
@@ -346,19 +415,19 @@ footer{background:var(--ink);padding:40px 48px}
     <div class="hub-info fade-up">
       <p class="hub-tag">Sober Travel</p>
       <h3 class="hub-h">The world is better<br>when you&rsquo;re <em>present.</em></h3>
-      <p class="hub-desc">Guides for traveling sober — Chiang Mai, the night market problem, how to tell people you don&rsquo;t drink without making it a whole thing. Field reports in progress. Real-time stuff on Instagram.</p>
-      <a href="/blog/" class="hub-cta">Read more on Instagram &rarr;</a>
+      <p class="hub-desc">Guides for traveling sober &mdash; Chiang Mai, the night market problem, how to tell people you don&rsquo;t drink without making it a whole thing. Field reports in progress.</p>
+      <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener" class="hub-cta">Read more on Instagram &rarr;</a>
     </div>
     <div class="hub-posts fade-up" style="transition-delay:0.1s">
       <div class="post-card">
         <span class="post-tag">Sober Travel</span>
-        <p class="post-title">Sober in Chiang Mai: I Honestly Doesn&rsquo;t Feel Deprived</p>
+        <p class="post-title">Sober in Chiang Mai: I Honestly Don&rsquo;t Feel Deprived</p>
         <p class="post-desc">The first week I was convinced I&rsquo;d be bored. The second week I was busy designing a life I actually wanted.</p>
         <a href="/blog/" class="post-link">Read more &rarr;</a>
       </div>
       <div class="post-card">
         <span class="post-tag">Sober Travel</span>
-        <p class="post-title">The Sober Traveler&rsquo;s Guide to Café Culture</p>
+        <p class="post-title">The Sober Traveler&rsquo;s Guide to Caf&eacute; Culture</p>
         <p class="post-desc">Coffee culture as community. What to order when everyone else is on round three.</p>
         <a href="/blog/" class="post-link">Read more &rarr;</a>
       </div>
@@ -376,7 +445,7 @@ footer{background:var(--ink);padding:40px 48px}
     <div class="hub-info fade-up">
       <p class="hub-tag">Remote Work</p>
       <h3 class="hub-h">Build income<br><em>on your own terms.</em></h3>
-      <p class="hub-desc">How to build location-independent income starting from scratch — cold-calling, made $30k in the first four months starting from zero — the whole process is documented.</p>
+      <p class="hub-desc">How to build location-independent income starting from scratch &mdash; made $30k in the first four months on Upwork starting from zero. The whole process is documented.</p>
       <a href="/blog/" class="hub-cta">Explore Remote Work &rarr;</a>
     </div>
     <div class="hub-posts fade-up" style="transition-delay:0.1s">
@@ -395,7 +464,7 @@ footer{background:var(--ink);padding:40px 48px}
       <div class="post-card">
         <span class="post-tag">Remote Work</span>
         <p class="post-title">Cold Calling from a Coffee Shop: Building a Sales Pipeline as a Digital Nomad</p>
-        <p class="post-desc">The part nobody posts about — the actual mechanics of getting paid remotely.</p>
+        <p class="post-desc">The actual mechanics of getting paid remotely. Nobody posts about this part.</p>
         <a href="/blog/" class="post-link">Read more &rarr;</a>
       </div>
     </div>
@@ -403,67 +472,66 @@ footer{background:var(--ink);padding:40px 48px}
 
 </section>
 
-<!-- COMMUNITY -->
+<!-- ════ COMMUNITY ════ -->
 <section class="community-section" id="community">
   <h2 class="community-h">You don&rsquo;t have to figure<br>this out <em>alone.</em></h2>
-  <p class="community-sub">Free spaces. Neither requires a commitment, and neither is going to push you to anything.</p>
+  <p class="community-sub">Free spaces. Neither requires a commitment, and neither is going to push you toward anything.</p>
   <div class="community-cards">
     <div class="comm-card fade-up">
-      <span class="comm-tag">Free · Telegram</span>
+      <span class="comm-tag">Free &middot; Telegram</span>
       <h3 class="comm-h">Common Ground</h3>
-      <p class="comm-sub">Weekly online recovery meetings — no labels required. The weekly meeting is the most consistent thing in the space. No specific program required.</p>
+      <p class="comm-sub">Weekly online recovery meetings &mdash; no labels required. No specific program required. Just show up.</p>
       <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener" class="comm-cta">Join Common Ground &rarr;</a>
     </div>
     <div class="comm-card fade-up" style="transition-delay:0.1s">
-      <span class="comm-tag">Free · Group Chat</span>
+      <span class="comm-tag">Free &middot; Group Chat</span>
       <h3 class="comm-h">Telegram Community</h3>
-      <p class="comm-sub">Real talk, real people, no shame. Daily conversation that doesn&rsquo;t exist at a scale where it becomes a regular group chat. No pressure to show up as anything.</p>
+      <p class="comm-sub">Real talk, real people, no shame. Daily conversation that doesn&rsquo;t become a regular group chat. No pressure to show up as anything.</p>
       <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener" class="comm-cta">Join the Group &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- COACHING -->
+<!-- ════ COACHING ════ -->
 <section class="coaching-section" id="coaching">
   <span class="section-eyebrow">work with Alexis</span>
   <h2 class="coaching-h">Ready to actually<br>change <em>something real?</em></h2>
-  <p class="coaching-sub">One-on-one coaching for people building a sober, free, unconventional life. With two tracks depending on where you are.</p>
+  <p class="coaching-sub">One-on-one coaching for people building a sober, free, unconventional life. Two tracks depending on where you are.</p>
   <div class="coaching-tracks">
 
-    <!-- SOBRIETY TRACK -->
     <div class="c-track fade-up" style="--tc:var(--forest)">
       <span class="c-track-tag">Sobriety Coaching</span>
       <h3 class="c-track-h">The <em>ALIVE</em> Method.</h3>
-      <span class="c-method">3-month · $395/month</span>
-      <p class="c-desc">For people in or approaching sobriety who want practical, hands-on support from someone who&rsquo;s been in the space. All pathways are supported. No program required.</p>
+      <span class="c-method">3-month &middot; $395/month</span>
+      <p class="c-desc">For people in or approaching sobriety who want practical, hands-on support from someone who&rsquo;s been in the space. All pathways supported. No program required.</p>
       <ul class="c-items">
-        <li>Start Here (Free): The Clarity Call &mdash; 20 minutes to figure out where you are in your sobriety, what&rsquo;s getting in the way, what the next steps look like.</li>
-        <li>Sobriety Coaching: ALIVE Method</li>
+        <li>Start here free: The Clarity Call &mdash; 20 minutes to figure out where you are and what the next steps look like.</li>
+        <li>Sobriety Coaching: ALIVE Method &mdash; 3-month engagement</li>
       </ul>
       <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="c-cta">Book the free call &rarr;</a>
     </div>
 
-    <!-- CAREER TRACK -->
     <div class="c-track fade-up" style="--tc:var(--terra);transition-delay:0.12s">
       <span class="c-track-tag">Career &amp; Freelance</span>
       <h3 class="c-track-h">The <em>PIVOT</em> Method.</h3>
-      <span class="c-method">2-month · $997 flat</span>
-      <p class="c-desc">For people who want to freelance, work remotely, or build a skill-based income. Made $30k in the first four months on Upwork starting from zero &mdash; the whole process is documented, and the highlight reel isn&rsquo;t what I teach.</p>
+      <span class="c-method">2-month &middot; $997 flat</span>
+      <p class="c-desc">For people who want to freelance, work remotely, or build a skill-based income. Made $30k in the first four months on Upwork starting from zero &mdash; the whole process is documented.</p>
       <ul class="c-items">
-        <li>Start Here (Free): The Clarity Call &mdash; 20 minutes to figure out your current career profile, where you may be the first real step, what makes you hireable.</li>
+        <li>Start here free: The Clarity Call &mdash; 20 minutes to map your career profile and figure out what makes you hireable.</li>
         <li>The Pivot Package &mdash; 2-month engagement, $997</li>
       </ul>
       <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="c-cta">Book the free call &rarr;</a>
     </div>
 
   </div>
+
   <div class="coaching-footer fade-up">
-    <p>The clearest thinking of your life is probably on the other side.</p>
+    <p>The clearest thinking of your life is on the other side.</p>
     <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="final-cta">Book the Free Clarity Call &rarr;</a>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ════ FOOTER ════ -->
 <footer>
   <div class="footer-inner">
     <a href="/" class="footer-logo">SoberAdventuring.</a>
@@ -479,26 +547,65 @@ footer{background:var(--ink);padding:40px 48px}
 </footer>
 
 <script>
-// Nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-// Guide form
-const guideForm    = document.getElementById('guideForm');
-const guideBtn     = document.getElementById('guideBtn');
-const guideConfirm = document.getElementById('guideConfirm');
 const WORKER = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 
-guideForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = guideForm.querySelector('[name=email]').value.trim();
-  const name  = guideForm.querySelector('[name=name]').value.trim();
-  if (!email || !email.includes('@')) return;
+// ── Gate ──
+const gate     = document.getElementById('gate');
+const gateSkip = document.getElementById('gateSkip');
 
-  guideBtn.disabled = true;
-  guideBtn.textContent = 'Sending...';
+function closeGate(dest) {
+  gate.classList.add('hidden');
+  document.body.style.overflow = '';
+  if (dest) {
+    const el = document.getElementById(dest);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 520);
+  }
+  sessionStorage.setItem('sa_gate_seen', '1');
+}
 
+if (!sessionStorage.getItem('sa_gate_seen')) {
+  document.body.style.overflow = 'hidden';
+  document.querySelectorAll('.gate-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeGate(card.dataset.dest);
+    });
+  });
+  gateSkip.addEventListener('click', () => closeGate());
+} else {
+  gate.classList.add('hidden');
+}
+
+// ── Popup ──
+const popup       = document.getElementById('popup');
+const popupClose  = document.getElementById('popupClose');
+const popupForm   = document.getElementById('popupForm');
+const popupBtn    = document.getElementById('popupBtn');
+const popupConfirm = document.getElementById('popupConfirm');
+
+function showPopup() {
+  if (sessionStorage.getItem('sa_popup_shown')) return;
+  if (sessionStorage.getItem('sa_guide_done')) return;
+  popup.classList.add('show');
+  sessionStorage.setItem('sa_popup_shown', '1');
+}
+
+popupClose.addEventListener('click', () => popup.classList.remove('show'));
+popup.addEventListener('click', (e) => { if (e.target === popup) popup.classList.remove('show'); });
+
+// Show after 3 minutes
+setTimeout(showPopup, 3 * 60 * 1000);
+
+// Exit intent (desktop)
+let exitFired = false;
+document.addEventListener('mouseleave', (e) => {
+  if (!exitFired && e.clientY <= 0) { exitFired = true; showPopup(); }
+});
+
+// ── Form helper ──
+async function submitGuide(email, name, formEl, btnEl, confirmEl) {
+  btnEl.disabled = true;
+  btnEl.textContent = 'Sending...';
   try {
     await fetch(WORKER, {
       method: 'POST',
@@ -506,21 +613,50 @@ guideForm.addEventListener('submit', async (e) => {
       body: JSON.stringify({ email, name, result: 'guide' })
     });
   } catch (_) {}
+  formEl.style.display = 'none';
+  confirmEl.style.display = 'block';
+  sessionStorage.setItem('sa_guide_done', '1');
+  popup.classList.remove('show');
+  // GA4 event
+  if (typeof gtag !== 'undefined') gtag('event', 'guide_signup', { method: 'homepage' });
+}
 
-  guideForm.style.display = 'none';
-  guideConfirm.style.display = 'block';
+// Main guide form
+document.getElementById('guideForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = e.target.querySelector('[name=email]').value.trim();
+  const name  = e.target.querySelector('[name=name]').value.trim();
+  if (!email.includes('@')) return;
+  await submitGuide(email, name,
+    document.getElementById('guideForm'),
+    document.getElementById('guideBtn'),
+    document.getElementById('guideConfirm'));
 });
 
-// Scroll fade-up animations
+// Popup guide form
+popupForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = e.target.querySelector('[name=email]').value.trim();
+  const name  = e.target.querySelector('[name=name]').value.trim();
+  if (!email.includes('@')) return;
+  await submitGuide(email, name, popupForm, popupBtn, popupConfirm);
+});
+
+// ── Nav toggle ──
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target)) navLinks.classList.remove('open');
+});
+const nav = document.querySelector('nav');
+
+// ── Scroll fade-up ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
   });
-}, { threshold: 0.12 });
-
+}, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
