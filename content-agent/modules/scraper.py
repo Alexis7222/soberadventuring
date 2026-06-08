@@ -8,7 +8,7 @@ from pathlib import Path
 
 APIFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN", "")
 APIFY_BASE_URL = "https://api.apify.com/v2"
-APIFY_ACTOR = "apify~instagram-scraper"
+APIFY_ACTOR = "nH2AHrwxeTRJoN5hX"
 
 OWN_ACCOUNT = "soberadventuring"
 
@@ -94,15 +94,18 @@ def _analyze_own_posts(posts: list) -> list:
     for p in posts:
         if p.get("ownerUsername", "").lower() != OWN_ACCOUNT:
             continue
+        likes = p.get("likesCount", 0) or 0
+        if likes < 0:
+            continue
         scored.append({
             "hook": _extract_hook(p.get("caption", "")),
-            "likes": p.get("likesCount", 0) or 0,
+            "likes": likes,
             "comments": p.get("commentsCount", 0) or 0,
             "engagement_rate": _engagement_rate(p),
             "type": p.get("type", "unknown"),
             "url": p.get("url", ""),
         })
-    scored.sort(key=lambda x: x["engagement_rate"], reverse=True)
+    scored.sort(key=lambda x: x["likes"], reverse=True)
     return scored[:10]
 
 
@@ -134,11 +137,11 @@ def _load_fallback() -> dict:
     print("  Using hardcoded fallback hooks")
     return {
         "top_hooks": [
-            "My museum of failures as a 26 year old addict",
-            "5 reasons pot addiction was more insidious than opiates",
-            "5 reasons I partake in nightlife alone in sobriety",
-            "Gravitating to addiction because of a lack of community",
-            "4 childhood behaviors that predicted my addiction",
+            "This page supports all pathways to recovery... I'm just glad you're here",
+            "Most sober people I've met stay away from bars. I don't.",
+            "Feb–April, the air turns apocalyptic. AQI regularly hits 300–500+",
+            "Wym addiction? martha was just stressed about office politics",
+            "These behaviors are not uncommon, in childhood + adolescence, among people who later struggle with addiction.",
         ],
         "top_posts": [],
         "own_top_posts": [],
