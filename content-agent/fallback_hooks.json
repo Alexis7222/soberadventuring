@@ -1,12 +1,90 @@
 {
-  "top_hooks": [
-    "My museum of failures as a 26 year old addict",
-    "5 reasons pot addiction was more insidious than opiates",
-    "5 reasons I partake in nightlife alone in sobriety",
-    "Gravitating to addiction because of a lack of community",
-    "4 childhood behaviors that predicted my future addiction"
+  "scraped_at": "2026-06-08-real-data",
+  "total_analyzed": 25,
+  "own_top_posts": [
+    {
+      "hook": "This page supports all pathways to recovery... I'm just glad you're here",
+      "likes": 9472,
+      "comments": 269,
+      "engagement_rate": 3.12,
+      "type": "carousel",
+      "pattern": "radical inclusivity — validates ALL recovery paths, zero judgment, warm closing"
+    },
+    {
+      "hook": "Feb–April, the air turns apocalyptic. AQI regularly hits 300–500+",
+      "likes": 4041,
+      "comments": 62,
+      "engagement_rate": 1.35,
+      "type": "carousel",
+      "pattern": "educational + hyper-specific numbers + personal connection — surprising data people want to share"
+    },
+    {
+      "hook": "Most sober people I've met stay away from bars. I don't.",
+      "likes": 776,
+      "comments": 34,
+      "engagement_rate": 0.24,
+      "type": "carousel",
+      "pattern": "contrarian take — personal experience, IF and only if language, creates comment debate"
+    },
+    {
+      "hook": "Wym addiction? martha was just stressed about office politics…",
+      "likes": 386,
+      "comments": 11,
+      "engagement_rate": 0.12,
+      "type": "reel",
+      "pattern": "dark humour — meme format, zero effort energy, highly shareable"
+    },
+    {
+      "hook": "In Thai Buddhist thought, these visuals aren't about evil in the Western sense.",
+      "likes": 235,
+      "comments": 4,
+      "engagement_rate": 0.08,
+      "type": "carousel",
+      "pattern": "educational + travel + recovery connection — reframes familiar concept through personal lens"
+    },
+    {
+      "hook": "Since being in recovery, I've started getting tattooed more often.",
+      "likes": 230,
+      "comments": 16,
+      "engagement_rate": 0.08,
+      "type": "carousel",
+      "pattern": "sobriety as identity — authenticity, pushing back on others opinions, personal expression"
+    },
+    {
+      "hook": "These behaviors are not uncommon, in childhood + adolescence, among people who later struggle with addiction.",
+      "likes": 214,
+      "comments": 5,
+      "engagement_rate": 0.07,
+      "type": "carousel",
+      "pattern": "educational framework + vulnerability — childhood predictors, compassion framing at end"
+    },
+    {
+      "hook": "Addiction is nauseating to recount. The skeleton of the woman I was, is one I know I need to remember.",
+      "likes": 155,
+      "comments": 18,
+      "engagement_rate": 0.05,
+      "type": "carousel",
+      "pattern": "raw vulnerability — specific addiction story, groundhog day framing, loss as motivation"
+    }
   ],
-  "top_posts": [],
-  "total_analyzed": 0,
-  "scraped_at": "fallback"
+  "top_hooks": [
+    "This page supports all pathways to recovery... I'm just glad you're here",
+    "Most sober people I've met stay away from bars. I don't.",
+    "Feb–April, the air turns apocalyptic. AQI regularly hits 300–500+",
+    "Wym addiction? martha was just stressed about office politics…",
+    "These behaviors are not uncommon, in childhood + adolescence, among people who later struggle with addiction."
+  ],
+  "top_posts": [
+    {"hook": "I'm just glad you're here", "engagement_rate": 3.12, "account": "soberadventuring"},
+    {"hook": "AQI regularly hits 300–500+", "engagement_rate": 1.35, "account": "soberadventuring"},
+    {"hook": "Most sober people stay away from bars. I don't.", "engagement_rate": 0.24, "account": "soberadventuring"}
+  ],
+  "performance_patterns": {
+    "radical_inclusivity": "9472 likes — validate ALL paths, zero judgment, I'm just glad you're here",
+    "specific_numbers": "4041 likes — hyper-specific data people can quote and share",
+    "contrarian_take": "776 likes — personal experience that challenges received wisdom",
+    "dark_humour": "386 likes — meme energy, shareable, zero effort aesthetic",
+    "educational_personal": "214-235 likes — framework + personal recovery connection",
+    "AVOID_pure_lifestyle": "49-168 likes — no recovery angle, generic lists, pure travel"
+  }
 }
