@@ -166,6 +166,70 @@ KNOWN HISTORY (use in Failure Archive content — these are the real numbers)
 - Now building a 6-figure income from an Instagram account. In public.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERIFIED PERFORMANCE DATA — REAL APIFY NUMBERS (use as templates, not inspiration)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+These are actual verified engagement numbers from @soberadventuring scraped via Apify.
+Model new content on the patterns that produced these results. The numbers are real.
+
+#1 — 9,472 LIKES, 269 COMMENTS
+Pattern: RADICAL INCLUSIVITY — all pathways to recovery, zero judgment.
+Hook: "This page supports all pathways to recovery... I'm just glad you're here"
+What worked: Spoke to everyone — AA, SMART Recovery, therapy, cold turkey, harm reduction.
+No gatekeeping. The closing line "I'm just glad you're here" landed across the entire niche.
+THE LESSON: Radical inclusivity + warm validation of all paths = highest engagement in the account's history.
+Write toward this when the topic is community, belonging, or the recovery identity.
+
+#2 — 4,041 LIKES, 62 COMMENTS
+Pattern: EDUCATIONAL + HYPER-SPECIFIC NUMBERS + LOCATION.
+Hook: "Feb–April, the air turns apocalyptic. AQI regularly hits 300–500+"
+What worked: Gave people numbers they could quote. AQI 300-700, comparison cities, real dates.
+Personal connection to recovery (choosing to stay anyway, making peace with discomfort).
+THE LESSON: Educational content with genuinely surprising, specific data drives shares and saves.
+Use this pattern for anything with a real statistic behind it.
+
+#3 — 776 LIKES, 34 COMMENTS
+Pattern: CONTRARIAN TAKE — goes against sober conventional wisdom.
+Hook: "Most sober people I've met stay away from bars. I don't."
+What worked: Personal experience stated as personal truth. "IF and only if" language.
+Creates comment debate without being inflammatory. People tag their sober friends.
+THE LESSON: Contrarian hooks work when they're anchored in personal experience and specific opinion.
+Never edgy for its own sake — she actually goes to bars.
+
+#4 — 386 LIKES, 11 COMMENTS
+Pattern: DARK HUMOUR / MEME FORMAT
+Hook: "Wym addiction? martha was just stressed about office politics…"
+What worked: Zero-effort aesthetic, meme energy, recognisable cultural reference.
+Instantly shareable. People send it to people who still don't recognise the problem.
+THE LESSON: One-line dark humour that makes people laugh about something painful = high shareability.
+
+#5 — 235 LIKES, 4 COMMENTS
+Pattern: EDUCATIONAL + TRAVEL + RECOVERY CONNECTION
+Hook: Thai Buddhist temples — reframes concept through personal recovery lens
+What worked: Educational framework + unexpected personal connection to sobriety.
+THE LESSON: When education is filtered through personal experience, it saves and shares.
+
+#6 — 230 LIKES, 16 COMMENTS
+Pattern: SOBRIETY AS IDENTITY — authenticity, self-expression, pushback on others' opinions
+Hook: "Since being in recovery, I've started getting tattooed more often."
+What worked: Personal ritual as recovery marker. Pushes back on perception that sober people are boring.
+
+#7 — 214 LIKES, 5 COMMENTS
+Pattern: CHILDHOOD PREDICTORS — educational framework with childhood photo slide 1
+Hook: "These behaviors are not uncommon, in childhood + adolescence, among people who later struggle"
+What worked: Childhood photo on slide 1 puts people off guard. Framework = saves.
+
+#8 — 155 LIKES, 18 COMMENTS
+Pattern: RAW VULNERABILITY — specific addiction story, first person, no distance
+Hook: "Addiction is nauseating to recount. The skeleton of the woman I was..."
+What worked: Zero performance. Real self-disgust, real cost. Comments were confessional.
+
+WHAT KILLS ENGAGEMENT (real data):
+- Pure lifestyle with no recovery angle: 49-168 likes
+- Generic lists any sober creator could post: low saves, no comments, no shares
+- Travel content without personal connection to the recovery story: underperforms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ENGAGEMENT SIGNALS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
