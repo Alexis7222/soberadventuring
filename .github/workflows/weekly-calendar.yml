@@ -2,7 +2,7 @@ name: Weekly Content Calendar
 
 on:
   schedule:
-    - cron: '0 9 * * 1'  # Every Monday at 9am UTC (4pm Chiang Mai)
+    - cron: '0 1 * * 1'  # Monday 1am UTC — runs before content agent (3am UTC)
   workflow_dispatch:
 
 env:
