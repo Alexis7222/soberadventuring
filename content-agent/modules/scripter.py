@@ -11,14 +11,21 @@ from prompts.carousel_prompt import (
     CAROUSEL_CALENDAR_SECTION,
     CAROUSEL_FREEFORM_SECTION,
 )
-from prompts.reel_prompt import REEL_SYSTEM, REEL_USER_TEMPLATE
+from prompts.reel_prompt import (
+    REEL_SYSTEM,
+    REEL_USER_TEMPLATE,
+    REEL_CALENDAR_SECTION,
+    REEL_FREEFORM_SECTION,
+)
+from prompts.stories_prompt import STORIES_SYSTEM, STORIES_USER_TEMPLATE
 from prompts.monthly_prompt import MONTHLY_SYSTEM, MONTHLY_USER_TEMPLATE
-from modules.notion_reader import fetch_this_weeks_calendar_topics
+from modules.notion_reader import fetch_this_weeks_calendar_topics, fetch_this_weeks_tiktok_topics
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 LOG_PATH = Path(__file__).parent.parent / "errors.log"
 logging.basicConfig(filename=str(LOG_PATH), level=logging.ERROR, format="%(asctime)s %(levelname)s %(message)s")
 MODEL = "claude-sonnet-4-6"
+VAULT_ALERT_THRESHOLD = 300
 
 
 def _build_trend_summary(research: dict) -> str:
@@ -49,10 +56,9 @@ def _build_own_posts_summary(research: dict) -> str:
     return "\n".join(lines)
 
 
-def _build_calendar_section(topics: list) -> str:
+def _build_calendar_section(topics: list, calendar_template: str, freeform_section: str) -> str:
     if not topics:
-        return CAROUSEL_FREEFORM_SECTION
-
+        return freeform_section
     topic_lines = []
     for i, t in enumerate(topics, 1):
         draft_excerpt = (t.get("draft", "") or "")[:200]
@@ -63,11 +69,37 @@ def _build_calendar_section(topics: list) -> str:
         if draft_excerpt:
             lines.append(f"   Seed draft: {draft_excerpt}")
         topic_lines.append("\n".join(lines))
-
-    return CAROUSEL_CALENDAR_SECTION.format(
+    return calendar_template.format(
         topic_list="\n\n".join(topic_lines),
         count=len(topics),
     )
+
+
+def _detect_vault_alerts(research: dict) -> list:
+    """Flag own posts exceeding the threshold that aren't already in the gold vault."""
+    try:
+        from prompts.gold_vault import GOLD_POSTS
+        vault_hooks = [p["title"].lower() for p in GOLD_POSTS]
+    except Exception:
+        return []
+
+    alerts = []
+    for p in research.get("own_top_posts", []):
+        likes = p.get("likes", 0)
+        if likes >= VAULT_ALERT_THRESHOLD:
+            hook = (p.get("hook", "") or "")[:100]
+            hook_lower = hook.lower()
+            already_in_vault = any(
+                hook_lower[:40] in title or title[:40] in hook_lower
+                for title in vault_hooks
+            )
+            if not already_in_vault and hook:
+                alerts.append({
+                    "hook": hook,
+                    "likes": likes,
+                    "comments": p.get("comments", 0),
+                })
+    return alerts
 
 
 def _call_claude(system: str, user: str) -> list | dict:
@@ -88,7 +120,7 @@ def _call_claude(system: str, user: str) -> list | dict:
 
 
 def generate_carousels(week_date: str, trend_summary: str, own_posts_summary: str, calendar_topics: list) -> list:
-    calendar_section = _build_calendar_section(calendar_topics)
+    calendar_section = _build_calendar_section(calendar_topics, CAROUSEL_CALENDAR_SECTION, CAROUSEL_FREEFORM_SECTION)
     user = CAROUSEL_USER_TEMPLATE.format(
         week_date=week_date,
         calendar_section=calendar_section,
@@ -98,13 +130,23 @@ def generate_carousels(week_date: str, trend_summary: str, own_posts_summary: st
     return _call_claude(CAROUSEL_SYSTEM, user)
 
 
-def generate_reels(week_date: str, trend_summary: str, own_posts_summary: str) -> list:
+def generate_reels(week_date: str, trend_summary: str, own_posts_summary: str, tiktok_topics: list) -> list:
+    calendar_section = _build_calendar_section(tiktok_topics, REEL_CALENDAR_SECTION, REEL_FREEFORM_SECTION)
     user = REEL_USER_TEMPLATE.format(
         week_date=week_date,
+        calendar_section=calendar_section,
         trend_summary=trend_summary,
         own_posts_summary=own_posts_summary,
     )
     return _call_claude(REEL_SYSTEM, user)
+
+
+def generate_stories(week_date: str, own_posts_summary: str) -> list:
+    user = STORIES_USER_TEMPLATE.format(
+        week_date=week_date,
+        own_posts_summary=own_posts_summary,
+    )
+    return _call_claude(STORIES_SYSTEM, user)
 
 
 def generate_monthly(month_year: str) -> dict:
@@ -119,16 +161,29 @@ def generate_content(research: dict, week_date: str) -> dict:
 
     print("  Reading Notion content calendar for this week's topics...")
     calendar_topics = fetch_this_weeks_calendar_topics()
+    tiktok_topics = fetch_this_weeks_tiktok_topics()
     if calendar_topics:
-        print(f"  Scripting {len(calendar_topics)} calendar-planned topics")
+        print(f"  Scripting {len(calendar_topics)} calendar-planned Instagram topics")
     else:
-        print("  No calendar topics — generating 6 original carousel concepts")
+        print("  No Instagram calendar topics — generating 6 original carousel concepts")
+    if tiktok_topics:
+        print(f"  Scripting {len(tiktok_topics)} calendar-planned TikTok topics")
+    else:
+        print("  No TikTok calendar topics — generating 4 original reel concepts")
+
+    print("  Checking for new high performers to add to gold vault...")
+    vault_alerts = _detect_vault_alerts(research)
+    if vault_alerts:
+        print(f"  Gold vault alert: {len(vault_alerts)} post(s) above {VAULT_ALERT_THRESHOLD} likes not in vault")
 
     print("  Generating carousels...")
     carousels = generate_carousels(week_date, trend_summary, own_posts_summary, calendar_topics)
 
     print("  Generating reels...")
-    reels = generate_reels(week_date, trend_summary, own_posts_summary)
+    reels = generate_reels(week_date, trend_summary, own_posts_summary, tiktok_topics)
+
+    print("  Generating stories...")
+    stories = generate_stories(week_date, own_posts_summary)
 
     monthly = None
     today = datetime.today()
@@ -139,9 +194,12 @@ def generate_content(research: dict, week_date: str) -> dict:
     return {
         "week_date": week_date,
         "calendar_topics_count": len(calendar_topics),
+        "tiktok_topics_count": len(tiktok_topics),
         "trend_summary": trend_summary,
         "own_posts_summary": own_posts_summary,
         "carousels": carousels,
         "reels": reels,
+        "stories": stories,
+        "vault_alerts": vault_alerts,
         "monthly": monthly,
     }
