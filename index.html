@@ -89,13 +89,12 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .nav-cta:hover{opacity:0.85!important}
 
 /* ─── HERO ─── */
-.hero{min-height:88vh;display:flex;align-items:center;justify-content:space-between;background:var(--paper);position:relative;overflow:hidden}
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;gap:52px;padding:0 40px;background:var(--paper);position:relative;overflow:hidden}
 .hero-blob{position:absolute;top:-160px;right:-80px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(197,68,44,0.09) 0%,transparent 68%);pointer-events:none}
 .hero-blob-2{position:absolute;bottom:-100px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(45,61,36,0.07) 0%,transparent 68%);pointer-events:none}
-.hero-inner{flex:1;min-width:0;max-width:560px;padding:72px 40px;position:relative;z-index:1}
-.hero-img{flex-shrink:0;padding:48px 48px 48px 0;position:relative;z-index:1}
-.hero-img img{width:360px;height:490px;object-fit:cover;object-position:center 30%;border-radius:22px;display:block;box-shadow:0 10px 48px rgba(27,0,9,0.16)}
-@media(max-width:960px){.hero-img{display:none}}
+.hero-inner{flex:0 0 auto;max-width:500px;padding:72px 0;position:relative;z-index:1}
+.hero-img{flex-shrink:0;position:relative;z-index:1}
+.hero-img img{width:380px;height:500px;object-fit:cover;object-position:center 30%;border-radius:22px;display:block;box-shadow:0 10px 48px rgba(27,0,9,0.16)}
 .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:block}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,7vw,76px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink)}
 .hero h1 em{color:var(--terra);font-style:italic}
@@ -221,8 +220,10 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
   .popup-box{padding:36px 24px}
 
   /* Hero */
-  .hero{min-height:auto;padding:0}
-  .hero-inner{padding:56px 20px 64px}
+  .hero{min-height:auto;padding:0;flex-direction:column;gap:0;align-items:stretch}
+  .hero-inner{padding:56px 20px 32px;max-width:100%}
+  .hero-img{padding:0 20px 52px}
+  .hero-img img{width:100%;height:260px;border-radius:16px}
   .hero-btns{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-ghost{justify-content:center;width:100%}
 
