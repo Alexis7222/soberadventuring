@@ -259,22 +259,17 @@ footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232
   .section-h2{font-size:26px}
 }
 
-/* ─── PHOTO STRIP ─── */
-.photo-strip{padding:0 40px 64px;background:var(--paper);display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
+/* ─── PHOTO POSTCARD ─── */
 .postcard{background:var(--white);padding:10px 10px 38px;box-shadow:0 4px 24px rgba(27,0,9,0.11),0 1px 4px rgba(27,0,9,0.05);transform:rotate(var(--rot,0deg));transition:transform 0.3s ease,box-shadow 0.3s ease;flex-shrink:0;width:220px}
 .postcard:hover{transform:rotate(calc(var(--rot,0deg) * 0.35)) translateY(-7px);box-shadow:0 14px 44px rgba(27,0,9,0.17),0 2px 8px rgba(27,0,9,0.07)}
-.postcard img{width:200px;height:265px;object-fit:cover;object-position:center top;display:block}
+.postcard img{width:200px;height:270px;object-fit:cover;object-position:center top;display:block}
 .pc-caption{font-family:'Caveat',cursive;font-size:16px;font-weight:600;color:var(--muted);text-align:center;padding-top:12px;line-height:1.3}
-@media(max-width:768px){
-  .photo-strip{padding:0 20px 52px;gap:20px}
-  .postcard{width:160px}
-  .postcard img{width:140px;height:190px}
-}
-@media(max-width:480px){
-  .photo-strip{gap:14px}
-  .postcard{width:138px}
-  .postcard img{width:118px;height:160px}
-}
+
+/* ─── LEAD LAYOUT (cards + photo) ─── */
+.lead-layout{display:flex;align-items:flex-start;gap:52px}
+.lead-left{flex:1;min-width:0}
+.lead-right{flex-shrink:0;padding-top:64px;display:flex;align-items:flex-start}
+@media(max-width:900px){.lead-right{display:none}}
 </style>
 </head>
 <body>
@@ -361,20 +356,10 @@ footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232
   </div>
 </section>
 
-<!-- ════ PHOTO STRIP ════ -->
-<div class="photo-strip">
-  <div class="postcard fade-up" style="--rot:-2.4deg">
-    <img src="/images/lexi-outdoor.jpg" alt="Alexis outdoors in Chiang Mai" loading="lazy" width="200" height="265">
-    <p class="pc-caption">Chiang Mai, year two.</p>
-  </div>
-  <div class="postcard fade-up" style="--rot:1.9deg;transition-delay:0.1s">
-    <img src="/images/lexi-headshot.jpg" alt="Alexis Antonelli" loading="lazy" width="200" height="265">
-    <p class="pc-caption">hi, I'm Alexis.</p>
-  </div>
-</div>
-
 <!-- ════ LEAD MAGNETS ════ -->
 <section class="lead-section" id="guides">
+  <div class="lead-layout">
+  <div class="lead-left">
   <span class="section-eyebrow">start here. no commitment required.</span>
   <h2 class="section-h2">A free guide. <em>A two-minute quiz.</em></h2>
   <div class="lead-cards">
@@ -403,6 +388,14 @@ footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232
     </div>
 
   </div>
+  </div><!-- /lead-left -->
+  <div class="lead-right">
+    <div class="postcard fade-up" style="--rot:2.3deg">
+      <img src="/images/lexi-outdoor.jpg" alt="Alexis outdoors in Chiang Mai" loading="lazy" width="200" height="270">
+      <p class="pc-caption">Chiang Mai, year two.</p>
+    </div>
+  </div><!-- /lead-right -->
+  </div><!-- /lead-layout -->
 </section>
 
 <!-- ════ CONTENT HUBS ════ -->
