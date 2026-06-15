@@ -115,11 +115,38 @@ BANNED STRUCTURES (remove on sight):
 BANNED WORDS: delve into, journey, transformative, game-changer, holistic,
 leverage, pivotal, embark, unpack, dive into, at the end of the day,
 cutting-edge, seamlessly, robust, comprehensive, tapestry, beacon, resonate,
-foster, navigate, landscape, evolve, empower, thrive
+foster, navigate, landscape, evolve, empower, thrive, authentic, meaningful,
+sustainable, genuinely, ultimately, at its core, put simply, here's the thing
+
+TRIADS — HARD STOP:
+Never list three things in any sentence. Pick the two strongest, cut the third.
+BAD: "She had no job, no money, and no plan."
+GOOD: "She had no job and no money."
+No exceptions anywhere — slides, captions, headers, CTAs.
+
+SPECIFICITY RULE:
+Exact numbers, dates, dollar amounts, city names, percentages every time.
+"About two years" is weaker than "24 months."
+"A lot of money" is weaker than "$2,400."
+"Several jobs" is weaker than "16 jobs by age 20."
+Write like you were actually there.
+
+HEDGING:
+Claims about what people experience or feel: use might, may, can, often, for many people.
+Never "you will" or "everyone feels."
+
+BRACKET PLACEHOLDERS — scaffold rule:
+For any personal detail you cannot know (exact dollar amount, exact date, specific name,
+verbatim quote), write [BRACKET PLACEHOLDER] and write the full story around it.
+Do NOT leave blanks for things you can write — write the story, bracket only the specific fact.
+BAD: "I was [AGE] sitting [WHERE] feeling [WHAT]."
+GOOD: "I was [AGE] on my birthday, sitting on the floor of a flat I was about to lose,
+counting actual coins out of a jar to see if I could afford a single drink to mark the occasion."
+Never fabricate a specific incident, quote, or conversation. Write the structure, bracket the unknown.
 
 CAPTION STRUCTURE:
 - Opens with a specific fact or statement. Never a question. Never an emotion.
-- Expands with short punchy lines, line breaks between thoughts
+- Short punchy lines, line breaks between thoughts
 - Ends with one CTA, one question, or one statement. No emoji sign-off.
 - Under 150 words unless it's a long-form piece
 
