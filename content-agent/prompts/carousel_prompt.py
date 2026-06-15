@@ -1,7 +1,8 @@
 from prompts.character_brief import LEXI_BRIEF
 from prompts.gold_vault import GOLD_VAULT_PROMPT
+from prompts.hook_frameworks import HOOK_FRAMEWORKS_PROMPT
 
-CAROUSEL_SYSTEM = LEXI_BRIEF + "\n\n" + GOLD_VAULT_PROMPT + """
+CAROUSEL_SYSTEM = LEXI_BRIEF + "\n\n" + GOLD_VAULT_PROMPT + "\n\n" + HOOK_FRAMEWORKS_PROMPT + """
 
 ## OUTPUT FORMAT
 Return a JSON array of carousel concepts. Each object must match the structure of the gold vault posts exactly.
@@ -11,12 +12,14 @@ Return a JSON array of carousel concepts. Each object must match the structure o
   "pillar": "one of the 5 pillar names",
   "calendar_topic": "title of the calendar topic this scripts, or 'original' if no calendar",
   "performance_pattern": "which gold vault pattern this replicates and why",
-  "cover_hook": "max 8 words — the title overlay on slide 1",
+  "hook_device": "which of the 9 hook devices this cover_hook uses — e.g. The Contrarian, The Narrator, The Confession",
+  "strategy_note": "1-2 sentences: why this hook device fits this specific post, and what signal or pattern from the gold vault informed the concept",
+  "cover_hook": "max 8 words — the title overlay on slide 1. Must use one of the 9 hook devices.",
   "cover_visual": "describe the slide 1 photo — face selfie, childhood photo, or other. Be specific about expression, setting, mood.",
   "slides": [
     {
       "header": "Chapter name (2-5 words) — for Format A: clinical or experiential label. For Format B: the reason stated as a short phrase.",
-      "text": "Body text for this slide. 1-3 sentences max. Lexi's voice. Specific detail only she could give.",
+      "text": "Body text for this slide. Lexi's voice. Specific detail only she could give. At most one [BRACKET PLACEHOLDER] for a fact you cannot know — write the full story around it.",
       "visual": "Photo direction for this slide — what's in the image, mood, setting."
     }
   ],
