@@ -149,6 +149,23 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .post-link{font-size:12px;font-weight:700;color:var(--hc);text-decoration:none}
 .post-link:hover{text-decoration:underline}
 
+/* ─── SHOP PREVIEW ─── */
+.shop-preview{padding:72px 40px;background:var(--paper)}
+.shop-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:980px;margin-bottom:36px}
+.pcard{background:var(--white);border:1px solid rgba(27,0,9,0.07);text-decoration:none;color:inherit;display:block;transition:transform 0.22s ease,box-shadow 0.22s ease}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(27,0,9,0.1)}
+.pcard-img{aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
+.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
+.pcard:hover .pcard-img img{transform:scale(1.04)}
+.pcard-body{padding:16px 16px 20px}
+.pcard-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);margin-bottom:5px;line-height:1.2}
+.pcard-price{font-size:13px;font-weight:700;color:var(--terra)}
+.pcard-skel{background:var(--white);border:1px solid rgba(27,0,9,0.07)}
+.pcard-skel-img{aspect-ratio:1/1;background:linear-gradient(90deg,rgba(27,0,9,0.05) 25%,rgba(27,0,9,0.09) 50%,rgba(27,0,9,0.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+.pcard-skel-body{padding:16px 16px 20px;display:flex;flex-direction:column;gap:8px}
+.pcard-skel-line{height:13px;border-radius:2px;background:linear-gradient(90deg,rgba(27,0,9,0.05) 25%,rgba(27,0,9,0.09) 50%,rgba(27,0,9,0.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
 /* ─── COMMUNITY ─── */
 .community-section{padding:72px 40px;background:var(--ink)}
 .community-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--cream);margin-bottom:8px;line-height:1.06;max-width:500px}
@@ -239,6 +256,10 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
   /* Hubs */
   .hub{grid-template-columns:1fr;gap:28px;margin-bottom:56px;direction:ltr!important}
   .hub.flip>*{direction:ltr}
+
+  /* Shop preview */
+  .shop-preview{padding:56px 20px}
+  .shop-preview-grid{grid-template-columns:repeat(2,1fr);gap:12px}
 
   /* Community */
   .community-cards{grid-template-columns:1fr}
@@ -340,6 +361,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/quiz/" class="quiz-link">Take the Quiz</a></li>
     <li><a href="/freeeresources/">Free Resources</a></li>
+    <li><a href="/shop/">Shop</a></li>
     <li><a href="#coaching">Work With Me</a></li>
     <li><a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-cta">Free Call</a></li>
   </ul>
@@ -473,6 +495,19 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
 
 </section>
 
+<!-- ════ SHOP PREVIEW ════ -->
+<section class="shop-preview" id="shop">
+  <span class="section-eyebrow">the merch</span>
+  <h2 class="section-h2">Gear for the <em>sober adventure.</em></h2>
+  <div class="shop-preview-grid" id="homeProducts">
+    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
+    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
+    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
+    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
+  </div>
+  <a href="/shop/" class="btn-primary fade-up">View All Products &rarr;</a>
+</section>
+
 <!-- ════ COMMUNITY ════ -->
 <section class="community-section" id="community">
   <h2 class="community-h">You don&rsquo;t have to figure<br>this out <em>alone.</em></h2>
@@ -535,6 +570,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
       <a href="/blog/">Blog</a>
       <a href="/quiz/">Take the Quiz</a>
       <a href="/freeeresources/">Free Resources</a>
+      <a href="/shop/">Shop</a>
       <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Telegram</a>
     </nav>
@@ -544,6 +580,8 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
 
 <script>
 const WORKER = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
+const SHOP_DOMAIN = '1d1qi0-r1.myshopify.com';
+const SHOP_TOKEN  = 'f9844f02de398a3619eb4865e5156e0a';
 
 // ── Gate ──
 const gate     = document.getElementById('gate');
@@ -654,6 +692,36 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── Home shop preview ──
+(async function() {
+  const el = document.getElementById('homeProducts');
+  if (!el) return;
+  const Q = `{ products(first: 4, sortKey: CREATED_AT, reverse: true) { edges { node { title handle availableForSale onlineStoreUrl priceRange { minVariantPrice { amount currencyCode } } images(first: 1) { edges { node { url altText } } } } } } }`;
+  try {
+    const res = await fetch(`https://${SHOP_DOMAIN}/api/2024-10/graphql.json`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': SHOP_TOKEN },
+      body: JSON.stringify({ query: Q })
+    });
+    const json = await res.json();
+    const products = json.data.products.edges.map(e => e.node);
+    if (!products.length) { el.parentElement.style.display = 'none'; return; }
+    el.innerHTML = products.map(p => {
+      const img   = p.images.edges[0]?.node;
+      const price = p.priceRange.minVariantPrice;
+      const fmt   = new Intl.NumberFormat('en-US', { style: 'currency', currency: price.currencyCode }).format(parseFloat(price.amount));
+      const url   = p.onlineStoreUrl || `https://${SHOP_DOMAIN}/products/${p.handle}`;
+      return `<a href="${url}" target="_blank" rel="noopener" class="pcard fade-up">
+        <div class="pcard-img">${img ? `<img src="${img.url}" alt="${img.altText || p.title}" loading="lazy">` : ''}</div>
+        <div class="pcard-body"><p class="pcard-title">${p.title}</p><p class="pcard-price">${fmt}</p></div>
+      </a>`;
+    }).join('');
+    el.querySelectorAll('.fade-up').forEach(card => observer.observe(card));
+  } catch (_) {
+    el.parentElement.style.display = 'none';
+  }
+})();
 </script>
 </body>
 </html>
