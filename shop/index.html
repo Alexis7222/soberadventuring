@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | Sober Adventuring</title>
+<meta name="description" content="Gear and goods for the sober adventuring life. Stickers, apparel, and more.">
+<link rel="canonical" href="https://soberadventuring.com/shop/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B0009;--forest:#2D3D24;--terra:#C5442C;
+  --cream:#F4E8D0;--paper:#F0EDE8;--muted:#6b5a4e;
+  --blue:#2C3A5A;--white:#FEFCF8;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+
+/* ─── ANNOUNCE ─── */
+.announce{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px 20px;background:var(--forest)}
+.announce span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,232,208,0.45)}
+.announce a{font-size:12px;font-weight:700;color:var(--cream);text-decoration:none;opacity:0.9;white-space:nowrap}
+.announce a:hover{opacity:1;text-decoration:underline}
+.announce-dot{color:rgba(244,232,208,0.2);font-size:10px}
+
+/* ─── NAV ─── */
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(27,0,9,0.08);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;white-space:nowrap}
+.nav-logo .green{color:var(--forest)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.2s}
+.nav-links{list-style:none;display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:13px;color:var(--ink);text-decoration:none;font-weight:500;opacity:0.65;transition:opacity 0.2s;white-space:nowrap}
+.nav-links a:hover{opacity:1}
+.nav-links .active{opacity:1;font-weight:700;color:var(--forest)}
+.nav-links .quiz-link{color:var(--terra);opacity:1;font-weight:700}
+.nav-cta{background:var(--terra);color:var(--cream)!important;opacity:1!important;padding:7px 14px;font-size:12px!important;font-weight:700!important;transition:opacity 0.2s!important}
+.nav-cta:hover{opacity:0.85!important}
+
+/* ─── SHOP HERO ─── */
+.shop-hero{padding:72px 40px 48px;background:var(--paper)}
+.shop-eyebrow{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--muted);display:block;margin-bottom:10px}
+.shop-h{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,60px);color:var(--ink);line-height:1.0;letter-spacing:-0.02em;margin-bottom:16px}
+.shop-h em{color:var(--terra);font-style:italic}
+.shop-sub{font-size:16px;color:rgba(27,0,9,0.55);line-height:1.65;max-width:460px}
+
+/* ─── PRODUCT GRID ─── */
+.shop-section{padding:8px 40px 88px}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+
+.product-card{background:var(--white);border:1px solid rgba(27,0,9,0.07);text-decoration:none;color:inherit;display:block;transition:transform 0.22s ease,box-shadow 0.22s ease}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 10px 36px rgba(27,0,9,0.11)}
+.product-img-wrap{aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.35s ease}
+.product-card:hover .product-img-wrap img{transform:scale(1.04)}
+.product-img-empty{width:100%;height:100%;background:var(--cream);display:flex;align-items:center;justify-content:center}
+.product-body{padding:22px 20px 26px}
+.product-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:6px;line-height:1.2}
+.product-price{font-size:14px;font-weight:700;color:var(--terra);margin-bottom:16px;letter-spacing:0.01em}
+.product-cta{font-size:12px;font-weight:700;color:var(--ink);letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(27,0,9,0.25);padding-bottom:2px;display:inline-block}
+.product-unavail{opacity:0.45;pointer-events:none}
+
+/* ─── SKELETON ─── */
+.skel-card{background:var(--white);border:1px solid rgba(27,0,9,0.07)}
+.skel-img{aspect-ratio:1/1}
+.skel-body{padding:22px 20px 26px;display:flex;flex-direction:column;gap:10px}
+.skel{background:linear-gradient(90deg,rgba(27,0,9,0.05) 25%,rgba(27,0,9,0.09) 50%,rgba(27,0,9,0.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:2px}
+.skel-h{height:20px;width:68%}
+.skel-p{height:13px;width:28%}
+.skel-btn{height:11px;width:42%;margin-top:4px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ─── EMPTY/ERROR ─── */
+.shop-msg{text-align:center;padding:72px 20px;color:var(--muted)}
+.shop-msg strong{display:block;font-family:'DM Serif Display',serif;font-size:24px;color:var(--ink);margin-bottom:8px}
+
+/* ─── FADE UP ─── */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232,208,0.06)}
+footer nav{position:static;background:transparent;border:none;padding:0;height:auto;z-index:auto}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:rgba(244,232,208,0.7);text-decoration:none}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(244,232,208,0.38);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--cream)}
+.footer-copy{font-size:11px;color:rgba(244,232,208,0.2);width:100%}
+
+/* ─── MOBILE ─── */
+@media(max-width:768px){
+  nav{padding:0 16px;height:52px}
+  .nav-hamburger{display:flex}
+  .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 20px;border-bottom:1px solid rgba(27,0,9,0.08);gap:20px;box-shadow:0 12px 32px rgba(27,0,9,0.1)}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:15px;opacity:0.75;padding:4px 0}
+  .nav-cta{padding:10px 16px;font-size:13px!important;text-align:center}
+  .shop-hero{padding:52px 20px 36px}
+  .shop-section{padding:8px 20px 60px}
+  .shop-grid{grid-template-columns:repeat(auto-fill,minmax(156px,1fr));gap:14px}
+  .product-title{font-size:17px}
+  .product-body{padding:16px 14px 20px}
+  footer{padding:28px 20px}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:14px}
+  .announce{gap:8px;padding:8px 16px}
+  .announce a,.announce span{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ ANNOUNCE ════ -->
+<div class="announce">
+  <span>Free guide &amp; quiz</span>
+  <span class="announce-dot">&bull;</span>
+  <a href="/#guides">Get the free guide</a>
+  <span class="announce-dot">&bull;</span>
+  <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Join us on Telegram</a>
+</div>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <a href="/" class="nav-logo"><span class="green">Sober</span>Adventuring.</a>
+  <button class="nav-hamburger" id="navToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/story/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/quiz/" class="quiz-link">Take the Quiz</a></li>
+    <li><a href="/freeeresources/">Free Resources</a></li>
+    <li><a href="/shop/" class="active">Shop</a></li>
+    <li><a href="/#coaching">Work With Me</a></li>
+    <li><a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-cta">Free Call</a></li>
+  </ul>
+</nav>
+
+<!-- ════ SHOP HERO ════ -->
+<section class="shop-hero">
+  <span class="shop-eyebrow">the merch</span>
+  <h1 class="shop-h">Gear for the<br><em>sober adventure.</em></h1>
+  <p class="shop-sub">Ships from Printify. New products added regularly &mdash; this page pulls live from the store automatically.</p>
+</section>
+
+<!-- ════ PRODUCT GRID ════ -->
+<section class="shop-section">
+  <div class="shop-grid" id="shopGrid">
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-body"><div class="skel skel-h"></div><div class="skel skel-p"></div><div class="skel skel-btn"></div></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-body"><div class="skel skel-h"></div><div class="skel skel-p"></div><div class="skel skel-btn"></div></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-body"><div class="skel skel-h"></div><div class="skel skel-p"></div><div class="skel skel-btn"></div></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-body"><div class="skel skel-h"></div><div class="skel skel-p"></div><div class="skel skel-btn"></div></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-body"><div class="skel skel-h"></div><div class="skel skel-p"></div><div class="skel skel-btn"></div></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-body"><div class="skel skel-h"></div><div class="skel skel-p"></div><div class="skel skel-btn"></div></div></div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">SoberAdventuring.</a>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="/story/">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/quiz/">Take the Quiz</a>
+      <a href="/freeeresources/">Free Resources</a>
+      <a href="/shop/">Shop</a>
+      <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
+  </div>
+</footer>
+
+<script>
+const DOMAIN = '1d1qi0-r1.myshopify.com';
+const TOKEN  = 'f9844f02de398a3619eb4865e5156e0a';
+
+const QUERY = `{
+  products(first: 50, sortKey: CREATED_AT, reverse: true) {
+    edges {
+      node {
+        title
+        handle
+        availableForSale
+        onlineStoreUrl
+        priceRange {
+          minVariantPrice { amount currencyCode }
+        }
+        images(first: 1) {
+          edges { node { url altText } }
+        }
+      }
+    }
+  }
+}`;
+
+function fmt(amount, currency) {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(parseFloat(amount));
+}
+
+function card(p) {
+  const img   = p.images.edges[0]?.node;
+  const price = p.priceRange.minVariantPrice;
+  const url   = p.onlineStoreUrl || `https://${DOMAIN}/products/${p.handle}`;
+  const avail = p.availableForSale;
+  return `<a href="${url}" target="_blank" rel="noopener" class="product-card fade-up${avail ? '' : ' product-unavail'}" aria-label="${p.title}">
+    <div class="product-img-wrap">
+      ${img ? `<img src="${img.url}" alt="${img.altText || p.title}" loading="lazy">` : '<div class="product-img-empty"></div>'}
+    </div>
+    <div class="product-body">
+      <h2 class="product-title">${p.title}</h2>
+      <p class="product-price">${fmt(price.amount, price.currencyCode)}${avail ? '' : ' &middot; Sold Out'}</p>
+      <span class="product-cta">${avail ? 'Shop Now &rarr;' : 'Out of Stock'}</span>
+    </div>
+  </a>`;
+}
+
+async function init() {
+  const grid = document.getElementById('shopGrid');
+  try {
+    const res  = await fetch(`https://${DOMAIN}/api/2024-10/graphql.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': TOKEN
+      },
+      body: JSON.stringify({ query: QUERY })
+    });
+    const json = await res.json();
+    const products = json.data.products.edges.map(e => e.node);
+
+    if (!products.length) {
+      grid.innerHTML = '<div class="shop-msg"><strong>Coming Soon</strong>New products are on the way.</div>';
+      return;
+    }
+
+    grid.innerHTML = products.map(card).join('');
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('#shopGrid .fade-up').forEach(el => obs.observe(el));
+
+  } catch (_) {
+    grid.innerHTML = '<div class="shop-msg"><strong>Couldn\'t load products</strong>Try refreshing the page.</div>';
+  }
+}
+
+// Nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+const navEl     = document.querySelector('nav');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+document.addEventListener('click', e => { if (!navEl.contains(e.target)) navLinks.classList.remove('open'); });
+
+init();
+</script>
+</body>
+</html>
