@@ -168,9 +168,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 
 /* ─── COMMUNITY ─── */
 .community-section{padding:72px 40px;background:var(--ink)}
-.community-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--cream);margin-bottom:8px;line-height:1.06;max-width:500px}
+.community-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--cream);margin-bottom:48px;line-height:1.06;max-width:500px}
 .community-h em{color:var(--terra);font-style:italic}
-.community-sub{font-size:15px;color:rgba(244,232,208,0.5);margin-bottom:48px;line-height:1.65}
 .community-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:680px}
 .comm-card{background:rgba(244,232,208,0.05);border:1px solid rgba(244,232,208,0.09);padding:30px 26px}
 .comm-tag{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:block}
@@ -195,53 +194,32 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
 
 /* ─── MOBILE ─── */
 @media(max-width:768px){
-  /* Nav */
   nav{padding:0 16px;height:52px}
   .nav-hamburger{display:flex}
   .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 20px;border-bottom:1px solid rgba(27,0,9,0.08);gap:20px;box-shadow:0 12px 32px rgba(27,0,9,0.1)}
   .nav-links.open{display:flex}
   .nav-links a{font-size:15px;opacity:0.75;padding:4px 0}
   .nav-cta{padding:10px 16px;font-size:13px!important;text-align:center}
-
-  /* Gate */
   .gate-cards{grid-template-columns:1fr;gap:10px}
   .gate-card{padding:22px 18px 26px}
   .gate-h{font-size:clamp(22px,6vw,32px);margin-bottom:28px}
-
-  /* Popup */
   .popup-box{padding:36px 24px}
-
-  /* Hero */
   .hero{min-height:auto;padding:0;flex-direction:column;gap:0;align-items:stretch}
   .hero-inner{padding:56px 20px 32px;max-width:100%}
   .hero-img{padding:0 20px 52px}
   .hero-img img{width:100%;height:260px;border-radius:16px}
   .hero-btns{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-ghost{justify-content:center;width:100%}
-
-  /* Sections */
   .lead-section,.hubs-section,.community-section{padding:56px 20px}
-
-  /* Lead cards */
   .lead-cards{grid-template-columns:1fr}
   .lead-card{padding:28px 22px}
-
-  /* Hubs */
   .hub{grid-template-columns:1fr;gap:28px;margin-bottom:56px;direction:ltr!important}
   .hub.flip>*{direction:ltr}
-
-  /* Shop preview */
   .shop-preview{padding:56px 20px}
   .shop-preview-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-
-  /* Community */
   .community-cards{grid-template-columns:1fr}
-
-  /* Footer */
   footer{padding:28px 20px}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:14px}
-
-  /* Announce */
   .announce{gap:8px;padding:8px 16px;justify-content:center}
   .announce a,.announce span{font-size:11px}
 }
@@ -482,7 +460,6 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
 <!-- ════ COMMUNITY ════ -->
 <section class="community-section" id="community">
   <h2 class="community-h">You don&rsquo;t have to figure<br>this out <em>alone.</em></h2>
-  <p class="community-sub">Free. No commitment. No specific program required.</p>
   <div class="community-cards" style="grid-template-columns:1fr;max-width:440px">
     <div class="comm-card fade-up">
       <span class="comm-tag">Free &middot; Telegram</span>
@@ -584,7 +561,6 @@ async function submitGuide(email, name, formEl, btnEl, confirmEl) {
   confirmEl.style.display = 'block';
   sessionStorage.setItem('sa_guide_done', '1');
   popup.classList.remove('show');
-  // GA4 event
   if (typeof gtag !== 'undefined') gtag('event', 'guide_signup', { method: 'homepage' });
 }
 
