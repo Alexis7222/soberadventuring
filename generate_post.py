@@ -268,7 +268,7 @@ u{{text-decoration-color:var(--terra);text-decoration-thickness:2px;text-underli
 
 <div class="post-cta">
   <h2>Want to talk it through?</h2>
-  <p>20 minutes, free. We figure out where you are and what the actual next move looks like.</p>
+  <p>whats up friend! If you're looking for extra guidance and want to work together 1:1, click here to set up a discovery call</p>
   <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="btn">Book the free clarity call &rarr;</a>
 </div>
 
