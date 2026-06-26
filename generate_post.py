@@ -96,6 +96,11 @@ BAD: "Practical strategies, real timelines, and honest answers."
 GOOD: "Real timelines and honest answers."
 No exceptions anywhere: prose, headings, conclusions, bullet points, CTAs.
 
+== WORD VARIETY ==
+- "actually": use at most once per post. When you reach for it, use one of these instead: in practice, honestly, specifically, for real, on the ground, in reality. Never capitalize "Actually" for emphasis — rewrite the sentence.
+- "genuinely": banned entirely as a filler intensifier.
+- "really": use sparingly, at most once per post. Prefer a specific word that earns its place.
+
 == HEDGING ==
 When making claims about what people experience, feel, or go through, use hedging language: might, may, can, often, for many people, in a lot of cases.
 Never write "you will feel" or "everyone experiences" — avoid blanket universal claims.
@@ -167,6 +172,7 @@ def call_claude(topic):
                 "No 'Not because X. But because Y.' or any fragment-pair structures. "
                 "No triads: never list three things, pick the two strongest and cut the third. "
                 "Hedge all claims about what people experience or feel: might, may, often. Never 'you will' or 'everyone.' "
+                "The word 'actually' is allowed at most once — use alternatives like 'in practice' or 'for real' instead. "
                 "Use <strong>, <u>, and <span class=\"hl\"> sparingly where they genuinely help the reader scan, not for decoration."
             )
         }]
