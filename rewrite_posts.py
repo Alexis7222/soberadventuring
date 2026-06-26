@@ -7,12 +7,14 @@ import anthropic
 import os
 import json
 import re
+import sys
+import time
+import traceback
 from datetime import date
 from pathlib import Path
 
 from generate_post import SYSTEM_PROMPT, TOPICS, render_post_html, render_index_html
 
-CLIENT = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 MODEL = "claude-sonnet-4-6"
 
 # Build a lookup: normalized title -> topic (for keyword retrieval)
@@ -23,7 +25,6 @@ def find_keyword(title, category):
     title_lower = title.lower()
     if title_lower in TOPIC_BY_TITLE:
         return TOPIC_BY_TITLE[title_lower]["keyword"]
-    # Fuzzy: find topic in same category with most word overlap
     best_overlap, best_kw = 0, ""
     post_words = set(title_lower.split())
     for t in TOPICS:
@@ -36,7 +37,12 @@ def find_keyword(title, category):
 
 
 def call_claude(title, keyword, category):
-    msg = CLIENT.messages.create(
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if not api_key:
+        raise ValueError("ANTHROPIC_API_KEY is not set or is empty")
+
+    client = anthropic.Anthropic(api_key=api_key)
+    msg = client.messages.create(
         model=MODEL,
         max_tokens=4096,
         system=SYSTEM_PROMPT,
@@ -58,19 +64,42 @@ def call_claude(title, keyword, category):
         }]
     )
     text = msg.content[0].text.strip()
+    # Strip markdown code fences if Claude wraps the JSON
     text = re.sub(r"^```json\s*", "", text)
+    text = re.sub(r"^```\s*", "", text)
     text = re.sub(r"\s*```$", "", text)
     if text.lower().startswith("json"):
         text = text[4:]
-    return json.loads(text.strip())
+    text = text.strip()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Claude returned invalid JSON: {e}\nRaw response (first 500 chars): {text[:500]}")
 
 
 def main():
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if not api_key:
+        print("ERROR: ANTHROPIC_API_KEY secret is not set in this repo's Actions secrets.", file=sys.stderr)
+        print("Go to: Settings → Secrets and variables → Actions → New repository secret", file=sys.stderr)
+        sys.exit(1)
+
     posts_json = Path("blog/posts.json")
-    posts = json.loads(posts_json.read_text())
+    if not posts_json.exists():
+        print("ERROR: blog/posts.json not found", file=sys.stderr)
+        sys.exit(1)
+
+    try:
+        posts = json.loads(posts_json.read_text())
+    except json.JSONDecodeError as e:
+        print(f"ERROR: blog/posts.json is malformed: {e}", file=sys.stderr)
+        sys.exit(1)
+
     print(f"Rewriting {len(posts)} posts with Sonnet + full writing rules...\n")
 
     updated_posts = []
+    failed_count = 0
+
     for i, post in enumerate(posts, 1):
         slug = post["slug"]
         title = post["title"]
@@ -106,15 +135,30 @@ def main():
             })
             print(f"  OK")
 
+            # Small pause to stay within API rate limits
+            time.sleep(1)
+
         except Exception as e:
-            print(f"  ERROR: {e} — keeping original")
+            failed_count += 1
+            print(f"  ERROR: {e}")
+            traceback.print_exc()
             updated_posts.append(post)
 
     updated_posts.sort(key=lambda p: p["date"])
-    posts_json.write_text(json.dumps(updated_posts, indent=2), encoding="utf-8")
 
-    Path("blog/index.html").write_text(render_index_html(updated_posts), encoding="utf-8")
-    print(f"\nDone. {len(updated_posts)} posts processed.")
+    try:
+        posts_json.write_text(json.dumps(updated_posts, indent=2), encoding="utf-8")
+        Path("blog/index.html").write_text(render_index_html(updated_posts), encoding="utf-8")
+    except Exception as e:
+        print(f"ERROR writing output files: {e}", file=sys.stderr)
+        traceback.print_exc()
+        sys.exit(1)
+
+    print(f"\nDone. {len(updated_posts)} posts processed, {failed_count} kept original due to errors.")
+
+    if failed_count == len(posts):
+        print("ERROR: Every single post failed — something is fundamentally wrong.", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
