@@ -13,20 +13,20 @@ TOPICS = [
     {"title": "Sober Curious vs. Sober: What's the Difference and Which One Are You?", "keyword": "sober curious meaning sober curious vs sober",             "category": "Recovery"},
     {"title": "Benefits of Sobriety at 30, 60, and 90 Days — A Real Timeline",     "keyword": "benefits of sobriety sobriety timeline",                       "category": "Recovery"},
     {"title": "How to Get Sober Without Rock Bottom (You Don't Have to Wait)",      "keyword": "how to get sober sobriety tips",                               "category": "Recovery"},
-    {"title": "What Does It Actually Feel Like to Be Sober? Honest Answers",        "keyword": "sober lifestyle what is sobriety",                             "category": "Recovery"},
+    {"title": "What Does It Feel Like to Be Sober? Honest Answers",                "keyword": "sober lifestyle what is sobriety",                             "category": "Recovery"},
     {"title": "How to Stop Drinking Alcohol on Your Own: A Practical Guide",        "keyword": "how to stop drinking on my own",                               "category": "Recovery"},
     {"title": "When Do Cravings Go Away? What to Expect in Early Recovery",         "keyword": "when do cravings stop early sobriety symptoms",                "category": "Recovery"},
     {"title": "Dry January vs. Permanent Sobriety: Which One Is Right for You?",   "keyword": "dry January sober curious movement",                           "category": "Recovery"},
     {"title": "Alcohol and Anxiety: Why Getting Sober Might Be the Fix",            "keyword": "alcohol and anxiety sobriety benefits",                        "category": "Recovery"},
     {"title": "What Is Marijuana-Induced Psychosis and Who Is at Risk",             "keyword": "marijuana induced psychosis cannabis psychosis",               "category": "Recovery"},
     # Sobriety Coaching
-    {"title": "What Does a Sobriety Coach Actually Do? (It's Not Therapy)",         "keyword": "sobriety coach what is sobriety coaching",                     "category": "Sobriety Coaching"},
+    {"title": "What Does a Sobriety Coach Do? (It's Not Therapy)",                  "keyword": "sobriety coach what is sobriety coaching",                     "category": "Sobriety Coaching"},
     {"title": "Sobriety Coach vs. Therapist vs. AA: Which Support Is Right for You?", "keyword": "sobriety coach vs therapy alternatives to AA",             "category": "Sobriety Coaching"},
     {"title": "How Much Does a Sober Coach Cost? Breaking Down the Investment",     "keyword": "sobriety coach cost sober coach online",                       "category": "Sobriety Coaching"},
     {"title": "5 Signs You Might Benefit From a Sobriety Coach",                    "keyword": "sobriety coaching alcohol free coaching",                      "category": "Sobriety Coaching"},
     {"title": "Can You Get Sober Online? What Remote Sobriety Coaching Looks Like", "keyword": "online sobriety support sober coach online",                   "category": "Sobriety Coaching"},
     {"title": "The ALIVE Method: A Non-12-Step Framework for Sobriety Coaching",    "keyword": "sobriety coaching sobriety framework ALIVE method",            "category": "Sobriety Coaching"},
-    {"title": "How to Build a Sober Life You Actually Want to Live",                "keyword": "sobriety coach sober accountability coach",                    "category": "Sobriety Coaching"},
+    {"title": "How to Build a Sober Life Worth Staying For",                        "keyword": "sobriety coach sober accountability coach",                    "category": "Sobriety Coaching"},
     # Sober Travel
     {"title": "The Complete Guide to Sober Travel: How to Have the Best Trip",      "keyword": "sober travel sober travel tips",                               "category": "Sober Travel"},
     {"title": "Sober in Chiang Mai: A Digital Nomad's Guide Without Alcohol",       "keyword": "sober in Thailand sober travel digital nomad",                 "category": "Sober Travel"},
@@ -46,7 +46,7 @@ TOPICS = [
     {"title": "How to Build a Freelance Business While in Recovery",                "keyword": "sober freelance sobriety lifestyle career change Upwork",      "category": "Freelance"},
     {"title": "Why Getting Sober Was the Best Career Move I Ever Made",             "keyword": "sobriety benefits sober lifestyle career sobriety tips",       "category": "Freelance"},
     {"title": "How to Start Freelancing on Upwork With No Experience",              "keyword": "how to start freelancing on Upwork with no experience",        "category": "Freelance"},
-    {"title": "How to Write Upwork Proposals That Actually Get Responses",          "keyword": "Upwork proposals how to get clients on Upwork",                "category": "Freelance"},
+    {"title": "How to Write Upwork Proposals That Get Responses",                   "keyword": "Upwork proposals how to get clients on Upwork",                "category": "Freelance"},
 ]
 
 SYSTEM_PROMPT = """You write blog posts for soberadventuring.com — Alexis Antonelli's site.
@@ -96,10 +96,10 @@ BAD: "Practical strategies, real timelines, and honest answers."
 GOOD: "Real timelines and honest answers."
 No exceptions anywhere: prose, headings, conclusions, bullet points, CTAs.
 
-== WORD VARIETY ==
-- "actually": use at most once per post. When you reach for it, use one of these instead: in practice, honestly, specifically, for real, on the ground, in reality. Never capitalize "Actually" for emphasis — rewrite the sentence.
+== WORD VARIETY — HARD BANS ==
+- "actually": banned entirely. Never use it in any form. When you reach for it, use one of these instead: in practice, for real, on the ground, in reality, specifically, honestly.
+- "really": banned entirely. Cut it or replace with a specific word that earns its place: significantly, quite, considerably, or just drop it.
 - "genuinely": banned entirely as a filler intensifier.
-- "really": use sparingly, at most once per post. Prefer a specific word that earns its place.
 
 == HEDGING ==
 When making claims about what people experience, feel, or go through, use hedging language: might, may, can, often, for many people, in a lot of cases.
@@ -172,7 +172,7 @@ def call_claude(topic):
                 "No 'Not because X. But because Y.' or any fragment-pair structures. "
                 "No triads: never list three things, pick the two strongest and cut the third. "
                 "Hedge all claims about what people experience or feel: might, may, often. Never 'you will' or 'everyone.' "
-                "The word 'actually' is allowed at most once — use alternatives like 'in practice' or 'for real' instead. "
+                "The words 'actually' and 'really' are BANNED — use 'in practice', 'for real', 'in reality' instead of 'actually'; cut 'really' or use a specific word. "
                 "Use <strong>, <u>, and <span class=\"hl\"> sparingly where they genuinely help the reader scan, not for decoration."
             )
         }]
