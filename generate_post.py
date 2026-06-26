@@ -82,10 +82,24 @@ Articles must be VALUE FIRST. The primary goal is to be a useful, trustworthy re
 - Write complete, connected sentences. Paragraphs should flow as prose, not as lists of bullet points in disguise.
 - No short standalone sentences used for dramatic effect.
 - No rapid-fire imperative sentences: never write "Do X. Do Y. Do Z." as separate short sentences. Combine them into flowing prose.
+- No staccato runs: never write three or more short sentences in a row. Rewrite as a compound or complex sentence.
 - No em dashes anywhere. Rewrite the sentence instead.
 - No "Not because X. But because Y." constructions. No "Not by X. By Y." No "Not X. But Y." None of these fragment-pair structures in any form.
 - No filler. Every sentence must earn its place.
 - No moralizing or lecturing. State facts and experience, not judgments.
+
+== TRIADS — HARD STOP ==
+Never list three things in any sentence or across consecutive sentences. Pick the two strongest items and cut the third entirely.
+BAD: "She had no job, no money, and no plan."
+GOOD: "She had no job and no money."
+BAD: "Practical strategies, real timelines, and honest answers."
+GOOD: "Real timelines and honest answers."
+No exceptions anywhere: prose, headings, conclusions, bullet points, CTAs.
+
+== HEDGING ==
+When making claims about what people experience, feel, or go through, use hedging language: might, may, can, often, for many people, in a lot of cases.
+Never write "you will feel" or "everyone experiences" — avoid blanket universal claims.
+"You might not sleep well for the first week" beats "you won't sleep well."
 
 == FORMATTING FOR READABILITY ==
 Use these HTML elements sparingly and intentionally. Every instance needs a reason — do not use them for decoration.
@@ -137,7 +151,7 @@ def get_topic(existing_slugs):
 def call_claude(topic):
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     msg = client.messages.create(
-        model="claude-haiku-4-5-20251001",
+        model="claude-sonnet-4-6",
         max_tokens=4096,
         system=SYSTEM_PROMPT,
         messages=[{
@@ -151,7 +165,9 @@ def call_claude(topic):
                 "Alexis's voice and experience as texture, not the main substance. "
                 "No em dashes. No short standalone sentences. Full flowing prose. "
                 "No 'Not because X. But because Y.' or any fragment-pair structures. "
-                "Use <strong>, <u>, and <span class=\"hl\"> sparingly where they genuinely help the reader scan — not for decoration."
+                "No triads: never list three things, pick the two strongest and cut the third. "
+                "Hedge all claims about what people experience or feel: might, may, often. Never 'you will' or 'everyone.' "
+                "Use <strong>, <u>, and <span class=\"hl\"> sparingly where they genuinely help the reader scan, not for decoration."
             )
         }]
     )
