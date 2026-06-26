@@ -179,31 +179,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .comm-cta{display:inline-block;color:var(--cream);font-size:13px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--terra);padding-bottom:2px;transition:color 0.2s}
 .comm-cta:hover{color:var(--terra)}
 
-/* ─── COACHING ─── */
-.coaching-section{padding:72px 40px 0;background:var(--paper)}
-.coaching-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--ink);margin-bottom:8px;line-height:1.06}
-.coaching-h em{color:var(--terra);font-style:italic}
-.coaching-sub{font-size:15px;color:var(--muted);margin-bottom:48px;line-height:1.65;max-width:500px}
-.coaching-tracks{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:840px;margin-bottom:0}
-.c-track{background:var(--white);padding:34px 30px;border:1px solid rgba(27,0,9,0.07)}
-.c-track-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--tc);margin-bottom:16px;display:block}
-.c-track-h{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,26px);color:var(--ink);margin-bottom:6px;line-height:1.18}
-.c-track-h em{color:var(--tc);font-style:italic}
-.c-method{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--tc);margin-bottom:12px;display:block;opacity:0.75}
-.c-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:22px}
-.c-items{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:26px}
-.c-items li{font-size:13px;color:var(--ink);padding-left:16px;position:relative;line-height:1.5}
-.c-items li::before{content:'→';position:absolute;left:0;color:var(--tc);font-size:11px;top:1px}
-.c-cta{display:inline-block;background:var(--tc);color:var(--cream);padding:12px 20px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;transition:opacity 0.2s;min-height:44px;display:inline-flex;align-items:center}
-.c-cta:hover{opacity:0.85}
-
-/* ─── COACHING FOOTER (dark band) ─── */
-.coaching-footer{background:var(--ink);padding:60px 40px;text-align:center;margin-top:48px}
-.coaching-footer p{font-family:'DM Serif Display',serif;font-size:clamp(20px,3vw,30px);color:var(--cream);margin-bottom:28px;line-height:1.25;font-style:italic}
-.coaching-footer p em{color:var(--terra)}
-.final-cta{display:inline-flex;align-items:center;background:var(--terra);color:var(--cream);padding:16px 36px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:opacity 0.2s;letter-spacing:0.02em;min-height:52px}
-.final-cta:hover{opacity:0.85}
-
 /* ─── FOOTER ─── */
 footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232,208,0.06)}
 footer nav{position:static;background:transparent;border:none;padding:0;height:auto;z-index:auto}
@@ -245,9 +220,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
   .btn-primary,.btn-ghost{justify-content:center;width:100%}
 
   /* Sections */
-  .lead-section,.hubs-section,.community-section,.coaching-section{padding:56px 20px}
-  .coaching-section{padding:56px 20px 0}
-  .coaching-footer{padding:48px 20px;margin-top:40px}
+  .lead-section,.hubs-section,.community-section{padding:56px 20px}
 
   /* Lead cards */
   .lead-cards{grid-template-columns:1fr}
@@ -263,10 +236,6 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
 
   /* Community */
   .community-cards{grid-template-columns:1fr}
-
-  /* Coaching */
-  .coaching-tracks{grid-template-columns:1fr}
-  .c-track{padding:26px 22px}
 
   /* Footer */
   footer{padding:28px 20px}
@@ -347,6 +316,8 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
   <span class="announce-dot">◆</span>
   <a href="#guides">Get the free guide</a>
   <span class="announce-dot">·</span>
+  <a href="/coaching/">Work With Me</a>
+  <span class="announce-dot">·</span>
   <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Join us on Telegram</a>
 </div>
 
@@ -362,7 +333,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
     <li><a href="/quiz/" class="quiz-link">Freelance Quiz</a></li>
     <li><a href="/freeeresources/">Free Resources</a></li>
     <li><a href="/shop/">Shop</a></li>
-    <li><a href="#coaching">Work With Me</a></li>
+    <li><a href="/coaching/">Work With Me</a></li>
     <li><a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-cta">Free Call</a></li>
   </ul>
 </nav>
@@ -377,8 +348,8 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
     <span class="hero-annotation">yes, really.</span>
     <p class="hero-sub">for those done escaping, because they know they're meant for more.</p>
     <div class="hero-btns">
-      <a href="#guides" class="btn-primary">Start Here &rarr;</a>
-      <a href="#guides" class="btn-ghost">Get the Free Guide</a>
+      <a href="#guides" class="btn-primary">Get the Free Guide &rarr;</a>
+      <a href="/coaching/" class="btn-ghost">Work With Me &rarr;</a>
     </div>
   </div>
   <div class="hero-img">
@@ -391,7 +362,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
   <div class="lead-layout">
   <div class="lead-left">
   <span class="section-eyebrow">start here.</span>
-  <h2 class="section-h2">Fun tidbits</h2>
+  <h2 class="section-h2">free gifts, <em>from me to you</em></h2>
   <div class="lead-cards">
 
     <!-- GUIDE -->
@@ -414,7 +385,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
       <h3 class="lead-h">What Stage of Recovery Are You In?</h3>
       <p class="lead-sub">Five questions about where you are right now, with a specific next step based on your result. Designed to give you a real answer, not bait-and-switch you.</p>
       <span class="lead-accent">2 minutes.</span>
-      <a href="/quiz/recovery/" class="quiz-btn">Freelance Quiz &rarr;</a>
+      <a href="/quiz/recovery/" class="quiz-btn">Take the Recovery Quiz &rarr;</a>
     </div>
 
   </div>
@@ -522,45 +493,6 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
   </div>
 </section>
 
-<!-- ════ COACHING ════ -->
-<section class="coaching-section" id="coaching">
-  <span class="section-eyebrow">work with Alexis</span>
-  <h2 class="coaching-h">Ready to actually<br>change <em>something real?</em></h2>
-  <p class="coaching-sub">One-on-one coaching for people building a sober, free, unconventional life. Two tracks depending on where you are.</p>
-  <div class="coaching-tracks">
-
-    <div class="c-track fade-up" style="--tc:var(--forest)">
-      <span class="c-track-tag">Sobriety Coaching</span>
-      <h3 class="c-track-h">The <em>ALIVE</em> Method.</h3>
-      <span class="c-method">3-month &middot; $395/month</span>
-      <p class="c-desc">For people in or approaching sobriety who want practical, hands-on support from someone who&rsquo;s been in the space. All pathways supported. No program required.</p>
-      <ul class="c-items">
-        <li>Start here free: The Clarity Call. 20 minutes to figure out where you are and what the next steps look like.</li>
-        <li>Sobriety Coaching: ALIVE Method. 3-month engagement.</li>
-      </ul>
-      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="c-cta">Book the free call &rarr;</a>
-    </div>
-
-    <div class="c-track fade-up" style="--tc:var(--terra);transition-delay:0.12s">
-      <span class="c-track-tag">Career &amp; Freelance</span>
-      <h3 class="c-track-h">The <em>PIVOT</em> Method.</h3>
-      <span class="c-method">2-month &middot; $997 flat</span>
-      <p class="c-desc">For people who want to freelance, work remotely, or build a skill-based income. Made $30k in the first four months on Upwork starting from zero. The whole process is documented.</p>
-      <ul class="c-items">
-        <li>Start here free: The Clarity Call. 20 minutes to map your career profile and figure out what makes you hireable.</li>
-        <li>The Pivot Package. 2-month engagement, $997.</li>
-      </ul>
-      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="c-cta">Book the free call &rarr;</a>
-    </div>
-
-  </div>
-
-  <div class="coaching-footer fade-up">
-    <p>The clearest thinking of your life is on the other side.</p>
-    <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="final-cta">Book the Free Clarity Call &rarr;</a>
-  </div>
-</section>
-
 <!-- ════ FOOTER ════ -->
 <footer>
   <div class="footer-inner">
@@ -571,6 +503,7 @@ footer nav{position:static;background:transparent;border:none;padding:0;height:a
       <a href="/quiz/">Freelance Quiz</a>
       <a href="/freeeresources/">Free Resources</a>
       <a href="/shop/">Shop</a>
+      <a href="/coaching/">Work With Me</a>
       <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Telegram</a>
     </nav>
@@ -627,8 +560,8 @@ function showPopup() {
 popupClose.addEventListener('click', () => popup.classList.remove('show'));
 popup.addEventListener('click', (e) => { if (e.target === popup) popup.classList.remove('show'); });
 
-// Show after 3 minutes
-setTimeout(showPopup, 3 * 60 * 1000);
+// Show after 20 seconds
+setTimeout(showPopup, 20 * 1000);
 
 // Exit intent (desktop)
 let exitFired = false;
