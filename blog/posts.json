@@ -74,14 +74,14 @@
   {
     "slug": "sober-travel-multiple-countries",
     "title": "Traveling Sober Across Countries: What to Expect",
-    "meta_description": "A sober travel blog covering what traveling in recovery is like — the logistics, the social pressure, and what makes it work long-term.",
+    "meta_description": "A sober travel blog covering what traveling in recovery is like \u2014 the logistics, the social pressure, and what makes it work long-term.",
     "category": "Sober Travel",
     "date": "2026-06-13",
     "reading_time": 6
   },
   {
     "slug": "get-sober-without-aa-alternatives",
-    "title": "Can You Get Sober Without AA? Yes—Here's How",
+    "title": "Can You Get Sober Without AA? Yes\u2014Here's How",
     "meta_description": "Sobriety without AA is possible and well-supported by research. Here are the most effective alternatives to AA, with honest guidance on what works.",
     "category": "Recovery",
     "date": "2026-06-14",
@@ -90,7 +90,7 @@
   {
     "slug": "non-12-step-recovery-alternatives",
     "title": "Non-12-Step Recovery: Every Alternative Explained",
-    "meta_description": "SMART Recovery, LifeRing, Refuge Recovery, and more — every major non-12-step recovery alternative explained with honest pros and cons. Find what fits you.",
+    "meta_description": "SMART Recovery, LifeRing, Refuge Recovery, and more \u2014 every major non-12-step recovery alternative explained with honest pros and cons. Find what fits you.",
     "category": "Recovery",
     "date": "2026-06-15",
     "reading_time": 6
@@ -181,6 +181,14 @@
     "meta_description": "Confused about sober curious meaning vs being sober? This guide breaks down what each term means, who each approach fits, and how to find yours.",
     "category": "Recovery",
     "date": "2026-06-26",
+    "reading_time": 6
+  },
+  {
+    "slug": "benefits-of-sobriety-timeline-30-60-90-days",
+    "title": "Benefits of Sobriety at 30, 60, and 90 Days",
+    "meta_description": "A research-based sobriety timeline covering real benefits at 30, 60, and 90 days. What changes, what stays hard, and what to expect at each stage.",
+    "category": "Recovery",
+    "date": "2026-06-27",
     "reading_time": 6
   }
 ]
