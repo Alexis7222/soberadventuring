@@ -130,6 +130,24 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .section-body{font-size:16px;line-height:1.75;color:rgba(27,0,9,0.68);max-width:640px}
 .white-bg{background:var(--white)}
 
+/* FOR YOU LIST */
+.for-you-list{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:16px;max-width:640px}
+.for-you-list li{
+  display:flex;align-items:flex-start;gap:16px;
+  font-size:18px;line-height:1.55;color:var(--ink);
+  font-family:'DM Serif Display',serif;
+}
+.for-you-list li::before{
+  content:"\2713";
+  flex-shrink:0;
+  width:28px;height:28px;
+  background:var(--terra);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:13px;font-weight:700;
+  margin-top:2px;
+}
+
 /* PHASES */
 .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
 .phase-card{background:var(--paper);border-left:3px solid var(--pc,var(--forest));padding:26px 22px}
@@ -223,6 +241,7 @@ footer{background:var(--ink);padding:32px 40px}
   .timer-msg{width:100%;text-align:center}
   .timer-clock .t-seg{min-width:32px;padding:4px 6px;font-size:12px}
   .hero-visual{display:none}
+  .for-you-list li{font-size:16px}
 }
 </style>
 </head>
@@ -344,11 +363,14 @@ footer{background:var(--ink);padding:32px 40px}
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- FOR YOU -->
 <section class="section fade-up">
-  <span class="section-eyebrow">the first thirty days</span>
-  <h2 class="section-h2">The hardest day rarely arrives on day one, when the decision still feels new.</h2>
-  <p class="section-body">A lot of people fall apart closer to day twelve, when the novelty wears off and nobody is checking in anymore, and the only structure left is whatever you build for yourself. The First Thirty exists for day twelve and the days that don&rsquo;t have a name yet, when the only thing between you and a bad decision is something to do with your hands for ten minutes.</p>
+  <span class="section-eyebrow">this is for you if</span>
+  <ul class="for-you-list">
+    <li>You&rsquo;re committed to showing up for the process for 30 days</li>
+    <li>You&rsquo;re up googling sobriety related things at 1am instead of sleeping</li>
+    <li>You&rsquo;re over the rehab-brochure language that doesn&rsquo;t help or generic printable checklists</li>
+  </ul>
 </section>
 
 <!-- PHASES -->
