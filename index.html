@@ -2,639 +2,1240 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sober Adventuring | Remembering Life Is Kinda Incredible</title>
-<meta name="description" content="For those done escaping, because they know they're meant for more. Recovery coaching, sober travel, and freelance income — with Alexis Antonelli.">
-<meta property="og:title" content="Sober Adventuring | Remembering Life Is Kinda Incredible">
-<meta property="og:description" content="For those done escaping, because they know they're meant for more.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sober Adventuring — Part of you already knows why you're here.</title>
+<meta name="description" content="The First 30 is a free 30-day challenge for women who are done letting this question live in the back of their minds. No labels. No rock bottom required.">
+<meta property="og:title" content="Sober Adventuring — Part of you already knows why you're here.">
+<meta property="og:description" content="The First 30 — free 30-day challenge. No labels. No rock bottom required.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://soberadventuring.com">
 <link rel="canonical" href="https://soberadventuring.com">
-
-<!-- GA4 — replace G-XXXXXXXXXX with your Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('js',new Date());
+  gtag('config','G-XXXXXXXXXX');
 </script>
-
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Alexis Antonelli","url":"https://soberadventuring.com","sameAs":["https://www.instagram.com/soberadventuring/"],"jobTitle":"Recovery Coach & Freelance Career Coach"}
+{"@context":"https://schema.org","@type":"Person","name":"Alexis Antonelli","url":"https://soberadventuring.com","sameAs":["https://www.instagram.com/soberadventuring/"],"jobTitle":"Recovery Coach"}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1B0009;--forest:#2D3D24;--terra:#C5442C;
-  --cream:#F4E8D0;--paper:#F0EDE8;--muted:#6b5a4e;
-  --blue:#2C3A5A;--white:#FEFCF8;
+  --ink:#1A0A05;
+  --gold:#C9A96E;
+  --gold-lt:#E8C87A;
+  --oxblood:#6B2737;
+  --cream:#FAF4E8;
+  --paper:#F4EEE4;
+  --muted:#7a6355;
+  --white:#FFFDF8;
+  --ease:cubic-bezier(0.22,1,0.36,1);
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Bricolage Grotesque',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--ink);
+  color:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:inherit;}
 
-/* ─── GATE ─── */
-#gate{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;transition:opacity 0.5s ease,visibility 0.5s ease}
-#gate.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.gate-eyebrow{font-family:'Caveat',cursive;font-size:20px;font-weight:700;color:rgba(244,232,208,0.5);margin-bottom:12px;text-align:center}
-.gate-h{font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,48px);color:var(--cream);text-align:center;margin-bottom:40px;line-height:1.08}
-.gate-h em{color:var(--terra);font-style:italic}
-.gate-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:760px}
-.gate-card{background:rgba(244,232,208,0.05);border:1.5px solid rgba(244,232,208,0.1);padding:28px 22px 32px;cursor:pointer;text-decoration:none;display:block;transition:all 0.22s;position:relative}
-.gate-card .g-num{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gc);margin-bottom:14px;display:block}
-.gate-card .g-title{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,22px);color:var(--cream);margin-bottom:8px;line-height:1.2;transition:color 0.2s}
-.gate-card .g-sub{font-size:13px;color:rgba(244,232,208,0.45);line-height:1.6;transition:color 0.2s}
-.gate-card:hover{background:var(--gc);border-color:var(--gc);transform:translateY(-3px)}
-.gate-card:hover .g-title,.gate-card:hover .g-sub{color:var(--cream)}
-.gate-card.green{--gc:var(--forest)}
-.gate-card.orange{--gc:var(--terra)}
-.gate-card.navy{--gc:var(--blue)}
-.gate-skip{margin-top:32px;font-size:12px;color:rgba(244,232,208,0.3);cursor:pointer;background:none;border:none;font-family:'Bricolage Grotesque',sans-serif;transition:color 0.2s}
-.gate-skip:hover{color:rgba(244,232,208,0.6)}
-
-/* ─── POPUP ─── */
-#popup{position:fixed;inset:0;z-index:900;background:rgba(27,0,9,0.7);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity 0.35s ease,visibility 0.35s ease}
-#popup.show{opacity:1;visibility:visible}
-.popup-box{background:var(--white);padding:44px 40px;max-width:420px;width:100%;position:relative}
-.popup-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;transition:color 0.2s}
-.popup-close:hover{color:var(--ink)}
-.popup-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:block}
-.popup-h{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,28px);color:var(--ink);margin-bottom:8px;line-height:1.18}
-.popup-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65}
-.popup-accent{font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--forest);display:block;margin-bottom:18px}
-.popup-confirm{display:none;font-size:14px;color:var(--forest);font-weight:600;padding:12px 0;line-height:1.5}
-
-/* ─── ANNOUNCE ─── */
-.announce{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px 20px;background:var(--forest)}
-.announce span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,232,208,0.45)}
-.announce a{font-size:12px;font-weight:700;color:var(--cream);text-decoration:none;opacity:0.9;white-space:nowrap}
-.announce a:hover{opacity:1;text-decoration:underline}
-.announce a.announce-sale{color:#f4c875;opacity:1}
-.announce-dot{color:rgba(244,232,208,0.2);font-size:10px}
-
-/* ─── NAV ─── */
-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(27,0,9,0.08);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px}
-.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;white-space:nowrap}
-.nav-logo .green{color:var(--forest)}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
-.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.2s}
-.nav-links{list-style:none;display:flex;align-items:center;gap:20px}
-.nav-links a{font-size:13px;color:var(--ink);text-decoration:none;font-weight:500;opacity:0.65;transition:opacity 0.2s;white-space:nowrap}
-.nav-links a:hover{opacity:1}
-.nav-links .quiz-link{color:var(--terra);opacity:1;font-weight:700}
-.nav-links .sale-link{color:var(--terra);opacity:1;font-weight:700}
-.nav-cta{background:var(--terra);color:var(--cream)!important;opacity:1!important;padding:7px 14px;font-size:12px!important;font-weight:700!important;transition:opacity 0.2s!important}
-.nav-cta:hover{opacity:0.85!important}
-
-/* ─── HERO ─── */
-.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;gap:52px;padding:0 40px;background:var(--paper);position:relative;overflow:hidden}
-.hero-blob{position:absolute;top:-160px;right:-80px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(197,68,44,0.09) 0%,transparent 68%);pointer-events:none}
-.hero-blob-2{position:absolute;bottom:-100px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(45,61,36,0.07) 0%,transparent 68%);pointer-events:none}
-.hero-inner{flex:0 0 auto;max-width:500px;padding:72px 0;position:relative;z-index:1}
-.hero-img{flex-shrink:0;position:relative;z-index:1}
-.hero-img img{width:380px;height:500px;object-fit:cover;object-position:center 30%;border-radius:22px;display:block;box-shadow:0 10px 48px rgba(27,0,9,0.16)}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:block}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,7vw,76px);line-height:1.0;letter-spacing:-0.025em;color:var(--ink)}
-.hero h1 em{color:var(--terra);font-style:italic}
-.hero-annotation{font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--forest);display:block;margin-top:6px;margin-bottom:26px;transform:rotate(-1.2deg);margin-left:4px}
-.hero-sub{font-size:clamp(16px,2.2vw,19px);line-height:1.65;color:rgba(27,0,9,0.6);max-width:480px;margin-bottom:40px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-primary{background:var(--ink);color:var(--cream);padding:15px 28px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:opacity 0.2s;letter-spacing:0.01em;min-height:48px;display:inline-flex;align-items:center}
-.btn-primary:hover{opacity:0.82}
-.btn-ghost{border:1.5px solid rgba(27,0,9,0.35);color:var(--ink);padding:15px 28px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:all 0.2s;letter-spacing:0.01em}
-.btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
-
-/* ─── SHARED SECTION LABELS ─── */
-.section-eyebrow{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--muted);display:block;margin-bottom:10px}
-.section-h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,42px);color:var(--ink);margin-bottom:44px;line-height:1.08}
-.section-h2 em{color:var(--terra);font-style:italic}
-
-/* ─── LEAD MAGNETS ─── */
-.lead-section{padding:72px 40px;background:var(--paper)}
-.lead-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:840px}
-.lead-card{background:var(--white);padding:38px 34px;border:1px solid rgba(27,0,9,0.07)}
-.lead-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:block}
-.lead-h{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,24px);color:var(--ink);margin-bottom:8px;line-height:1.2}
-.lead-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65}
-.lead-accent{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--forest);display:block;margin-bottom:16px}
-.form-field{width:100%;border:1.5px solid rgba(27,0,9,0.13);background:var(--paper);padding:13px 16px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;color:var(--ink);outline:none;margin-bottom:10px;-webkit-appearance:none;border-radius:0;transition:border-color 0.2s}
-.form-field:focus{border-color:var(--forest)}
-.form-submit{width:100%;background:var(--forest);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;border:none;padding:15px;cursor:pointer;transition:opacity 0.2s;letter-spacing:0.02em;min-height:50px;-webkit-appearance:none;border-radius:0}
-.form-submit:hover{opacity:0.85}
-.form-submit:disabled{opacity:0.6;cursor:not-allowed}
-.form-confirm{display:none;font-size:14px;color:var(--forest);font-weight:600;padding:14px 0;line-height:1.5}
-.quiz-btn{display:inline-flex;align-items:center;min-height:50px;background:var(--terra);color:var(--cream);padding:14px 26px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;transition:opacity 0.2s;letter-spacing:0.02em}
-.quiz-btn:hover{opacity:0.85}
-
-/* ─── HUBS ─── */
-.hubs-section{padding:72px 40px;background:var(--white)}
-.hub{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-bottom:72px}
-.hub:last-child{margin-bottom:0}
-.hub.flip{direction:rtl}
-.hub.flip>*{direction:ltr}
-.hub-tag{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--hc);margin-bottom:16px;display:flex;align-items:center;gap:12px}
-.hub-tag::after{content:'';flex:1;height:1px;background:var(--hc);opacity:0.3}
-.hub-h{font-family:'DM Serif Display',serif;font-size:clamp(24px,3.5vw,38px);color:var(--ink);margin-bottom:12px;line-height:1.1}
-.hub-h em{color:var(--hc);font-style:italic}
-.hub-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:24px;max-width:360px}
-.hub-cta{font-size:13px;font-weight:700;color:var(--hc);text-decoration:none;letter-spacing:0.04em;border-bottom:1px solid transparent;transition:border-color 0.2s}
-.hub-cta:hover{border-bottom-color:var(--hc)}
-.hub-posts{display:flex;flex-direction:column;gap:12px}
-.post-card{background:var(--paper);padding:18px 20px;border-left:3px solid var(--hc)}
-.post-tag{font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--hc);margin-bottom:5px;display:block}
-.post-title{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ink);margin-bottom:4px;line-height:1.3}
-.post-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:7px}
-.post-link{font-size:12px;font-weight:700;color:var(--hc);text-decoration:none}
-.post-link:hover{text-decoration:underline}
-
-/* ─── SHOP PREVIEW ─── */
-.shop-preview{padding:72px 40px;background:var(--paper)}
-.shop-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:980px;margin-bottom:36px}
-.pcard{background:var(--white);border:1px solid rgba(27,0,9,0.07);text-decoration:none;color:inherit;display:block;transition:transform 0.22s ease,box-shadow 0.22s ease}
-.pcard:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(27,0,9,0.1)}
-.pcard-img{aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
-.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
-.pcard:hover .pcard-img img{transform:scale(1.04)}
-.pcard-body{padding:16px 16px 20px}
-.pcard-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);margin-bottom:5px;line-height:1.2}
-.pcard-price{font-size:13px;font-weight:700;color:var(--terra)}
-.pcard-skel{background:var(--white);border:1px solid rgba(27,0,9,0.07)}
-.pcard-skel-img{aspect-ratio:1/1;background:linear-gradient(90deg,rgba(27,0,9,0.05) 25%,rgba(27,0,9,0.09) 50%,rgba(27,0,9,0.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
-.pcard-skel-body{padding:16px 16px 20px;display:flex;flex-direction:column;gap:8px}
-.pcard-skel-line{height:13px;border-radius:2px;background:linear-gradient(90deg,rgba(27,0,9,0.05) 25%,rgba(27,0,9,0.09) 50%,rgba(27,0,9,0.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-/* ─── COMMUNITY ─── */
-.community-section{padding:72px 40px;background:var(--ink)}
-.community-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,50px);color:var(--cream);margin-bottom:48px;line-height:1.06;max-width:500px}
-.community-h em{color:var(--terra);font-style:italic}
-.community-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:680px}
-.comm-card{background:rgba(244,232,208,0.05);border:1px solid rgba(244,232,208,0.09);padding:30px 26px}
-.comm-tag{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:block}
-.comm-h{font-family:'DM Serif Display',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.2}
-.comm-sub{font-size:13px;color:rgba(244,232,208,0.45);line-height:1.7;margin-bottom:22px}
-.comm-cta{display:inline-block;color:var(--cream);font-size:13px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--terra);padding-bottom:2px;transition:color 0.2s}
-.comm-cta:hover{color:var(--terra)}
-
-/* ─── FOOTER ─── */
-footer{background:var(--ink);padding:36px 40px;border-top:1px solid rgba(244,232,208,0.06)}
-footer nav{position:static;background:transparent;border:none;padding:0;height:auto;z-index:auto}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:rgba(244,232,208,0.7);text-decoration:none}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a{font-size:12px;color:rgba(244,232,208,0.38);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--cream)}
-.footer-copy{font-size:11px;color:rgba(244,232,208,0.2);width:100%}
-
-/* ─── SCROLL ANIMATIONS ─── */
-.fade-up{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-
-/* ─── MOBILE ─── */
-@media(max-width:768px){
-  nav{padding:0 16px;height:52px}
-  .nav-hamburger{display:flex}
-  .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 20px;border-bottom:1px solid rgba(27,0,9,0.08);gap:20px;box-shadow:0 12px 32px rgba(27,0,9,0.1)}
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:15px;opacity:0.75;padding:4px 0}
-  .nav-cta{padding:10px 16px;font-size:13px!important;text-align:center}
-  .gate-cards{grid-template-columns:1fr;gap:10px}
-  .gate-card{padding:22px 18px 26px}
-  .gate-h{font-size:clamp(22px,6vw,32px);margin-bottom:28px}
-  .popup-box{padding:36px 24px}
-  .hero{min-height:auto;padding:0;flex-direction:column;gap:0;align-items:stretch}
-  .hero-inner{padding:56px 20px 32px;max-width:100%}
-  .hero-img{padding:0 20px 52px}
-  .hero-img img{width:100%;height:260px;border-radius:16px}
-  .hero-btns{flex-direction:column;align-items:stretch}
-  .btn-primary,.btn-ghost{justify-content:center;width:100%}
-  .lead-section,.hubs-section,.community-section{padding:56px 20px}
-  .lead-cards{grid-template-columns:1fr}
-  .lead-card{padding:28px 22px}
-  .hub{grid-template-columns:1fr;gap:28px;margin-bottom:56px;direction:ltr!important}
-  .hub.flip>*{direction:ltr}
-  .shop-preview{padding:56px 20px}
-  .shop-preview-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .community-cards{grid-template-columns:1fr}
-  footer{padding:28px 20px}
-  .footer-inner{flex-direction:column;align-items:flex-start;gap:14px}
-  .announce{gap:8px;padding:8px 16px;justify-content:center}
-  .announce a,.announce span{font-size:11px}
+/* KEYFRAMES */
+@keyframes shimmer{
+  from{background-position:200% center;}
+  to{background-position:-200% center;}
+}
+@keyframes fadeIn{
+  from{opacity:0;}to{opacity:1;}
+}
+@keyframes lineIn{
+  from{opacity:0;transform:translateY(100%);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(26px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0);}
+  50%{box-shadow:0 0 28px 6px rgba(201,169,110,0.35);}
+}
+@keyframes grain{
+  0%,100%{transform:translate(0,0);}
+  10%{transform:translate(-2%,-2%);}
+  30%{transform:translate(2%,-1%);}
+  50%{transform:translate(-1%,3%);}
+  70%{transform:translate(3%,1%);}
+  90%{transform:translate(-2%,2%);}
+}
+@keyframes scrollPulse{
+  0%{top:-100%;}
+  100%{top:200%;}
 }
 
-@media(max-width:480px){
-  .hero h1{font-size:36px}
-  .hero-annotation{font-size:19px}
-  .hero-sub{font-size:15px}
-  .gate-h{font-size:24px}
-  .section-h2{font-size:26px}
+/* PROGRESS */
+#prog{
+  position:fixed;top:0;left:0;z-index:500;
+  height:2px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--gold-lt));
+  transition:width 0.08s linear;
+  pointer-events:none;
 }
 
-/* ─── PHOTO POSTCARD ─── */
-.postcard{background:var(--white);padding:10px 10px 38px;box-shadow:0 4px 24px rgba(27,0,9,0.11),0 1px 4px rgba(27,0,9,0.05);transform:rotate(var(--rot,0deg));transition:transform 0.3s ease,box-shadow 0.3s ease;flex-shrink:0;width:220px}
-.postcard:hover{transform:rotate(calc(var(--rot,0deg) * 0.35)) translateY(-7px);box-shadow:0 14px 44px rgba(27,0,9,0.17),0 2px 8px rgba(27,0,9,0.07)}
-.postcard img{width:200px;height:270px;object-fit:cover;object-position:center top;display:block}
-.pc-caption{font-family:'Caveat',cursive;font-size:14px;font-weight:600;color:var(--muted);text-align:center;padding-top:12px;line-height:1.45;max-width:200px}
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:58px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background 0.4s var(--ease),backdrop-filter 0.4s;
+}
+.nav.scrolled{
+  background:rgba(26,10,5,0.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;font-style:italic;
+  color:var(--cream);letter-spacing:0.01em;
+  position:relative;z-index:301;
+}
+.nav-logo .g{color:var(--gold);}
+.nav-toggle{
+  width:44px;height:44px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;
+  background:none;border:none;
+  position:relative;z-index:301;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-toggle span{
+  display:block;width:22px;height:1.5px;
+  background:var(--cream);
+  transition:all 0.35s var(--ease);transform-origin:center;
+}
+.nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
 
-/* ─── LEAD LAYOUT (cards + photo) ─── */
-.lead-layout{display:flex;align-items:flex-start;gap:52px}
-.lead-left{flex:1;min-width:0}
-.lead-right{flex-shrink:0;padding-top:64px;display:flex;align-items:flex-start}
-@media(max-width:900px){.lead-right{display:none}}
+/* NAV OVERLAY */
+.nav-ov{
+  position:fixed;inset:0;z-index:299;
+  background:var(--ink);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  transition:opacity 0.4s var(--ease),visibility 0.4s;
+}
+.nav-ov::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 30% 80%,rgba(107,39,55,0.2) 0%,transparent 60%);
+  pointer-events:none;
+}
+.nav-ov.open{opacity:1;visibility:visible;}
+.nav-ov ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;}
+.nav-ov ul li{
+  opacity:0;transform:translateY(18px);
+  transition:opacity 0.4s var(--ease),transform 0.4s var(--ease);
+  width:100%;text-align:center;
+}
+.nav-ov.open ul li:nth-child(1){opacity:1;transform:translateY(0);transition-delay:0.05s;}
+.nav-ov.open ul li:nth-child(2){opacity:1;transform:translateY(0);transition-delay:0.10s;}
+.nav-ov.open ul li:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.15s;}
+.nav-ov.open ul li:nth-child(4){opacity:1;transform:translateY(0);transition-delay:0.20s;}
+.nav-ov.open ul li:nth-child(5){opacity:1;transform:translateY(0);transition-delay:0.25s;}
+.nav-ov.open ul li:nth-child(6){opacity:1;transform:translateY(0);transition-delay:0.30s;}
+.nav-ov ul a{
+  display:block;padding:14px 20px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,8vw,38px);font-weight:300;
+  color:rgba(250,244,232,0.5);
+  transition:color 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-ov ul a:active,.nav-ov ul a.ft{color:var(--gold);}
+.nav-ov-cta{
+  margin-top:28px;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 36px;min-height:52px;
+  background:var(--gold);color:var(--ink);
+  font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  opacity:0;transform:translateY(18px);
+  transition:opacity 0.4s var(--ease),transform 0.4s var(--ease),background 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-ov.open .nav-ov-cta{opacity:1;transform:translateY(0);transition-delay:0.35s;}
+.nav-ov-cta:active{background:var(--gold-lt);}
+
+/* REVEAL */
+.rv{
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);
+}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv[data-d="1"]{transition-delay:0.1s;}
+.rv[data-d="2"]{transition-delay:0.2s;}
+.rv[data-d="3"]{transition-delay:0.3s;}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 24px calc(96px + env(safe-area-inset-bottom));
+  overflow:hidden;
+}
+.hero-photo{position:absolute;inset:0;z-index:0;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+.hero-photo::after{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,rgba(26,10,5,0.2) 0%,rgba(26,10,5,0.02) 25%,rgba(26,10,5,0.5) 60%,rgba(26,10,5,0.97) 100%),
+    radial-gradient(ellipse 90% 50% at 15% 95%,rgba(107,39,55,0.28) 0%,transparent 55%);
+}
+.hero-photo::before{
+  content:'';
+  position:absolute;inset:-50%;width:200%;height:200%;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+  opacity:0.5;pointer-events:none;
+  animation:grain 12s steps(1) infinite;
+}
+.hero-content{position:relative;z-index:1;max-width:520px;}
+.hero-eye{
+  display:block;
+  font-size:11px;font-weight:500;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+  opacity:0;animation:fadeIn 0.8s var(--ease) 0.4s forwards;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,11.5vw,80px);
+  font-weight:300;line-height:1.0;
+  letter-spacing:-0.02em;
+  color:var(--cream);margin-bottom:22px;
+}
+.hero h1 .ln{display:block;overflow:hidden;}
+.hero h1 .ln span{
+  display:block;
+  opacity:0;transform:translateY(100%);
+  animation:lineIn 0.8s var(--ease) forwards;
+}
+.hero h1 .ln:nth-child(1) span{animation-delay:0.5s;}
+.hero h1 .ln:nth-child(2) span{animation-delay:0.65s;}
+.hero h1 .ln:nth-child(3) span{animation-delay:0.8s;}
+.hero h1 em{
+  font-style:italic;font-weight:300;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 35%,var(--gold) 65%,#D48B1A 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
+.hero-sub{
+  font-size:16px;font-weight:300;line-height:1.75;
+  color:rgba(250,244,232,0.62);max-width:380px;
+  margin-bottom:30px;
+  opacity:0;animation:fadeUp 0.8s var(--ease) 1.05s forwards;
+}
+.hero-btns{
+  display:flex;flex-direction:column;gap:12px;
+  opacity:0;animation:fadeUp 0.8s var(--ease) 1.2s forwards;
+}
+.btn-gold{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:17px 28px;min-height:54px;
+  background:var(--gold);color:var(--ink);
+  font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  border:none;
+  transition:background 0.2s,transform 0.15s;
+  animation:glow 3.5s ease-in-out 2.2s infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn-gold:active{background:var(--gold-lt);transform:scale(0.98);}
+.no-anim{animation:none!important;}
+.btn-outline{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:17px 28px;min-height:54px;
+  background:transparent;color:var(--cream);
+  font-size:13px;font-weight:500;
+  letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid rgba(250,244,232,0.22);
+  transition:border-color 0.2s,background 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn-outline:active{border-color:rgba(250,244,232,0.6);background:rgba(250,244,232,0.06);}
+.hero-stats{
+  display:flex;gap:28px;
+  margin-top:36px;padding-top:22px;
+  border-top:1px solid rgba(250,244,232,0.1);
+  opacity:0;animation:fadeUp 0.8s var(--ease) 1.4s forwards;
+}
+.stat-v{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:300;color:var(--gold);
+  display:block;line-height:1;
+}
+.stat-l{
+  font-size:10px;font-weight:400;
+  color:rgba(250,244,232,0.38);
+  letter-spacing:0.1em;text-transform:uppercase;
+  display:block;margin-top:5px;
+}
+.scroll-hint{
+  position:absolute;bottom:80px;right:24px;z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:fadeIn 1s var(--ease) 2s forwards;
+}
+.scroll-line{
+  width:1px;height:44px;
+  background:linear-gradient(to bottom,transparent,var(--gold));
+  overflow:hidden;position:relative;
+}
+.scroll-line::after{
+  content:'';
+  position:absolute;top:-100%;left:0;
+  width:100%;height:100%;background:var(--gold);
+  animation:scrollPulse 1.8s ease-in-out 2.2s infinite;
+}
+.scroll-txt{
+  font-size:9px;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(250,244,232,0.3);writing-mode:vertical-rl;
+  transform:rotate(180deg);
+}
+
+/* MIRROR */
+.mirror{
+  background:var(--paper);color:var(--ink);
+  padding:80px 24px;
+}
+.eyebrow{
+  font-size:10px;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:16px;
+}
+.eyebrow.ox{color:var(--oxblood);}
+.sec-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,8vw,52px);font-weight:300;
+  line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:40px;
+}
+.sec-h em{font-style:italic;}
+.mirror .sec-h{color:var(--ink);}
+.mirror .sec-h em{color:var(--oxblood);}
+.mcards{display:flex;flex-direction:column;gap:14px;}
+.mcard{
+  background:var(--white);padding:26px 22px;
+  border-left:3px solid var(--oxblood);
+  cursor:pointer;position:relative;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+  transition:box-shadow 0.3s,transform 0.2s;
+}
+.mcard::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(107,39,55,0.05) 0%,transparent 60%);
+  opacity:0;transition:opacity 0.4s;
+}
+.mcard.ex::after{opacity:1;}
+.mcard:active{transform:scale(0.995);}
+.mcard.ex{box-shadow:0 8px 40px rgba(107,39,55,0.14);}
+.mcard-tag{
+  font-size:9px;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--oxblood);display:block;margin-bottom:12px;
+}
+.mcard-prev{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,5vw,26px);font-weight:400;
+  color:var(--ink);line-height:1.3;
+}
+.mcard-body{
+  font-size:15px;font-weight:300;line-height:1.8;
+  color:var(--muted);
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height 0.55s var(--ease),opacity 0.4s,margin-top 0.3s;
+}
+.mcard.ex .mcard-body{max-height:280px;opacity:1;margin-top:16px;}
+.mcard-tap{
+  display:flex;align-items:center;gap:8px;margin-top:16px;
+  font-size:11px;color:rgba(122,99,85,0.45);
+  transition:opacity 0.3s;
+}
+.mcard.ex .mcard-tap{opacity:0;pointer-events:none;}
+.tap-icon{
+  width:20px;height:20px;border-radius:50%;
+  border:1px solid rgba(107,39,55,0.25);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.tap-icon svg{width:10px;height:10px;}
+.mirror-join{
+  margin-top:36px;padding-top:28px;
+  border-top:1px solid rgba(26,10,5,0.09);
+}
+.mirror-join-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,5.5vw,30px);font-weight:300;font-style:italic;
+  color:var(--ink);margin-bottom:22px;line-height:1.3;
+}
+
+/* FIRST 30 */
+.f30{
+  background:var(--ink);color:var(--cream);
+  padding:80px 24px;position:relative;overflow:hidden;
+}
+.f30::before,.f30::after{
+  content:'';
+  position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 0%,var(--gold) 50%,transparent 100%);
+  pointer-events:none;
+}
+.f30::before{top:0;}
+.f30::after{bottom:0;}
+.f30-glow{
+  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,0.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.f30-inner{position:relative;z-index:1;}
+.f30 .eyebrow{color:var(--gold);}
+.f30-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,10vw,70px);font-weight:300;
+  line-height:1.0;letter-spacing:-0.025em;
+  color:var(--cream);margin-bottom:22px;
+}
+.f30-h em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 35%,var(--gold) 65%,#D48B1A 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
+.f30-sub{
+  font-size:16px;font-weight:300;line-height:1.8;
+  color:rgba(250,244,232,0.58);margin-bottom:40px;max-width:440px;
+}
+.f30-feats{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
+.feat{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px 18px;
+  background:rgba(250,244,232,0.035);
+  border:1px solid rgba(201,169,110,0.1);
+  transition:background 0.3s,border-color 0.3s,transform 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.feat:active{background:rgba(250,244,232,0.07);border-color:rgba(201,169,110,0.28);transform:scale(0.99);}
+.feat-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border:1px solid rgba(201,169,110,0.25);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);margin-top:2px;
+}
+.feat-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:400;color:var(--cream);
+  margin-bottom:5px;line-height:1.2;
+}
+.feat-p{
+  font-size:14px;font-weight:300;
+  color:rgba(250,244,232,0.48);line-height:1.65;
+}
+.f30-note{
+  margin-top:16px;
+  font-size:12px;color:rgba(250,244,232,0.28);
+  letter-spacing:0.04em;text-align:center;
+}
+
+/* ABOUT */
+.about{
+  background:var(--cream);color:var(--ink);
+  padding:80px 24px;position:relative;
+}
+.about::before{
+  content:'';
+  position:absolute;top:0;left:24px;
+  width:1px;height:56px;background:var(--oxblood);
+}
+.about-img{position:relative;margin-bottom:36px;}
+.about-img img{
+  width:100%;max-width:360px;
+  height:440px;object-fit:cover;
+  object-position:center 15%;display:block;
+}
+.about-badge{
+  position:absolute;bottom:-14px;right:0;
+  background:var(--gold);padding:12px 16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;font-style:italic;
+  color:var(--ink);max-width:200px;line-height:1.4;
+}
+.about .eyebrow{color:var(--oxblood);}
+.about-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,7vw,48px);font-weight:300;
+  line-height:1.1;letter-spacing:-0.02em;
+  color:var(--ink);margin-bottom:22px;
+}
+.about-h em{font-style:italic;color:var(--oxblood);}
+.about-body{
+  font-size:15px;font-weight:300;line-height:1.85;
+  color:var(--muted);margin-bottom:24px;
+}
+.about-attr{
+  font-size:11px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--oxblood);
+}
+.about-lnk{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:20px;font-size:13px;font-weight:500;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--ink);
+  border-bottom:1px solid rgba(26,10,5,0.3);padding-bottom:2px;
+  transition:border-color 0.2s;
+}
+.about-lnk:active{border-color:var(--ink);}
+
+/* PROOF */
+.proof{
+  background:var(--ink);color:var(--cream);
+  padding:80px 24px;
+}
+.proof .eyebrow{color:var(--gold);}
+.proof-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,7vw,44px);font-weight:300;
+  line-height:1.1;letter-spacing:-0.02em;
+  color:var(--cream);margin-bottom:36px;
+}
+.proof-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
+.pcard{
+  padding:26px 22px;
+  background:rgba(250,244,232,0.035);
+  border:1px solid rgba(250,244,232,0.07);
+  position:relative;overflow:hidden;
+  transition:background 0.3s,transform 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.pcard::before{
+  content:'\201C';
+  position:absolute;top:-8px;left:16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:90px;line-height:1;
+  color:rgba(201,169,110,0.07);pointer-events:none;
+}
+.pcard:active{background:rgba(250,244,232,0.06);transform:scale(0.995);}
+.pcard-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;font-style:italic;
+  line-height:1.6;color:var(--cream);margin-bottom:18px;
+}
+.pcard-attr{
+  font-size:11px;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);
+}
+
+/* GUIDE */
+.guide{
+  background:var(--paper);color:var(--ink);
+  padding:80px 24px;
+}
+.guide .eyebrow{color:var(--gold);}
+.guide-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,7vw,46px);font-weight:300;
+  line-height:1.1;letter-spacing:-0.02em;
+  color:var(--ink);margin-bottom:8px;
+}
+.guide-sub{
+  font-size:15px;font-weight:300;line-height:1.75;
+  color:var(--muted);margin-bottom:32px;max-width:420px;
+}
+.gcards{display:flex;flex-direction:column;gap:16px;}
+.gcard{
+  background:var(--white);padding:26px 22px;
+  border:1px solid rgba(26,10,5,0.06);
+  position:relative;overflow:hidden;
+}
+.gcard::before{
+  content:'';
+  position:absolute;top:0;left:0;width:3px;height:0;
+  background:var(--gold);
+  transition:height 0.45s var(--ease);
+}
+.gcard:focus-within::before{height:100%;}
+.gcard-tag{
+  font-size:10px;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:12px;
+}
+.gcard-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;
+  color:var(--ink);margin-bottom:8px;line-height:1.25;
+}
+.gcard-p{
+  font-size:14px;font-weight:300;line-height:1.65;
+  color:var(--muted);margin-bottom:20px;
+}
+.form-field{
+  width:100%;border:1.5px solid rgba(26,10,5,0.11);
+  background:var(--paper);
+  padding:14px 16px;
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;color:var(--ink);
+  outline:none;border-radius:0;-webkit-appearance:none;
+  margin-bottom:8px;
+  transition:border-color 0.25s;
+}
+.form-field:focus{border-color:var(--gold);}
+.form-sub{
+  width:100%;min-height:50px;
+  background:var(--gold);color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  border:none;border-radius:0;-webkit-appearance:none;
+  transition:background 0.2s,transform 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.form-sub:active{background:var(--gold-lt);transform:scale(0.99);}
+.form-sub:disabled{opacity:0.55;cursor:not-allowed;}
+.form-ok{
+  display:none;
+  font-size:15px;color:var(--oxblood);font-weight:500;
+  padding:14px 0;line-height:1.6;
+}
+.quiz-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:100%;min-height:50px;
+  background:var(--ink);color:var(--cream);
+  font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  transition:opacity 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.quiz-btn:active{opacity:0.82;}
+
+/* BLOG */
+.blog{
+  background:var(--cream);color:var(--ink);
+  padding:80px 24px;
+}
+.blog .eyebrow{color:var(--oxblood);}
+.blog-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,7vw,46px);font-weight:300;
+  line-height:1.1;letter-spacing:-0.02em;
+  color:var(--ink);margin-bottom:36px;
+}
+.blog-list{border-top:1px solid rgba(26,10,5,0.09);margin-bottom:32px;}
+.brow{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:20px 0;
+  border-bottom:1px solid rgba(26,10,5,0.07);
+  -webkit-tap-highlight-color:transparent;
+  transition:background 0.2s,padding 0.2s,margin 0.2s;
+}
+.brow:active{background:rgba(26,10,5,0.04);margin:0 -24px;padding:20px 24px;}
+.brow-tag{
+  font-size:9px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--oxblood);display:block;margin-bottom:6px;
+}
+.brow-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;
+  color:var(--ink);line-height:1.3;
+}
+.barrow{
+  flex-shrink:0;width:34px;height:34px;
+  border:1px solid rgba(26,10,5,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);
+  transition:background 0.2s,color 0.2s;
+}
+.brow:active .barrow{background:var(--ink);color:var(--cream);}
+.blog-all{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--ink);
+  border-bottom:1px solid rgba(26,10,5,0.3);padding-bottom:2px;
+}
+
+/* FOOTER CTA */
+.fcta{
+  background:var(--oxblood);color:var(--cream);
+  padding:80px 24px;position:relative;overflow:hidden;
+}
+.fcta::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 100% 80% at 50% 130%,rgba(201,169,110,0.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.fcta-inner{position:relative;z-index:1;}
+.fcta-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,10vw,66px);font-weight:300;
+  line-height:1.0;letter-spacing:-0.02em;
+  color:var(--cream);margin-bottom:32px;
+}
+.fcta-h em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 40%,var(--gold) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
+
+/* FOOTER */
+footer{
+  background:var(--ink);
+  padding:40px 24px calc(40px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(250,244,232,0.05);
+}
+.foot-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:300;font-style:italic;
+  color:rgba(250,244,232,0.45);display:block;margin-bottom:22px;
+}
+.foot-logo span{color:var(--gold);}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-bottom:24px;}
+.foot-links a{font-size:12px;color:rgba(250,244,232,0.3);transition:color 0.2s;}
+.foot-links a:active{color:var(--cream);}
+.foot-copy{font-size:11px;color:rgba(250,244,232,0.15);line-height:1.6;}
+
+/* STICKY BAR */
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;z-index:250;
+  height:calc(56px + env(safe-area-inset-bottom));
+  padding:0 20px env(safe-area-inset-bottom);
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  transform:translateY(100%);
+  transition:transform 0.5s var(--ease);
+}
+.sticky.on{transform:translateY(0);}
+.sticky-txt{
+  font-size:13px;font-weight:500;color:var(--ink);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.sticky-btn{
+  flex-shrink:0;padding:10px 20px;
+  background:var(--ink);color:var(--cream);
+  font-size:12px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  white-space:nowrap;min-height:38px;
+  display:inline-flex;align-items:center;
+  transition:opacity 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.sticky-btn:active{opacity:0.82;}
+
+/* POPUP */
+#popup{
+  position:fixed;inset:0;z-index:400;
+  background:rgba(26,10,5,0.75);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;visibility:hidden;
+  transition:opacity 0.35s,visibility 0.35s;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+#popup.show{opacity:1;visibility:visible;}
+.popup-sheet{
+  background:var(--white);
+  width:100%;max-width:540px;
+  padding:0 24px calc(40px + env(safe-area-inset-bottom));
+  border-radius:20px 20px 0 0;
+  transform:translateY(100%);
+  transition:transform 0.45s var(--ease);
+  position:relative;
+}
+#popup.show .popup-sheet{transform:translateY(0);}
+.popup-drag{
+  width:44px;height:4px;border-radius:2px;
+  background:rgba(26,10,5,0.12);
+  margin:14px auto 28px;
+}
+.popup-close{
+  position:absolute;top:22px;right:20px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(26,10,5,0.06);border:none;
+  font-size:16px;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.popup-close:active{background:rgba(26,10,5,0.12);}
+.popup-tag{
+  font-size:10px;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--oxblood);display:block;margin-bottom:10px;
+}
+.popup-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:400;
+  color:var(--ink);margin-bottom:8px;line-height:1.2;
+}
+.popup-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.65;}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+  }
+  .hero h1 .ln span,.hero-eye,.hero-sub,.hero-btns,.hero-stats,.scroll-hint{opacity:1;transform:none;}
+}
+
+/* TABLET+ */
+@media(min-width:768px){
+  .nav{padding:0 48px;}
+  .nav-toggle{display:none;}
+  .nav-ov{
+    position:static;background:none;
+    flex-direction:row;justify-content:flex-end;
+    opacity:1;visibility:visible;
+  }
+  .nav-ov::before{display:none;}
+  .nav-ov ul{flex-direction:row;gap:0;align-items:center;width:auto;}
+  .nav-ov ul li{opacity:1;transform:none;width:auto;}
+  .nav-ov ul a{
+    font-family:'DM Sans',sans-serif;
+    font-size:13px;font-weight:400;
+    color:rgba(250,244,232,0.5);padding:8px 14px;
+    transition:color 0.2s;
+  }
+  .nav-ov ul a:hover{color:var(--cream);}
+  .nav-ov ul a.ft{color:var(--gold);}
+  .nav-ov-cta{
+    opacity:1;transform:none;margin-top:0;margin-left:10px;
+    padding:9px 20px;min-height:36px;font-size:12px;
+    transition:background 0.2s;
+  }
+  .nav-ov-cta:hover{background:var(--gold-lt);}
+
+  .hero{padding:0 60px 80px;justify-content:center;}
+  .hero-content{max-width:600px;}
+  .hero-btns{flex-direction:row;}
+  .scroll-hint{bottom:40px;}
+
+  .mirror{padding:100px 60px;}
+  .mcards{flex-direction:row;gap:20px;}
+  .mcard{flex:1;}
+
+  .f30{padding:100px 60px;}
+  .f30-feats{flex-direction:row;gap:16px;}
+  .feat{flex:1;}
+
+  .about{padding:100px 60px;}
+  .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .about-img{margin-bottom:0;}
+  .about-img img{max-width:none;width:100%;height:500px;}
+
+  .proof{padding:100px 60px;}
+  .proof-cards{flex-direction:row;}
+  .pcard{flex:1;}
+
+  .guide{padding:100px 60px;}
+  .gcards{flex-direction:row;}
+  .gcard{flex:1;}
+
+  .blog{padding:100px 60px;}
+  .fcta{padding:100px 60px;}
+  footer{padding:48px 60px;}
+  .sticky{display:none;}
+}
 </style>
 </head>
 <body>
 
-<!-- ════ GATE ════ -->
-<div id="gate" role="dialog" aria-modal="true" aria-label="Where are you right now?">
-  <p class="gate-eyebrow">okay so.</p>
-  <h2 class="gate-h">Where are you<br>right <em>now?</em></h2>
-  <div class="gate-cards">
-    <a href="#guides" class="gate-card green" data-dest="sober-life">
-      <span class="g-num">01</span>
-      <p class="g-title">I'm getting sober</p>
-      <p class="g-sub">You want support, community, and a reason to stay.</p>
-    </a>
-    <a href="#guides" class="gate-card orange" data-dest="sober-travel">
-      <span class="g-num">02</span>
-      <p class="g-title">I want more freedom</p>
-      <p class="g-sub">You're done with the old life. You're ready to build something.</p>
-    </a>
-    <a href="#guides" class="gate-card navy" data-dest="remote-work">
-      <span class="g-num">03</span>
-      <p class="g-title">I want to work remotely</p>
-      <p class="g-sub">You want location independence and a real income online.</p>
-    </a>
-  </div>
-  <button class="gate-skip" id="gateSkip">just browsing &rarr;</button>
+<div id="prog" role="progressbar" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- NAV OVERLAY -->
+<div class="nav-ov" id="navOv" aria-hidden="true">
+  <ul>
+    <li><a href="/story/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/quiz/recovery/">Recovery Quiz</a></li>
+    <li><a href="/coaching/">Work With Me</a></li>
+    <li><a href="/the-first-thirty/" class="ft">The First Thirty</a></li>
+    <li><a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Community</a></li>
+  </ul>
+  <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-ov-cta" target="_blank" rel="noopener">Free Discovery Call</a>
 </div>
 
-<!-- ════ POPUP ════ -->
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-photo">
+    <img src="/images/lexi-headshot.jpg" alt="Lexi Morgan" loading="eager" width="800" height="1000">
+  </div>
+  <div class="hero-content">
+    <span class="hero-eye">@soberadventuring</span>
+    <h1>
+      <span class="ln"><span>Part of you already</span></span>
+      <span class="ln"><span>knows why you're</span></span>
+      <span class="ln"><span><em>here.</em></span></span>
+    </h1>
+    <p class="hero-sub">The First 30 is a free 30-day challenge for women who are done letting this question live in the back of their minds, whatever form it's taken.</p>
+    <div class="hero-btns">
+      <a href="/the-first-thirty/" class="btn-gold">Start The First 30 &mdash; Free</a>
+      <a href="#mirror" class="btn-outline">Find yourself here</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-v" data-count="4000">0</span><span class="stat-l">Women</span></div>
+      <div><span class="stat-v">30</span><span class="stat-l">Days</span></div>
+      <div><span class="stat-v">0</span><span class="stat-l">Labels required</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="scroll-txt">Scroll</span>
+  </div>
+</section>
+
+<!-- MIRROR -->
+<section class="mirror" id="mirror">
+  <span class="eyebrow ox rv">Before you scroll past this</span>
+  <h2 class="sec-h rv">If any of this sounds familiar,<br>you're in the <em>right place.</em></h2>
+  <div class="mcards">
+    <div class="mcard rv" id="mc1" tabindex="0" role="button" aria-expanded="false">
+      <span class="mcard-tag">If you keep closing the tab</span>
+      <p class="mcard-prev">Something has been sitting with you and you haven't named it yet.</p>
+      <div class="mcard-body">You're not in crisis and you don't have a rock bottom story, but you've noticed something about the way you reach for a drink, and you've started brushing past that noticing faster than you used to. You don't have to have it figured out before you walk in.</div>
+      <div class="mcard-tap"><span class="tap-icon"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2v6M2 6l3 3 3-3"/></svg></span>tap to read</div>
+    </div>
+    <div class="mcard rv" id="mc2" data-d="1" tabindex="0" role="button" aria-expanded="false">
+      <span class="mcard-tag">If you already know and think you've got it handled</span>
+      <p class="mcard-prev">You know what's happening. You've gotten back up every time.</p>
+      <div class="mcard-body">You are good at it. But there's a difference between being resilient enough to survive the fallout and being someone who doesn't keep creating it, and somewhere in the last year that line got blurry. You're here because you're smart enough to ask the real question.</div>
+      <div class="mcard-tap"><span class="tap-icon"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2v6M2 6l3 3 3-3"/></svg></span>tap to read</div>
+    </div>
+  </div>
+  <div class="mirror-join rv">
+    <p class="mirror-join-h">&ldquo;The First 30 is built for both of you.&rdquo;</p>
+    <a href="/the-first-thirty/" class="btn-gold" style="display:inline-flex;align-items:center;min-height:50px;padding:14px 28px;">Start The First 30 &mdash; It's Free</a>
+  </div>
+</section>
+
+<!-- FIRST 30 -->
+<section class="f30" id="first30">
+  <div class="f30-glow" aria-hidden="true"></div>
+  <div class="f30-inner">
+    <span class="eyebrow rv">The challenge</span>
+    <h2 class="f30-h rv">30 days to find out<br>what's <em>true.</em></h2>
+    <p class="f30-sub rv">A daily email challenge that gives you 30 days of prompts and tools to find out what you're capable of when alcohol isn't in the picture, and to start being honest about what the picture looks like right now.</p>
+    <div class="f30-feats">
+      <div class="feat rv">
+        <div class="feat-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8.5l4 4L14 4"/></svg>
+        </div>
+        <div>
+          <p class="feat-h">Daily prompts to your inbox</p>
+          <p class="feat-p">Each one designed to meet you where you are and ask something worth sitting with. Some days it's a reframe, some days it's a question you've been moving past.</p>
+        </div>
+      </div>
+      <div class="feat rv" data-d="1">
+        <div class="feat-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
+        </div>
+        <div>
+          <p class="feat-h">A private community in the same 30 days</p>
+          <p class="feat-p">No labels required to be here. Honest conversation between women who are figuring it out alongside you.</p>
+        </div>
+      </div>
+    </div>
+    <a href="/the-first-thirty/" class="btn-gold rv no-anim" style="display:inline-flex;align-items:center;min-height:54px;padding:17px 34px;font-size:13px;">Take the challenge. It's free.</a>
+    <p class="f30-note rv">No credit card, and no commitment beyond 30 days.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img rv">
+      <img src="/images/lexi-outdoor.jpg" alt="Lexi Morgan" loading="lazy" width="360" height="440">
+      <div class="about-badge">Year two of sobriety, Chiang Mai</div>
+    </div>
+    <div>
+      <span class="eyebrow rv">About Lexi</span>
+      <h2 class="about-h rv">I built this because I needed both versions of that <em>mirror.</em></h2>
+      <p class="about-body rv">I got sober at 25. I spent years in the version where something was nagging at me and I wasn't ready to name it, and then years in the version where I knew exactly what was happening and had very good explanations for why I had it handled. Neither version was the full truth, and nobody told me that both were allowed to be here at the same time. That's what The First 30 is.</p>
+      <p class="about-attr rv">Lexi Morgan &middot; 2+ years sober &middot; 4,000+ women through The First 30</p>
+      <a href="/story/" class="about-lnk rv">Read Lexi's story &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <span class="eyebrow rv">What women are saying</span>
+  <h2 class="proof-h rv">From the room.</h2>
+  <div class="proof-cards">
+    <div class="pcard rv">
+      <p class="pcard-txt">&ldquo;I didn't think I had a problem. I thought I was just stressed. By day 15, I understood I'd been managing something for three years without ever looking at it directly.&rdquo;</p>
+      <span class="pcard-attr">K., 31</span>
+    </div>
+    <div class="pcard rv" data-d="1">
+      <p class="pcard-txt">&ldquo;Lexi doesn't talk to you like you need saving, which is the only reason I stayed long enough to get it.&rdquo;</p>
+      <span class="pcard-attr">R., 26</span>
+    </div>
+  </div>
+  <a href="/the-first-thirty/" class="btn-gold no-anim rv" style="display:inline-flex;align-items:center;min-height:50px;padding:14px 28px;">Start The First 30 &mdash; Free</a>
+</section>
+
+<!-- GUIDE -->
+<section class="guide" id="guides">
+  <span class="eyebrow rv">Free resources</span>
+  <h2 class="guide-h rv">Start here.</h2>
+  <p class="guide-sub rv">Two free things you can do right now, before you decide anything.</p>
+  <div class="gcards">
+    <div class="gcard rv">
+      <span class="gcard-tag">Free guide</span>
+      <h3 class="gcard-h">25 Things Nobody Tells You About Getting Sober</h3>
+      <p class="gcard-p">Four years in recovery spaces as a support specialist and case manager. This is what I tell people when they're starting out.</p>
+      <input type="text" id="gName" name="name" placeholder="First name" class="form-field" autocomplete="given-name">
+      <input type="email" id="gEmail" name="email" placeholder="Email address" class="form-field" required autocomplete="email">
+      <button type="button" class="form-sub" id="guideBtn">Send It My Way &rarr;</button>
+      <p class="form-ok" id="guideOk">You're in. Check your inbox, the guide is on its way.</p>
+    </div>
+    <div class="gcard rv" data-d="1">
+      <span class="gcard-tag">5 question quiz</span>
+      <h3 class="gcard-h">What Stage of Recovery Are You In?</h3>
+      <p class="gcard-p">Five questions about where you are right now, with a specific next step based on your result. Designed to give a real answer.</p>
+      <a href="/quiz/recovery/" class="quiz-btn">Take the Recovery Quiz &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <span class="eyebrow rv">From the blog</span>
+  <h2 class="blog-h rv">Everything in one place.</h2>
+  <div class="blog-list">
+    <a href="/blog/how-to-get-sober-without-rock-bottom/" class="brow rv">
+      <div><span class="brow-tag">Sobriety</span><p class="brow-title">How to Get Sober Without Rock Bottom</p></div>
+      <div class="barrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>
+    </a>
+    <a href="/blog/build-sober-life-want-to-live/" class="brow rv" data-d="1">
+      <div><span class="brow-tag">Sobriety</span><p class="brow-title">How to Build a Sober Life You Actually Want to Live</p></div>
+      <div class="barrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>
+    </a>
+  </div>
+  <a href="/blog/" class="blog-all rv">Read all posts &rarr;</a>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="fcta">
+  <div class="fcta-inner">
+    <h2 class="fcta-h rv">30 days.<br>Find <em>out.</em></h2>
+    <a href="/the-first-thirty/" class="btn-gold no-anim rv" style="display:inline-flex;align-items:center;min-height:54px;padding:17px 34px;font-size:13px;">Start The First 30 &mdash; It's Free</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
+  <nav class="foot-links" aria-label="Footer">
+    <a href="/story/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/quiz/recovery/">Recovery Quiz</a>
+    <a href="/the-first-thirty/">The First Thirty</a>
+    <a href="/coaching/">Work With Me</a>
+    <a href="/shop/">Shop</a>
+    <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Community</a>
+  </nav>
+  <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky" id="stickyBar">
+  <span class="sticky-txt">Free 30-day challenge</span>
+  <a href="/the-first-thirty/" class="sticky-btn">Start Free &rarr;</a>
+</div>
+
+<!-- POPUP -->
 <div id="popup" role="dialog" aria-modal="true" aria-label="Free guide">
-  <div class="popup-box">
+  <div class="popup-sheet">
+    <div class="popup-drag"></div>
     <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
     <span class="popup-tag">Free guide</span>
     <h3 class="popup-h">25 Things Nobody Tells You About Getting Sober</h3>
-    <p class="popup-sub">if you don't find this helpful, ill venmo you $5</p>
-    <span class="popup-accent">free.</span>
-    <form id="popupForm" novalidate>
-      <input type="text" name="name" placeholder="First name" class="form-field" autocomplete="given-name">
-      <input type="email" name="email" placeholder="Email address" class="form-field" required autocomplete="email">
-      <button type="submit" class="form-submit" id="popupBtn">Send It My Way &rarr;</button>
-    </form>
-    <p class="popup-confirm" id="popupConfirm">You're in. Check your inbox, the guide is on its way.</p>
+    <p class="popup-sub">if you don't find this helpful, I'll venmo you $5</p>
+    <input type="text" id="pName" placeholder="First name" class="form-field" autocomplete="given-name">
+    <input type="email" id="pEmail" placeholder="Email address" class="form-field" required autocomplete="email">
+    <button type="button" class="form-sub" id="popupBtn">Send It My Way &rarr;</button>
+    <p class="form-ok" id="popupOk">You're in. Check your inbox, the guide is on its way.</p>
   </div>
 </div>
-
-<!-- ════ ANNOUNCE ════ -->
-<div class="announce">
-  <span>Free guide &amp; recovery community</span>
-  <span class="announce-dot">&middot;</span>
-  <a href="#guides">Get the free guide</a>
-  <span class="announce-dot">&middot;</span>
-  <a href="/the-first-thirty/" class="announce-sale">&#9733; The First Thirty &mdash; on sale now</a>
-  <span class="announce-dot">&middot;</span>
-  <a href="/coaching/">Work With Me</a>
-</div>
-
-<!-- ════ NAV ════ -->
-<nav>
-  <a href="/" class="nav-logo"><span class="green">Sober</span>Adventuring.</a>
-  <button class="nav-hamburger" id="navToggle" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="/story/">About</a></li>
-    <li><a href="/blog/">Blog</a></li>
-    <li><a href="/quiz/" class="quiz-link">Freelance Quiz</a></li>
-    <li><a href="/freeeresources/">Free Resources</a></li>
-    <li><a href="/the-first-thirty/" class="sale-link">The First Thirty</a></li>
-    <li><a href="/shop/">Shop</a></li>
-    <li><a href="/coaching/">Work With Me</a></li>
-    <li><a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-cta">Free Call</a></li>
-  </ul>
-</nav>
-
-<!-- ════ HERO ════ -->
-<section class="hero" id="top">
-  <div class="hero-blob" aria-hidden="true"></div>
-  <div class="hero-blob-2" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <span class="hero-eyebrow">@soberadventuring &middot; Alexis Antonelli</span>
-    <h1>Remembering life<br>is kinda <em>incredible.</em></h1>
-    <span class="hero-annotation">yes, really.</span>
-    <p class="hero-sub">for those done escaping, because they know they're meant for more.</p>
-    <div class="hero-btns">
-      <a href="#guides" class="btn-primary">Get the Free Guide &rarr;</a>
-      <a href="/coaching/" class="btn-ghost">Work With Me &rarr;</a>
-    </div>
-  </div>
-  <div class="hero-img">
-    <img src="/images/hero-bonfire.jpg" alt="Group around a beach bonfire at dusk" loading="eager" width="360" height="490">
-  </div>
-</section>
-
-<!-- ════ LEAD MAGNETS ════ -->
-<section class="lead-section" id="guides">
-  <div class="lead-layout">
-  <div class="lead-left">
-  <span class="section-eyebrow">start here.</span>
-  <h2 class="section-h2">free gifts, <em>from me to you</em></h2>
-  <div class="lead-cards">
-
-    <!-- GUIDE -->
-    <div class="lead-card fade-up">
-      <span class="lead-tag">Free guide</span>
-      <h3 class="lead-h">25 Things Nobody Tells You About Getting Sober</h3>
-      <p class="lead-sub">Four years in recovery spaces as a recovery support specialist, sober house manager, ABA therapist, case manager. This is what I tell people when they're starting out.</p>
-      <span class="lead-accent">free.</span>
-      <form id="guideForm" novalidate>
-        <input type="text" name="name" placeholder="First name" class="form-field" autocomplete="given-name">
-        <input type="email" name="email" placeholder="Email address" class="form-field" required autocomplete="email">
-        <button type="submit" class="form-submit" id="guideBtn">Send It My Way &rarr;</button>
-      </form>
-      <p class="form-confirm" id="guideConfirm">You&rsquo;re in. Check your inbox, the guide is on its way.</p>
-    </div>
-
-    <!-- QUIZ -->
-    <div class="lead-card fade-up" style="transition-delay:0.1s">
-      <span class="lead-tag">5 question quiz</span>
-      <h3 class="lead-h">What Stage of Recovery Are You In?</h3>
-      <p class="lead-sub">Five questions about where you are right now, with a specific next step based on your result. Designed to give you a real answer, not bait-and-switch you.</p>
-      <span class="lead-accent">2 minutes.</span>
-      <a href="/quiz/recovery/" class="quiz-btn">Take the Recovery Quiz &rarr;</a>
-    </div>
-
-  </div>
-  </div><!-- /lead-left -->
-  <div class="lead-right">
-    <div class="postcard fade-up" style="--rot:2.3deg">
-      <img src="/images/lexi-outdoor.jpg" alt="Alexis outdoors in Chiang Mai" loading="lazy" width="200" height="270">
-      <p class="pc-caption">Year two of sobriety while living in Thailand and in the middle of my sales agency launch</p>
-    </div>
-  </div><!-- /lead-right -->
-  </div><!-- /lead-layout -->
-</section>
-
-<!-- ════ CONTENT HUBS ════ -->
-<section class="hubs-section" id="hubs">
-  <span class="section-eyebrow">what&rsquo;s on the site</span>
-  <h2 class="section-h2">Organized by <em>where you are.</em></h2>
-
-  <!-- HUB 1: SOBER LIFE -->
-  <div class="hub" id="sober-life" style="--hc:var(--forest)">
-    <div class="hub-info fade-up">
-      <p class="hub-tag">Sober Life</p>
-      <h3 class="hub-h">Getting sober.<br><em>Staying that way.</em></h3>
-      <p class="hub-desc">For people in early recovery, or anyone approaching sobriety who wants real information about what the harder parts are. The honest version, not the highlight reel.</p>
-      <a href="/blog/" class="hub-cta">Explore Sober Life &rarr;</a>
-    </div>
-    <div class="hub-posts fade-up" style="transition-delay:0.1s">
-      <div class="post-card">
-        <span class="post-tag">Sober Life</span>
-        <p class="post-title">What a Sobriety Coach Does (and Doesn&rsquo;t)</p>
-        <p class="post-desc">The practical difference between a life coach, a therapist, and someone who&rsquo;s been where you are.</p>
-        <a href="/blog/sober-life-coaching-approach/" class="post-link">Read more &rarr;</a>
-      </div>
-      <div class="post-card">
-        <span class="post-tag">Sober Life</span>
-        <p class="post-title">How to Build a Sober Life You Actually Want to Live</p>
-        <p class="post-desc">Not just staying sober. Building something worth staying for.</p>
-        <a href="/blog/build-sober-life-want-to-live/" class="post-link">Read more &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- HUB 2: SOBER TRAVEL -->
-  <div class="hub flip" id="sober-travel" style="--hc:var(--terra)">
-    <div class="hub-info fade-up">
-      <p class="hub-tag">Sober Travel</p>
-      <h3 class="hub-h">The world is better<br>when you&rsquo;re <em>present.</em></h3>
-      <p class="hub-desc">Guides for traveling sober: Chiang Mai, the night market problem, how to tell people you don&rsquo;t drink without making it a whole thing. Field reports in progress.</p>
-      <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener" class="hub-cta">Read more on Instagram &rarr;</a>
-    </div>
-    <div class="hub-posts fade-up" style="transition-delay:0.1s">
-      <div class="post-card">
-        <span class="post-tag">Sober Travel</span>
-        <p class="post-title">Complete Guide to Sober Travel: Tips &amp; Strategies</p>
-        <p class="post-desc">How to travel sober without making it a whole conversation every time you decline a drink.</p>
-        <a href="/blog/sober-travel-guide/" class="post-link">Read more &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- HUB 3: REMOTE WORK -->
-  <div class="hub" id="remote-work" style="--hc:var(--blue)">
-    <div class="hub-info fade-up">
-      <p class="hub-tag">Remote Work</p>
-      <h3 class="hub-h">Build income<br><em>on your own terms.</em></h3>
-      <p class="hub-desc">How to build location-independent income starting from scratch. Made $30k in the first four months on Upwork starting from zero. The whole process is documented.</p>
-      <a href="/blog/" class="hub-cta">Explore Remote Work &rarr;</a>
-    </div>
-    <div class="hub-posts fade-up" style="transition-delay:0.1s">
-      <div class="post-card">
-        <span class="post-tag">Remote Work</span>
-        <p class="post-title">How to Start Freelancing on Upwork With No Experience</p>
-        <p class="post-desc">What the rejection actually teaches. How hiring works. How I made 6 months of income in my first 4 months starting from zero.</p>
-        <a href="/blog/how-to-start-freelancing-upwork-no-experience/" class="post-link">Read more &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ════ SHOP PREVIEW ════ -->
-<section class="shop-preview" id="shop">
-  <span class="section-eyebrow">the merch</span>
-  <h2 class="section-h2">Gear for the <em>sober adventure.</em></h2>
-  <div class="shop-preview-grid" id="homeProducts">
-    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
-    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
-    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
-    <div class="pcard-skel"><div class="pcard-skel-img"></div><div class="pcard-skel-body"><div class="pcard-skel-line" style="width:72%"></div><div class="pcard-skel-line" style="width:32%"></div></div></div>
-  </div>
-  <a href="/shop/" class="btn-primary fade-up">View All Products &rarr;</a>
-</section>
-
-<!-- ════ COMMUNITY ════ -->
-<section class="community-section" id="community">
-  <h2 class="community-h">You don&rsquo;t have to figure<br>this out <em>alone.</em></h2>
-  <div class="community-cards" style="grid-template-columns:1fr;max-width:440px">
-    <div class="comm-card fade-up">
-      <span class="comm-tag">Free &middot; Telegram</span>
-      <h3 class="comm-h">Common Ground</h3>
-      <p class="comm-sub">A Telegram group for people in recovery, from all pathways. The weekly meeting happens inside it. Join the group and you&rsquo;re in for both.</p>
-      <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener" class="comm-cta">Join on Telegram &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- ════ FOOTER ════ -->
-<footer>
-  <div class="footer-inner">
-    <a href="/" class="footer-logo">SoberAdventuring.</a>
-    <nav class="footer-links" aria-label="Footer navigation">
-      <a href="/story/">About</a>
-      <a href="/blog/">Blog</a>
-      <a href="/quiz/">Freelance Quiz</a>
-      <a href="/freeeresources/">Free Resources</a>
-      <a href="/the-first-thirty/">The First Thirty</a>
-      <a href="/shop/">Shop</a>
-      <a href="/coaching/">Work With Me</a>
-      <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Telegram</a>
-    </nav>
-    <p class="footer-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
-  </div>
-</footer>
 
 <script>
-const WORKER = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
-const SHOP_DOMAIN = '1d1qi0-r1.myshopify.com';
-const SHOP_TOKEN  = 'f9844f02de398a3619eb4865e5156e0a';
+const WORKER='https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 
-// ── Gate ──
-const gate     = document.getElementById('gate');
-const gateSkip = document.getElementById('gateSkip');
+/* Progress bar */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  prog.style.width=pct+'%';
+},{passive:true});
 
-function closeGate(dest) {
-  gate.classList.add('hidden');
-  document.body.style.overflow = '';
-  if (dest) {
-    const el = document.getElementById(dest);
-    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 520);
-  }
-  sessionStorage.setItem('sa_gate_seen', '1');
-}
+/* Nav scroll */
+const mainNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  mainNav.classList.toggle('scrolled',window.scrollY>40);
+},{passive:true});
 
-if (!sessionStorage.getItem('sa_gate_seen')) {
-  document.body.style.overflow = 'hidden';
-  document.querySelectorAll('.gate-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeGate(card.dataset.dest);
-    });
+/* Nav overlay */
+const navToggle=document.getElementById('navToggle');
+const navOv=document.getElementById('navOv');
+navToggle.addEventListener('click',()=>{
+  const open=navToggle.classList.toggle('open');
+  navOv.classList.toggle('open',open);
+  navOv.setAttribute('aria-hidden',!open);
+  navToggle.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+navOv.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    navToggle.classList.remove('open');
+    navOv.classList.remove('open');
+    navOv.setAttribute('aria-hidden','true');
+    navToggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
   });
-  gateSkip.addEventListener('click', () => closeGate());
-} else {
-  gate.classList.add('hidden');
+});
+
+/* Scroll reveal */
+const rvObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* Mirror cards */
+document.querySelectorAll('.mcard').forEach(card=>{
+  function tog(){
+    const ex=card.classList.toggle('ex');
+    card.setAttribute('aria-expanded',ex);
+  }
+  card.addEventListener('click',tog);
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});
+});
+
+/* Sticky bar */
+const stickyBar=document.getElementById('stickyBar');
+const heroEl=document.querySelector('.hero');
+const heroObs=new IntersectionObserver((entries)=>{
+  stickyBar.classList.toggle('on',!entries[0].isIntersecting);
+},{threshold:0});
+heroObs.observe(heroEl);
+
+/* Counter animation */
+function animCount(el,target,dur=1200){
+  const start=performance.now();
+  const step=(now)=>{
+    const p=Math.min((now-start)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*target).toLocaleString()+(target>=1000?'+':'');
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const cEls=document.querySelectorAll('[data-count]');
+const cObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animCount(e.target,parseInt(e.target.dataset.count));
+      cObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+cEls.forEach(el=>cObs.observe(el));
+
+/* Guide submit */
+async function submitGuide(email,name,btn,ok){
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  try{
+    await fetch(WORKER,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email,name,result:'guide'})
+    });
+  }catch(_){}
+  btn.style.display='none';
+  ok.style.display='block';
+  sessionStorage.setItem('sa_guide_done','1');
+  document.getElementById('popup').classList.remove('show');
+  document.body.style.overflow='';
+  if(typeof gtag!=='undefined')gtag('event','guide_signup',{method:'homepage'});
 }
 
-// ── Popup ──
-const popup       = document.getElementById('popup');
-const popupClose  = document.getElementById('popupClose');
-const popupForm   = document.getElementById('popupForm');
-const popupBtn    = document.getElementById('popupBtn');
-const popupConfirm = document.getElementById('popupConfirm');
+document.getElementById('guideBtn').addEventListener('click',async()=>{
+  const email=document.getElementById('gEmail').value.trim();
+  const name=document.getElementById('gName').value.trim();
+  if(!email.includes('@')){document.getElementById('gEmail').focus();return;}
+  await submitGuide(email,name,document.getElementById('guideBtn'),document.getElementById('guideOk'));
+});
 
-function showPopup() {
-  if (sessionStorage.getItem('sa_popup_shown')) return;
-  if (sessionStorage.getItem('sa_guide_done')) return;
+/* Popup */
+const popup=document.getElementById('popup');
+function showPopup(){
+  if(sessionStorage.getItem('sa_popup_shown')||sessionStorage.getItem('sa_guide_done'))return;
   popup.classList.add('show');
-  sessionStorage.setItem('sa_popup_shown', '1');
+  sessionStorage.setItem('sa_popup_shown','1');
+  document.body.style.overflow='hidden';
 }
-
-popupClose.addEventListener('click', () => popup.classList.remove('show'));
-popup.addEventListener('click', (e) => { if (e.target === popup) popup.classList.remove('show'); });
-
-// Show after 20 seconds
-setTimeout(showPopup, 20 * 1000);
-
-// Exit intent (desktop)
-let exitFired = false;
-document.addEventListener('mouseleave', (e) => {
-  if (!exitFired && e.clientY <= 0) { exitFired = true; showPopup(); }
-});
-
-// ── Form helper ──
-async function submitGuide(email, name, formEl, btnEl, confirmEl) {
-  btnEl.disabled = true;
-  btnEl.textContent = 'Sending...';
-  try {
-    await fetch(WORKER, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, name, result: 'guide' })
-    });
-  } catch (_) {}
-  formEl.style.display = 'none';
-  confirmEl.style.display = 'block';
-  sessionStorage.setItem('sa_guide_done', '1');
+function hidePopup(){
   popup.classList.remove('show');
-  if (typeof gtag !== 'undefined') gtag('event', 'guide_signup', { method: 'homepage' });
+  document.body.style.overflow='';
 }
+document.getElementById('popupClose').addEventListener('click',hidePopup);
+popup.addEventListener('click',e=>{if(e.target===popup)hidePopup();});
+setTimeout(showPopup,22000);
+let xFired=false;
+document.addEventListener('mouseleave',e=>{if(!xFired&&e.clientY<=0){xFired=true;showPopup();}});
 
-// Main guide form
-document.getElementById('guideForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = e.target.querySelector('[name=email]').value.trim();
-  const name  = e.target.querySelector('[name=name]').value.trim();
-  if (!email.includes('@')) return;
-  await submitGuide(email, name,
-    document.getElementById('guideForm'),
-    document.getElementById('guideBtn'),
-    document.getElementById('guideConfirm'));
+document.getElementById('popupBtn').addEventListener('click',async()=>{
+  const email=document.getElementById('pEmail').value.trim();
+  const name=document.getElementById('pName').value.trim();
+  if(!email.includes('@')){document.getElementById('pEmail').focus();return;}
+  await submitGuide(email,name,document.getElementById('popupBtn'),document.getElementById('popupOk'));
 });
 
-// Popup guide form
-popupForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = e.target.querySelector('[name=email]').value.trim();
-  const name  = e.target.querySelector('[name=name]').value.trim();
-  if (!email.includes('@')) return;
-  await submitGuide(email, name, popupForm, popupBtn, popupConfirm);
-});
-
-// ── Nav toggle ──
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-document.addEventListener('click', (e) => {
-  if (!nav.contains(e.target)) navLinks.classList.remove('open');
-});
-const nav = document.querySelector('nav');
-
-// ── Scroll fade-up ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-// ── Home shop preview ──
-(async function() {
-  const el = document.getElementById('homeProducts');
-  if (!el) return;
-  const Q = `{ products(first: 4, sortKey: CREATED_AT, reverse: true) { edges { node { title handle availableForSale onlineStoreUrl priceRange { minVariantPrice { amount currencyCode } } images(first: 1) { edges { node { url altText } } } } } } }`;
-  try {
-    const res = await fetch(`https://${SHOP_DOMAIN}/api/2024-10/graphql.json`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': SHOP_TOKEN },
-      body: JSON.stringify({ query: Q })
-    });
-    const json = await res.json();
-    const products = json.data.products.edges.map(e => e.node);
-    if (!products.length) { el.parentElement.style.display = 'none'; return; }
-    el.innerHTML = products.map(p => {
-      const img   = p.images.edges[0]?.node;
-      const price = p.priceRange.minVariantPrice;
-      const fmt   = new Intl.NumberFormat('en-US', { style: 'currency', currency: price.currencyCode }).format(parseFloat(price.amount));
-      const url   = p.onlineStoreUrl || `https://${SHOP_DOMAIN}/products/${p.handle}`;
-      return `<a href="${url}" target="_blank" rel="noopener" class="pcard fade-up">
-        <div class="pcard-img">${img ? `<img src="${img.url}" alt="${img.altText || p.title}" loading="lazy">` : ''}</div>
-        <div class="pcard-body"><p class="pcard-title">${p.title}</p><p class="pcard-price">${fmt}</p></div>
-      </a>`;
-    }).join('');
-    el.querySelectorAll('.fade-up').forEach(card => observer.observe(card));
-  } catch (_) {
-    el.parentElement.style.display = 'none';
-  }
-})();
+/* Swipe down to close popup */
+let tyStart=0;
+const sheet=document.querySelector('.popup-sheet');
+sheet.addEventListener('touchstart',e=>{tyStart=e.touches[0].clientY;},{passive:true});
+sheet.addEventListener('touchmove',e=>{if(e.touches[0].clientY-tyStart>60)hidePopup();},{passive:true});
 </script>
 </body>
 </html>
