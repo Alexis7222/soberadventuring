@@ -224,7 +224,7 @@ hr {
 
 @media (max-width: 560px) {
   .offer {
-    padding: 0;
+    padding: 10px;
   }
 
   .sheet {
