@@ -15,7 +15,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1A0A05;
@@ -31,7 +31,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{
-  font-family:'DM Sans',sans-serif;
+  font-family:'Instrument Sans',sans-serif;
   background:var(--paper);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
@@ -40,12 +40,6 @@ body{
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-family:inherit;}
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* NAV */
 .nav{
   position:sticky;top:0;z-index:200;
   background:rgba(26,10,5,0.96);
@@ -55,7 +49,7 @@ button{cursor:pointer;font-family:inherit;}
   border-bottom:1px solid rgba(201,169,110,0.08);
 }
 .nav-logo{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
   font-size:19px;font-weight:400;font-style:italic;
   color:var(--cream);
 }
@@ -70,7 +64,6 @@ button{cursor:pointer;font-family:inherit;}
 }
 .nav-back:active{color:var(--cream);}
 
-/* HERO */
 .hero{
   background:var(--ink);
   padding:60px 24px 52px;
@@ -91,16 +84,14 @@ button{cursor:pointer;font-family:inherit;}
   color:var(--gold);display:block;margin-bottom:18px;
 }
 .hero h1{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
   font-size:clamp(38px,9vw,64px);
   font-weight:300;line-height:1.05;
   letter-spacing:-0.025em;
   color:var(--cream);
   margin-bottom:16px;
 }
-.hero h1 em{
-  font-style:italic;color:var(--gold);
-}
+.hero h1 em{font-style:italic;color:var(--gold);}
 .hero-sub{
   font-size:15px;font-weight:300;line-height:1.75;
   color:rgba(250,244,232,0.45);
@@ -116,7 +107,6 @@ button{cursor:pointer;font-family:inherit;}
   padding-top:16px;
 }
 
-/* FILTER BAR */
 .filter-wrap{
   background:var(--white);
   border-bottom:1px solid rgba(26,10,5,0.07);
@@ -147,8 +137,6 @@ button{cursor:pointer;font-family:inherit;}
   border-bottom-color:var(--oxblood);
 }
 .filter-btn:active{opacity:0.7;}
-
-/* COUNT BADGE */
 .filter-btn .count{
   display:inline-block;
   margin-left:5px;
@@ -157,7 +145,6 @@ button{cursor:pointer;font-family:inherit;}
   opacity:0.5;
 }
 
-/* GRID */
 .grid-wrap{
   max-width:1080px;
   margin:0 auto;
@@ -169,7 +156,6 @@ button{cursor:pointer;font-family:inherit;}
   gap:12px;
 }
 
-/* CARD */
 .card{
   display:flex;flex-direction:column;
   background:var(--white);
@@ -194,7 +180,7 @@ button{cursor:pointer;font-family:inherit;}
 .card[data-cat="Sober Travel"] .card-tag{color:var(--ink);}
 .card[data-cat="Freelance"] .card-tag{color:var(--muted);}
 .card-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
   font-size:20px;font-weight:400;
   color:var(--ink);line-height:1.25;
   margin-bottom:8px;flex:1;
@@ -216,16 +202,14 @@ button{cursor:pointer;font-family:inherit;}
 .card-read svg{transition:transform 0.2s;}
 .card:active .card-read svg{transform:translateX(4px);}
 
-/* EMPTY STATE */
 #emptyState{
   display:none;
   padding:60px 0;text-align:center;
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
   font-size:22px;font-weight:300;font-style:italic;
   color:var(--muted);
 }
 
-/* BOTTOM CTA */
 .cta{
   background:var(--oxblood);
   padding:60px 24px;
@@ -244,7 +228,7 @@ button{cursor:pointer;font-family:inherit;}
   color:var(--gold);display:block;margin-bottom:14px;
 }
 .cta h2{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
   font-size:clamp(32px,8vw,52px);
   font-weight:300;line-height:1.05;
   letter-spacing:-0.02em;
@@ -262,14 +246,13 @@ button{cursor:pointer;font-family:inherit;}
 }
 .btn-cta:active{background:var(--gold-lt);}
 
-/* FOOTER */
 footer{
   background:var(--ink);
   padding:36px 24px;
   border-top:1px solid rgba(250,244,232,0.05);
 }
 .foot-logo{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
   font-size:17px;font-weight:300;font-style:italic;
   color:rgba(250,244,232,0.35);display:block;margin-bottom:14px;
 }
@@ -298,7 +281,6 @@ footer{
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
   <a href="/" class="nav-back">
@@ -307,7 +289,6 @@ footer{
   </a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-eyebrow">Sober Adventuring</span>
@@ -317,7 +298,6 @@ footer{
   </div>
 </section>
 
-<!-- FILTERS -->
 <div class="filter-wrap">
   <div class="filter-inner" role="tablist" aria-label="Filter by category">
     <button class="filter-btn active" data-cat="all" role="tab" aria-selected="true">All <span class="count" id="countAll"></span></button>
@@ -328,13 +308,11 @@ footer{
   </div>
 </div>
 
-<!-- GRID -->
 <div class="grid-wrap">
   <div class="grid" id="postGrid"></div>
   <div id="emptyState">Nothing here yet in this category.</div>
 </div>
 
-<!-- CTA -->
 <section class="cta">
   <div class="cta-inner">
     <span class="cta-eye">Free 30-day challenge</span>
@@ -343,7 +321,6 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
   <nav class="foot-links" aria-label="Footer">
@@ -364,16 +341,13 @@ footer{
   var totalEl=document.getElementById('totalCount');
   var activeCat='all';
   var allPosts=[];
-
   function fmt(dateStr){
     var d=new Date(dateStr+'T00:00:00');
     return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
   }
-
   function cardHTML(p){
     return '<a href="/blog/'+p.slug+'/" class="card" data-cat="'+p.category+'">'+'<span class="card-tag">'+p.category+'</span>'+'<h2 class="card-title">'+p.title+'</h2>'+'<p class="card-meta">'+fmt(p.date)+'&nbsp;&middot;&nbsp;'+p.reading_time+' min</p>'+'<p class="card-desc">'+p.meta_description+'</p>'+'<span class="card-read">Read <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>'+'</a>';
   }
-
   function render(cat){
     activeCat=cat;
     var filtered=cat==='all'?allPosts:allPosts.filter(function(p){return p.category===cat;});
@@ -390,7 +364,6 @@ footer{
       b.setAttribute('aria-selected',active);
     });
   }
-
   function setCounts(posts){
     var cats=['Recovery','Sober Travel','Sobriety Coaching','Freelance'];
     var el=document.getElementById('countAll');
@@ -401,7 +374,6 @@ footer{
       if(el2)el2.textContent=count;
     });
   }
-
   fetch('/blog/posts.json')
     .then(function(r){return r.json();})
     .then(function(posts){
@@ -414,11 +386,8 @@ footer{
       totalEl.textContent='';
       grid.innerHTML='<p style="color:var(--muted);padding:40px 0;">Posts unavailable right now.</p>';
     });
-
   document.querySelectorAll('.filter-btn').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      render(this.dataset.cat);
-    });
+    btn.addEventListener('click',function(){render(this.dataset.cat);});
   });
 })();
 </script>
