@@ -1,6 +1,6 @@
 const CONFIG = {
   price: "$17",
-  checkoutUrl: "https://gumroad.com/l/drkgck",
+  checkoutUrl: "https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01",
 };
 
 document.addEventListener("DOMContentLoaded", () => {
