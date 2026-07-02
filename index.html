@@ -22,7 +22,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1A0A05;
@@ -38,7 +38,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{
-  font-family:'DM Sans',sans-serif;
+  font-family:'Instrument Sans',sans-serif;
   background:var(--ink);
   color:var(--cream);
   -webkit-font-smoothing:antialiased;
@@ -49,7 +49,6 @@ img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-family:inherit;}
 
-/* KEYFRAMES */
 @keyframes shimmer{
   from{background-position:200% center;}
   to{background-position:-200% center;}
@@ -82,7 +81,6 @@ button{cursor:pointer;font-family:inherit;}
   100%{top:200%;}
 }
 
-/* PROGRESS */
 #prog{
   position:fixed;top:0;left:0;z-index:500;
   height:2px;width:0%;
@@ -91,7 +89,6 @@ button{cursor:pointer;font-family:inherit;}
   pointer-events:none;
 }
 
-/* NAV */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   height:58px;padding:0 20px;
@@ -104,8 +101,9 @@ button{cursor:pointer;font-family:inherit;}
   -webkit-backdrop-filter:blur(18px);
 }
 .nav-logo{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
   font-size:20px;font-weight:400;font-style:italic;
+  font-optical-sizing:auto;
   color:var(--cream);letter-spacing:0.01em;
   position:relative;z-index:301;
 }
@@ -127,7 +125,6 @@ button{cursor:pointer;font-family:inherit;}
 .nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
 
-/* NAV OVERLAY */
 .nav-ov{
   position:fixed;inset:0;z-index:299;
   background:var(--ink);
@@ -157,7 +154,8 @@ button{cursor:pointer;font-family:inherit;}
 .nav-ov.open ul li:nth-child(6){opacity:1;transform:translateY(0);transition-delay:0.30s;}
 .nav-ov ul a{
   display:block;padding:14px 20px;
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(28px,8vw,38px);font-weight:300;
   color:rgba(250,244,232,0.5);
   transition:color 0.2s;
@@ -178,7 +176,6 @@ button{cursor:pointer;font-family:inherit;}
 .nav-ov.open .nav-ov-cta{opacity:1;transform:translateY(0);transition-delay:0.35s;}
 .nav-ov-cta:active{background:var(--gold-lt);}
 
-/* REVEAL */
 .rv{
   opacity:0;transform:translateY(24px);
   transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);
@@ -188,7 +185,6 @@ button{cursor:pointer;font-family:inherit;}
 .rv[data-d="2"]{transition-delay:0.2s;}
 .rv[data-d="3"]{transition-delay:0.3s;}
 
-/* HERO */
 .hero{
   position:relative;min-height:100svh;
   display:flex;flex-direction:column;justify-content:flex-end;
@@ -221,7 +217,8 @@ button{cursor:pointer;font-family:inherit;}
   opacity:0;animation:fadeIn 0.8s var(--ease) 0.4s forwards;
 }
 .hero h1{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(44px,11.5vw,80px);
   font-weight:300;line-height:1.0;
   letter-spacing:-0.02em;
@@ -285,7 +282,8 @@ button{cursor:pointer;font-family:inherit;}
   opacity:0;animation:fadeUp 0.8s var(--ease) 1.4s forwards;
 }
 .stat-v{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:26px;font-weight:300;color:var(--gold);
   display:block;line-height:1;
 }
@@ -317,7 +315,6 @@ button{cursor:pointer;font-family:inherit;}
   transform:rotate(180deg);
 }
 
-/* MIRROR */
 .mirror{
   background:var(--paper);color:var(--ink);
   padding:80px 24px;
@@ -329,7 +326,8 @@ button{cursor:pointer;font-family:inherit;}
 }
 .eyebrow.ox{color:var(--oxblood);}
 .sec-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(32px,8vw,52px);font-weight:300;
   line-height:1.1;letter-spacing:-0.02em;
   margin-bottom:40px;
@@ -360,7 +358,8 @@ button{cursor:pointer;font-family:inherit;}
   color:var(--oxblood);display:block;margin-bottom:12px;
 }
 .mcard-prev{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(20px,5vw,26px);font-weight:400;
   color:var(--ink);line-height:1.3;
 }
@@ -388,12 +387,12 @@ button{cursor:pointer;font-family:inherit;}
   border-top:1px solid rgba(26,10,5,0.09);
 }
 .mirror-join-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(22px,5.5vw,30px);font-weight:300;font-style:italic;
   color:var(--ink);margin-bottom:22px;line-height:1.3;
 }
 
-/* FIRST 30 */
 .f30{
   background:var(--ink);color:var(--cream);
   padding:80px 24px;position:relative;overflow:hidden;
@@ -415,7 +414,8 @@ button{cursor:pointer;font-family:inherit;}
 .f30-inner{position:relative;z-index:1;}
 .f30 .eyebrow{color:var(--gold);}
 .f30-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(38px,10vw,70px);font-weight:300;
   line-height:1.0;letter-spacing:-0.025em;
   color:var(--cream);margin-bottom:22px;
@@ -449,7 +449,8 @@ button{cursor:pointer;font-family:inherit;}
   color:var(--gold);margin-top:2px;
 }
 .feat-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:19px;font-weight:400;color:var(--cream);
   margin-bottom:5px;line-height:1.2;
 }
@@ -463,7 +464,6 @@ button{cursor:pointer;font-family:inherit;}
   letter-spacing:0.04em;text-align:center;
 }
 
-/* ABOUT */
 .about{
   background:var(--cream);color:var(--ink);
   padding:80px 24px;position:relative;
@@ -482,13 +482,15 @@ button{cursor:pointer;font-family:inherit;}
 .about-badge{
   position:absolute;bottom:-14px;right:0;
   background:var(--gold);padding:12px 16px;
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:14px;font-style:italic;
   color:var(--ink);max-width:200px;line-height:1.4;
 }
 .about .eyebrow{color:var(--oxblood);}
 .about-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(30px,7vw,48px);font-weight:300;
   line-height:1.1;letter-spacing:-0.02em;
   color:var(--ink);margin-bottom:22px;
@@ -513,14 +515,14 @@ button{cursor:pointer;font-family:inherit;}
 }
 .about-lnk:active{border-color:var(--ink);}
 
-/* PROOF */
 .proof{
   background:var(--ink);color:var(--cream);
   padding:80px 24px;
 }
 .proof .eyebrow{color:var(--gold);}
 .proof-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(28px,7vw,44px);font-weight:300;
   line-height:1.1;letter-spacing:-0.02em;
   color:var(--cream);margin-bottom:36px;
@@ -537,13 +539,14 @@ button{cursor:pointer;font-family:inherit;}
 .pcard::before{
   content:'\201C';
   position:absolute;top:-8px;left:16px;
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
   font-size:90px;line-height:1;
   color:rgba(201,169,110,0.07);pointer-events:none;
 }
 .pcard:active{background:rgba(250,244,232,0.06);transform:scale(0.995);}
 .pcard-txt{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:20px;font-weight:400;font-style:italic;
   line-height:1.6;color:var(--cream);margin-bottom:18px;
 }
@@ -552,14 +555,14 @@ button{cursor:pointer;font-family:inherit;}
   letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);
 }
 
-/* GUIDE */
 .guide{
   background:var(--paper);color:var(--ink);
   padding:80px 24px;
 }
 .guide .eyebrow{color:var(--gold);}
 .guide-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(30px,7vw,46px);font-weight:300;
   line-height:1.1;letter-spacing:-0.02em;
   color:var(--ink);margin-bottom:8px;
@@ -587,7 +590,8 @@ button{cursor:pointer;font-family:inherit;}
   color:var(--gold);display:block;margin-bottom:12px;
 }
 .gcard-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:22px;font-weight:400;
   color:var(--ink);margin-bottom:8px;line-height:1.25;
 }
@@ -599,7 +603,7 @@ button{cursor:pointer;font-family:inherit;}
   width:100%;border:1.5px solid rgba(26,10,5,0.11);
   background:var(--paper);
   padding:14px 16px;
-  font-family:'DM Sans',sans-serif;
+  font-family:'Instrument Sans',sans-serif;
   font-size:16px;color:var(--ink);
   outline:none;border-radius:0;-webkit-appearance:none;
   margin-bottom:8px;
@@ -609,7 +613,7 @@ button{cursor:pointer;font-family:inherit;}
 .form-sub{
   width:100%;min-height:50px;
   background:var(--gold);color:var(--ink);
-  font-family:'DM Sans',sans-serif;
+  font-family:'Instrument Sans',sans-serif;
   font-size:13px;font-weight:600;
   letter-spacing:0.06em;text-transform:uppercase;
   border:none;border-radius:0;-webkit-appearance:none;
@@ -634,14 +638,14 @@ button{cursor:pointer;font-family:inherit;}
 }
 .quiz-btn:active{opacity:0.82;}
 
-/* BLOG */
 .blog{
   background:var(--cream);color:var(--ink);
   padding:80px 24px;
 }
 .blog .eyebrow{color:var(--oxblood);}
 .blog-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(30px,7vw,46px);font-weight:300;
   line-height:1.1;letter-spacing:-0.02em;
   color:var(--ink);margin-bottom:36px;
@@ -661,7 +665,8 @@ button{cursor:pointer;font-family:inherit;}
   color:var(--oxblood);display:block;margin-bottom:6px;
 }
 .brow-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:20px;font-weight:400;
   color:var(--ink);line-height:1.3;
 }
@@ -681,7 +686,6 @@ button{cursor:pointer;font-family:inherit;}
   border-bottom:1px solid rgba(26,10,5,0.3);padding-bottom:2px;
 }
 
-/* FOOTER CTA */
 .fcta{
   background:var(--oxblood);color:var(--cream);
   padding:80px 24px;position:relative;overflow:hidden;
@@ -694,7 +698,8 @@ button{cursor:pointer;font-family:inherit;}
 }
 .fcta-inner{position:relative;z-index:1;}
 .fcta-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:clamp(38px,10vw,66px);font-weight:300;
   line-height:1.0;letter-spacing:-0.02em;
   color:var(--cream);margin-bottom:32px;
@@ -708,14 +713,14 @@ button{cursor:pointer;font-family:inherit;}
   animation:shimmer 5s linear infinite;
 }
 
-/* FOOTER */
 footer{
   background:var(--ink);
   padding:40px 24px calc(40px + env(safe-area-inset-bottom));
   border-top:1px solid rgba(250,244,232,0.05);
 }
 .foot-logo{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:18px;font-weight:300;font-style:italic;
   color:rgba(250,244,232,0.45);display:block;margin-bottom:22px;
 }
@@ -725,7 +730,6 @@ footer{
 .foot-links a:active{color:var(--cream);}
 .foot-copy{font-size:11px;color:rgba(250,244,232,0.15);line-height:1.6;}
 
-/* STICKY BAR */
 .sticky{
   position:fixed;bottom:0;left:0;right:0;z-index:250;
   height:calc(56px + env(safe-area-inset-bottom));
@@ -752,7 +756,6 @@ footer{
 }
 .sticky-btn:active{opacity:0.82;}
 
-/* POPUP */
 #popup{
   position:fixed;inset:0;z-index:400;
   background:rgba(26,10,5,0.75);
@@ -792,13 +795,13 @@ footer{
   color:var(--oxblood);display:block;margin-bottom:10px;
 }
 .popup-h{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
   font-size:26px;font-weight:400;
   color:var(--ink);margin-bottom:8px;line-height:1.2;
 }
 .popup-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.65;}
 
-/* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:0.01ms!important;
@@ -808,7 +811,6 @@ footer{
   .hero h1 .ln span,.hero-eye,.hero-sub,.hero-btns,.hero-stats,.scroll-hint{opacity:1;transform:none;}
 }
 
-/* TABLET+ */
 @media(min-width:768px){
   .nav{padding:0 48px;}
   .nav-toggle{display:none;}
@@ -821,7 +823,7 @@ footer{
   .nav-ov ul{flex-direction:row;gap:0;align-items:center;width:auto;}
   .nav-ov ul li{opacity:1;transform:none;width:auto;}
   .nav-ov ul a{
-    font-family:'DM Sans',sans-serif;
+    font-family:'Instrument Sans',sans-serif;
     font-size:13px;font-weight:400;
     color:rgba(250,244,232,0.5);padding:8px 14px;
     transition:color 0.2s;
@@ -834,33 +836,26 @@ footer{
     transition:background 0.2s;
   }
   .nav-ov-cta:hover{background:var(--gold-lt);}
-
   .hero{padding:0 60px 80px;justify-content:center;}
   .hero-content{max-width:600px;}
   .hero-btns{flex-direction:row;}
   .scroll-hint{bottom:40px;}
-
   .mirror{padding:100px 60px;}
   .mcards{flex-direction:row;gap:20px;}
   .mcard{flex:1;}
-
   .f30{padding:100px 60px;}
   .f30-feats{flex-direction:row;gap:16px;}
   .feat{flex:1;}
-
   .about{padding:100px 60px;}
   .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
   .about-img{margin-bottom:0;}
   .about-img img{max-width:none;width:100%;height:500px;}
-
   .proof{padding:100px 60px;}
   .proof-cards{flex-direction:row;}
   .pcard{flex:1;}
-
   .guide{padding:100px 60px;}
   .gcards{flex-direction:row;}
   .gcard{flex:1;}
-
   .blog{padding:100px 60px;}
   .fcta{padding:100px 60px;}
   footer{padding:48px 60px;}
@@ -869,18 +864,13 @@ footer{
 </style>
 </head>
 <body>
-
 <div id="prog" role="progressbar" aria-hidden="true"></div>
-
-<!-- NAV -->
 <nav class="nav" id="mainNav">
   <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<!-- NAV OVERLAY -->
 <div class="nav-ov" id="navOv" aria-hidden="true">
   <ul>
     <li><a href="/story/">About</a></li>
@@ -892,8 +882,6 @@ footer{
   </ul>
   <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="nav-ov-cta" target="_blank" rel="noopener">Free Discovery Call</a>
 </div>
-
-<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-photo">
     <img src="/images/lexi-headshot.jpg" alt="Lexi Morgan" loading="eager" width="800" height="1000">
@@ -921,8 +909,6 @@ footer{
     <span class="scroll-txt">Scroll</span>
   </div>
 </section>
-
-<!-- MIRROR -->
 <section class="mirror" id="mirror">
   <span class="eyebrow ox rv">Before you scroll past this</span>
   <h2 class="sec-h rv">If any of this sounds familiar,<br>you're in the <em>right place.</em></h2>
@@ -945,8 +931,6 @@ footer{
     <a href="/the-first-thirty/" class="btn-gold" style="display:inline-flex;align-items:center;min-height:50px;padding:14px 28px;">Start The First 30: It's Free</a>
   </div>
 </section>
-
-<!-- FIRST 30 -->
 <section class="f30" id="first30">
   <div class="f30-glow" aria-hidden="true"></div>
   <div class="f30-inner">
@@ -955,18 +939,14 @@ footer{
     <p class="f30-sub rv">A daily email challenge that gives you 30 days of prompts and tools to find out what you're capable of when alcohol isn't in the picture, and to start being honest about what the picture looks like right now.</p>
     <div class="f30-feats">
       <div class="feat rv">
-        <div class="feat-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8.5l4 4L14 4"/></svg>
-        </div>
+        <div class="feat-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8.5l4 4L14 4"/></svg></div>
         <div>
           <p class="feat-h">Daily prompts to your inbox</p>
           <p class="feat-p">Each one designed to meet you where you are and ask something worth sitting with. Some days it's a reframe, some days it's a question you've been moving past.</p>
         </div>
       </div>
       <div class="feat rv" data-d="1">
-        <div class="feat-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg>
-        </div>
+        <div class="feat-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 8l2 2 4-4"/></svg></div>
         <div>
           <p class="feat-h">A private community in the same 30 days</p>
           <p class="feat-p">No labels required to be here. Honest conversation between women who are figuring it out alongside you.</p>
@@ -977,8 +957,6 @@ footer{
     <p class="f30-note rv">No credit card, and no commitment beyond 30 days.</p>
   </div>
 </section>
-
-<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-img rv">
@@ -994,8 +972,6 @@ footer{
     </div>
   </div>
 </section>
-
-<!-- PROOF -->
 <section class="proof">
   <span class="eyebrow rv">What women are saying</span>
   <h2 class="proof-h rv">From the room.</h2>
@@ -1011,8 +987,6 @@ footer{
   </div>
   <a href="/the-first-thirty/" class="btn-gold no-anim rv" style="display:inline-flex;align-items:center;min-height:50px;padding:14px 28px;">Start The First 30: Free</a>
 </section>
-
-<!-- GUIDE -->
 <section class="guide" id="guides">
   <span class="eyebrow rv">Free resources</span>
   <h2 class="guide-h rv">Start here.</h2>
@@ -1035,8 +1009,6 @@ footer{
     </div>
   </div>
 </section>
-
-<!-- BLOG -->
 <section class="blog" id="blog">
   <span class="eyebrow rv">From the blog</span>
   <h2 class="blog-h rv">Everything in one place.</h2>
@@ -1046,22 +1018,18 @@ footer{
       <div class="barrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>
     </a>
     <a href="/blog/build-sober-life-want-to-live/" class="brow rv" data-d="1">
-      <div><span class="brow-tag">Sobriety</span><p class="brow-title">How to Build a Sober Life You Want to Live</p></div>
+      <div><span class="brow-tag">Sobriety</span><p class="brow-title">How to Build a Sober Life Worth Staying For</p></div>
       <div class="barrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>
     </a>
   </div>
   <a href="/blog/" class="blog-all rv">Read all posts &rarr;</a>
 </section>
-
-<!-- FOOTER CTA -->
 <section class="fcta">
   <div class="fcta-inner">
     <h2 class="fcta-h rv">30 days.<br>Find <em>out.</em></h2>
     <a href="/the-first-thirty/" class="btn-gold no-anim rv" style="display:inline-flex;align-items:center;min-height:54px;padding:17px 34px;font-size:13px;">Start The First 30: It's Free</a>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer>
   <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
   <nav class="foot-links" aria-label="Footer">
@@ -1076,14 +1044,10 @@ footer{
   </nav>
   <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
 </footer>
-
-<!-- STICKY BAR -->
 <div class="sticky" id="stickyBar">
   <span class="sticky-txt">Free 30-day challenge</span>
   <a href="/the-first-thirty/" class="sticky-btn">Start Free &rarr;</a>
 </div>
-
-<!-- POPUP -->
 <div id="popup" role="dialog" aria-modal="true" aria-label="Free guide">
   <div class="popup-sheet">
     <div class="popup-drag"></div>
@@ -1097,143 +1061,39 @@ footer{
     <p class="form-ok" id="popupOk">You're in. Check your inbox, the guide is on its way.</p>
   </div>
 </div>
-
 <script>
 const WORKER='https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
-
-/* Progress bar */
 const prog=document.getElementById('prog');
-window.addEventListener('scroll',()=>{
-  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
-  prog.style.width=pct+'%';
-},{passive:true});
-
-/* Nav scroll */
+window.addEventListener('scroll',()=>{const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;prog.style.width=pct+'%';},{passive:true});
 const mainNav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{
-  mainNav.classList.toggle('scrolled',window.scrollY>40);
-},{passive:true});
-
-/* Nav overlay */
+window.addEventListener('scroll',()=>{mainNav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
 const navToggle=document.getElementById('navToggle');
 const navOv=document.getElementById('navOv');
-navToggle.addEventListener('click',()=>{
-  const open=navToggle.classList.toggle('open');
-  navOv.classList.toggle('open',open);
-  navOv.setAttribute('aria-hidden',!open);
-  navToggle.setAttribute('aria-expanded',open);
-  document.body.style.overflow=open?'hidden':'';
-});
-navOv.querySelectorAll('a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    navToggle.classList.remove('open');
-    navOv.classList.remove('open');
-    navOv.setAttribute('aria-hidden','true');
-    navToggle.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  });
-});
-
-/* Scroll reveal */
-const rvObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});
-},{threshold:0.1});
+navToggle.addEventListener('click',()=>{const open=navToggle.classList.toggle('open');navOv.classList.toggle('open',open);navOv.setAttribute('aria-hidden',!open);navToggle.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';});
+navOv.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{navToggle.classList.remove('open');navOv.classList.remove('open');navOv.setAttribute('aria-hidden','true');navToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';});});
+const rvObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-/* Mirror cards */
-document.querySelectorAll('.mcard').forEach(card=>{
-  function tog(){
-    const ex=card.classList.toggle('ex');
-    card.setAttribute('aria-expanded',ex);
-  }
-  card.addEventListener('click',tog);
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});
-});
-
-/* Sticky bar */
+document.querySelectorAll('.mcard').forEach(card=>{function tog(){const ex=card.classList.toggle('ex');card.setAttribute('aria-expanded',ex);}card.addEventListener('click',tog);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});});
 const stickyBar=document.getElementById('stickyBar');
 const heroEl=document.querySelector('.hero');
-const heroObs=new IntersectionObserver((entries)=>{
-  stickyBar.classList.toggle('on',!entries[0].isIntersecting);
-},{threshold:0});
+const heroObs=new IntersectionObserver((entries)=>{stickyBar.classList.toggle('on',!entries[0].isIntersecting);},{threshold:0});
 heroObs.observe(heroEl);
-
-/* Counter animation */
-function animCount(el,target,dur=1200){
-  const start=performance.now();
-  const step=(now)=>{
-    const p=Math.min((now-start)/dur,1);
-    const e=1-Math.pow(1-p,3);
-    el.textContent=Math.round(e*target).toLocaleString()+(target>=1000?'+':'');
-    if(p<1)requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
+function animCount(el,target,dur=1200){const start=performance.now();const step=(now)=>{const p=Math.min((now-start)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(e*target).toLocaleString()+(target>=1000?'+':'');if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
 const cEls=document.querySelectorAll('[data-count]');
-const cObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      animCount(e.target,parseInt(e.target.dataset.count));
-      cObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.5});
+const cObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){animCount(e.target,parseInt(e.target.dataset.count));cObs.unobserve(e.target);}});},{threshold:0.5});
 cEls.forEach(el=>cObs.observe(el));
-
-/* Guide submit */
-async function submitGuide(email,name,btn,ok){
-  btn.disabled=true;
-  btn.textContent='Sending...';
-  try{
-    await fetch(WORKER,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email,name,result:'guide'})
-    });
-  }catch(_){}
-  btn.style.display='none';
-  ok.style.display='block';
-  sessionStorage.setItem('sa_guide_done','1');
-  document.getElementById('popup').classList.remove('show');
-  document.body.style.overflow='';
-  if(typeof gtag!=='undefined')gtag('event','guide_signup',{method:'homepage'});
-}
-
-document.getElementById('guideBtn').addEventListener('click',async()=>{
-  const email=document.getElementById('gEmail').value.trim();
-  const name=document.getElementById('gName').value.trim();
-  if(!email.includes('@')){document.getElementById('gEmail').focus();return;}
-  await submitGuide(email,name,document.getElementById('guideBtn'),document.getElementById('guideOk'));
-});
-
-/* Popup */
+async function submitGuide(email,name,btn,ok){btn.disabled=true;btn.textContent='Sending...';try{await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,name,result:'guide'})});}catch(_){}btn.style.display='none';ok.style.display='block';sessionStorage.setItem('sa_guide_done','1');document.getElementById('popup').classList.remove('show');document.body.style.overflow='';if(typeof gtag!=='undefined')gtag('event','guide_signup',{method:'homepage'});}
+document.getElementById('guideBtn').addEventListener('click',async()=>{const email=document.getElementById('gEmail').value.trim();const name=document.getElementById('gName').value.trim();if(!email.includes('@')){document.getElementById('gEmail').focus();return;}await submitGuide(email,name,document.getElementById('guideBtn'),document.getElementById('guideOk'));});
 const popup=document.getElementById('popup');
-function showPopup(){
-  if(sessionStorage.getItem('sa_popup_shown')||sessionStorage.getItem('sa_guide_done'))return;
-  popup.classList.add('show');
-  sessionStorage.setItem('sa_popup_shown','1');
-  document.body.style.overflow='hidden';
-}
-function hidePopup(){
-  popup.classList.remove('show');
-  document.body.style.overflow='';
-}
+function showPopup(){if(sessionStorage.getItem('sa_popup_shown')||sessionStorage.getItem('sa_guide_done'))return;popup.classList.add('show');sessionStorage.setItem('sa_popup_shown','1');document.body.style.overflow='hidden';}
+function hidePopup(){popup.classList.remove('show');document.body.style.overflow='';}
 document.getElementById('popupClose').addEventListener('click',hidePopup);
 popup.addEventListener('click',e=>{if(e.target===popup)hidePopup();});
 setTimeout(showPopup,22000);
 let xFired=false;
 document.addEventListener('mouseleave',e=>{if(!xFired&&e.clientY<=0){xFired=true;showPopup();}});
-
-document.getElementById('popupBtn').addEventListener('click',async()=>{
-  const email=document.getElementById('pEmail').value.trim();
-  const name=document.getElementById('pName').value.trim();
-  if(!email.includes('@')){document.getElementById('pEmail').focus();return;}
-  await submitGuide(email,name,document.getElementById('popupBtn'),document.getElementById('popupOk'));
-});
-
-/* Swipe down to close popup */
-let tyStart=0;
-const sheet=document.querySelector('.popup-sheet');
+document.getElementById('popupBtn').addEventListener('click',async()=>{const email=document.getElementById('pEmail').value.trim();const name=document.getElementById('pName').value.trim();if(!email.includes('@')){document.getElementById('pEmail').focus();return;}await submitGuide(email,name,document.getElementById('popupBtn'),document.getElementById('popupOk'));});
+let tyStart=0;const sheet=document.querySelector('.popup-sheet');
 sheet.addEventListener('touchstart',e=>{tyStart=e.touches[0].clientY;},{passive:true});
 sheet.addEventListener('touchmove',e=>{if(e.touches[0].clientY-tyStart>60)hidePopup();},{passive:true});
 </script>
