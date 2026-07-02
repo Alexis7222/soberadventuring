@@ -2,490 +2,701 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The First Thirty | A 30-Day Sobriety Toolkit | Sober Adventuring</title>
-<meta name="description" content="A printable 30-day toolkit for early sobriety: one page a day across four phases, plus a crisis card for the hard nights. 4th of July sale, $17.99.">
-<meta property="og:title" content="The First Thirty | A 30-Day Sobriety Toolkit">
-<meta property="og:description" content="One page a day for the first thirty days, across four phases, with a crisis card for the nights that need one.">
-<meta property="og:type" content="product">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The First 30 | Free 30-Day Challenge | Sober Adventuring</title>
+<meta name="description" content="The First 30 is a free 30-day email challenge for women who are ready to sit with the question, whatever it looks like for them. No labels. No rock bottom required.">
+<meta property="og:title" content="The First 30 | Free 30-Day Challenge | Sober Adventuring">
+<meta property="og:description" content="A daily email challenge. 30 days of prompts, a private community, and no rock bottom required.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://soberadventuring.com/the-first-thirty/">
 <link rel="canonical" href="https://soberadventuring.com/the-first-thirty/">
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('js',new Date());
+  gtag('config','G-XXXXXXXXXX');
 </script>
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"The First Thirty","description":"A printable 30-day sobriety toolkit with one page a day across four phases, plus a crisis card and career worksheets.","brand":{"@type":"Brand","name":"Sober Adventuring"},"offers":{"@type":"Offer","price":"17.99","priceCurrency":"USD","availability":"https://schema.org/InStock","priceValidUntil":"2026-07-05"}}
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1B0009;--forest:#2D3D24;--terra:#C5442C;
-  --cream:#F4E8D0;--paper:#F0EDE8;--muted:#6b5a4e;
-  --blue:#2C3A5A;--white:#FEFCF8;
+  --ink:#1A0A05;
+  --gold:#C9A96E;
+  --gold-lt:#E8C87A;
+  --oxblood:#6B2737;
+  --cream:#FAF4E8;
+  --paper:#F4EEE4;
+  --muted:#7a6355;
+  --white:#FFFDF8;
+  --ease:cubic-bezier(0.22,1,0.36,1);
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Bricolage Grotesque',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:74px}
-img{max-width:100%;display:block}
-em{font-style:italic;color:var(--terra)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:inherit;}
+
+@keyframes shimmer{
+  from{background-position:200% center;}
+  to{background-position:-200% center;}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0);}
+  50%{box-shadow:0 0 28px 6px rgba(201,169,110,0.35);}
+}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(27,0,9,0.08);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:54px}
-.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em}
-.nav-logo .green{color:var(--forest)}
-.nav-back{font-size:13px;color:var(--ink);opacity:0.6;text-decoration:none}
-.nav-back:hover{opacity:1}
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(26,10,5,0.96);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  height:56px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(201,169,110,0.08);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:400;font-style:italic;
+  color:var(--cream);
+}
+.nav-logo .g{color:var(--gold);}
+.nav-back{
+  font-size:12px;font-weight:500;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:rgba(250,244,232,0.4);
+  display:flex;align-items:center;gap:6px;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-back:active{color:var(--cream);}
 
-/* SALE STRIP */
-.sale-strip{background:var(--forest);color:var(--cream);text-align:center;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:9px 16px}
-.sale-strip span{color:var(--terra)}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv[data-d="1"]{transition-delay:0.1s;}
+.rv[data-d="2"]{transition-delay:0.2s;}
+.rv[data-d="3"]{transition-delay:0.3s;}
 
 /* HERO */
-.hero{padding:72px 40px 64px;display:flex;align-items:center;gap:56px;max-width:1180px;margin:0 auto;position:relative}
-.hero-copy{flex:1;min-width:0;position:relative;z-index:1}
-.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--terra);margin-bottom:18px;display:block}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(38px,5.6vw,64px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:8px}
-.hero-annotation{font-family:'Caveat',cursive;font-size:21px;font-weight:700;color:var(--forest);display:block;margin-bottom:24px;transform:rotate(-1.1deg);margin-left:2px}
-.hero-sub{font-size:clamp(16px,2vw,18px);line-height:1.65;color:rgba(27,0,9,0.65);max-width:480px;margin-bottom:32px}
-.price-box{background:var(--white);border:1.5px solid rgba(27,0,9,0.1);padding:24px 26px;max-width:380px;margin-bottom:18px}
-.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
-.price-old{font-size:18px;color:var(--muted);text-decoration:line-through}
-.price-new{font-family:'DM Serif Display',serif;font-size:38px;color:var(--terra)}
-.price-tag{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--forest);background:rgba(45,61,36,0.08);padding:4px 9px;display:inline-block;margin-bottom:14px}
-.btn-buy{display:flex;align-items:center;justify-content:center;width:100%;background:var(--ink);color:var(--cream);padding:16px 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:opacity 0.2s;min-height:52px}
-.btn-buy:hover{opacity:0.84}
-.price-note{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
-.hero-proof{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
-.hero-proof .stars{color:var(--terra);letter-spacing:1px}
-
-/* PAGE STACK — real book pages */
-.hero-visual{flex:0 0 320px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
-.page-stack{position:relative;width:240px;height:340px}
-.page-card{
-  position:absolute;width:100%;height:100%;
-  background:#FDFAF5;
-  border-radius:1px;
-  box-shadow:0 8px 32px rgba(27,0,9,0.16);
-  padding:16px 14px 12px;
-  display:flex;flex-direction:column;
+.hero{
+  background:var(--ink);
+  padding:72px 24px 64px;
+  position:relative;overflow:hidden;
 }
-.page-card:nth-child(1){transform:rotate(-4deg) translate(-8px,12px)}
-.page-card:nth-child(2){transform:rotate(-2deg) translate(-4px,6px)}
-.page-card:nth-child(3){transform:rotate(0deg)}
-
-/* Real page internals */
-.rp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
-.rp-phase{font-size:6.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra);font-family:'Bricolage Grotesque',sans-serif}
-.rp-num{font-family:'DM Serif Display',serif;font-size:30px;color:#B8893A;line-height:1;margin-top:-4px}
-.rp-title{font-family:'DM Serif Display',serif;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.25}
-.rp-q{font-family:'DM Serif Display',serif;font-size:7.5px;font-style:italic;font-weight:700;color:var(--forest);line-height:1.45;margin-bottom:4px}
-.rp-lines{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
-.rp-line{height:1px;background:rgba(27,0,9,0.18);width:100%}
-.rp-action{background:rgba(197,68,44,0.07);border-left:2px solid var(--terra);padding:7px 8px;margin-top:auto}
-.rp-action-label{font-size:6px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:4px;font-family:'Bricolage Grotesque',sans-serif}
-.rp-action-text{font-size:7px;color:var(--ink);line-height:1.55;font-family:'Bricolage Grotesque',sans-serif}
-.rp-footer{display:flex;justify-content:space-between;margin-top:8px;padding-top:6px;border-top:1px solid rgba(27,0,9,0.09)}
-.rp-footer span{font-size:5.5px;color:rgba(27,0,9,0.3);letter-spacing:0.07em;text-transform:uppercase;font-family:'Bricolage Grotesque',sans-serif}
-
-/* SECTIONS SHARED */
-.section{padding:64px 40px;max-width:1180px;margin:0 auto}
-.section-eyebrow{font-family:'Caveat',cursive;font-size:19px;font-weight:700;color:var(--muted);display:block;margin-bottom:10px}
-.section-h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,42px);line-height:1.12;margin-bottom:20px;max-width:760px}
-.section-body{font-size:16px;line-height:1.75;color:rgba(27,0,9,0.68);max-width:640px}
-.white-bg{background:var(--white)}
-
-/* FOR YOU LIST */
-.for-you-list{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:16px;max-width:640px}
-.for-you-list li{
-  display:flex;align-items:flex-start;gap:16px;
-  font-size:18px;line-height:1.55;color:var(--ink);
-  font-family:'DM Serif Display',serif;
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-120px;left:50%;transform:translateX(-50%);
+  width:600px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(107,39,55,0.2) 0%,transparent 65%);
+  pointer-events:none;
 }
-.for-you-list li::before{
-  content:"\2713";
-  flex-shrink:0;
-  width:28px;height:28px;
-  background:var(--terra);color:var(--cream);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:13px;font-weight:700;
-  margin-top:2px;
+.hero-inner{position:relative;z-index:1;max-width:560px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(201,169,110,0.3);
+  padding:6px 14px;
+  margin-bottom:24px;
+}
+.hero-badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);
+}
+.hero-badge-txt{
+  font-size:11px;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--gold);
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(46px,12vw,80px);
+  font-weight:300;line-height:1.0;
+  letter-spacing:-0.025em;
+  color:var(--cream);
+  margin-bottom:20px;
+}
+.hero h1 em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 35%,var(--gold) 65%,#D48B1A 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
+.hero-sub{
+  font-size:16px;font-weight:300;line-height:1.8;
+  color:rgba(250,244,232,0.58);
+  max-width:420px;margin-bottom:36px;
+}
+.join-form{margin-bottom:16px;}
+.join-form input{
+  width:100%;border:1.5px solid rgba(250,244,232,0.12);
+  background:rgba(250,244,232,0.05);
+  padding:15px 18px;
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;color:var(--cream);
+  outline:none;border-radius:0;-webkit-appearance:none;
+  margin-bottom:8px;
+  transition:border-color 0.25s;
+  -webkit-text-fill-color:var(--cream);
+}
+.join-form input::placeholder{color:rgba(250,244,232,0.3);}
+.join-form input:focus{border-color:rgba(201,169,110,0.5);}
+.btn-join{
+  width:100%;min-height:54px;
+  background:var(--gold);color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  border:none;border-radius:0;
+  transition:background 0.2s,transform 0.15s;
+  animation:glow 3.5s ease-in-out 1s infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn-join:active{background:var(--gold-lt);transform:scale(0.99);}
+.btn-join:disabled{opacity:0.55;cursor:not-allowed;animation:none;}
+.form-ok{
+  display:none;
+  font-size:15px;font-weight:500;
+  color:var(--gold);
+  padding:12px 0;line-height:1.65;
+}
+.hero-note{
+  font-size:12px;
+  color:rgba(250,244,232,0.25);
+  letter-spacing:0.04em;
+  margin-top:14px;
+}
+.hero-stats{
+  display:flex;gap:28px;
+  margin-top:36px;padding-top:24px;
+  border-top:1px solid rgba(250,244,232,0.07);
+}
+.stat-v{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:300;color:var(--gold);
+  display:block;line-height:1;
+}
+.stat-l{
+  font-size:10px;font-weight:400;
+  color:rgba(250,244,232,0.3);
+  letter-spacing:0.1em;text-transform:uppercase;
+  display:block;margin-top:5px;
+}
+
+/* EYEBROW */
+.eyebrow{
+  font-size:10px;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  display:block;margin-bottom:16px;
+}
+.eyebrow-gold{color:var(--gold);}
+.eyebrow-ox{color:var(--oxblood);}
+.eyebrow-muted{color:var(--muted);}
+
+/* SEC HEADING */
+.sec-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,7.5vw,50px);
+  font-weight:300;line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:24px;
+}
+.sec-h em{font-style:italic;color:var(--oxblood);}
+.sec-h.light{color:var(--cream);}
+.sec-h.light em{color:var(--gold);}
+
+/* WHAT YOU GET */
+.what{
+  background:var(--white);
+  padding:72px 24px;
+}
+.what-features{display:flex;flex-direction:column;gap:16px;margin-top:8px;}
+.wfeat{
+  padding:24px 20px;
+  border-left:3px solid var(--gold);
+  background:var(--cream);
+  transition:background 0.2s;
+}
+.wfeat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;font-weight:300;
+  color:var(--gold);display:block;margin-bottom:10px;
+  letter-spacing:0.1em;
+}
+.wfeat-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:21px;font-weight:400;
+  color:var(--ink);margin-bottom:8px;line-height:1.25;
+}
+.wfeat-p{
+  font-size:14px;font-weight:300;line-height:1.75;
+  color:var(--muted);
 }
 
 /* PHASES */
-.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
-.phase-card{background:var(--paper);border-left:3px solid var(--pc,var(--forest));padding:26px 22px}
-.phase-num{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--pc,var(--forest));margin-bottom:10px;display:block}
-.phase-h{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:10px;line-height:1.2}
-.phase-days{font-size:12px;color:var(--muted);margin-bottom:12px;display:block}
-.phase-desc{font-size:13.5px;line-height:1.65;color:rgba(27,0,9,0.65)}
+.phases{
+  background:var(--ink);
+  padding:72px 24px;
+}
+.phases-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:36px;
+}
+.pcard{
+  padding:24px 20px;
+  background:rgba(250,244,232,0.04);
+  border:1px solid rgba(250,244,232,0.06);
+  border-left:3px solid var(--phase-color,var(--gold));
+  transition:background 0.25s,transform 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.pcard:active{background:rgba(250,244,232,0.07);transform:scale(0.99);}
+.pcard-tag{
+  font-size:9px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--phase-color,var(--gold));display:block;margin-bottom:10px;
+}
+.pcard-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:21px;font-weight:400;
+  color:var(--cream);margin-bottom:6px;
+}
+.pcard-days{
+  font-size:11px;color:rgba(250,244,232,0.3);
+  letter-spacing:0.06em;display:block;margin-bottom:10px;
+}
+.pcard-desc{
+  font-size:14px;font-weight:300;line-height:1.7;
+  color:rgba(250,244,232,0.48);
+}
 
-/* HOW IT WORKS */
-.works-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px}
-.works-list{list-style:none;display:flex;flex-direction:column;gap:20px}
-.works-item{display:flex;gap:16px}
-.works-num{font-family:'DM Serif Display',serif;font-size:24px;color:var(--terra);flex-shrink:0;width:36px}
-.works-text h4{font-size:15px;font-weight:700;margin-bottom:4px}
-.works-text p{font-size:14px;color:var(--muted);line-height:1.6}
+/* PROOF */
+.proof{
+  background:var(--paper);
+  padding:72px 24px;
+}
+.proof-cards{
+  display:flex;flex-direction:column;
+  gap:16px;margin-top:36px;
+}
+.tcard{
+  padding:26px 22px;
+  background:var(--white);
+  border-left:3px solid var(--oxblood);
+  position:relative;
+}
+.tcard::before{
+  content:'\201C';
+  position:absolute;top:-4px;left:16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;line-height:1;
+  color:rgba(107,39,55,0.06);
+  pointer-events:none;
+}
+.tcard-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:400;font-style:italic;
+  line-height:1.65;color:var(--ink);margin-bottom:16px;
+}
+.tcard-name{
+  font-size:11px;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--oxblood);
+}
 
-/* TESTIMONIALS */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.testi-card{background:var(--paper);padding:26px 24px;display:flex;flex-direction:column;gap:14px}
-.testi-stars{color:var(--terra);font-size:13px;letter-spacing:1px}
-.testi-quote{font-size:14px;line-height:1.65;color:rgba(27,0,9,0.78);flex:1}
-.testi-name{font-size:13px;font-weight:700;color:var(--ink)}
-.testi-name span{font-weight:500;color:var(--muted)}
+/* PDF UPSELL */
+.upsell{
+  background:var(--white);
+  padding:72px 24px;
+  position:relative;overflow:hidden;
+}
+.upsell::before{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-lt),var(--gold));
+}
+.upsell-body{
+  font-size:15px;font-weight:300;line-height:1.8;
+  color:var(--muted);margin-bottom:28px;max-width:420px;
+}
+.price-row{
+  display:flex;align-items:baseline;gap:10px;margin-bottom:20px;
+}
+.price-new{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;font-weight:300;color:var(--ink);
+}
+.price-old{
+  font-size:16px;color:rgba(122,99,85,0.5);
+  text-decoration:line-through;
+}
+.btn-stripe{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:100%;min-height:52px;
+  background:var(--ink);color:var(--cream);
+  font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  border:none;
+  transition:opacity 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn-stripe:active{opacity:0.8;}
+.upsell-note{
+  font-size:12px;color:var(--muted);
+  margin-top:12px;text-align:center;
+  letter-spacing:0.03em;
+}
+.pdf-what{
+  margin:24px 0 28px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.pdf-line{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:14px;font-weight:300;color:var(--muted);line-height:1.5;
+}
+.pdf-line::before{
+  content:'';
+  width:16px;height:16px;flex-shrink:0;
+  border:1px solid rgba(201,169,110,0.4);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23C9A96E' stroke-width='1.5'%3E%3Cpath d='M3 8.5l3 3L13 4'/%3E%3C/svg%3E") center/10px no-repeat;
+  margin-top:2px;
+}
 
 /* FAQ */
-.faq-item{border-top:1px solid rgba(27,0,9,0.1);padding:22px 0}
-.faq-item:last-child{border-bottom:1px solid rgba(27,0,9,0.1)}
-.faq-q{font-size:16px;font-weight:700;margin-bottom:8px}
-.faq-a{font-size:14.5px;line-height:1.7;color:var(--muted);max-width:640px}
+.faq{
+  background:var(--paper);
+  padding:72px 24px;
+}
+.faq-list{max-width:640px;margin-top:36px;}
+.faq-item{
+  border-top:1px solid rgba(26,10,5,0.09);
+  padding:22px 0;
+}
+.faq-item:last-child{border-bottom:1px solid rgba(26,10,5,0.09);}
+.faq-q{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;
+  color:var(--ink);margin-bottom:10px;line-height:1.3;
+}
+.faq-a{
+  font-size:14px;font-weight:300;line-height:1.75;
+  color:var(--muted);
+}
 
 /* FINAL CTA */
-.final-cta{background:var(--forest);color:var(--cream);text-align:center;padding:80px 40px}
-.final-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,4.5vw,46px);line-height:1.1;margin-bottom:18px}
-.final-h em{color:var(--terra)}
-.final-sub{font-size:16px;color:rgba(244,232,208,0.65);max-width:480px;margin:0 auto 32px}
-.final-price{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-bottom:24px}
-.final-price .price-old{color:rgba(244,232,208,0.45)}
-.final-price .price-new{color:var(--cream)}
-.btn-buy-light{display:inline-flex;align-items:center;background:var(--cream);color:var(--ink);padding:17px 34px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:opacity 0.2s}
-.btn-buy-light:hover{opacity:0.85}
+.final{
+  background:var(--oxblood);
+  padding:72px 24px;
+  position:relative;overflow:hidden;
+}
+.final::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 100% 70% at 50% 130%,rgba(201,169,110,0.15) 0%,transparent 65%);
+  pointer-events:none;
+}
+.final-inner{position:relative;z-index:1;max-width:480px;}
+.final h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,9vw,58px);
+  font-weight:300;line-height:1.0;
+  letter-spacing:-0.025em;
+  color:var(--cream);margin-bottom:28px;
+}
+.final h2 em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 40%,var(--gold) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
 
 /* FOOTER */
-footer{background:var(--ink);padding:32px 40px}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;max-width:1180px;margin:0 auto}
-.footer-logo{font-family:'DM Serif Display',serif;font-size:15px;color:rgba(244,232,208,0.6);text-decoration:none}
-.footer-copy{font-size:11px;color:rgba(244,232,208,0.2)}
-
-/* STICKY TIMER BAR */
-.timer-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ink);color:var(--cream);padding:12px 24px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,0.18)}
-.timer-msg{font-size:13px;font-weight:600}
-.timer-msg .timer-old{color:rgba(244,232,208,0.4);text-decoration:line-through;margin-right:4px}
-.timer-msg .timer-new{color:var(--terra);font-weight:700}
-.timer-clock{display:flex;gap:6px;align-items:center}
-.timer-clock .t-seg{background:rgba(244,232,208,0.08);padding:5px 8px;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;min-width:38px;text-align:center}
-.timer-clock .t-sep{color:rgba(244,232,208,0.3);font-size:12px}
-.timer-buy{background:var(--terra);color:var(--cream);padding:9px 18px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
-.timer-buy:hover{opacity:0.85}
-
-.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:900px){
-  .hero{flex-direction:column;padding:48px 20px;gap:40px}
-  .hero-visual{flex:none;width:100%;max-width:280px;height:300px;margin:0 auto}
-  .page-stack{width:200px;height:280px}
-  .phase-grid{grid-template-columns:1fr 1fr}
-  .works-grid{grid-template-columns:1fr;gap:32px}
-  .testi-grid{grid-template-columns:1fr 1fr}
+footer{
+  background:var(--ink);
+  padding:36px 24px calc(36px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(250,244,232,0.05);
 }
-@media(max-width:600px){
-  nav{padding:0 16px}
-  .section{padding:48px 20px}
-  .phase-grid{grid-template-columns:1fr}
-  .testi-grid{grid-template-columns:1fr}
-  .final-cta{padding:56px 20px}
-  .timer-bar{padding:10px 14px;gap:12px}
-  .timer-msg{width:100%;text-align:center}
-  .timer-clock .t-seg{min-width:32px;padding:4px 6px;font-size:12px}
-  .hero-visual{display:none}
-  .for-you-list li{font-size:16px}
+.foot-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;font-style:italic;
+  color:rgba(250,244,232,0.4);display:block;margin-bottom:16px;
+}
+.foot-logo span{color:var(--gold);}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:20px;}
+.foot-links a{font-size:12px;color:rgba(250,244,232,0.25);}
+.foot-copy{font-size:11px;color:rgba(250,244,232,0.12);}
+
+@media(min-width:768px){
+  .hero{padding:100px 60px 88px;}
+  .hero-inner{max-width:600px;}
+  .join-form{display:flex;gap:8px;}
+  .join-form input{margin-bottom:0;}
+  .join-form input:first-child{flex:0 0 160px;}
+  .join-form input:last-of-type{flex:1;}
+  .btn-join{width:auto;padding:0 28px;flex-shrink:0;animation:none;}
+  .what{padding:96px 60px;}
+  .what-features{flex-direction:row;gap:16px;}
+  .wfeat{flex:1;}
+  .phases{padding:96px 60px;}
+  .phases-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .proof{padding:96px 60px;}
+  .proof-cards{flex-direction:row;}
+  .tcard{flex:1;}
+  .upsell{padding:96px 60px;}
+  .faq{padding:96px 60px;}
+  .final{padding:100px 60px;}
+  footer{padding:44px 60px;}
 }
 </style>
 </head>
 <body>
 
-<div class="sale-strip">4th of July sale: The First Thirty is <span>$17.99</span> through July 5th</div>
-
-<nav>
-  <a href="/" class="nav-logo"><span class="green">Sober</span>Adventuring.</a>
-  <a href="/" class="nav-back">&larr; Back to site</a>
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg>
+    Back
+  </a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-copy">
-    <span class="hero-eyebrow">New &middot; Printable PDF Toolkit</span>
-    <h1>Thirty days,<br>one page at a <em>time.</em></h1>
-    <span class="hero-annotation">This was created to make early sobriety a bit less uncomfortable and dare I say, exciting.</span>
-    <p class="hero-sub">A printable toolkit for the first thirty days of sobriety, with one page to work through each day.</p>
-    <div class="price-box">
-      <span class="price-tag">4th of July sale &middot; ends July 5th</span>
-      <div class="price-row">
-        <span class="price-old">$29.99</span>
-        <span class="price-new">$17.99</span>
-      </div>
-      <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="btn-buy">Get The First Thirty &rarr;</a>
-      <p class="price-note">Instant PDF download. Print it or use it on screen.</p>
+  <div class="hero-inner">
+    <div class="hero-badge rv">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-txt">Free 30-day email challenge</span>
     </div>
-    <div class="hero-proof">
-      <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span>Built from the same coaching behind the reviews below</span>
+    <h1 class="rv">30 days.<br>Find out<br>what's <em>true.</em></h1>
+    <p class="hero-sub rv">A daily email challenge for women who are ready to sit with the question, whatever it looks like for them right now.</p>
+    <div class="join-form rv" id="heroForm">
+      <input type="text" id="hName" placeholder="First name" autocomplete="given-name">
+      <input type="email" id="hEmail" placeholder="Email address" required autocomplete="email">
+      <button type="button" class="btn-join" id="heroBtn">Start The First 30</button>
     </div>
-  </div>
-
-  <!-- Real book page stack -->
-  <div class="hero-visual" aria-hidden="true">
-    <div class="page-stack">
-
-      <!-- Page 3 (back): Day 03 -->
-      <div class="page-card">
-        <div class="rp-header">
-          <span class="rp-phase">PHASE 01 &middot; STABILIZE</span>
-          <span class="rp-num">03</span>
-        </div>
-        <div class="rp-title">The Urge Has a Shape</div>
-        <div class="rp-q">What does an urge feel like in your body? Is it in your chest, jaw, restlessness?</div>
-        <div class="rp-lines"><div class="rp-line"></div><div class="rp-line"></div></div>
-        <div class="rp-q">What&rsquo;s one thing you can do for ten minutes when it hits, before you decide anything?</div>
-        <div class="rp-lines"><div class="rp-line"></div><div class="rp-line"></div></div>
-        <div class="rp-action">
-          <span class="rp-action-label">Tiny Action</span>
-          <p class="rp-action-text">Write your urge plan on a sticky note and put it somewhere you&rsquo;ll see it tonight: name it, set a 10-minute timer, change rooms.</p>
-        </div>
-        <div class="rp-footer">
-          <span>Day 03 &mdash; Stabilize</span>
-          <span>The First Thirty</span>
-        </div>
-      </div>
-
-      <!-- Page 2 (middle): Day 02 -->
-      <div class="page-card">
-        <div class="rp-header">
-          <span class="rp-phase">PHASE 01 &middot; STABILIZE</span>
-          <span class="rp-num">02</span>
-        </div>
-        <div class="rp-title">Clear the Decks</div>
-        <div class="rp-q">Where in your home, car, or routine is alcohol currently within easy reach?</div>
-        <div class="rp-lines"><div class="rp-line"></div><div class="rp-line"></div></div>
-        <div class="rp-q">What&rsquo;s one place or context you can avoid for the next week without much cost?</div>
-        <div class="rp-lines"><div class="rp-line"></div><div class="rp-line"></div></div>
-        <div class="rp-action">
-          <span class="rp-action-label">Tiny Action</span>
-          <p class="rp-action-text">Physically remove alcohol from your home, or if you live with others, from the spaces you can control.</p>
-        </div>
-        <div class="rp-footer">
-          <span>Day 02 &mdash; Stabilize</span>
-          <span>The First Thirty</span>
-        </div>
-      </div>
-
-      <!-- Page 1 (front): Day 01 -->
-      <div class="page-card">
-        <div class="rp-header">
-          <span class="rp-phase">PHASE 01 &middot; STABILIZE</span>
-          <span class="rp-num">01</span>
-        </div>
-        <div class="rp-title">Today Is the Whole Plan</div>
-        <div class="rp-q">Who or what is one thing you can lean on today if it gets hard?</div>
-        <div class="rp-lines"><div class="rp-line"></div><div class="rp-line"></div></div>
-        <div class="rp-q">What&rsquo;s the earliest point today you usually would have started thinking about drinking?</div>
-        <div class="rp-lines"><div class="rp-line"></div><div class="rp-line"></div></div>
-        <div class="rp-action">
-          <span class="rp-action-label">Tiny Action</span>
-          <p class="rp-action-text">Delete or hide one thing that makes drinking easier today. The lingering photo of your ex, an app, a delivery service, a bottle in the house.</p>
-        </div>
-        <div class="rp-footer">
-          <span>Day 01 &mdash; Stabilize</span>
-          <span>The First Thirty</span>
-        </div>
-      </div>
-
+    <p class="form-ok" id="heroOk">You're in. Day one starts tomorrow, check your inbox.</p>
+    <p class="hero-note rv">Free. No credit card, and no commitment beyond 30 days.</p>
+    <div class="hero-stats rv">
+      <div><span class="stat-v">30</span><span class="stat-l">Days</span></div>
+      <div><span class="stat-v" data-count="4000">0</span><span class="stat-l">Women</span></div>
+      <div><span class="stat-v">0</span><span class="stat-l">Labels required</span></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section white-bg fade-up">
-  <span class="section-eyebrow">from people who&rsquo;ve worked with Alexis</span>
-  <h2 class="section-h2">You don&rsquo;t have to take my word for it.</h2>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <span class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <p class="testi-quote">&ldquo;I discovered Alexis during one of the most challenging times in my life, and I am deeply grateful for her guidance. Every conversation with her felt deeply therapeutic and gave me the encouragement I needed to keep moving forward.&rdquo;</p>
-      <p class="testi-name">Ana D&iacute;az <span>&middot; @Antigua.plaza</span></p>
+<!-- WHAT YOU GET -->
+<section class="what">
+  <span class="eyebrow eyebrow-gold rv">What's included</span>
+  <h2 class="sec-h rv">Everything you get<br>when you join.</h2>
+  <div class="what-features">
+    <div class="wfeat rv">
+      <span class="wfeat-num">01</span>
+      <p class="wfeat-h">Daily prompts to your inbox, for 30 days</p>
+      <p class="wfeat-p">Each email is built around one idea and two reflection prompts, with a single ten-minute action, so you know exactly what to expect and it never takes over your day.</p>
     </div>
-    <div class="testi-card">
-      <span class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <p class="testi-quote">&ldquo;Working with Alexis was a deeply grounding and insightful experience. Her calm, compassionate presence made it easy to open up and explore the deeper layers of my patterns.&rdquo;</p>
-      <p class="testi-name">Kat Kalda</p>
-    </div>
-    <div class="testi-card">
-      <span class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <p class="testi-quote">&ldquo;After completing Alexis&rsquo; PIVOT program, I felt extremely clear on next steps. I went on to land my first freelance client after three weeks of working together.&rdquo;</p>
-      <p class="testi-name">Maisie T.</p>
-    </div>
-    <div class="testi-card">
-      <span class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <p class="testi-quote">&ldquo;Today, I am approaching 90 days of sobriety. That&rsquo;s something I once thought was impossible. Alexis&rsquo;s presence, wisdom, and support have been vital in helping me reach this milestone.&rdquo;</p>
-      <p class="testi-name">Isabella Carroccio <span>&middot; @thumbsuck</span></p>
-    </div>
-    <div class="testi-card">
-      <span class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <p class="testi-quote">&ldquo;Alexis has a calm, safe energy and I have always trusted her. She helped me see where a lot of my root problems lie and was full of knowledge on how to pick yourself back up after you fall.&rdquo;</p>
-      <p class="testi-name">Lindsey Knapik <span>&middot; @lindseyknapik</span></p>
+    <div class="wfeat rv" data-d="1">
+      <span class="wfeat-num">02</span>
+      <p class="wfeat-h">Access to the private community</p>
+      <p class="wfeat-p">A Telegram group of women in the same 30 days, moving through the same phases, without any gatekeeping around labels or definitions.</p>
     </div>
   </div>
 </section>
 
-<!-- FOR YOU -->
-<section class="section fade-up">
-  <span class="section-eyebrow">this is for you if</span>
-  <ul class="for-you-list">
-    <li>You&rsquo;re committed to showing up for the process for 30 days</li>
-    <li>You&rsquo;re up googling sobriety related things at 1am instead of sleeping</li>
-    <li>You&rsquo;re over the rehab-brochure language that doesn&rsquo;t help or generic printable checklists</li>
-  </ul>
-</section>
-
-<!-- PHASES -->
-<section class="section white-bg fade-up">
-  <span class="section-eyebrow">what&rsquo;s inside</span>
-  <h2 class="section-h2">Four phases that move you!!!</h2>
-  <div class="phase-grid">
-    <div class="phase-card" style="--pc:var(--forest)">
-      <span class="phase-num">Phase 01</span>
-      <h3 class="phase-h">Stabilize</h3>
-      <span class="phase-days">Days 1&ndash;7</span>
-      <p class="phase-desc">The first week is about getting your footing back: the prompts are to get the gears turning about the basics and refocusing the mind.</p>
+<!-- FOUR PHASES -->
+<section class="phases">
+  <span class="eyebrow eyebrow-gold rv">The structure</span>
+  <h2 class="sec-h light rv">Four phases that<br><em>actually move.</em></h2>
+  <div class="phases-grid">
+    <div class="pcard rv" style="--phase-color:var(--gold)">
+      <span class="pcard-tag">Phase 01</span>
+      <p class="pcard-h">Stabilize</p>
+      <span class="pcard-days">Days 1 to 7</span>
+      <p class="pcard-desc">The first week is about getting your footing back, with prompts that focus on the basics and help you start noticing what's going on instead of moving past it.</p>
     </div>
-    <div class="phase-card" style="--pc:var(--terra)">
-      <span class="phase-num">Phase 02</span>
-      <h3 class="phase-h">Rebuild Routine</h3>
-      <span class="phase-days">Days 8&ndash;15</span>
-      <p class="phase-desc">Once the worst of the physical stuff chills out, the second week rebuilds the scaffolding around your day so structure starts replacing what drinking used to fill.</p>
+    <div class="pcard rv" data-d="1" style="--phase-color:var(--oxblood)">
+      <span class="pcard-tag">Phase 02</span>
+      <p class="pcard-h">Rebuild Routine</p>
+      <span class="pcard-days">Days 8 to 15</span>
+      <p class="pcard-desc">Once the worst of the physical piece quiets down, the second phase rebuilds the scaffolding around your day so that structure starts filling what alcohol used to.</p>
     </div>
-    <div class="phase-card" style="--pc:var(--blue)">
-      <span class="phase-num">Phase 03</span>
-      <h3 class="phase-h">Face the Hard Shit</h3>
-      <span class="phase-days">Days 16&ndash;22</span>
-      <p class="phase-desc">The third week stops avoiding what gets buried and you keep throwing sand over it. I&rsquo;m not going to lie to you, this is the most challenging piece of the workbook.</p>
+    <div class="pcard rv" data-d="2" style="--phase-color:rgba(201,169,110,0.6)">
+      <span class="pcard-tag">Phase 03</span>
+      <p class="pcard-h">Face the Hard Part</p>
+      <span class="pcard-days">Days 16 to 22</span>
+      <p class="pcard-desc">The third phase stops avoiding what keeps getting buried. It's the most challenging piece of the challenge, and it's also where most things shift for people.</p>
     </div>
-    <div class="phase-card" style="--pc:var(--forest)">
-      <span class="phase-num">Phase 04</span>
-      <h3 class="phase-h">Reconnect</h3>
-      <span class="phase-days">Days 23&ndash;30</span>
-      <p class="phase-desc">The last week brings it FULL circle by turning outward again by guiding you through prompts to rebuild the relationships and version of your life that substances took away.</p>
+    <div class="pcard rv" data-d="3" style="--phase-color:var(--gold)">
+      <span class="pcard-tag">Phase 04</span>
+      <p class="pcard-h">Reconnect</p>
+      <span class="pcard-days">Days 23 to 30</span>
+      <p class="pcard-desc">The last week turns outward, with prompts to start rebuilding the relationships and version of your life you're doing this for in the first place.</p>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section fade-up">
-  <span class="section-eyebrow">how it works</span>
-  <h2 class="section-h2">One page a day, built to take about ten minutes, for thirty days.</h2>
-  <div class="works-grid">
-    <ul class="works-list">
-      <li class="works-item">
-        <span class="works-num">1</span>
-        <div class="works-text">
-          <h4>A short idea and two reflection prompts</h4>
-        </div>
-      </li>
-      <li class="works-item">
-        <span class="works-num">2</span>
-        <div class="works-text">
-          <h4>One ten-minute action</h4>
-        </div>
-      </li>
-    </ul>
-    <div>
-      <p class="section-body">The structure is not meant to be overwhelming, it repeats every day and by day five you&rsquo;ll know exactly what to expect when you open the page.</p>
+<!-- PROOF -->
+<section class="proof">
+  <span class="eyebrow eyebrow-ox rv">What women are saying</span>
+  <h2 class="sec-h rv">From the room.</h2>
+  <div class="proof-cards">
+    <div class="tcard rv">
+      <p class="tcard-txt">&ldquo;Today I'm approaching 90 days of sobriety, and that's something I once thought was impossible. Alexis's support has been vital in helping me reach this.&rdquo;</p>
+      <span class="tcard-name">Isabella C. &middot; @thumbsuck</span>
+    </div>
+    <div class="tcard rv" data-d="1">
+      <p class="tcard-txt">&ldquo;I discovered Alexis during one of the most challenging times in my life, and every conversation gave me the encouragement I needed to keep moving forward.&rdquo;</p>
+      <span class="tcard-name">Ana D. &middot; @Antigua.plaza</span>
     </div>
   </div>
+</section>
+
+<!-- PDF UPSELL -->
+<section class="upsell" id="toolkit">
+  <span class="eyebrow eyebrow-gold rv">Want to go deeper</span>
+  <h2 class="sec-h rv">The First Thirty<br>PDF Toolkit.</h2>
+  <p class="upsell-body rv">A printable companion to the challenge: thirty fillable pages built one per day across the same four phases, with reflection prompts and a daily action on every page, plus a crisis card for the nights that need one.</p>
+  <div class="pdf-what rv">
+    <div class="pdf-line">30 printable pages, one for each day of the challenge</div>
+    <div class="pdf-line">A crisis card built for the hardest nights in the first week</div>
+  </div>
+  <div class="price-row rv">
+    <span class="price-new">$17.99</span>
+    <span class="price-old">$29.99</span>
+  </div>
+  <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="btn-stripe rv">Get the PDF Toolkit &rarr;</a>
+  <p class="upsell-note rv">Instant download after checkout, printable or on-screen.</p>
 </section>
 
 <!-- FAQ -->
-<section class="section white-bg fade-up">
-  <span class="section-eyebrow">questions</span>
-  <h2 class="section-h2">Before you check out.</h2>
-  <div style="max-width:680px">
-    <div class="faq-item">
+<section class="faq">
+  <span class="eyebrow eyebrow-muted rv">Before you start</span>
+  <div class="faq-list">
+    <div class="faq-item rv">
+      <p class="faq-q">Is the challenge really free?</p>
+      <p class="faq-a">Yes, fully. The daily email challenge and community access are free. The PDF Toolkit is a separate paid product that goes deeper into the same material, with fillable pages built for working on paper.</p>
+    </div>
+    <div class="faq-item rv">
+      <p class="faq-q">What if I'm not on day one yet?</p>
+      <p class="faq-a">Start wherever you are. The phases are built around common turning points in early sobriety rather than a strict calendar, so jumping in on week two or three still works.</p>
+    </div>
+    <div class="faq-item rv">
       <p class="faq-q">Is this a replacement for therapy or a treatment program?</p>
-      <p class="faq-a">No. It&rsquo;s a daily companion for the day-to-day moments treatment doesn&rsquo;t always cover, built to sit alongside whatever support you already have.</p>
+      <p class="faq-a">No. It's a daily companion for the day-to-day moments that treatment doesn't always cover, and it's built to sit alongside whatever support you already have, not replace it.</p>
     </div>
-    <div class="faq-item">
-      <p class="faq-q">What if I&rsquo;m not on day one yet?</p>
-      <p class="faq-a">Start wherever you are. The phases are built around common turning points in early sobriety rather than a strict calendar, so jumping in on day eight or day twenty still works.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">How do I get the PDF after I pay?</p>
-      <p class="faq-a">You&rsquo;ll get an instant download link after checkout, and a copy sent to your email so you can print it whenever you&rsquo;re ready.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Is the sale price permanent?</p>
-      <p class="faq-a">No, it ends with the 4th of July sale on July 5th. After that it returns to $29.99.</p>
+    <div class="faq-item rv">
+      <p class="faq-q">Do I need to identify as an alcoholic to join?</p>
+      <p class="faq-a">No labels required, and that's on purpose. The challenge is built for women who have a question they're ready to take seriously, whatever form it's taken for them.</p>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="final-cta fade-up">
-  <h2 class="final-h">Day one starts whenever<br>you open the <em>file.</em></h2>
-  <p class="final-sub">Thirty pages across four phases, plus a crisis card for the nights you need it most.</p>
-  <div class="final-price">
-    <span class="price-old">$29.99</span>
-    <span class="price-new">$17.99</span>
+<section class="final">
+  <div class="final-inner">
+    <span class="eyebrow eyebrow-gold rv">Free to start</span>
+    <h2 class="rv">Day one starts<br>when you do.<br><em>Join free.</em></h2>
+    <div id="finalForm">
+      <input type="text" id="fName" placeholder="First name" autocomplete="given-name"
+        style="width:100%;border:1.5px solid rgba(250,244,232,0.18);background:rgba(250,244,232,0.06);padding:15px 18px;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--cream);outline:none;margin-bottom:8px;-webkit-appearance:none;border-radius:0;-webkit-text-fill-color:var(--cream);transition:border-color 0.25s;">
+      <input type="email" id="fEmail" placeholder="Email address" required autocomplete="email"
+        style="width:100%;border:1.5px solid rgba(250,244,232,0.18);background:rgba(250,244,232,0.06);padding:15px 18px;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--cream);outline:none;margin-bottom:8px;-webkit-appearance:none;border-radius:0;-webkit-text-fill-color:var(--cream);transition:border-color 0.25s;">
+      <button type="button" id="finalBtn"
+        style="width:100%;min-height:54px;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:none;border-radius:0;transition:background 0.2s;">Start The First 30: Free</button>
+      <p style="font-size:12px;color:rgba(250,244,232,0.25);letter-spacing:0.04em;margin-top:12px;">No credit card, and no commitment beyond 30 days.</p>
+    </div>
+    <p class="form-ok" id="finalOk" style="color:var(--gold-lt);">You're in. Day one starts tomorrow, check your inbox.</p>
   </div>
-  <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="btn-buy-light">Get The First Thirty &rarr;</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <a href="/" class="footer-logo">SoberAdventuring.</a>
-    <p class="footer-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
-  </div>
+  <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
+  <nav class="foot-links" aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/story/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/coaching/">Work With Me</a>
+    <a href="/quiz/recovery/">Recovery Quiz</a>
+    <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+  <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
 </footer>
 
-<!-- STICKY TIMER -->
-<div class="timer-bar" id="timerBar">
-  <span class="timer-msg"><span class="timer-old">$29.99</span><span class="timer-new">$17.99</span> &middot; 4th of July sale ends soon</span>
-  <div class="timer-clock" id="timerClock">
-    <span class="t-seg" id="tDays">00</span><span class="t-sep">d</span>
-    <span class="t-seg" id="tHours">00</span><span class="t-sep">h</span>
-    <span class="t-seg" id="tMins">00</span><span class="t-sep">m</span>
-    <span class="t-seg" id="tSecs">00</span><span class="t-sep">s</span>
-  </div>
-  <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="timer-buy">Get It Now &rarr;</a>
-</div>
-
 <script>
-const deadline = new Date('2026-07-05T23:59:59-04:00').getTime();
-function tick(){
-  const now = Date.now();
-  const diff = deadline - now;
-  const bar = document.getElementById('timerBar');
-  if (diff <= 0) { bar.style.display = 'none'; return; }
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('tDays').textContent = String(d).padStart(2,'0');
-  document.getElementById('tHours').textContent = String(h).padStart(2,'0');
-  document.getElementById('tMins').textContent = String(m).padStart(2,'0');
-  document.getElementById('tSecs').textContent = String(s).padStart(2,'0');
-}
-tick();
-setInterval(tick, 1000);
+const WORKER='https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+/* Scroll reveal */
+const rvObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* Counter */
+function animCount(el,target,dur=1200){
+  const start=performance.now();
+  (function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*target).toLocaleString()+(target>=1000?'+':'');
+    if(p<1)requestAnimationFrame(step);
+  })(start);
+}
+const cObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){animCount(e.target,parseInt(e.target.dataset.count));cObs.unobserve(e.target);}
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+
+/* Submit flow */
+async function submitF30(email,name,btn,ok,formEl){
+  btn.disabled=true;
+  btn.textContent='Joining...';
+  try{
+    await fetch(WORKER,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email,name,result:'f30'})
+    });
+  }catch(_){}
+  if(formEl)formEl.style.display='none';
+  ok.style.display='block';
+  if(typeof gtag!=='undefined')gtag('event','f30_signup',{method:'first-thirty-page'});
+}
+
+/* Hero form */
+document.getElementById('heroBtn').addEventListener('click',async()=>{
+  const email=document.getElementById('hEmail').value.trim();
+  const name=document.getElementById('hName').value.trim();
+  if(!email.includes('@')){document.getElementById('hEmail').focus();return;}
+  await submitF30(email,name,document.getElementById('heroBtn'),document.getElementById('heroOk'),document.getElementById('heroForm'));
+});
+
+/* Final form */
+document.getElementById('finalBtn').addEventListener('click',async()=>{
+  const email=document.getElementById('fEmail').value.trim();
+  const name=document.getElementById('fName').value.trim();
+  if(!email.includes('@')){document.getElementById('fEmail').focus();return;}
+  await submitF30(email,name,document.getElementById('finalBtn'),document.getElementById('finalOk'),document.getElementById('finalForm'));
+});
 </script>
 </body>
 </html>
