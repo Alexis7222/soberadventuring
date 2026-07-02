@@ -7,265 +7,80 @@
 <meta name="description" content="Alexis Antonelli got sober at 25 after six years of tries. She lives in Thailand and runs Sober Adventuring. This is the story behind it.">
 <link rel="canonical" href="https://soberadventuring.com/story/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js',new Date());
-  gtag('config','G-XXXXXXXXXX');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#1A0A05;
-  --gold:#C9A96E;
-  --gold-lt:#E8C87A;
-  --oxblood:#6B2737;
-  --cream:#FAF4E8;
-  --paper:#F4EEE4;
-  --muted:#7a6355;
-  --white:#FFFDF8;
-  --ease:cubic-bezier(0.22,1,0.36,1);
-}
+:root{--ink:#1A0A05;--gold:#C9A96E;--gold-lt:#E8C87A;--oxblood:#6B2737;--oxblood-dk:#4A1A26;--cream:#FAF4E8;--paper:#F4EEE4;--muted:#7a6355;--white:#FFFDF8;--ease:cubic-bezier(0.22,1,0.36,1);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{
-  font-family:'Instrument Sans',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{font-family:'Instrument Sans',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
-
 .rv{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease);}
 .rv.in{opacity:1;transform:translateY(0);}
-.rv[data-d="1"]{transition-delay:0.1s;}
-.rv[data-d="2"]{transition-delay:0.2s;}
-
-/* NAV */
-.nav{
-  position:sticky;top:0;z-index:200;
-  background:rgba(26,10,5,0.96);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  height:56px;padding:0 20px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid rgba(201,169,110,0.08);
-}
-.nav-logo{
-  font-family:'Fraunces',serif;font-optical-sizing:auto;
-  font-size:19px;font-weight:400;font-style:italic;
-  color:var(--cream);
-}
+.rv[data-d="1"]{transition-delay:0.1s;}.rv[data-d="2"]{transition-delay:0.2s;}
+.nav{position:sticky;top:0;z-index:200;background:rgba(26,10,5,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,169,110,0.08);}
+.nav-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;font-style:italic;color:var(--cream);}
 .nav-logo .g{color:var(--gold);}
-.nav-back{
-  font-size:12px;font-weight:500;
-  letter-spacing:0.06em;text-transform:uppercase;
-  color:rgba(250,244,232,0.4);
-  display:flex;align-items:center;gap:6px;
-  transition:color 0.2s;
-  -webkit-tap-highlight-color:transparent;
-}
+.nav-back{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(250,244,232,0.4);display:flex;align-items:center;gap:6px;transition:color 0.2s;-webkit-tap-highlight-color:transparent;}
 .nav-back:active{color:var(--cream);}
-
-/* HERO */
-.hero{
-  background:var(--ink);
-  padding:72px 24px 64px;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';
-  position:absolute;top:-80px;right:-80px;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(107,39,55,0.18) 0%,transparent 65%);
-  pointer-events:none;
-}
+.hero{background:var(--ink);padding:72px 24px 64px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(107,39,55,0.18) 0%,transparent 65%);pointer-events:none;}
 .hero-inner{position:relative;z-index:1;max-width:600px;}
-.hero-eyebrow{
-  font-size:10px;font-weight:600;
-  letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:block;margin-bottom:20px;
-}
-.hero h1{
-  font-family:'Fraunces',serif;font-optical-sizing:auto;
-  font-size:clamp(38px,10vw,68px);
-  font-weight:300;line-height:1.0;
-  letter-spacing:-0.025em;
-  color:var(--cream);margin-bottom:20px;
-}
-.hero h1 em{font-style:italic;color:var(--gold);}
-.hero-sub{
-  font-size:15px;font-weight:300;line-height:1.75;
-  color:rgba(250,244,232,0.45);max-width:400px;
-}
-
-/* STORY */
-.story{
-  max-width:680px;
-  margin:0 auto;
-  padding:64px 24px 80px;
-}
-.story p{
-  font-size:17px;font-weight:300;line-height:1.9;
-  color:var(--ink);margin-bottom:30px;
-}
+.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.hero h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(38px,10vw,68px);font-weight:300;line-height:1.0;letter-spacing:-0.025em;color:var(--cream);margin-bottom:20px;}
+.hero h1 em,.hero h1 strong{font-style:normal;font-weight:600;color:var(--gold);}
+.hero-sub{font-size:15px;font-weight:300;line-height:1.75;color:rgba(250,244,232,0.45);max-width:400px;}
+.story{max-width:680px;margin:0 auto;padding:64px 24px 80px;}
+.story p{font-size:17px;font-weight:300;line-height:1.9;color:var(--ink);margin-bottom:30px;}
 .story p:last-child{margin-bottom:0;}
 .story strong{font-weight:600;}
-
-/* PULL QUOTE */
-.pull{
-  border-left:3px solid var(--oxblood);
-  padding:20px 24px;
-  margin:44px 0;
-  background:var(--white);
-}
-.pull p{
-  font-family:'Fraunces',serif;font-optical-sizing:auto;
-  font-size:clamp(20px,5vw,26px);
-  font-weight:300;font-style:italic;
-  color:var(--ink);line-height:1.4;
-  margin-bottom:0;
-}
-
-/* NOW SECTION */
-.now{
-  background:var(--white);
-  padding:64px 24px;
-  border-top:1px solid rgba(26,10,5,0.06);
-}
+.pull{border-left:3px solid var(--oxblood);padding:20px 24px;margin:44px 0;background:var(--white);}
+.pull p{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(20px,5vw,26px);font-weight:300;font-style:italic;color:var(--ink);line-height:1.4;margin-bottom:0;}
+.now{background:var(--white);padding:64px 24px;border-top:1px solid rgba(26,10,5,0.06);}
 .now-inner{max-width:680px;margin:0 auto;}
-.now-eyebrow{
-  font-size:10px;font-weight:600;
-  letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:block;margin-bottom:16px;
-}
-.now-h{
-  font-family:'Fraunces',serif;font-optical-sizing:auto;
-  font-size:clamp(28px,7vw,44px);font-weight:300;
-  line-height:1.1;letter-spacing:-0.02em;
-  color:var(--ink);margin-bottom:28px;
-}
-.now-h em{font-style:italic;color:var(--oxblood);}
+.now-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.now-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(28px,7vw,44px);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
+.now-h em,.now-h strong{font-style:normal;font-weight:600;color:var(--oxblood);}
 .now-items{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
-.now-item{
-  display:flex;align-items:flex-start;gap:16px;
-  padding:18px 18px;
-  background:var(--paper);
-  border-left:3px solid var(--gold);
-}
-.now-icon{
-  width:32px;height:32px;flex-shrink:0;
-  border:1px solid rgba(201,169,110,0.3);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--gold);margin-top:2px;
-}
-.now-item p{
-  font-size:15px;font-weight:300;line-height:1.7;
-  color:var(--muted);
-}
+.now-item{display:flex;align-items:flex-start;gap:16px;padding:18px 18px;background:var(--paper);border-left:3px solid var(--gold);}
+.now-icon{width:32px;height:32px;flex-shrink:0;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-top:2px;}
+.now-item p{font-size:15px;font-weight:300;line-height:1.7;color:var(--muted);}
 .now-item strong{font-weight:500;color:var(--ink);}
-
-/* DISCLAIMER */
-.disc{
-  background:var(--paper);
-  padding:32px 24px;
-  border-top:1px solid rgba(26,10,5,0.06);
-}
+.disc{background:var(--paper);padding:32px 24px;border-top:1px solid rgba(26,10,5,0.06);}
 .disc-inner{max-width:680px;margin:0 auto;}
-.disc p{
-  font-size:13px;font-weight:300;line-height:1.8;
-  color:var(--muted);
-}
+.disc p{font-size:13px;font-weight:300;line-height:1.8;color:var(--muted);}
 .disc strong{font-weight:500;color:var(--ink);}
-
-/* CTA */
-.cta{
-  background:var(--oxblood);
-  padding:72px 24px;
-  position:relative;overflow:hidden;
-}
-.cta::before{
-  content:'';
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 90% 70% at 50% 120%,rgba(201,169,110,0.15) 0%,transparent 65%);
-  pointer-events:none;
-}
+.cta{background:var(--oxblood);padding:72px 24px;position:relative;overflow:hidden;}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 120%,rgba(201,169,110,0.15) 0%,transparent 65%);pointer-events:none;}
 .cta-inner{position:relative;z-index:1;max-width:480px;}
-.cta-eye{
-  font-size:10px;font-weight:600;
-  letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);display:block;margin-bottom:14px;
-}
-.cta h2{
-  font-family:'Fraunces',serif;font-optical-sizing:auto;
-  font-size:clamp(34px,8vw,54px);
-  font-weight:300;line-height:1.0;
-  letter-spacing:-0.02em;
-  color:var(--cream);margin-bottom:28px;
-}
-.cta h2 em{font-style:italic;color:var(--gold);}
+.cta-eye{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px;}
+.cta h2{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(34px,8vw,54px);font-weight:300;line-height:1.0;letter-spacing:-0.02em;color:var(--cream);margin-bottom:28px;}
+.cta h2 em,.cta h2 strong{font-style:normal;font-weight:600;color:var(--gold);}
 .cta-btns{display:flex;flex-direction:column;gap:12px;}
-.btn-gold{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:16px 28px;min-height:52px;
-  background:var(--gold);color:var(--ink);
-  font-size:13px;font-weight:600;
-  letter-spacing:0.06em;text-transform:uppercase;
-  -webkit-tap-highlight-color:transparent;
-  transition:background 0.2s;
-}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;padding:16px 28px;min-height:52px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:background 0.2s;}
 .btn-gold:active{background:var(--gold-lt);}
-.btn-outline{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:16px 28px;min-height:52px;
-  background:transparent;color:var(--cream);
-  font-size:13px;font-weight:500;
-  letter-spacing:0.06em;text-transform:uppercase;
-  border:1px solid rgba(250,244,232,0.22);
-  -webkit-tap-highlight-color:transparent;
-  transition:border-color 0.2s;
-}
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;padding:16px 28px;min-height:52px;background:transparent;color:var(--cream);font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:1px solid rgba(250,244,232,0.22);-webkit-tap-highlight-color:transparent;transition:border-color 0.2s;}
 .btn-outline:active{border-color:rgba(250,244,232,0.6);}
-
-/* FOOTER */
-footer{
-  background:var(--ink);
-  padding:36px 24px;
-  border-top:1px solid rgba(250,244,232,0.05);
-}
-.foot-logo{
-  font-family:'Fraunces',serif;font-optical-sizing:auto;
-  font-size:17px;font-weight:300;font-style:italic;
-  color:rgba(250,244,232,0.35);display:block;margin-bottom:14px;
-}
+footer{background:var(--oxblood-dk);padding:36px 24px;}
+.foot-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:17px;font-weight:300;font-style:italic;color:rgba(250,244,232,0.35);display:block;margin-bottom:14px;}
 .foot-logo span{color:var(--gold);}
 .foot-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:18px;}
 .foot-links a{font-size:12px;color:rgba(250,244,232,0.22);}
 .foot-copy{font-size:11px;color:rgba(250,244,232,0.1);}
-
 @media(min-width:768px){
-  .hero{padding:100px 60px 80px;}
-  .story{padding:80px 60px 96px;}
-  .now{padding:80px 60px;}
-  .disc{padding:40px 60px;}
-  .cta{padding:100px 60px;}
-  .cta-btns{flex-direction:row;}
+  .hero{padding:100px 60px 80px;}.story{padding:80px 60px 96px;}.now{padding:80px 60px;}
+  .disc{padding:40px 60px;}.cta{padding:100px 60px;}.cta-btns{flex-direction:row;}
   footer{padding:44px 60px;}
 }
 </style>
 </head>
 <body>
-
 <nav class="nav">
   <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
-  <a href="/" class="nav-back">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg>
-    Home
-  </a>
+  <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg>Home</a>
 </nav>
-
 <section class="hero">
   <div class="hero-inner">
     <span class="hero-eyebrow rv">Alexis Antonelli</span>
@@ -273,73 +88,46 @@ footer{
     <p class="hero-sub rv">This is the story behind Sober Adventuring, and the reason it exists the way it does.</p>
   </div>
 </section>
-
 <div class="story">
   <p class="rv">I started trying to get sober at eighteen, and what followed was six years of attempts that looked like progress from the outside, with stretches that ran from two years down to a few months each time. I knew the shape of a starting-over well before I understood why I kept arriving at one.</p>
-
   <p class="rv">Like most people I know, adolescence wasn't easy, and my skin was what I can only describe as itchy. I was eventually diagnosed with Pathological Demand Avoidance, a behavioral profile on the autism spectrum characterized by an anxiety-driven need to avoid everyday demands, though the working label at the time was conduct disorder, and the treatment was medication. The Adderall prescription came at nine, and with it came my first real education about chemicals: that swallowing one could make you acceptable, and that the quiet in your brain was something you could just buy.</p>
-
-  <div class="pull rv">
-    <p>&ldquo;I knew the shape of a starting-over well before I understood why I kept arriving at one.&rdquo;</p>
-  </div>
-
+  <div class="pull rv"><p>&ldquo;I knew the shape of a starting-over well before I understood why I kept arriving at one.&rdquo;</p></div>
   <p class="rv">That pipeline moved faster than I understood at the time. By my mid-twenties I had been arrested and made attempts on my own life, with five totaled cars somewhere in the middle of all of it. I got sober for real at a treatment center tucked in the mountains of New Hampshire, where someone finally explained the disease model to me in a way that landed, and I stopped spending energy on shame I didn't need to be carrying.</p>
-
   <p class="rv">I am lucky to be alive, and lucky enough to have the confidence to put this on the internet in hopes it reaches the right person.</p>
 </div>
-
 <section class="now">
   <div class="now-inner">
     <span class="now-eyebrow rv">Where I am now</span>
-    <h2 class="now-h rv">Today I live in Thailand,<br>and I keep myself <em>busy.</em></h2>
+    <h2 class="now-h rv">Today I live in Thailand, and I keep myself <em>busy.</em></h2>
     <div class="now-items">
-      <div class="now-item rv">
-        <div class="now-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 2v10"/></svg></div>
-        <p><strong>Teaching work reentry and freelance skills to people in recovery</strong>, because income and structure are the parts nobody thinks to build first, and they matter more than most things.</p>
-      </div>
-      <div class="now-item rv" data-d="1">
-        <div class="now-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10l4-8 4 8M3.5 7h5"/></svg></div>
-        <p><strong>Writing a memoir alongside a recovery workbook</strong>, both of which are taking longer than expected and will probably be finished by the time you read this, or not.</p>
-      </div>
+      <div class="now-item rv"><div class="now-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 2v10"/></svg></div><p><strong>Teaching work reentry and freelance skills to people in recovery</strong>, because income and structure are the parts nobody thinks to build first, and they matter more than most things.</p></div>
+      <div class="now-item rv" data-d="1"><div class="now-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10l4-8 4 8M3.5 7h5"/></svg></div><p><strong>Writing a memoir alongside a recovery workbook</strong>, both of which are taking longer than expected and will probably be finished by the time you read this, or not.</p></div>
     </div>
     <p class="rv" style="font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);">I built Sober Adventuring because I needed something like it and it didn't exist the way I needed it to. I hope it reaches whoever it's supposed to reach.</p>
   </div>
 </section>
-
-<div class="disc">
-  <div class="disc-inner">
-    <p class="rv"><strong>A note:</strong> I am not a licensed therapist. I have direct experience in rehab and mental health spaces, and I've built structured frameworks around this work, but above everything I'm a person who went through something hard and figured out how to get to the other side of it. If you are in active crisis, please reach out to a qualified professional, and I am happy to point you toward resources.</p>
-  </div>
-</div>
-
+<div class="disc"><div class="disc-inner"><p class="rv"><strong>A note:</strong> I am not a licensed therapist. I have direct experience in rehab and mental health spaces, and I've built structured frameworks around this work, but above everything I'm a person who went through something hard and figured out how to get to the other side of it. If you are in active crisis, please reach out to a qualified professional, and I am happy to point you toward resources.</p></div></div>
 <section class="cta">
   <div class="cta-inner">
     <span class="cta-eye rv">What to do next</span>
-    <h2 class="rv">If this resonated,<br>there are two ways<br>to keep <em>going.</em></h2>
+    <h2 class="rv">If this resonated, there are two ways to keep <em>going.</em></h2>
     <div class="cta-btns">
       <a href="/the-first-thirty/" class="btn-gold rv">Start The First 30: Free</a>
       <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="btn-outline rv" target="_blank" rel="noopener">Book a discovery call</a>
     </div>
   </div>
 </section>
-
 <footer>
   <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
   <nav class="foot-links" aria-label="Footer">
-    <a href="/">Home</a>
-    <a href="/blog/">Blog</a>
-    <a href="/the-first-thirty/">The First Thirty</a>
-    <a href="/coaching/">Work With Me</a>
-    <a href="/quiz/recovery/">Recovery Quiz</a>
+    <a href="/">Home</a><a href="/blog/">Blog</a><a href="/the-first-thirty/">The First Thirty</a>
+    <a href="/coaching/">Work With Me</a><a href="/quiz/recovery/">Recovery Quiz</a>
     <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
   </nav>
   <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
 </footer>
-
 <script>
-const rvObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});
-},{threshold:0.08});
+const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});},{threshold:0.08});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 </script>
 </body>
