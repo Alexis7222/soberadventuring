@@ -4,11 +4,14 @@ const CONFIG = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const price = document.querySelector("[data-price]");
-  const buyButton = document.getElementById("buyButton");
-  const year = document.getElementById("year");
+  const prices = document.querySelectorAll("[data-price]");
+  const buyButtons = document.querySelectorAll("#buyButton, #buyButtonTop");
 
-  if (price) price.textContent = CONFIG.price;
-  if (buyButton) buyButton.href = CONFIG.checkoutUrl;
-  if (year) year.textContent = new Date().getFullYear();
+  prices.forEach((price) => {
+    price.textContent = CONFIG.price;
+  });
+
+  buyButtons.forEach((button) => {
+    button.href = CONFIG.checkoutUrl;
+  });
 });
