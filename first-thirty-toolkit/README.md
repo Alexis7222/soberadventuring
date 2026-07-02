@@ -12,11 +12,11 @@ Static standalone sales page for the First Thirty PDF Toolkit.
 Open `script.js` and replace:
 
 ```js
-checkoutUrl: "https://gumroad.com/l/drkgck",
+checkoutUrl: "https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01",
 price: "$17",
 ```
 
-Use the public Gumroad product URL for checkout and digital file delivery.
+Use the public Stripe checkout URL for payment.
 
 ## Static Hosting
 This page is published at `/first-thirty-toolkit/` in the `soberadventuring` repository.
