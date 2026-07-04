@@ -2,318 +2,243 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work With Me · Sober Adventuring</title>
-<meta name="description" content="1:1 coaching with Alexis Antonelli — recovery support, freelance career coaching, and building a life that doesn't need an escape hatch.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Work With Me &middot; Sober Adventuring</title>
+<meta name="description" content="1-on-1 conversations for women who are questioning their relationship with alcohol. Not therapy. Lived experience, accountability, and a place to say the thing out loud.">
+<link rel="canonical" href="https://soberadventuring.com/coaching/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --ink:#1A0A05;--gold:#C9A96E;--gold-lt:#E8C87A;
+  --oxblood:#6B2737;--oxblood-dk:#4A1A26;
+  --cream:#FAF4E8;--paper:#F4EEE4;--muted:#7a6355;--white:#FFFDF8;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Instrument Sans',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:inherit;}
+@keyframes shimmer{from{background-position:200% center;}to{background-position:-200% center;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv[data-d="1"]{transition-delay:0.1s;}.rv[data-d="2"]{transition-delay:0.2s;}
 
-:root {
-  --ink: #1B0009;
-  --forest: #2D3D24;
-  --terra: #C5442C;
-  --cream: #F4E8D0;
-  --paper: #F0EDE8;
-  --white: #FEFCF8;
-  --muted: #6b5a4e;
-  --blue: #2C3A5A;
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(26,10,5,0.96);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  height:56px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(201,169,110,0.08);
 }
+.nav-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;font-style:italic;color:var(--cream);}
+.nav-logo .g{color:var(--gold);}
+.nav-back{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(250,244,232,0.4);display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;transition:color 0.2s;}
+.nav-back:active{color:var(--cream);}
 
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
+.hero{
+  background:var(--oxblood);
+  padding:72px 24px 60px;
+  position:relative;overflow:hidden;
 }
+.hero::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 100% 0%,rgba(201,169,110,0.12) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero::before{
+  content:'';
+  position:absolute;top:0;left:24px;
+  width:60px;height:2px;
+  background:var(--gold);
+}
+.hero-inner{position:relative;z-index:1;max-width:600px;}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px;}
+.hero h1{
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
+  font-size:clamp(40px,10vw,70px);
+  font-weight:300;line-height:1.0;letter-spacing:-0.025em;
+  color:var(--cream);margin-bottom:22px;
+  animation:fadeUp 0.8s var(--ease) 0.2s both;
+}
+.hero h1 em{
+  font-style:normal;font-weight:600;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 35%,var(--gold) 65%,#D48B1A 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
+.hero-sub{font-size:16px;font-weight:300;line-height:1.8;color:rgba(250,244,232,0.6);max-width:440px;animation:fadeUp 0.8s var(--ease) 0.4s both;}
 
-.back-nav {
-  background: var(--forest);
-  padding: 14px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.for-you{background:var(--cream);padding:72px 24px;position:relative;}
+.for-you::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--oxblood),var(--gold) 50%,var(--oxblood));}
+.sec-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(28px,6.5vw,44px);font-weight:300;line-height:1.1;letter-spacing:-0.02em;margin-bottom:36px;}
+.sec-h em,.sec-h strong{font-style:normal;font-weight:600;}
+.for-you .sec-h{color:var(--ink);}
+.for-you .sec-h em{color:var(--oxblood);}
+.if-cards{display:flex;flex-direction:column;gap:14px;}
+.icard{
+  background:var(--white);border-left:3px solid var(--oxblood);
+  padding:22px 20px;
 }
-.back-nav a {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--cream);
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-.back-nav a:hover { opacity: 1; }
-.back-nav .site-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 16px;
-  color: var(--cream);
-  opacity: 0.5;
-}
+.icard-q{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+.icard-a{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);}
 
-/* Hero */
-.hero {
-  background: var(--ink);
-  padding: 80px 28px 68px;
-  text-align: center;
-}
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--terra);
-  margin-bottom: 20px;
-  display: block;
-}
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(36px, 7vw, 64px);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  color: var(--cream);
-  margin-bottom: 20px;
-}
-.hero h1 em { color: var(--terra); font-style: italic; }
-.hero-sub {
-  font-size: 17px;
-  color: rgba(244,232,208,0.55);
-  max-width: 520px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
+.what{background:var(--ink);padding:72px 24px;position:relative;overflow:hidden;}
+.what::before{content:'';position:absolute;bottom:-60px;right:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(107,39,55,0.2) 0%,transparent 70%);pointer-events:none;}
+.what-inner{position:relative;z-index:1;}
+.what .sec-h{color:var(--cream);}
+.what .sec-h em{color:var(--gold-lt);}
+.what-rows{display:flex;flex-direction:column;gap:0;}
+.wrow{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(250,244,232,0.07);}
+.wrow:last-child{border-bottom:none;}
+.wrow-num{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:28px;font-weight:300;color:rgba(201,169,110,0.25);flex-shrink:0;line-height:1;min-width:36px;padding-top:2px;}
+.wrow-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:18px;font-weight:400;color:var(--cream);margin-bottom:6px;line-height:1.2;}
+.wrow-p{font-size:14px;font-weight:300;line-height:1.7;color:rgba(250,244,232,0.45);}
 
-/* Lead copy */
-.lead {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 64px 28px 56px;
-}
-.lead p {
-  font-size: 17px;
-  line-height: 1.85;
-  color: var(--ink);
-  margin-bottom: 26px;
-}
-.lead p:last-child { margin-bottom: 0; }
-.lead em { font-style: italic; color: var(--terra); }
+.not-for{background:var(--paper);padding:72px 24px;}
+.not-for .sec-h{color:var(--ink);}
+.not-for .sec-h em{color:var(--oxblood);}
+.not-body{font-size:15px;font-weight:300;line-height:1.85;color:var(--muted);margin-bottom:20px;max-width:560px;}
+.disclaimer{margin-top:28px;padding:18px 20px;background:rgba(107,39,55,0.07);border-left:3px solid rgba(107,39,55,0.25);font-size:13px;font-weight:400;line-height:1.7;color:var(--muted);max-width:560px;}
+.disclaimer strong{font-weight:600;color:var(--ink);}
 
-.pull-quote {
-  border-left: 3px solid var(--terra);
-  padding: 20px 28px;
-  margin: 40px 0;
-  background: var(--white);
-}
-.pull-quote p {
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px;
-  line-height: 1.4;
-  font-style: italic;
-  color: var(--ink);
-  margin: 0;
-}
+.cta-sec{background:var(--oxblood-dk);padding:80px 24px;position:relative;overflow:hidden;}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 0% 50%,rgba(201,169,110,0.1) 0%,transparent 55%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:500px;}
+.cta-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(32px,8vw,52px);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:var(--cream);margin-bottom:14px;}
+.cta-h em{font-style:normal;font-weight:600;color:var(--gold-lt);}
+.cta-sub{font-size:15px;font-weight:300;line-height:1.75;color:rgba(250,244,232,0.5);margin-bottom:32px;max-width:400px;}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;padding:17px 32px;min-height:54px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:none;transition:background 0.2s,transform 0.15s;-webkit-tap-highlight-color:transparent;}
+.btn-gold:active{background:var(--gold-lt);transform:scale(0.98);}
+.cta-fine{margin-top:14px;font-size:12px;color:rgba(250,244,232,0.2);}
 
-/* Tracks */
-.tracks {
-  background: var(--white);
-  padding: 64px 28px;
-}
-.tracks-inner {
-  max-width: 860px;
-  margin: 0 auto;
-}
-.tracks-eyebrow {
-  font-family: 'Caveat', cursive;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 10px;
-}
-.tracks-h {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(26px, 4vw, 38px);
-  color: var(--ink);
-  margin-bottom: 48px;
-  line-height: 1.08;
-}
-.tracks-h em { color: var(--terra); font-style: italic; }
-.tracks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-.track {
-  background: var(--paper);
-  padding: 36px 32px;
-  border: 1px solid rgba(27,0,9,0.07);
-  position: relative;
-}
-.track-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--terra);
-  display: block;
-  margin-bottom: 16px;
-}
-.track h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(20px, 2.5vw, 26px);
-  color: var(--ink);
-  margin-bottom: 14px;
-  line-height: 1.15;
-}
-.track h3 em { color: var(--terra); font-style: italic; }
-.track p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.75;
-  margin-bottom: 20px;
-}
-.track ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 28px;
-}
-.track ul li {
-  font-size: 14px;
-  color: var(--ink);
-  padding: 5px 0 5px 20px;
-  position: relative;
-  line-height: 1.6;
-}
-.track ul li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--terra);
-  font-weight: 600;
-}
+footer{background:var(--oxblood-dk);padding:36px 24px;border-top:1px solid rgba(250,244,232,0.04);}
+.foot-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:17px;font-weight:300;font-style:italic;color:rgba(250,244,232,0.35);display:block;margin-bottom:14px;}
+.foot-logo span{color:var(--gold);}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:18px;}
+.foot-links a{font-size:12px;color:rgba(250,244,232,0.3);transition:color 0.2s;}
+.foot-links a:active{color:var(--cream);}
+.foot-copy{font-size:11px;color:rgba(250,244,232,0.15);}
 
-/* CTA section */
-.cta-section {
-  background: var(--forest);
-  padding: 72px 28px;
-  text-align: center;
+@media(min-width:640px){
+  .hero{padding:96px 48px 80px;}
+  .for-you{padding:96px 48px;}.what{padding:96px 48px;}
+  .not-for{padding:96px 48px;}.cta-sec{padding:100px 48px;}
+  footer{padding:44px 48px;}
+  .if-cards{flex-direction:row;gap:16px;}.icard{flex:1;}
 }
-.cta-caveat {
-  font-family: 'Caveat', cursive;
-  font-size: 22px;
-  font-weight: 700;
-  color: rgba(244,232,208,0.4);
-  display: block;
-  margin-bottom: 12px;
-}
-.cta-h {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(28px, 5vw, 46px);
-  color: var(--cream);
-  margin-bottom: 16px;
-  line-height: 1.06;
-}
-.cta-h em { color: var(--terra); font-style: italic; }
-.cta-sub {
-  font-size: 15px;
-  color: rgba(244,232,208,0.55);
-  max-width: 440px;
-  margin: 0 auto 36px;
-  line-height: 1.65;
-}
-.btn-primary {
-  display: inline-block;
-  background: var(--terra);
-  color: var(--cream);
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  padding: 16px 32px;
-  transition: opacity 0.2s;
-}
-.btn-primary:hover { opacity: 0.88; }
-.cta-note {
-  margin-top: 20px;
-  font-size: 13px;
-  color: rgba(244,232,208,0.3);
-}
-
-@media(max-width: 640px) {
-  .tracks-grid { grid-template-columns: 1fr; }
-  .track { padding: 28px 22px; }
-  .lead, .tracks-inner { padding-left: 20px; padding-right: 20px; }
+@media(min-width:900px){
+  .hero{padding:100px 60px 88px;}
+  .for-you{padding:100px 60px;}.what{padding:100px 60px;}
+  .not-for{padding:100px 60px;}.cta-sec{padding:100px 60px;}
+  footer{padding:48px 60px;}
+  .what-rows{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;}
+  .wrow{border-bottom-color:rgba(250,244,232,0.05);}
 }
 </style>
 </head>
 <body>
+<nav class="nav">
+  <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg>
+    Home
+  </a>
+</nav>
 
-<div class="back-nav">
-  <a href="/">← soberadventuring.com</a>
-  <span class="site-name">SoberAdventuring.</span>
-</div>
-
-<div class="hero">
-  <span class="hero-eyebrow">Work With Me · 1:1 Coaching</span>
-  <h1>Building a life that doesn't<br>need an <em>escape hatch.</em></h1>
-  <p class="hero-sub">Recovery support and freelance career coaching with someone who's been in it and built out of it.</p>
-</div>
-
-<div class="lead">
-  <p>I spent years in recovery spaces before I spent years building an income online. The skills overlap more than people expect: showing up when you don't want to, tolerating discomfort long enough to get somewhere, building systems so the decision doesn't have to happen every day.</p>
-
-  <div class="pull-quote">
-    <p>"The skills that kept me sober are the same ones that built my business."</p>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Work With Me</span>
+    <h1>A conversation,<br>not a <em>curriculum.</em></h1>
+    <p class="hero-sub">1-on-1 calls for women who want to talk through where they actually are, with someone who has been there, and isn't going to hand them a worksheet about it.</p>
   </div>
+</section>
 
-  <p>I work with people who are in early recovery and trying to figure out what comes next, and with people who already have some time but want to build something, financially and otherwise. The call is free, and it goes both ways — I'll tell you honestly if I think I can help.</p>
-</div>
-
-<div class="tracks">
-  <div class="tracks-inner">
-    <span class="tracks-eyebrow">how it works</span>
-    <h2 class="tracks-h">Two tracks, depending on<br>where you <em>are.</em></h2>
-    <div class="tracks-grid">
-
-      <div class="track">
-        <span class="track-tag">Recovery Support</span>
-        <h3>Getting sober <em>&amp; staying that way.</em></h3>
-        <p>For people in early recovery, or anyone who's tried before and wants to approach it differently. Trauma-informed, all-pathways, no program required.</p>
-        <ul>
-          <li>Weekly 1:1 sessions</li>
-          <li>On-call support between sessions</li>
-          <li>Building structure that actually holds</li>
-          <li>Figuring out what you actually want after</li>
-        </ul>
-      </div>
-
-      <div class="track">
-        <span class="track-tag">Freelance Career</span>
-        <h3>Building income<br><em>on your terms.</em></h3>
-        <p>For people in recovery who want to build location-independent income — starting from scratch, or past the beginning. I made $30k in four months starting from zero on Upwork.</p>
-        <ul>
-          <li>Profile, pitch, and positioning</li>
-          <li>Landing first clients without a portfolio</li>
-          <li>Building from side income to full-time</li>
-          <li>Remote work and freelance career strategy</li>
-        </ul>
-      </div>
-
+<section class="for-you">
+  <span class="eyebrow rv" style="color:var(--oxblood);">This might be for you</span>
+  <h2 class="sec-h rv">Some of what I hear<br>on first <em>calls.</em></h2>
+  <div class="if-cards">
+    <div class="icard rv">
+      <p class="icard-q">&ldquo;I don&rsquo;t think I have a problem, but I think about it more than I want to.&rdquo;</p>
+      <p class="icard-a">That gap between what you tell people and what you actually think about at 2am — that&rsquo;s usually where the real question lives, and it&rsquo;s worth looking at it directly.</p>
+    </div>
+    <div class="icard rv" data-d="1">
+      <p class="icard-q">&ldquo;I&rsquo;ve tried before. I lasted a few weeks and then something happened and I went back.&rdquo;</p>
+      <p class="icard-a">The going back is interesting data, and most people never sit with it long enough to understand it. A lot of what we do in these calls is just that: slow down the story you&rsquo;ve told yourself about why it didn&rsquo;t work.</p>
     </div>
   </div>
-</div>
+</section>
 
-<div class="cta-section">
-  <span class="cta-caveat">the first call is free</span>
-  <h2 class="cta-h">Let's figure out if<br>this makes <em>sense.</em></h2>
-  <p class="cta-sub">Book a free 30-minute call. No pitch, no pressure. I'll tell you honestly what I think and we'll go from there.</p>
-  <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="btn-primary" target="_blank" rel="noopener">Book a Free Discovery Call →</a>
-  <p class="cta-note">or DM me on <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener" style="color:rgba(244,232,208,0.45);text-decoration:none;">Instagram</a> if you'd rather start there</p>
-</div>
+<section class="what">
+  <div class="what-inner">
+    <span class="eyebrow rv" style="color:var(--gold);">What sessions look like</span>
+    <h2 class="sec-h rv">No agenda brought in<br>on my <em>end.</em></h2>
+    <div class="what-rows">
+      <div class="wrow rv">
+        <span class="wrow-num">01</span>
+        <div><p class="wrow-h">We start with where you actually are</p><p class="wrow-p">Not where you think you should be, and not with a framework I&rsquo;m trying to fit you into. The first call is just: what brought you here, and what are you hoping comes out of this.</p></div>
+      </div>
+      <div class="wrow rv" data-d="1">
+        <span class="wrow-num">02</span>
+        <div><p class="wrow-h">I bring lived experience, not a script</p><p class="wrow-p">Six years of failed attempts, a lot of close calls, and two years on the other side of it. I know what the conversation sounds like from both seats, and I&rsquo;m not going to pretend I have the answers for your specific life.</p></div>
+      </div>
+      <div class="wrow rv">
+        <span class="wrow-num">03</span>
+        <div><p class="wrow-h">You leave with something concrete</p><p class="wrow-p">Not a homework assignment. Something you actually wanted to think about before you got off the call, based on what came up in the conversation.</p></div>
+      </div>
+      <div class="wrow rv" data-d="1">
+        <span class="wrow-num">04</span>
+        <div><p class="wrow-h">We meet as many times as is useful</p><p class="wrow-p">Some people want one call to get clear on something. Others come back weekly for a few months while they&rsquo;re building the early days. There&rsquo;s no package you have to buy into.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="not-for">
+  <span class="eyebrow rv" style="color:var(--oxblood);">Before you book</span>
+  <h2 class="sec-h rv">What this <em>isn&rsquo;t.</em></h2>
+  <p class="not-body rv">These are peer support conversations, and they work best when you already want to have them. If you&rsquo;re in acute crisis or need clinical mental health support, the most honest thing I can do is point you toward someone who is actually trained for that, because I&rsquo;m not.</p>
+  <p class="not-body rv">I can talk about what early sobriety felt like in my body, what I tried that didn&rsquo;t work, what the first year looked like from the inside, and how I started building a working life around recovery. That&rsquo;s the lane I&rsquo;m in.</p>
+  <div class="disclaimer rv">
+    <strong>Important:</strong> I&rsquo;m not a licensed therapist or medical professional, and these sessions are not a substitute for clinical care. If you&rsquo;re managing withdrawal, co-occurring mental health conditions, or anything that requires a diagnosis, please speak with a qualified provider.
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-inner">
+    <h2 class="cta-h rv">Start with a<br>free <em>discovery call.</em></h2>
+    <p class="cta-sub rv">30 minutes. No commitment, and no pressure to book anything after. If it&rsquo;s not a fit, I&rsquo;ll tell you, and I&rsquo;ll try to point you somewhere that is.</p>
+    <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" target="_blank" rel="noopener" class="btn-gold rv">Book a Free Discovery Call</a>
+    <p class="cta-fine rv">Video call &middot; 30 minutes &middot; Free</p>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
+  <nav class="foot-links" aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/story/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/the-first-thirty/">The First Thirty</a>
+    <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Community</a>
+  </nav>
+  <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
+</footer>
+
+<script>
+var rvObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){rvObs.observe(el);});
+</script>
 </body>
 </html>
