@@ -2,16 +2,15 @@ import os
 import requests
 from datetime import datetime, timedelta
 
-NOTION_API_KEY = os.environ.get("NOTION_API_KEY", "")
-NOTION_DATABASE_ID = os.environ.get("NOTION_DATABASE_ID", "")
-
-NOTION_HEADERS = {
-    "Authorization": f"Bearer {NOTION_API_KEY}",
-    "Notion-Version": "2022-06-28",
-    "Content-Type": "application/json",
-}
-
 NOTION_BASE_URL = "https://api.notion.com/v1"
+
+
+def _notion_headers() -> dict:
+    return {
+        "Authorization": f"Bearer {os.environ.get('NOTION_API_KEY', '')}",
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json",
+    }
 
 
 def _get_prop(props: dict, name: str) -> str:
@@ -43,13 +42,15 @@ def _next_week_range() -> tuple:
 
 
 def _fetch_calendar_topics(platform: str) -> list:
-    if not NOTION_DATABASE_ID or not NOTION_API_KEY:
+    notion_api_key = os.environ.get("NOTION_API_KEY", "")
+    notion_database_id = os.environ.get("NOTION_DATABASE_ID", "")
+    if not notion_database_id or not notion_api_key:
         print(f"  Notion calendar unavailable — NOTION_DATABASE_ID or NOTION_API_KEY not set")
         return []
 
     next_monday, following_monday = _next_week_range()
 
-    url = f"{NOTION_BASE_URL}/databases/{NOTION_DATABASE_ID}/query"
+    url = f"{NOTION_BASE_URL}/databases/{notion_database_id}/query"
     payload = {
         "filter": {
             "and": [
@@ -62,7 +63,7 @@ def _fetch_calendar_topics(platform: str) -> list:
     }
 
     try:
-        resp = requests.post(url, headers=NOTION_HEADERS, json=payload, timeout=15)
+        resp = requests.post(url, headers=_notion_headers(), json=payload, timeout=15)
         resp.raise_for_status()
         results = resp.json().get("results", [])
         topics = []

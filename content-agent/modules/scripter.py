@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import logging
 from datetime import datetime
@@ -116,7 +117,8 @@ def _call_claude(system: str, user: str) -> list | dict:
         raw = raw.rsplit("```", 1)[0]
     if raw.lower().startswith("json"):
         raw = raw[4:]
-    return json.loads(raw.strip())
+    raw = re.sub(r',\s*([}\]])', r'\1', raw.strip())
+    return json.loads(raw)
 
 
 def generate_carousels(week_date: str, trend_summary: str, own_posts_summary: str, calendar_topics: list) -> list:
