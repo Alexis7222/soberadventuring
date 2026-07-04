@@ -1,395 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>The First Thirty — 30-Day Sobriety Workbook | Sober Adventuring</title>
-<meta name="description" content="A day-by-day workbook for the first thirty days sober. 30 pages, four phases, one per day. $17.99 — printable or on-screen.">
-<link rel="canonical" href="https://soberadventuring.com/the-first-thirty/">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#1A0A05;--gold:#C9A96E;--gold-lt:#E8C87A;--oxblood:#6B2737;--oxblood-dk:#4A1A26;--cream:#FAF4E8;--paper:#F4EEE4;--muted:#7a6355;--white:#FFFDF8;--ease:cubic-bezier(0.22,1,0.36,1);}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{font-family:'Instrument Sans',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(68px + env(safe-area-inset-bottom));}
-img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:inherit;}
-@keyframes shimmer{from{background-position:200% center;}to{background-position:-200% center;}}
-@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0);}50%{box-shadow:0 0 28px 6px rgba(201,169,110,0.35);}}
-
-.nav{position:sticky;top:0;z-index:200;background:rgba(26,10,5,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,169,110,0.08);}
-.nav-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;font-style:italic;color:var(--cream);}
-.nav-logo .g{color:var(--gold);}
-.nav-back{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(250,244,232,0.4);display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;}
-.nav-back:active{color:var(--cream);}
-
-.rv{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease);}
-.rv.in{opacity:1;transform:translateY(0);}
-.rv[data-d="1"]{transition-delay:0.1s;}.rv[data-d="2"]{transition-delay:0.2s;}.rv[data-d="3"]{transition-delay:0.3s;}
-
-.hero{background:var(--ink);padding:72px 24px 64px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(107,39,55,0.2) 0%,transparent 65%);pointer-events:none;}
-.hero-inner{position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,169,110,0.3);padding:6px 14px;margin-bottom:24px;}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
-.hero-badge-txt{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);}
-.hero h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(46px,12vw,80px);font-weight:300;line-height:1.0;letter-spacing:-0.025em;color:var(--cream);margin-bottom:20px;}
-.hero h1 em,.hero h1 strong{font-style:normal;font-weight:600;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 35%,var(--gold) 65%,#D48B1A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
-.hero-sub{font-size:17px;font-weight:300;line-height:1.75;color:rgba(250,244,232,0.65);max-width:420px;margin-bottom:32px;}
-.hero-book{margin:32px 0;}
-.hero-book img{width:100%;max-width:340px;border:1px solid rgba(250,244,232,0.08);}
-.btn-buy{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:54px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:none;transition:background 0.2s,transform 0.15s;animation:glow 3.5s ease-in-out 1s infinite;-webkit-tap-highlight-color:transparent;}
-.btn-buy:active{background:var(--gold-lt);transform:scale(0.99);}
-.hero-note{font-size:12px;color:rgba(250,244,232,0.25);letter-spacing:0.04em;margin-top:12px;text-align:center;}
-.hero-stats{display:flex;gap:28px;margin-top:36px;padding-top:24px;border-top:1px solid rgba(250,244,232,0.07);}
-.stat-v{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:26px;font-weight:300;color:var(--gold);display:block;line-height:1;}
-.stat-l{font-size:10px;font-weight:400;color:rgba(250,244,232,0.3);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-top:5px;}
-
-.strip{background:var(--oxblood);padding:0;display:flex;overflow-x:auto;}
-.strip-item{flex:1;min-width:80px;text-align:center;padding:20px 16px;border-right:1px solid rgba(250,244,232,0.12);}
-.strip-item:last-child{border-right:none;}
-.strip-v{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:22px;font-weight:300;color:var(--gold);display:block;line-height:1;margin-bottom:6px;}
-.strip-l{font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(250,244,232,0.45);}
-
-.eyebrow{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;display:block;margin-bottom:16px;}
-.eyebrow-gold{color:var(--gold);}.eyebrow-ox{color:var(--oxblood);}.eyebrow-muted{color:var(--muted);}
-.sec-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(30px,7.5vw,50px);font-weight:300;line-height:1.1;letter-spacing:-0.02em;margin-bottom:24px;}
-.sec-h em,.sec-h strong{font-style:normal;font-weight:600;color:var(--oxblood);}
-.sec-h.light{color:var(--cream);}
-.sec-h.light em,.sec-h.light strong{font-style:normal;font-weight:600;color:var(--gold-lt);}
-
-.for-you{background:var(--paper);padding:72px 24px;}
-.checklist{margin-top:8px;display:flex;flex-direction:column;gap:12px;}
-.check-item{display:flex;gap:14px;align-items:flex-start;font-size:15px;font-weight:300;line-height:1.65;color:var(--muted);}
-.check-icon{width:20px;height:20px;flex-shrink:0;border:1px solid rgba(107,39,55,0.35);display:flex;align-items:center;justify-content:center;margin-top:2px;}
-
-.inside{background:var(--ink);padding:72px 24px;}
-.inside-cards{display:flex;flex-direction:column;gap:16px;margin-top:36px;}
-.icard{padding:28px 22px;background:rgba(250,244,232,0.04);border:1px solid rgba(250,244,232,0.07);border-left:3px solid var(--gold);}
-.icard-num{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:13px;font-weight:300;color:var(--gold);display:block;margin-bottom:12px;letter-spacing:0.1em;}
-.icard-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:22px;font-weight:400;color:var(--cream);margin-bottom:8px;line-height:1.25;}
-.icard-p{font-size:14px;font-weight:300;line-height:1.75;color:rgba(250,244,232,0.48);}
-
-.preview{background:var(--ink);padding:0 24px 72px;}
-.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.preview-grid img{width:100%;border:1px solid rgba(250,244,232,0.06);}
-
-.phases{background:var(--oxblood-dk);padding:72px 24px;}
-.phases-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:36px;}
-.pcard{padding:24px 20px;background:rgba(250,244,232,0.04);border:1px solid rgba(250,244,232,0.07);border-left:3px solid var(--phase-color,var(--gold));}
-.pcard-tag{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--phase-color,var(--gold));display:block;margin-bottom:10px;}
-.pcard-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:21px;font-weight:400;color:var(--cream);margin-bottom:6px;}
-.pcard-days{font-size:11px;color:rgba(250,244,232,0.3);letter-spacing:0.06em;display:block;margin-bottom:10px;}
-.pcard-desc{font-size:14px;font-weight:300;line-height:1.7;color:rgba(250,244,232,0.48);}
-
-.outcomes{background:var(--paper);padding:72px 24px;}
-.outcome-list{display:flex;flex-direction:column;gap:16px;margin-top:36px;}
-.ocard{padding:24px 20px;background:var(--white);border-left:3px solid var(--oxblood);}
-.ocard-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.25;}
-.ocard-p{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);}
-
-.proof{background:var(--cream);padding:72px 24px;}
-.proof-cards{display:flex;flex-direction:column;gap:16px;margin-top:36px;}
-.tcard{padding:26px 22px;background:var(--white);border-left:3px solid var(--oxblood);position:relative;}
-.tcard::before{content:'\201C';position:absolute;top:-4px;left:16px;font-family:'Fraunces',serif;font-size:80px;line-height:1;color:rgba(107,39,55,0.06);pointer-events:none;}
-.tcard-txt{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;font-style:italic;line-height:1.65;color:var(--ink);margin-bottom:16px;}
-.tcard-name{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--oxblood);}
-
-.checkout{background:var(--white);padding:72px 24px;position:relative;overflow:hidden;}
-.checkout::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt),var(--gold));}
-.checkout-card{background:var(--cream);padding:36px 28px;border:1px solid rgba(26,10,5,0.08);}
-.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;}
-.price{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:42px;font-weight:300;color:var(--ink);}
-.price-note{font-size:13px;color:var(--muted);}
-.checkout-sub{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);margin-bottom:24px;}
-.includes{margin:0 0 28px;display:flex;flex-direction:column;gap:8px;}
-.inc-line{display:flex;align-items:flex-start;gap:12px;font-size:14px;font-weight:300;color:var(--muted);line-height:1.5;}
-.inc-line::before{content:'';width:16px;height:16px;flex-shrink:0;border:1px solid rgba(201,169,110,0.4);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23C9A96E' stroke-width='1.5'%3E%3Cpath d='M3 8.5l3 3L13 4'/%3E%3C/svg%3E") center/10px no-repeat;margin-top:2px;}
-.btn-stripe{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:54px;background:var(--oxblood);color:var(--cream);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:none;transition:background 0.2s,transform 0.15s;-webkit-tap-highlight-color:transparent;}
-.btn-stripe:active{background:var(--oxblood-dk);transform:scale(0.99);}
-.checkout-note{font-size:12px;color:var(--muted);margin-top:14px;text-align:center;letter-spacing:0.03em;}
-
-.faq{background:var(--paper);padding:72px 24px;}
-.faq-list{max-width:640px;margin-top:36px;}
-.faq-item{border-top:1px solid rgba(26,10,5,0.09);padding:22px 0;}
-.faq-item:last-child{border-bottom:1px solid rgba(26,10,5,0.09);}
-.faq-q{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.3;}
-.faq-a{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted);}
-
-.final{background:var(--oxblood);padding:72px 24px;position:relative;overflow:hidden;}
-.final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 70% at 50% 130%,rgba(201,169,110,0.15) 0%,transparent 65%);pointer-events:none;}
-.final-inner{position:relative;z-index:1;max-width:480px;}
-.final h2{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(36px,9vw,58px);font-weight:300;line-height:1.0;letter-spacing:-0.025em;color:var(--cream);margin-bottom:28px;}
-.final h2 em,.final h2 strong{font-style:normal;font-weight:600;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 40%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
-.btn-final{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:54px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:none;transition:background 0.2s;-webkit-tap-highlight-color:transparent;}
-.btn-final:active{background:var(--gold-lt);}
-
-.sticky-buy{position:fixed;bottom:0;left:0;right:0;z-index:250;height:calc(60px + env(safe-area-inset-bottom));padding:0 20px env(safe-area-inset-bottom);background:var(--ink);border-top:1px solid rgba(201,169,110,0.12);display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(100%);transition:transform 0.45s var(--ease);}
-.sticky-buy.on{transform:translateY(0);}
-.sticky-price{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:20px;font-weight:300;color:var(--cream);}
-.sticky-price small{font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:400;color:rgba(250,244,232,0.35);letter-spacing:0.08em;text-transform:uppercase;margin-left:6px;}
-.sticky-cta{flex-shrink:0;padding:11px 22px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;min-height:40px;display:inline-flex;align-items:center;-webkit-tap-highlight-color:transparent;}
-.sticky-cta:active{background:var(--gold-lt);}
-
-footer{background:var(--oxblood-dk);padding:36px 24px calc(36px + env(safe-area-inset-bottom));}
-.foot-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:17px;font-weight:300;font-style:italic;color:rgba(250,244,232,0.4);display:block;margin-bottom:16px;}
-.foot-logo span{color:var(--gold);}
-.foot-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:20px;}
-.foot-links a{font-size:12px;color:rgba(250,244,232,0.28);}
-.foot-links a:active{color:var(--cream);}
-.foot-copy{font-size:11px;color:rgba(250,244,232,0.12);}
-
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}}
-@media(min-width:768px){
-  body{padding-bottom:0;}
-  .sticky-buy{display:none;}
-  .hero{padding:100px 60px 88px;}
-  .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:960px;}
-  .hero-book{margin:0;}
-  .hero-book img{max-width:none;width:100%;}
-  .strip{justify-content:center;}
-  .strip-item{flex:0 0 auto;padding:22px 40px;}
-  .for-you{padding:96px 60px;}
-  .for-you-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-  .inside{padding:96px 60px;}
-  .inside-cards{flex-direction:row;}
-  .icard{flex:1;}
-  .preview{padding:0 60px 96px;}
-  .preview-grid{grid-template-columns:repeat(4,1fr);}
-  .phases{padding:96px 60px;}
-  .phases-grid{grid-template-columns:1fr 1fr;}
-  .outcomes{padding:96px 60px;}
-  .outcome-list{flex-direction:row;flex-wrap:wrap;}
-  .ocard{flex:1;min-width:calc(50% - 8px);}
-  .proof{padding:96px 60px;}
-  .proof-cards{flex-direction:row;}
-  .tcard{flex:1;}
-  .checkout{padding:96px 60px;}
-  .faq{padding:96px 60px;}
-  .final{padding:100px 60px;}
-  footer{padding:44px 60px;}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The First Thirty Toolkit | Sober Adventuring</title>
+  <meta name="description" content="A printable, fillable toolkit for getting through your first thirty days sober with structure, prompts, and a crisis plan." />
+  <meta property="og:title" content="The First Thirty Toolkit" />
+  <meta property="og:description" content="A printable, fillable toolkit for the first thirty days sober." />
+  <meta property="og:image" content="assets/page-1.jpg" />
+  <link rel="canonical" href="https://soberadventuring.com/first-thirty-toolkit/" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<nav class="nav">
-  <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
-  <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg>Back</a>
-</nav>
+  <!-- Sales page refreshed for GitHub Pages deployment after audience copy update. -->
+  <main class="offer">
+    <section class="sheet">
+      <img class="cover" src="assets/page-1.jpg" alt="The First Thirty toolkit cover" />
 
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge rv"><span class="hero-badge-dot"></span><span class="hero-badge-txt">30-Day Sobriety Workbook</span></div>
-      <h1 class="rv">The First<br><em>Thirty.</em></h1>
-      <p class="hero-sub rv">A day-by-day workbook for the first thirty days sober. One page per day, built by someone who did this.</p>
-      <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="btn-buy rv" target="_blank" rel="noopener">Get instant access &mdash; $17.99</a>
-      <p class="hero-note rv">Digital download. Printable or fillable on-screen.</p>
-      <div class="hero-stats rv">
-        <div><span class="stat-v">30</span><span class="stat-l">Pages</span></div>
-        <div><span class="stat-v">4</span><span class="stat-l">Phases</span></div>
-        <div><span class="stat-v">5&ndash;10</span><span class="stat-l">Min per day</span></div>
-      </div>
-    </div>
-    <div class="hero-book rv" data-d="1">
-      <img src="/the-first-thirty/assets/page-1.jpg" alt="The First Thirty workbook cover" loading="eager" width="340" height="440">
-    </div>
-  </div>
-</section>
+      <p class="eyebrow">The First Thirty PDF Toolkit</p>
+      <h1>Early sobriety workbook</h1>
+      <p class="subhead">Designed only for those who are willing to make a commitment to themselves for 30 days</p>
 
-<div class="strip">
-  <div class="strip-item"><span class="strip-v">30</span><span class="strip-l">Pages</span></div>
-  <div class="strip-item"><span class="strip-v">4</span><span class="strip-l">Phases</span></div>
-  <div class="strip-item"><span class="strip-v">5&ndash;10 min</span><span class="strip-l">Per day</span></div>
-  <div class="strip-item"><span class="strip-v">$17.99</span><span class="strip-l">One time</span></div>
-</div>
+      <blockquote class="testimonial">
+        <p>&#8220;I didn&#8217;t need a motivational quote and I didn&#8217;t need something to promise it&#8217;d get me sober. I just wanted something to guide me and give some accountability. I couldn&#8217;t be more grateful for this workbook.&#8221;</p>
+        <footer class="testimonial-footer">
+          <cite>Maisie T.</cite>
+        </footer>
+      </blockquote>
 
-<section class="for-you">
-  <div class="for-you-inner">
-    <div>
-      <span class="eyebrow eyebrow-ox rv">This is for you if</span>
-      <h2 class="sec-h rv">You're newly sober, sober-curious, or <em>trying again.</em></h2>
-    </div>
-    <div class="checklist rv">
-      <div class="check-item"><span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5l2 2 4-4"/></svg></span>You're committed to showing up for the process for 30 days.</div>
-      <div class="check-item"><span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5l2 2 4-4"/></svg></span>You're up Googling sobriety-related things at 1am instead of sleeping.</div>
-      <div class="check-item"><span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5l2 2 4-4"/></svg></span>You're done with rehab-brochure language and advice that sounds good but doesn't help at 8pm.</div>
-      <div class="check-item"><span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5.5l2 2 4-4"/></svg></span>You want something specific to do on the days that feel impossible.</div>
-    </div>
-  </div>
-</section>
+      <p class="body-copy">The First Thirty gives you one page per day for the first month sober. Each day has a grounding idea, reflection prompts, personal commentary written by someone who's sober and one easy and measurable action that you can complete even if the day is absolute dog shit.</p>
 
-<section class="inside">
-  <span class="eyebrow eyebrow-gold rv">Inside the workbook</span>
-  <h2 class="sec-h light rv">Simple structure for the <em>messiest month.</em></h2>
-  <div class="inside-cards">
-    <div class="icard rv">
-      <span class="icard-num">01</span>
-      <p class="icard-h">Four phases across thirty days</p>
-      <p class="icard-p">Each page has reflection prompts and one 5&ndash;10 minute action. One grounding idea to anchor the day. Built to be the opposite of overwhelming.</p>
-    </div>
-    <div class="icard rv" data-d="1">
-      <span class="icard-num">02</span>
-      <p class="icard-h">A crisis card for the hardest nights</p>
-      <p class="icard-p">Built for the moment you don't have thirty minutes to read a PDF. Save it, print it, and keep it close before you need it.</p>
-    </div>
-    <div class="icard rv" data-d="2">
-      <span class="icard-num">03</span>
-      <p class="icard-h">&ldquo;Now What&rdquo; worksheets</p>
-      <p class="icard-p">Identity questions and a 90-day re-entry plan for when the fog clears and the bigger life questions show up.</p>
-    </div>
-  </div>
-</section>
+      <hr />
 
-<div class="preview">
-  <div class="preview-grid">
-    <img src="/the-first-thirty/assets/page-5.jpg" alt="Workbook page preview" loading="lazy">
-    <img src="/the-first-thirty/assets/page-24.jpg" alt="Phase three preview" loading="lazy">
-    <img src="/the-first-thirty/assets/page-32.jpg" alt="Workbook page preview" loading="lazy">
-    <img src="/the-first-thirty/assets/page-47.jpg" alt="Final page preview" loading="lazy">
-  </div>
-</div>
+      <h2>This is for you if:</h2>
+      <ul class="check-list">
+        <li>You are newly sober, sober-curious, or trying again.</li>
+        <li>You're hands down, 100% willing to commit for 30 days.</li>
+        <li>You know you're meant for so much more and you are sick of researching sobriety at 1am.</li>
+        <li>You want something enjoyable to work with thats also direct.</li>
+        <li>You want a private tool you can use without announcing to the whole world.</li>
+      </ul>
 
-<section class="phases">
-  <span class="eyebrow eyebrow-gold rv">The structure</span>
-  <h2 class="sec-h light rv">Four phases that <em>move.</em></h2>
-  <div class="phases-grid">
-    <div class="pcard rv" style="--phase-color:var(--gold)">
-      <span class="pcard-tag">Phase 01</span>
-      <p class="pcard-h">Stabilize</p>
-      <span class="pcard-days">Days 1&ndash;7</span>
-      <p class="pcard-desc">The first week is about getting your footing back. Prompts focus on the basics and help you start noticing what's going on instead of moving past it.</p>
-    </div>
-    <div class="pcard rv" data-d="1" style="--phase-color:var(--oxblood)">
-      <span class="pcard-tag">Phase 02</span>
-      <p class="pcard-h">Rebuild</p>
-      <span class="pcard-days">Days 8&ndash;15</span>
-      <p class="pcard-desc">Once the worst of the physical piece quiets down, this phase rebuilds the scaffolding around your day so that structure starts filling what alcohol used to.</p>
-    </div>
-    <div class="pcard rv" data-d="2" style="--phase-color:rgba(201,169,110,0.7)">
-      <span class="pcard-tag">Phase 03</span>
-      <p class="pcard-h">Face</p>
-      <span class="pcard-days">Days 16&ndash;22</span>
-      <p class="pcard-desc">This phase stops avoiding what keeps getting buried. It's the hardest part of the workbook, and it's where most things shift.</p>
-    </div>
-    <div class="pcard rv" data-d="3" style="--phase-color:var(--gold)">
-      <span class="pcard-tag">Phase 04</span>
-      <p class="pcard-h">Reconnect</p>
-      <span class="pcard-days">Days 23&ndash;30</span>
-      <p class="pcard-desc">The last week turns outward, with prompts to start rebuilding the relationships and the version of your life you're doing this for in the first place.</p>
-    </div>
-  </div>
-</section>
+      <hr />
 
-<section class="outcomes">
-  <span class="eyebrow eyebrow-ox rv">By day 30 you&rsquo;ll have</span>
-  <h2 class="sec-h rv">Proof in your own <em>handwriting.</em></h2>
-  <div class="outcome-list">
-    <div class="ocard rv">
-      <p class="ocard-h">Proof in your own handwriting</p>
-      <p class="ocard-p">Written answers showing exactly what shifted, day by day. Specific enough to go back to.</p>
-    </div>
-    <div class="ocard rv" data-d="1">
-      <p class="ocard-h">A tested crisis plan</p>
-      <p class="ocard-p">One you've already practiced at least once, before you need it most.</p>
-    </div>
-    <div class="ocard rv" data-d="2">
-      <p class="ocard-h">A real answer for hard moments</p>
-      <p class="ocard-p">You'll have practiced naming the moments that used to end in a drink, thirty separate times.</p>
-    </div>
-    <div class="ocard rv" data-d="3">
-      <p class="ocard-h">A next-thirty plan</p>
-      <p class="ocard-p">Built from what you now know about yourself instead of a guess.</p>
-    </div>
-  </div>
-</section>
+      <h2>Inside the toolkit, you get:</h2>
+      <ul class="check-list">
+        <li>30 day-by-day workbook pages across four phases: stabilize, rebuild, face the hard shit, reconnect.</li>
+        <li>Reflection prompts that guide you when all you can think about is spiraling.</li>
+        <li>Low Stakes 5-10 minute actions every day so you have something to work towards.</li>
+        <li>A next-thirty plan for when the first month ends.</li>
+      </ul>
 
-<section class="proof">
-  <span class="eyebrow eyebrow-ox rv">What women are saying</span>
-  <h2 class="sec-h rv">From the room.</h2>
-  <div class="proof-cards">
-    <div class="tcard rv"><p class="tcard-txt">&ldquo;Today I&rsquo;m approaching 90 days of sobriety, and that&rsquo;s something I once thought was impossible. Alexis&rsquo;s support has been vital in helping me reach this.&rdquo;</p><span class="tcard-name">Isabella C. &middot; @thumbsuck</span></div>
-    <div class="tcard rv" data-d="1"><p class="tcard-txt">&ldquo;I discovered Alexis during one of the most challenging times in my life, and every conversation gave me the encouragement I needed to keep moving forward.&rdquo;</p><span class="tcard-name">Ana D. &middot; @Antigua.plaza</span></div>
-  </div>
-</section>
+      <a class="button" id="buyButtonTop" href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" target="_blank" rel="noopener">Get instant access for <span data-price>$17</span> &rarr;</a>
 
-<section class="checkout" id="checkout">
-  <div class="checkout-card">
-    <span class="eyebrow eyebrow-gold rv">Instant digital download</span>
-    <h2 class="sec-h rv">Get The First Thirty.</h2>
-    <div class="price-row rv">
-      <span class="price">$17.99</span>
-      <span class="price-note">one-time, yours to keep</span>
-    </div>
-    <p class="checkout-sub rv">Yours to print, fill in on-screen, and revisit for as many rounds of thirty as you need.</p>
-    <div class="includes rv">
-      <div class="inc-line">30 workbook pages, one for each day across four phases</div>
-      <div class="inc-line">Crisis card for the hardest nights in week one</div>
-      <div class="inc-line">&ldquo;Now What&rdquo; worksheets for when the fog clears</div>
-    </div>
-    <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="btn-stripe rv" target="_blank" rel="noopener">Buy now &rarr;</a>
-    <p class="checkout-note rv">Secure checkout through Stripe. Instant PDF download after payment.</p>
-  </div>
-</section>
+      <section class="bonus">
+        <p class="bonus-label">Included inside</p>
+        <h2>First 30 Survival Kit</h2>
+        <ul>
+          <li><strong>Crisis card:</strong> what to do when your logic is offline.</li>
+          <li><strong>Gap scripts:</strong> simple language for social moments that are antsy to think about.</li>
+          <li><strong>Identity prompts:</strong> gentle, trauma informed questions for the multiple stages within sobriety.</li>
+          <li><strong>90-day re-entry plan:</strong> a way to keep going once the first month is done.</li>
+        </ul>
+        <p class="body-copy">It is built to be printed, saved to your phone, or filled in on-screen.</p>
+      </section>
 
-<section class="faq">
-  <span class="eyebrow eyebrow-muted rv">Questions</span>
-  <div class="faq-list">
-    <div class="faq-item rv">
-      <p class="faq-q">What exactly do I get?</p>
-      <p class="faq-a">A 30-page PDF workbook, one page per day across four phases. Each page has one grounding idea, two reflection prompts, and one action that takes 5&ndash;10 minutes. Includes a crisis card and &ldquo;Now What&rdquo; worksheets for after day 30. Printable or fillable on-screen.</p>
-    </div>
-    <div class="faq-item rv">
-      <p class="faq-q">Do I need to be on day one?</p>
-      <p class="faq-a">No. The phases are built around common turning points in early sobriety, not a strict calendar. Jumping in on week two or three still works.</p>
-    </div>
-    <div class="faq-item rv">
-      <p class="faq-q">Is this a replacement for therapy or a treatment program?</p>
-      <p class="faq-a">No. It's a daily companion for the day-to-day moments that treatment doesn't always cover, built to sit alongside whatever support you already have. If you've been drinking heavily or daily, talk to a doctor before or as you stop.</p>
-    </div>
-    <div class="faq-item rv">
-      <p class="faq-q">Do I need to identify as an alcoholic to use this?</p>
-      <p class="faq-a">No labels required. The workbook is built for anyone with a question they're ready to take seriously, whatever form it's taken for them.</p>
-    </div>
-  </div>
-</section>
+      <p class="close-copy">The first month can feel weird, emotional, boring, electric, lonely, and wildly clarifying. You do not have to freestyle getting sober.</p>
 
-<section class="final">
-  <div class="final-inner">
-    <span class="eyebrow eyebrow-gold rv">30 pages. One per day.</span>
-    <h2 class="rv">Start the first<br><em>thirty.</em></h2>
-    <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="btn-final rv" target="_blank" rel="noopener">Get instant access &mdash; $17.99</a>
-    <p style="font-size:12px;color:rgba(250,244,232,0.28);letter-spacing:0.04em;margin-top:14px;" class="rv">Digital download. Printable or on-screen.</p>
-  </div>
-</section>
+      <section class="checkout" id="checkout">
+        <p class="eyebrow">Secure Stripe checkout</p>
+        <h2>Get The First Thirty</h2>
+        <p class="price" data-price>$17</p>
+        <a class="button" id="buyButton" href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" target="_blank" rel="noopener">Buy now &rarr;</a>
+        <p class="small">Instant digital download. Yours to keep, print, or fill in on-screen.</p>
+      </section>
 
-<footer>
-  <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
-  <nav class="foot-links" aria-label="Footer">
-    <a href="/">Home</a>
-    <a href="/story/">About</a>
-    <a href="/blog/">Blog</a>
-    <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" target="_blank" rel="noopener">Discovery Call</a>
-  </nav>
-  <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
-</footer>
+      <p class="disclaimer">This toolkit is not medical advice and is not a substitute for professional care. If you have been drinking heavily or daily, stopping suddenly can be medically dangerous. Talk to a doctor before or as you stop.</p>
+    </section>
+  </main>
 
-<div class="sticky-buy" id="stickyBuy">
-  <span class="sticky-price">$17.99<small>workbook</small></span>
-  <a href="https://buy.stripe.com/4gMcN54YI11K8134Xy1ZS01" class="sticky-cta" target="_blank" rel="noopener">Buy now &rarr;</a>
-</div>
-
-<script>
-const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}});},{threshold:0.08});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-const sticky=document.getElementById('stickyBuy');
-const heroEl=document.querySelector('.hero');
-const heroObs=new IntersectionObserver(entries=>{sticky.classList.toggle('on',!entries[0].isIntersecting);},{threshold:0});
-heroObs.observe(heroEl);
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
