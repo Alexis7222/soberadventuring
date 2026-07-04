@@ -116,6 +116,42 @@ blockquote {
   line-height: 1.55;
 }
 
+.testimonial p {
+  margin: 0 0 18px;
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-style: normal;
+}
+
+.testimonial-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--oxblood);
+  color: var(--cream);
+  font-family: Georgia, serif;
+  font-size: .85rem;
+  font-style: normal;
+  letter-spacing: .06em;
+  flex-shrink: 0;
+}
+
+cite {
+  font-family: Inter, ui-sans-serif, sans-serif;
+  font-size: .9rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: .04em;
+}
+
 hr {
   margin: 34px 0;
   border: 0;
