@@ -51,34 +51,21 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .nav-ov.open ul li:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.15s;}
 .nav-ov.open ul li:nth-child(4){opacity:1;transform:translateY(0);transition-delay:0.20s;}
 .nav-ov.open ul li:nth-child(5){opacity:1;transform:translateY(0);transition-delay:0.25s;}
-.nav-ov ul a{display:block;padding:14px 20px;font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(28px,8vw,38px);font-weight:300;color:rgba(250,244,232,0.5);transition:color 0.2s;-webkit-tap-highlight-color:transparent;}
+.nav-ov.open ul li:nth-child(6){opacity:1;transform:translateY(0);transition-delay:0.30s;}
+.nav-ov ul a{display:block;padding:11px 20px;font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(24px,7vw,34px);font-weight:300;color:rgba(250,244,232,0.5);transition:color 0.2s;-webkit-tap-highlight-color:transparent;}
 .nav-ov ul a:active,.nav-ov ul a.ft{color:var(--gold-lt);}
-.nav-ov-cta{margin-top:28px;display:inline-flex;align-items:center;justify-content:center;padding:15px 36px;min-height:52px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;opacity:0;transform:translateY(18px);transition:opacity 0.4s var(--ease),transform 0.4s var(--ease),background 0.2s;-webkit-tap-highlight-color:transparent;}
-.nav-ov.open .nav-ov-cta{opacity:1;transform:translateY(0);transition-delay:0.30s;}
+.nav-ov-cta{margin-top:24px;display:inline-flex;align-items:center;justify-content:center;padding:15px 36px;min-height:52px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;opacity:0;transform:translateY(18px);transition:opacity 0.4s var(--ease),transform 0.4s var(--ease),background 0.2s;-webkit-tap-highlight-color:transparent;}
+.nav-ov.open .nav-ov-cta{opacity:1;transform:translateY(0);transition-delay:0.35s;}
 .nav-ov-cta:active{background:var(--gold-lt);}
 
 .rv{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);}
 .rv.in{opacity:1;transform:translateY(0);}
 .rv[data-d="1"]{transition-delay:0.1s;}.rv[data-d="2"]{transition-delay:0.2s;}.rv[data-d="3"]{transition-delay:0.3s;}
 
-/* HERO */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 24px calc(96px + env(safe-area-inset-bottom));overflow:hidden;}
 .hero-photo{position:absolute;inset:0;z-index:0;}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
-/* Strong overlay so text over light photo is always readable */
-.hero-photo::after{
-  content:'';
-  position:absolute;inset:0;
-  background:
-    linear-gradient(to bottom,
-      rgba(26,10,5,0.45) 0%,
-      rgba(26,10,5,0.25) 20%,
-      rgba(26,10,5,0.55) 50%,
-      rgba(26,10,5,0.93) 75%,
-      rgba(26,10,5,1) 90%),
-    radial-gradient(ellipse 90% 60% at 0% 100%,rgba(107,39,55,0.5) 0%,transparent 55%);
-}
-/* Subtle noise grain */
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,10,5,0.45) 0%,rgba(26,10,5,0.25) 20%,rgba(26,10,5,0.55) 50%,rgba(26,10,5,0.93) 75%,rgba(26,10,5,1) 90%),radial-gradient(ellipse 90% 60% at 0% 100%,rgba(107,39,55,0.5) 0%,transparent 55%);}
 .hero-photo::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:180px 180px;opacity:0.4;pointer-events:none;animation:grain 12s steps(1) infinite;}
 .hero-content{position:relative;z-index:1;max-width:520px;}
 .hero-eye{display:block;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeIn 0.8s var(--ease) 0.4s forwards;}
@@ -104,7 +91,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:scrollPulse 1.8s ease-in-out 2.2s infinite;}
 .scroll-txt{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(250,244,232,0.35);writing-mode:vertical-rl;transform:rotate(180deg);}
 
-/* MIRROR */
 .mirror{background:var(--oxblood);padding:80px 24px;position:relative;overflow:hidden;}
 .mirror::after{content:'';position:absolute;top:0;left:24px;width:60px;height:2px;background:var(--gold);}
 .mirror-inner{position:relative;z-index:1;}
@@ -124,7 +110,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .mirror-join{margin-top:36px;padding-top:28px;border-top:1px solid rgba(250,244,232,0.12);}
 .mirror-join-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(22px,5.5vw,30px);font-weight:600;color:var(--cream);margin-bottom:22px;line-height:1.3;}
 
-/* F30 */
 .f30{background:var(--ink);padding:80px 24px;position:relative;overflow:hidden;}
 .f30::before,.f30::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--oxblood) 30%,var(--gold) 50%,var(--oxblood) 70%,transparent 100%);pointer-events:none;}
 .f30::before{top:0;}.f30::after{bottom:0;}
@@ -141,7 +126,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .feat-p{font-size:14px;font-weight:300;color:rgba(250,244,232,0.45);line-height:1.65;}
 .f30-note{margin-top:16px;font-size:12px;color:rgba(250,244,232,0.25);letter-spacing:0.04em;text-align:center;}
 
-/* ABOUT */
 .about{background:var(--paper);color:var(--ink);padding:80px 24px;position:relative;}
 .about::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--oxblood) 0%,var(--gold) 50%,var(--oxblood) 100%);}
 .about-img{position:relative;margin-bottom:36px;}
@@ -155,17 +139,15 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .about-lnk{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid rgba(26,10,5,0.3);padding-bottom:2px;}
 .about-lnk:active{border-color:var(--ink);}
 
-/* PROOF */
 .proof{background:var(--oxblood-dk);color:var(--cream);padding:80px 24px;position:relative;}
 .proof-inner{position:relative;z-index:1;}
 .proof-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(28px,7vw,44px);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--cream);margin-bottom:36px;}
 .proof-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
-.pcard{padding:26px 22px;background:rgba(250,244,232,0.06);border:1px solid rgba(250,244,232,0.1);position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;}
+.pcard{padding:26px 22px;background:rgba(250,244,232,0.06);border:1px solid rgba(250,244,232,0.1);position:relative;overflow:hidden;}
 .pcard::before{content:'\201C';position:absolute;top:-8px;left:16px;font-family:'Fraunces',serif;font-size:90px;line-height:1;color:rgba(201,169,110,0.1);pointer-events:none;}
 .pcard-txt{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:20px;font-weight:400;font-style:italic;line-height:1.6;color:var(--cream);margin-bottom:18px;}
 .pcard-attr{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
 
-/* GUIDE */
 .guide{background:var(--paper);color:var(--ink);padding:80px 24px;}
 .guide-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(30px,7vw,46px);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px;}
 .guide .eyebrow{color:var(--gold);}
@@ -186,7 +168,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .quiz-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:50px;background:var(--ink);color:var(--cream);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:opacity 0.2s;-webkit-tap-highlight-color:transparent;}
 .quiz-btn:active{opacity:0.82;}
 
-/* BLOG */
 .blog{background:var(--cream);color:var(--ink);padding:80px 24px;}
 .blog .eyebrow{color:var(--oxblood);}
 .blog-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(30px,7vw,46px);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin-bottom:36px;}
@@ -199,7 +180,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}button{c
 .brow:active .barrow{background:var(--oxblood);color:var(--cream);}
 .blog-all{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--oxblood);border-bottom:1px solid rgba(107,39,55,0.3);padding-bottom:2px;}
 
-/* FOOTER CTA */
 .fcta{background:var(--ink);color:var(--cream);padding:80px 24px;position:relative;overflow:hidden;}
 .fcta::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--oxblood) 30%,var(--gold) 50%,var(--oxblood) 70%,transparent);}
 .fcta::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 0% 50%,rgba(107,39,55,0.25) 0%,transparent 55%);pointer-events:none;}
@@ -237,9 +217,9 @@ footer{background:var(--oxblood-dk);padding:40px 24px calc(40px + env(safe-area-
   .nav-ov{position:static;background:none;flex-direction:row;justify-content:flex-end;opacity:1;visibility:visible;}
   .nav-ov ul{flex-direction:row;gap:0;align-items:center;width:auto;}
   .nav-ov ul li{opacity:1;transform:none;width:auto;}
-  .nav-ov ul a{font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:400;color:rgba(250,244,232,0.45);padding:8px 14px;}
+  .nav-ov ul a{font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:400;color:rgba(250,244,232,0.45);padding:8px 12px;}
   .nav-ov ul a:hover{color:var(--cream);}.nav-ov ul a.ft{color:var(--gold);}
-  .nav-ov-cta{opacity:1;transform:none;margin-top:0;margin-left:10px;padding:9px 20px;min-height:36px;font-size:12px;}
+  .nav-ov-cta{opacity:1;transform:none;margin-top:0;margin-left:8px;padding:9px 18px;min-height:36px;font-size:12px;}
   .nav-ov-cta:hover{background:var(--gold-lt);}
   .hero{padding:0 60px 80px;justify-content:center;}.hero-content{max-width:600px;}
   .hero-btns{flex-direction:row;}.scroll-hint{bottom:40px;}
@@ -260,12 +240,12 @@ footer{background:var(--oxblood-dk);padding:40px 24px calc(40px + env(safe-area-
   <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-<!-- Nav overlay — only links to pages that exist -->
 <div class="nav-ov" id="navOv" aria-hidden="true">
   <ul>
     <li><a href="/story/">About</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/the-first-thirty/" class="ft">The First Thirty</a></li>
+    <li><a href="/coaching/">Work With Me</a></li>
     <li><a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Community</a></li>
     <li><a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a></li>
   </ul>
@@ -372,7 +352,7 @@ footer{background:var(--oxblood-dk);padding:40px 24px calc(40px + env(safe-area-
       <span class="gcard-tag">5 question quiz</span>
       <h3 class="gcard-h">What Stage of Recovery Are You In?</h3>
       <p class="gcard-p">Five questions about where you are right now, with a specific next step based on your result.</p>
-      <a href="/blog/" class="quiz-btn">Browse the blog instead &rarr;</a>
+      <a href="/quiz/recovery/" class="quiz-btn">Take the Quiz &rarr;</a>
     </div>
   </div>
 </section>
@@ -396,6 +376,7 @@ footer{background:var(--oxblood-dk);padding:40px 24px calc(40px + env(safe-area-
   <nav class="foot-links" aria-label="Footer">
     <a href="/story/">About</a><a href="/blog/">Blog</a>
     <a href="/the-first-thirty/">The First Thirty</a>
+    <a href="/coaching/">Work With Me</a>
     <a href="https://www.instagram.com/soberadventuring/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://t.me/+wJbhwv2ccS1hMjFh" target="_blank" rel="noopener">Community</a>
   </nav>

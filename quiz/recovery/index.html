@@ -2,434 +2,429 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Stage of Recovery Are You In? · Sober Adventuring</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Recovery Stage Quiz &middot; Sober Adventuring</title>
+<meta name="description" content="5 questions about where you actually are right now, with a specific next step based on your result. No email required.">
+<link rel="canonical" href="https://soberadventuring.com/quiz/recovery/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --ink: #1B0009;
-    --forest: #2D3D24;
-    --terra: #C5442C;
-    --cream: #F4E8D0;
-    --paper: #FBF6EE;
-    --white: #FFFFFF;
-    --muted: #7a6155;
-    --border: rgba(27,0,9,0.1);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Bricolage Grotesque', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+:root{
+  --ink:#1A0A05;--gold:#C9A96E;--gold-lt:#E8C87A;
+  --oxblood:#6B2737;--oxblood-dk:#4A1A26;
+  --cream:#FAF4E8;--paper:#F4EEE4;--muted:#7a6355;--white:#FFFDF8;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Instrument Sans',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100svh;}
+a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:inherit;}
+@keyframes shimmer{from{background-position:200% center;}to{background-position:-200% center;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slideIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
 
-  .back-nav { background: var(--forest); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
-  .back-nav a { font-size: 13px; font-weight: 600; color: var(--cream); text-decoration: none; opacity: 0.8; transition: opacity 0.2s; }
-  .back-nav a:hover { opacity: 1; }
-  .back-nav .site-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--cream); opacity: 0.45; }
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(26,10,5,0.96);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  height:56px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(201,169,110,0.08);
+}
+.nav-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;font-style:italic;color:var(--cream);}
+.nav-logo .g{color:var(--gold);}
+.nav-back{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(250,244,232,0.4);display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;transition:color 0.2s;}
+.nav-back:active{color:var(--cream);}
 
-  .quiz-hero { background: var(--forest); padding: 64px 28px 56px; text-align: center; }
-  .quiz-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,232,208,0.55); margin-bottom: 18px; }
-  .quiz-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(32px, 6vw, 54px); line-height: 1.05; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 16px; }
-  .quiz-hero h1 em { color: #a8c494; font-style: italic; }
-  .quiz-hero p { font-size: 15px; color: rgba(244,232,208,0.5); max-width: 440px; margin: 0 auto 32px; line-height: 1.65; font-style: italic; font-family: 'DM Serif Display', serif; }
-  .quiz-meta { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-  .quiz-meta span { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,232,208,0.35); display: flex; align-items: center; gap: 6px; }
-  .quiz-meta span::before { content: '◆'; color: #a8c494; font-size: 8px; }
+.quiz-wrap{
+  max-width:600px;
+  margin:0 auto;
+  padding:48px 24px calc(80px + env(safe-area-inset-bottom));
+}
 
-  .progress-wrap { max-width: 640px; margin: 0 auto; padding: 32px 28px 0; }
-  .progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .progress-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-  .progress-count { font-family: 'DM Serif Display', serif; font-size: 13px; font-style: italic; color: var(--muted); }
-  .progress-track { height: 3px; background: rgba(27,0,9,0.1); border-radius: 2px; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--forest); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+/* Progress */
+.progress-bar{
+  display:flex;align-items:center;gap:12px;margin-bottom:40px;
+}
+.progress-track{
+  flex:1;height:3px;background:rgba(250,244,232,0.1);border-radius:2px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:var(--gold);border-radius:2px;
+  transition:width 0.4s var(--ease);
+  width:0%;
+}
+.progress-label{
+  font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(250,244,232,0.25);white-space:nowrap;
+}
 
-  .quiz-wrap { max-width: 640px; margin: 0 auto; padding: 40px 28px 80px; }
+/* Intro */
+#introScreen{
+  animation:fadeUp 0.6s var(--ease) both;
+}
+.intro-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.intro-h{
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
+  font-size:clamp(36px,9vw,58px);font-weight:300;line-height:1.0;letter-spacing:-0.02em;
+  color:var(--cream);margin-bottom:18px;
+}
+.intro-h em{font-style:normal;font-weight:600;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 40%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+.intro-sub{font-size:16px;font-weight:300;line-height:1.75;color:rgba(250,244,232,0.5);margin-bottom:36px;}
+.intro-fine{font-size:12px;color:rgba(250,244,232,0.2);margin-top:12px;}
+.btn-start{display:inline-flex;align-items:center;justify-content:center;padding:17px 36px;min-height:54px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:none;transition:background 0.2s;-webkit-tap-highlight-color:transparent;}
+.btn-start:active{background:var(--gold-lt);}
 
-  .question-block { display: none; animation: fadeUp 0.35s ease both; }
-  .question-block.active { display: block; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+/* Question */
+#questionScreen{display:none;}
+#questionScreen.active{display:block;animation:slideIn 0.4s var(--ease) both;}
+.q-num{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.q-text{
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
+  font-size:clamp(22px,5.5vw,32px);font-weight:300;line-height:1.25;
+  color:var(--cream);margin-bottom:28px;
+}
+.options{display:flex;flex-direction:column;gap:10px;}
+.opt{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:18px 16px;
+  background:rgba(250,244,232,0.05);
+  border:1px solid rgba(250,244,232,0.1);
+  border-left:3px solid transparent;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:background 0.2s,border-left-color 0.2s,transform 0.15s;
+  text-align:left;
+  width:100%;
+}
+.opt:active{transform:scale(0.99);}
+.opt.selected{
+  background:rgba(201,169,110,0.1);
+  border-left-color:var(--gold);
+  border-color:rgba(201,169,110,0.25);
+}
+.opt-letter{
+  flex-shrink:0;width:26px;height:26px;
+  border:1px solid rgba(250,244,232,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:600;letter-spacing:0.08em;
+  color:rgba(250,244,232,0.3);
+  margin-top:1px;
+  transition:background 0.2s,color 0.2s,border-color 0.2s;
+}
+.opt.selected .opt-letter{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.opt-text{font-size:15px;font-weight:300;line-height:1.6;color:rgba(250,244,232,0.7);}
+.opt.selected .opt-text{color:var(--cream);}
+.q-next{
+  margin-top:24px;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 32px;min-height:50px;
+  background:rgba(250,244,232,0.08);
+  color:rgba(250,244,232,0.3);
+  font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid rgba(250,244,232,0.1);
+  transition:background 0.2s,color 0.2s,border-color 0.2s;
+  -webkit-tap-highlight-color:transparent;
+  pointer-events:none;
+}
+.q-next.ready{
+  background:var(--oxblood);color:var(--cream);
+  border-color:var(--oxblood);pointer-events:auto;
+}
+.q-next.ready:active{background:var(--oxblood-dk);}
 
-  .question-num { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); margin-bottom: 10px; }
-  .question-text { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 4vw, 30px); line-height: 1.2; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.01em; }
-  .question-text em { color: var(--forest); font-style: italic; }
+/* Result */
+#resultScreen{display:none;}
+#resultScreen.active{display:block;animation:fadeUp 0.5s var(--ease) both;}
+.result-tag{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px;}
+.result-h{
+  font-family:'Fraunces',serif;font-optical-sizing:auto;
+  font-size:clamp(28px,7vw,44px);font-weight:300;line-height:1.1;
+  letter-spacing:-0.02em;color:var(--cream);margin-bottom:20px;
+}
+.result-h em{font-style:normal;font-weight:600;color:var(--gold-lt);}
+.result-body{
+  font-size:16px;font-weight:300;line-height:1.85;
+  color:rgba(250,244,232,0.6);margin-bottom:36px;
+  border-left:3px solid var(--oxblood);
+  padding-left:18px;
+}
+.result-next-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,244,232,0.3);display:block;margin-bottom:14px;}
+.result-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:17px 32px;min-height:54px;
+  background:var(--gold);color:var(--ink);
+  font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  border:none;margin-bottom:12px;
+  transition:background 0.2s;-webkit-tap-highlight-color:transparent;
+  width:100%;
+}
+.result-cta:active{background:var(--gold-lt);}
+.result-sec{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 32px;min-height:50px;
+  background:transparent;color:rgba(250,244,232,0.45);
+  font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid rgba(250,244,232,0.12);
+  transition:border-color 0.2s,color 0.2s;-webkit-tap-highlight-color:transparent;
+  width:100%;
+}
+.result-sec:active{border-color:rgba(250,244,232,0.3);color:var(--cream);}
+.result-retake{margin-top:28px;padding-top:22px;border-top:1px solid rgba(250,244,232,0.07);}
+.result-retake button{background:none;border:none;font-size:12px;color:rgba(250,244,232,0.2);text-decoration:underline;text-underline-offset:3px;-webkit-tap-highlight-color:transparent;}
+.result-retake button:active{color:rgba(250,244,232,0.5);}
 
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; cursor: pointer; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s; display: flex; align-items: flex-start; gap: 14px; text-align: left; }
-  .option:hover { border-color: var(--forest); box-shadow: 0 2px 16px rgba(45,61,36,0.1); }
-  .option.selected { border-color: var(--forest); background: rgba(45,61,36,0.04); }
-  .option-dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(27,0,9,0.25); flex-shrink: 0; margin-top: 1px; transition: all 0.18s; display: flex; align-items: center; justify-content: center; }
-  .option.selected .option-dot { background: var(--forest); border-color: var(--forest); }
-  .option.selected .option-dot::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
-  .option-text { font-size: 15px; line-height: 1.5; color: var(--ink); font-weight: 500; }
-  .option-sub { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 400; line-height: 1.4; }
+footer{background:var(--oxblood-dk);padding:36px 24px;margin-top:0;}
+.foot-logo{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:17px;font-weight:300;font-style:italic;color:rgba(250,244,232,0.35);display:block;margin-bottom:14px;}
+.foot-logo span{color:var(--gold);}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:18px;}
+.foot-links a{font-size:12px;color:rgba(250,244,232,0.3);transition:color 0.2s;}
+.foot-links a:active{color:var(--cream);}
+.foot-copy{font-size:11px;color:rgba(250,244,232,0.15);}
 
-  .btn-next { margin-top: 24px; display: inline-block; background: var(--forest); color: var(--cream); font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.02em; border: none; padding: 14px 28px; cursor: pointer; transition: opacity 0.2s; opacity: 0; pointer-events: none; }
-  .btn-next.visible { opacity: 1; pointer-events: all; }
-  .btn-next:hover { opacity: 0.88; }
-
-  .email-input { width: 100%; max-width: 400px; border: 1.5px solid rgba(27,0,9,0.15); background: var(--white); padding: 14px 16px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; color: var(--ink); outline: none; display: block; margin-bottom: 10px; }
-  .email-input:focus { border-color: var(--forest); }
-  .email-error { font-size: 12px; color: var(--terra); margin-bottom: 8px; display: none; }
-  .email-submit { background: var(--forest); color: var(--cream); font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; border: none; padding: 14px 28px; cursor: pointer; transition: opacity 0.2s; display: block; margin-top: 4px; }
-  .email-submit:hover { opacity: 0.88; }
-  .email-skip { background: none; border: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; padding: 0; margin-top: 12px; display: block; }
-  .email-skip:hover { color: var(--ink); }
-
-  .result-block { display: none; animation: fadeUp 0.4s ease both; }
-  .result-block.active { display: block; }
-  .result-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); margin-bottom: 10px; }
-  .result-heading { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 42px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; }
-  .result-heading em { color: var(--forest); font-style: italic; }
-  .result-body { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 32px; max-width: 500px; }
-  .result-body strong { color: var(--ink); font-weight: 600; }
-  .result-card { background: var(--white); border: 2px solid var(--forest); border-radius: 12px; padding: 28px; margin-bottom: 16px; }
-  .result-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--forest); margin-bottom: 6px; }
-  .result-card h3 { font-family: 'DM Serif Display', serif; font-size: 22px; font-style: italic; color: var(--ink); margin-bottom: 8px; }
-  .result-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-  .result-cta { display: inline-block; background: var(--forest); color: var(--cream); font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; padding: 13px 24px; transition: opacity 0.2s; }
-  .result-cta:hover { opacity: 0.88; }
-  .result-cta.ghost { background: transparent; border: 1.5px solid var(--forest); color: var(--forest); }
-  .retake { margin-top: 24px; font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; background: none; border: none; font-family: 'Bricolage Grotesque', sans-serif; }
-  .retake:hover { color: var(--ink); }
-  .caveat-note { font-family: 'Caveat', cursive; font-size: 18px; font-weight: 700; color: rgba(27,0,9,0.3); margin-bottom: 20px; }
+@media(min-width:640px){
+  .quiz-wrap{padding:64px 48px 100px;}
+  .options{gap:12px;}
+}
 </style>
 </head>
 <body>
-
-<div class="back-nav">
-  <a href="/">&#8592; soberadventuring.com</a>
-  <span class="site-name">Sober<em style="font-style:italic;color:#a8c494;">Adventuring.</em></span>
-</div>
-
-<div class="quiz-hero">
-  <p class="quiz-eyebrow">5 questions &middot; 2 minutes</p>
-  <h1>What stage of recovery<br><em>are you in?</em></h1>
-  <p>There are no wrong answers here, + the result will point you toward something useful for where you are.</p>
-  <div class="quiz-meta">
-    <span>Free</span>
-    <span>Instant result</span>
-    <span>No labels required</span>
-  </div>
-</div>
-
-<div class="progress-wrap">
-  <div class="progress-row">
-    <span class="progress-label">Your progress</span>
-    <span class="progress-count" id="progressCount">Question 1 of 5</span>
-  </div>
-  <div class="progress-track">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-</div>
+<nav class="nav">
+  <a href="/" class="nav-logo"><span class="g">Sober</span>Adventuring.</a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg>
+    Home
+  </a>
+</nav>
 
 <div class="quiz-wrap">
-
-  <!-- Q1 -->
-  <div class="question-block active" id="q1">
-    <p class="question-num">Question 01</p>
-    <h2 class="question-text">Where are you in your <em>sobriety right now?</em></h2>
-    <div class="options">
-      <div class="option" data-q="1" data-val="a">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">I&rsquo;m just starting out or seriously thinking about it</div>
-          <div class="option-sub">First few weeks, or still figuring out if this is what I want</div>
-        </div>
-      </div>
-      <div class="option" data-q="1" data-val="b">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">I&rsquo;ve been sober for a few months and want to stay that way</div>
-          <div class="option-sub">The foundation is there but it still feels fragile some days</div>
-        </div>
-      </div>
-      <div class="option" data-q="1" data-val="c">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">I&rsquo;ve been sober for a while and feel stuck or like something&rsquo;s off</div>
-          <div class="option-sub">Sober for a year or more, but life hasn&rsquo;t changed as much as I hoped</div>
-        </div>
-      </div>
-    </div>
-    <button class="btn-next" onclick="nextQ(1)">Next &rarr;</button>
+  <div class="progress-bar" id="progressBar" style="display:none">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-label" id="progressLabel">1 of 5</span>
   </div>
 
-  <!-- Q2 -->
-  <div class="question-block" id="q2">
-    <p class="question-num">Question 02</p>
-    <h2 class="question-text">What&rsquo;s your biggest challenge <em>day to day?</em></h2>
-    <div class="options">
-      <div class="option" data-q="2" data-val="a">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Cravings and getting through each day without drinking</div>
-          <div class="option-sub">The pull is still strong and I don&rsquo;t always know what to do with it</div>
-        </div>
-      </div>
-      <div class="option" data-q="2" data-val="b">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">The emotions are more intense than I expected</div>
-          <div class="option-sub">Things I used to numb are coming up and I don&rsquo;t always know what to do with them</div>
-        </div>
-      </div>
-      <div class="option" data-q="2" data-val="c">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">I&rsquo;m staying sober but something still feels empty or off</div>
-          <div class="option-sub">The drinking stopped but life doesn&rsquo;t feel that different yet</div>
-        </div>
-      </div>
-    </div>
-    <button class="btn-next" onclick="nextQ(2)">Next &rarr;</button>
+  <!-- Intro -->
+  <div id="introScreen">
+    <span class="intro-eyebrow">5-question quiz</span>
+    <h1 class="intro-h">Where are you,<br><em>really?</em></h1>
+    <p class="intro-sub">Five honest questions about where you are right now. No right answers, no scoring rubric you need to game. You get a specific next step at the end based on what you said.</p>
+    <button class="btn-start" id="startBtn">Start the Quiz &rarr;</button>
+    <p class="intro-fine">No email required. Takes about 2 minutes.</p>
   </div>
 
-  <!-- Q3 -->
-  <div class="question-block" id="q3">
-    <p class="question-num">Question 03</p>
-    <h2 class="question-text">What kind of support <em>feels most useful?</em></h2>
-    <div class="options">
-      <div class="option" data-q="3" data-val="a">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Someone to check in with and basic tools to stay on track</div>
-          <div class="option-sub">I need structure and a point of contact more than anything</div>
-        </div>
-      </div>
-      <div class="option" data-q="3" data-val="b">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Accountability and help making sense of the harder feelings</div>
-          <div class="option-sub">I want to work through what&rsquo;s underneath the drinking</div>
-        </div>
-      </div>
-      <div class="option" data-q="3" data-val="c">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Deeper work on who I want to be and what I want next</div>
-          <div class="option-sub">I&rsquo;m past the basics and need help building something real</div>
-        </div>
-      </div>
-    </div>
-    <button class="btn-next" onclick="nextQ(3)">Next &rarr;</button>
+  <!-- Question -->
+  <div id="questionScreen">
+    <span class="q-num" id="qNum">Question 1 of 5</span>
+    <p class="q-text" id="qText"></p>
+    <div class="options" id="optionsWrap"></div>
+    <button class="q-next" id="nextBtn">Next &rarr;</button>
   </div>
 
-  <!-- Q4 -->
-  <div class="question-block" id="q4">
-    <p class="question-num">Question 04</p>
-    <h2 class="question-text">How&rsquo;s your <em>support system?</em></h2>
-    <div class="options">
-      <div class="option" data-q="4" data-val="a">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Mostly going at this alone right now</div>
-          <div class="option-sub">I don&rsquo;t have many people in my life who understand what this is like</div>
-        </div>
-      </div>
-      <div class="option" data-q="4" data-val="b">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">I have some people but nobody who really gets it</div>
-          <div class="option-sub">Support exists but it&rsquo;s surface-level and I need something more</div>
-        </div>
-      </div>
-      <div class="option" data-q="4" data-val="c">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">I have support but I&rsquo;ve kind of outgrown some of it</div>
-          <div class="option-sub">The connections are there but I&rsquo;m ready for something different</div>
-        </div>
-      </div>
-    </div>
-    <button class="btn-next" onclick="nextQ(4)">Next &rarr;</button>
+  <!-- Result -->
+  <div id="resultScreen">
+    <span class="result-tag" id="resultTag"></span>
+    <h2 class="result-h" id="resultH"></h2>
+    <p class="result-body" id="resultBody"></p>
+    <span class="result-next-label">Your next step</span>
+    <a id="resultCta" href="#" class="result-cta"></a>
+    <a id="resultSec" href="#" class="result-sec"></a>
+    <div class="result-retake"><button id="retakeBtn">Retake the quiz</button></div>
   </div>
-
-  <!-- Q5 -->
-  <div class="question-block" id="q5">
-    <p class="question-num">Question 05</p>
-    <h2 class="question-text">What would make the <em>biggest difference</em> right now?</h2>
-    <div class="options">
-      <div class="option" data-q="5" data-val="a">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Knowing what to expect and having a clear, simple plan</div>
-          <div class="option-sub">I just need to know I&rsquo;m doing this right and what comes next</div>
-        </div>
-      </div>
-      <div class="option" data-q="5" data-val="b">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Someone in my corner who can help me work through the hard parts</div>
-          <div class="option-sub">Real support from someone who understands what this involves</div>
-        </div>
-      </div>
-      <div class="option" data-q="5" data-val="c">
-        <div class="option-dot"></div>
-        <div>
-          <div class="option-text">Building a life I&rsquo;m excited about being present for</div>
-          <div class="option-sub">Sobriety is the foundation, and I&rsquo;m ready to build something on top of it</div>
-        </div>
-      </div>
-    </div>
-    <button class="btn-next" onclick="onQ5Next()">See my result &rarr;</button>
-  </div>
-
-  <!-- EMAIL CAPTURE -->
-  <div class="question-block" id="email-capture">
-    <p class="question-num">Last step</p>
-    <h2 class="question-text">Where should we send your <em>result and resources?</em></h2>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;">Based on your answers, you&rsquo;ll get a specific next step + resources matched to where you are, rather than a generic recommendation.</p>
-    <input type="email" id="leadEmail" class="email-input" placeholder="Your email address" oninput="document.getElementById('emailError').style.display='none'">
-    <p id="emailError" class="email-error">Please enter a valid email address.</p>
-    <input type="text" id="leadName" class="email-input" placeholder="First name (optional)">
-    <button class="email-submit" onclick="submitLead()">Get my result &rarr;</button>
-    <button class="email-skip" onclick="skipEmail()">Skip, just show my result</button>
-  </div>
-
-  <!-- RESULT A: Early Stage -->
-  <div class="result-block" id="result-a">
-    <p class="caveat-note">your result</p>
-    <p class="result-eyebrow">Early stage</p>
-    <h2 class="result-heading">You&rsquo;re doing harder things<br>than you <em>might realize.</em></h2>
-    <p class="result-body">
-      The first stretch of sobriety may be the most disorienting part, because you&rsquo;re dealing with the physical + emotional side all at once, + most people try to do it without enough support. The goal at this stage tends to be simple: stay sober today, and have somewhere to go when it gets hard.
-      <br><br>
-      <strong>The free guide and the community are both good places to start,</strong> and if you want to talk to someone one-on-one about where you are, the Clarity Call is 20 minutes and free.
-    </p>
-    <div class="result-card">
-      <p class="result-card-label">Good starting points for you</p>
-      <h3>Free Guide + Community</h3>
-      <p>The guide covers 25 things that tend to help in early sobriety, and the Telegram community is where people who get it are talking. Neither requires anything from you.</p>
-      <a href="/#guide" class="result-cta">Get the free guide &rarr;</a>
-    </div>
-    <div class="result-card" style="border-color:rgba(27,0,9,0.15);margin-top:12px">
-      <p class="result-card-label" style="color:var(--muted)">If you want to talk to someone</p>
-      <h3>The Clarity Call</h3>
-      <p>Free 20-minute conversation about where you are and what the next real step might look like.</p>
-      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta ghost">Book the free call &rarr;</a>
-    </div>
-    <button class="retake" onclick="retake()">Retake the quiz</button>
-  </div>
-
-  <!-- RESULT B: Building Stage -->
-  <div class="result-block" id="result-b">
-    <p class="caveat-note">your result</p>
-    <p class="result-eyebrow">Building stage</p>
-    <h2 class="result-heading">You&rsquo;ve got the foundation.<br>Now you may need <em>to build on it.</em></h2>
-    <p class="result-body">
-      Getting through the early stage is real work, and you&rsquo;ve done it, and the next challenge tends to be different: it&rsquo;s less about surviving each day and more about working through what was underneath the drinking + building habits that make sobriety feel worth it. This is where coaching tends to help more than most people expect.
-      <br><br>
-      <strong>The ALIVE Method</strong> is built for exactly where you are, structured around what&rsquo;s getting in the way + focused on building something worth being present for.
-    </p>
-    <div class="result-card">
-      <p class="result-card-label">Recommended for you</p>
-      <h3>Sobriety Coaching: ALIVE Method</h3>
-      <p>1:1 coaching with Alexis, built on four years in clinical recovery spaces + her own sobriety. Three months, all pathways supported.</p>
-      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta">Book a free clarity call &rarr;</a>
-    </div>
-    <button class="retake" onclick="retake()">Retake the quiz</button>
-  </div>
-
-  <!-- RESULT C: Growth Stage -->
-  <div class="result-block" id="result-c">
-    <p class="caveat-note">your result</p>
-    <p class="result-eyebrow">Growth stage</p>
-    <h2 class="result-heading">You&rsquo;re ready for<br>the <em>next chapter.</em></h2>
-    <p class="result-body">
-      You&rsquo;ve built real sobriety and you know it, and what may be missing now is a life that matches what you&rsquo;re capable of. This stage tends to be about identity and direction rather than survival, and having someone to work through that with who understands the recovery context can make a significant difference.
-      <br><br>
-      <strong>A Clarity Call</strong> is a good place to start, because it&rsquo;s 20 minutes of honest conversation about where you are + what the next move might look like.
-    </p>
-    <div class="result-card">
-      <p class="result-card-label">Recommended for you</p>
-      <h3>The Clarity Call</h3>
-      <p>Free 20 minutes with Alexis to figure out where you are + what building the next chapter might look like for you.</p>
-      <a href="https://calendly.com/alexis-m-antonelli/freediscoverycall" class="result-cta">Book the free call &rarr;</a>
-    </div>
-    <button class="retake" onclick="retake()">Retake the quiz</button>
-  </div>
-
 </div>
 
+<footer>
+  <a href="/" class="foot-logo"><span>Sober</span>Adventuring.</a>
+  <nav class="foot-links" aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/story/">About</a>
+    <a href="/the-first-thirty/">The First Thirty</a>
+    <a href="/coaching/">Work With Me</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+  <p class="foot-copy">&copy; 2026 Sober Adventuring &middot; Chiang Mai, Thailand</p>
+</footer>
+
 <script>
-  var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
-  var answers = {};
-  var computedResult = '';
+var QUESTIONS=[
+  {
+    text:"How often do you think about your relationship with alcohol?",
+    opts:[
+      {l:"A",t:"Rarely — it's not something that crosses my mind much.",s:0},
+      {l:"B",t:"Sometimes, usually after a night that didn't go the way I planned.",s:1},
+      {l:"C",t:"Often. It feels like background noise I can't quite turn off.",s:2},
+      {l:"D",t:"Constantly — it's one of the first things I think about.",s:3}
+    ]
+  },
+  {
+    text:"When you picture your life six months from now, alcohol is...",
+    opts:[
+      {l:"A",t:"Just there, same as it has always been.",s:0},
+      {l:"B",t:"Something I'm curious about stepping back from.",s:1},
+      {l:"C",t:"Something I'd really like to have a different relationship with.",s:2},
+      {l:"D",t:"Something I need to address, and I know it.",s:3}
+    ]
+  },
+  {
+    text:"Have you tried to cut back or stop before?",
+    opts:[
+      {l:"A",t:"No — I haven't felt the need to.",s:0},
+      {l:"B",t:"I've thought about it but haven't made any moves yet.",s:1},
+      {l:"C",t:"Yes, and it was harder than I expected it to be.",s:2},
+      {l:"D",t:"Yes, more than once, and I've struggled to make it stick.",s:3}
+    ]
+  },
+  {
+    text:"When something goes wrong, your first instinct is to...",
+    opts:[
+      {l:"A",t:"Deal with it directly — alcohol isn't really part of how I cope.",s:0},
+      {l:"B",t:"Have a drink to take the edge off, which I've started noticing.",s:1},
+      {l:"C",t:"Have a drink — it's usually the quickest way to feel better.",s:2},
+      {l:"D",t:"Drink until the feeling goes away, and I'm aware that's a problem.",s:3}
+    ]
+  },
+  {
+    text:"What feels most true right now?",
+    opts:[
+      {l:"A",t:"I'm here out of curiosity — I don't really think I have a problem.",s:0},
+      {l:"B",t:"Something feels off but I haven't put my finger on it yet.",s:1},
+      {l:"C",t:"I know I need to make a change but I'm not sure where to start.",s:2},
+      {l:"D",t:"I'm ready to take this seriously and I want real support.",s:3}
+    ]
+  }
+];
 
-  document.querySelectorAll('.option').forEach(function(opt) {
-    opt.addEventListener('click', function() {
-      var q = this.dataset.q;
-      document.querySelectorAll('.option[data-q="' + q + '"]').forEach(function(o) { o.classList.remove('selected'); });
-      this.classList.add('selected');
-      answers[q] = this.dataset.val;
-      var btn = document.querySelector('#q' + q + ' .btn-next');
-      if (btn) btn.classList.add('visible');
+var RESULTS=[
+  {
+    tag:"Curious — you're in the right place",
+    h:"Something brought you<br>here for a <em>reason.</em>",
+    body:"You don't have a dramatic story and you're not sure you need one. But you're here, which means part of you has been paying attention. The First 30 is built for exactly this moment — before it feels urgent, when you still have room to look at it clearly.",
+    ctaText:"Start The First 30: Free",
+    ctaHref:"/the-first-thirty/",
+    secText:"Read Lexi's story first",
+    secHref:"/story/"
+  },
+  {
+    tag:"Noticing — the most important stage",
+    h:"You're already asking<br>the right <em>question.</em>",
+    body:"You're in the noticing stage, and that matters more than it sounds. Most people spend years brushing past this exact feeling. The First 30 gives you 30 days to find out what's true before you have to decide anything, label anything, or tell anyone.",
+    ctaText:"Start The First 30: Free",
+    ctaHref:"/the-first-thirty/",
+    secText:"Browse the blog first",
+    secHref:"/blog/"
+  },
+  {
+    tag:"Aware — you know what this is",
+    h:"You don't need more<br>convincing. You need a <em>container.</em>",
+    body:"You already know. The question has been answered — what you need now is somewhere to put the first 30 days. The First 30 gives you a structure, a community, and prompts built for women who are ready to start without having to figure out what to call it first.",
+    ctaText:"Start The First 30: Free",
+    ctaHref:"/the-first-thirty/",
+    secText:"Talk to Lexi 1-on-1",
+    secHref:"/coaching/"
+  },
+  {
+    tag:"Ready — you want real support",
+    h:"You're past wondering.<br>Let's <em>talk.</em>",
+    body:"You're not here to be curious about it anymore — you're here because you want to do something about it, and you want someone in your corner while you do. Start with a free discovery call with Lexi, and do The First 30 alongside it.",
+    ctaText:"Book a Free Discovery Call",
+    ctaHref:"https://calendly.com/alexis-m-antonelli/freediscoverycall",
+    secText:"Start The First 30 while you wait",
+    secHref:"/the-first-thirty/"
+  }
+];
+
+var answers=[];
+var currentQ=0;
+
+var introScreen=document.getElementById('introScreen');
+var questionScreen=document.getElementById('questionScreen');
+var resultScreen=document.getElementById('resultScreen');
+var progressBar=document.getElementById('progressBar');
+var progressFill=document.getElementById('progressFill');
+var progressLabel=document.getElementById('progressLabel');
+var qNum=document.getElementById('qNum');
+var qText=document.getElementById('qText');
+var optionsWrap=document.getElementById('optionsWrap');
+var nextBtn=document.getElementById('nextBtn');
+
+function showQuestion(idx){
+  var q=QUESTIONS[idx];
+  qNum.textContent='Question '+(idx+1)+' of '+QUESTIONS.length;
+  qText.textContent=q.text;
+  optionsWrap.innerHTML='';
+  answers[idx]=null;
+  nextBtn.classList.remove('ready');
+  progressFill.style.width=((idx/QUESTIONS.length)*100)+'%';
+  progressLabel.textContent=(idx+1)+' of '+QUESTIONS.length;
+  q.opts.forEach(function(opt,i){
+    var btn=document.createElement('button');
+    btn.className='opt';
+    btn.setAttribute('data-score',opt.s);
+    btn.setAttribute('data-idx',i);
+    btn.innerHTML='<span class="opt-letter">'+opt.l+'</span><span class="opt-text">'+opt.t+'</span>';
+    btn.addEventListener('click',function(){
+      optionsWrap.querySelectorAll('.opt').forEach(function(b){b.classList.remove('selected');});
+      btn.classList.add('selected');
+      answers[idx]=parseInt(opt.s);
+      nextBtn.classList.add('ready');
+      nextBtn.textContent=idx===QUESTIONS.length-1?'See My Result &rarr;':'Next &rarr;';
     });
+    optionsWrap.appendChild(btn);
   });
+  questionScreen.classList.remove('active');
+  void questionScreen.offsetWidth;
+  questionScreen.classList.add('active');
+}
 
-  function nextQ(current) {
-    if (!answers[current]) return;
-    document.getElementById('q' + current).classList.remove('active');
-    document.getElementById('q' + (current + 1)).classList.add('active');
-    updateProgress(current + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+function showResult(){
+  var total=answers.reduce(function(a,b){return a+(b||0);},0);
+  var avg=total/QUESTIONS.length;
+  var idx=avg<=0.5?0:avg<=1.5?1:avg<=2.3?2:3;
+  var r=RESULTS[idx];
+  document.getElementById('resultTag').textContent=r.tag;
+  document.getElementById('resultH').innerHTML=r.h;
+  document.getElementById('resultBody').textContent=r.body;
+  var cta=document.getElementById('resultCta');
+  cta.textContent=r.ctaText;cta.href=r.ctaHref;
+  if(r.ctaHref.startsWith('http')){cta.setAttribute('target','_blank');cta.setAttribute('rel','noopener');}
+  var sec=document.getElementById('resultSec');
+  sec.textContent=r.secText;sec.href=r.secHref;
+  progressFill.style.width='100%';
+  progressLabel.textContent='Done';
+  questionScreen.classList.remove('active');
+  resultScreen.style.display='block';
+  resultScreen.classList.remove('active');
+  void resultScreen.offsetWidth;
+  resultScreen.classList.add('active');
+  if(typeof gtag!=='undefined')gtag('event','quiz_complete',{result_index:idx});
+}
+
+document.getElementById('startBtn').addEventListener('click',function(){
+  introScreen.style.display='none';
+  progressBar.style.display='flex';
+  questionScreen.style.display='block';
+  showQuestion(0);
+});
+
+nextBtn.addEventListener('click',function(){
+  if(answers[currentQ]===null||answers[currentQ]===undefined)return;
+  currentQ++;
+  if(currentQ<QUESTIONS.length){
+    showQuestion(currentQ);
+  } else {
+    showResult();
   }
+});
 
-  function updateProgress(q) {
-    document.getElementById('progressFill').style.width = (((q - 1) / 5) * 100) + '%';
-    document.getElementById('progressCount').textContent = 'Question ' + q + ' of 5';
-  }
-
-  function onQ5Next() {
-    if (!answers[5]) return;
-    var score = 0;
-    var map = { a: 1, b: 2, c: 3 };
-    for (var q in answers) { score += map[answers[q]] || 0; }
-    if (score <= 8)       computedResult = 'result-a';
-    else if (score <= 11) computedResult = 'result-b';
-    else                  computedResult = 'result-c';
-    document.getElementById('q5').classList.remove('active');
-    document.getElementById('email-capture').classList.add('active');
-    document.getElementById('progressFill').style.width = '90%';
-    document.getElementById('progressCount').textContent = 'Last step';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function submitLead() {
-    var email = document.getElementById('leadEmail').value.trim();
-    if (!email || !email.includes('@')) { document.getElementById('emailError').style.display = 'block'; return; }
-    var name = document.getElementById('leadName').value.trim();
-    fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, name: name, result: computedResult })
-    }).catch(function() {});
-    showResultBlock();
-  }
-
-  function skipEmail() { showResultBlock(); }
-
-  function showResultBlock() {
-    document.getElementById('email-capture').classList.remove('active');
-    document.getElementById(computedResult).classList.add('active');
-    document.getElementById('progressFill').style.width = '100%';
-    document.getElementById('progressCount').textContent = 'Complete';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function retake() {
-    answers = {}; computedResult = '';
-    document.querySelectorAll('.question-block, .result-block').forEach(function(el) { el.classList.remove('active'); });
-    document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
-    document.querySelectorAll('.btn-next').forEach(function(b) { b.classList.remove('visible'); });
-    document.getElementById('leadEmail').value = '';
-    document.getElementById('leadName').value = '';
-    document.getElementById('emailError').style.display = 'none';
-    document.getElementById('q1').classList.add('active');
-    updateProgress(1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  updateProgress(1);
+document.getElementById('retakeBtn').addEventListener('click',function(){
+  answers=[];currentQ=0;
+  resultScreen.style.display='none';
+  resultScreen.classList.remove('active');
+  introScreen.style.display='block';
+  progressBar.style.display='none';
+  progressFill.style.width='0%';
+});
 </script>
 </body>
 </html>
