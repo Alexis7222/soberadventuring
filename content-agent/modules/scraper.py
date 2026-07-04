@@ -6,9 +6,9 @@ import requests
 from datetime import datetime
 from pathlib import Path
 
-APIPY_API_TOKEN = os.environ.get("APIFY_API_TOKEN", "")
-APIPY_BASE_URL = "https://api.apify.com/v2"
-APIPY_ACTOR = "nH2AHrwxeTRJoN5hX"
+APIFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN", "")
+APIFY_BASE_URL = "https://api.apify.com/v2"
+APIFY_ACTOR = "nH2AHrwxeTRJoN5hX"
 
 OWN_ACCOUNT = "soberadventuring"
 
