@@ -193,6 +193,9 @@ const QUERY = `{
         images(first: 1) {
           edges { node { url altText } }
         }
+        variants(first: 1) {
+          edges { node { id } }
+        }
       }
     }
   }
@@ -202,10 +205,18 @@ function fmt(amount, currency) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(parseFloat(amount));
 }
 
+function variantNumericId(gid) {
+  return gid ? gid.split('/').pop() : null;
+}
+
 function card(p) {
-  const img   = p.images.edges[0]?.node;
-  const price = p.priceRange.minVariantPrice;
-  const url   = p.onlineStoreUrl || `https://${DOMAIN}/products/${p.handle}`;
+  const img       = p.images.edges[0]?.node;
+  const price     = p.priceRange.minVariantPrice;
+  const variantGid = p.variants?.edges[0]?.node?.id;
+  const vid       = variantNumericId(variantGid);
+  const url       = vid
+    ? `https://${DOMAIN}/cart/${vid}:1`
+    : (p.onlineStoreUrl || `https://${DOMAIN}/products/${p.handle}`);
   const avail = p.availableForSale;
   return `<a href="${url}" target="_blank" rel="noopener" class="product-card fade-up${avail ? '' : ' product-unavail'}" aria-label="${p.title}">
     <div class="product-img-wrap">
