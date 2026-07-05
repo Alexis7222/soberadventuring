@@ -186,7 +186,6 @@ const QUERY = `{
         title
         handle
         availableForSale
-        onlineStoreUrl
         priceRange {
           minVariantPrice { amount currencyCode }
         }
@@ -216,7 +215,7 @@ function card(p) {
   const vid       = variantNumericId(variantGid);
   const url       = vid
     ? `https://${DOMAIN}/cart/${vid}:1`
-    : (p.onlineStoreUrl || `https://${DOMAIN}/products/${p.handle}`);
+    : `https://${DOMAIN}/products/${p.handle}`;
   const avail = p.availableForSale;
   return `<a href="${url}" target="_blank" rel="noopener" class="product-card fade-up${avail ? '' : ' product-unavail'}" aria-label="${p.title}">
     <div class="product-img-wrap">
