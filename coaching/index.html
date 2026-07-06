@@ -90,6 +90,14 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:inherit;
 }
 .icard-q{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:19px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.3;}
 .icard-a{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);}
+.voices{background:var(--white);padding:72px 24px;border-top:1px solid rgba(26,10,5,0.06);}
+.voices .sec-h{color:var(--ink);}
+.voices .sec-h em{color:var(--oxblood);}
+.voices-inner{display:flex;flex-direction:column;gap:16px;}
+.vcard{padding:26px 24px;background:var(--paper);border-left:3px solid var(--oxblood);position:relative;overflow:hidden;}
+.vcard::before{content:'\201C';position:absolute;top:-4px;left:14px;font-family:'Fraunces',serif;font-size:72px;line-height:1;color:rgba(107,39,55,0.1);pointer-events:none;}
+.vcard-txt{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(17px,4vw,21px);font-weight:400;font-style:italic;line-height:1.65;color:var(--ink);margin-bottom:14px;}
+.vcard-attr{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--oxblood);}
 
 .what{background:var(--ink);padding:72px 24px;position:relative;overflow:hidden;}
 .what::before{content:'';position:absolute;bottom:-60px;right:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(107,39,55,0.2) 0%,transparent 70%);pointer-events:none;}
@@ -130,14 +138,14 @@ footer{background:var(--oxblood-dk);padding:36px 24px;border-top:1px solid rgba(
 
 @media(min-width:640px){
   .hero{padding:96px 48px 80px;}
-  .for-you{padding:96px 48px;}.what{padding:96px 48px;}
+  .for-you{padding:96px 48px;}.voices{padding:96px 48px;}.what{padding:96px 48px;}
   .not-for{padding:96px 48px;}.cta-sec{padding:100px 48px;}
   footer{padding:44px 48px;}
-  .if-cards{flex-direction:row;gap:16px;}.icard{flex:1;}
+  .if-cards{flex-direction:row;gap:16px;}.icard{flex:1;}.voices-inner{flex-direction:row;gap:20px;}.vcard{flex:1;}
 }
 @media(min-width:900px){
   .hero{padding:100px 60px 88px;}
-  .for-you{padding:100px 60px;}.what{padding:100px 60px;}
+  .for-you{padding:100px 60px;}.voices{padding:100px 60px;}.what{padding:100px 60px;}
   .not-for{padding:100px 60px;}.cta-sec{padding:100px 60px;}
   footer{padding:48px 60px;}
   .what-rows{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;}
@@ -158,7 +166,7 @@ footer{background:var(--oxblood-dk);padding:36px 24px;border-top:1px solid rgba(
   <div class="hero-inner">
     <span class="eyebrow">Work With Me</span>
     <h1>A conversation,<br>not a <em>curriculum.</em></h1>
-    <p class="hero-sub">1-on-1 calls for women who want to talk through where they actually are, with someone who has been there, and isn't going to hand them a worksheet about it.</p>
+    <p class="hero-sub">1-on-1 calls for women who want to talk through where they are, with someone who has been there, and isn't going to hand them a worksheet about it.</p>
   </div>
 </section>
 
@@ -168,11 +176,24 @@ footer{background:var(--oxblood-dk);padding:36px 24px;border-top:1px solid rgba(
   <div class="if-cards">
     <div class="icard rv">
       <p class="icard-q">&ldquo;I don&rsquo;t think I have a problem, but I think about it more than I want to.&rdquo;</p>
-      <p class="icard-a">That gap between what you tell people and what you actually think about at 2am — that&rsquo;s usually where the real question lives, and it&rsquo;s worth looking at it directly.</p>
     </div>
     <div class="icard rv" data-d="1">
       <p class="icard-q">&ldquo;I&rsquo;ve tried before. I lasted a few weeks and then something happened and I went back.&rdquo;</p>
-      <p class="icard-a">The going back is interesting data, and most people never sit with it long enough to understand it. A lot of what we do in these calls is just that: slow down the story you&rsquo;ve told yourself about why it didn&rsquo;t work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="voices">
+  <span class="eyebrow rv" style="color:var(--oxblood);">What women say</span>
+  <h2 class="sec-h rv">From the first call to<br>months <em>in.</em></h2>
+  <div class="voices-inner">
+    <div class="vcard rv">
+      <p class="vcard-txt">&ldquo;I&rsquo;ve been the person who has everything figured out, publicly, for a long time, and the first call with Lexi was the first time in years I said something true out loud that I hadn&rsquo;t already pre-packaged into something acceptable.&rdquo;</p>
+      <span class="vcard-attr">K., 38</span>
+    </div>
+    <div class="vcard rv" data-d="1">
+      <p class="vcard-txt">&ldquo;I didn&rsquo;t need saving. I needed someone who could see the gap between what I was saying and what was true, without treating it like an emergency, and that&rsquo;s exactly what I got.&rdquo;</p>
+      <span class="vcard-attr">T., 31</span>
     </div>
   </div>
 </section>
@@ -184,15 +205,15 @@ footer{background:var(--oxblood-dk);padding:36px 24px;border-top:1px solid rgba(
     <div class="what-rows">
       <div class="wrow rv">
         <span class="wrow-num">01</span>
-        <div><p class="wrow-h">We start with where you actually are</p><p class="wrow-p">Not where you think you should be, and not with a framework I&rsquo;m trying to fit you into. The first call is just: what brought you here, and what are you hoping comes out of this.</p></div>
+        <div><p class="wrow-h">We start with where you are</p><p class="wrow-p">Not where you think you should be, and not with a framework I&rsquo;m trying to fit you into. The first call is just: what brought you here, and what are you hoping comes out of this.</p></div>
       </div>
       <div class="wrow rv" data-d="1">
         <span class="wrow-num">02</span>
-        <div><p class="wrow-h">I bring lived experience, not a script</p><p class="wrow-p">Six years of failed attempts, a lot of close calls, and two years on the other side of it. I know what the conversation sounds like from both seats, and I&rsquo;m not going to pretend I have the answers for your specific life.</p></div>
+        <div><p class="wrow-h">I bring lived experience</p><p class="wrow-p">Six years of failed attempts, a lot of close calls, and two years on the other side of it. I know what the conversation sounds like from both seats, and I&rsquo;m not going to pretend I have the answers for your specific life.</p></div>
       </div>
       <div class="wrow rv">
         <span class="wrow-num">03</span>
-        <div><p class="wrow-h">You leave with something concrete</p><p class="wrow-p">Not a homework assignment. Something you actually wanted to think about before you got off the call, based on what came up in the conversation.</p></div>
+        <div><p class="wrow-h">You leave with something concrete</p><p class="wrow-p">Not a homework assignment. Something you wanted to think about before you got off the call, based on what came up in the conversation.</p></div>
       </div>
       <div class="wrow rv" data-d="1">
         <span class="wrow-num">04</span>
@@ -205,7 +226,7 @@ footer{background:var(--oxblood-dk);padding:36px 24px;border-top:1px solid rgba(
 <section class="not-for">
   <span class="eyebrow rv" style="color:var(--oxblood);">Before you book</span>
   <h2 class="sec-h rv">What this <em>isn&rsquo;t.</em></h2>
-  <p class="not-body rv">These are peer support conversations, and they work best when you already want to have them. If you&rsquo;re in acute crisis or need clinical mental health support, the most honest thing I can do is point you toward someone who is actually trained for that, because I&rsquo;m not.</p>
+  <p class="not-body rv">These are peer support conversations, and they work best when you already want to have them. If you&rsquo;re in acute crisis or need clinical mental health support, the most honest thing I can do is point you toward someone who is trained for that, because I&rsquo;m not.</p>
   <p class="not-body rv">I can talk about what early sobriety felt like in my body, what I tried that didn&rsquo;t work, what the first year looked like from the inside, and how I started building a working life around recovery. That&rsquo;s the lane I&rsquo;m in.</p>
   <div class="disclaimer rv">
     <strong>Important:</strong> I&rsquo;m not a licensed therapist or medical professional, and these sessions are not a substitute for clinical care. If you&rsquo;re managing withdrawal, co-occurring mental health conditions, or anything that requires a diagnosis, please speak with a qualified provider.
