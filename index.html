@@ -20,8 +20,6 @@
   --muted:#776F63;
   --coral:oklch(0.7 0.13 38);
   --coral-label:oklch(0.6 0.13 38);
-  --honey:oklch(0.75 0.11 78);
-  --pale-aqua:oklch(0.85 0.06 178);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;}
@@ -47,40 +45,29 @@ img{display:block;max-width:100%;}
   box-shadow:0 24px 60px rgba(0,0,0,0.35);
 }
 
-.header-band{
-  background:var(--ash);
-  padding:48px 28px 36px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.logo-lockup{
+  padding:52px 28px 8px;
   text-align:center;
 }
-.avatar{
-  width:72px;height:72px;
-  border-radius:50%;
-  background:var(--pale-aqua);
-  border:2.5px solid var(--coral);
-  object-fit:cover;
-  margin-bottom:16px;
-}
-.handle{
+.logo-lockup .wordmark{
   font-family:'Bricolage Grotesque',sans-serif;
   font-weight:800;
-  font-size:22px;
+  font-size:clamp(42px,13vw,60px);
+  line-height:0.92;
   letter-spacing:-0.02em;
-  color:#F5F0E6;
-  margin-bottom:8px;
+  color:var(--ash);
+  text-transform:lowercase;
 }
-.subline{
+.logo-lockup .tagline{
   font-family:'Newsreader',serif;
-  font-size:13px;
-  color:var(--honey);
-  line-height:1.5;
-  max-width:300px;
+  font-style:italic;
+  font-size:19px;
+  color:var(--coral);
+  margin-top:10px;
 }
 
 .hero{
-  padding:36px 28px 8px;
+  padding:28px 28px 8px;
   text-align:center;
 }
 .hero-eyebrow{
@@ -196,16 +183,15 @@ img{display:block;max-width:100%;}
 
 <div class="card">
 
-  <div class="header-band">
-    <img class="avatar" src="/avatar.png" alt="Sober Adventuring">
-    <div class="handle">@soberadventuring</div>
-    <p class="subline">741 days sober &middot; full-time nomad / still figuring it out, out loud</p>
+  <div class="logo-lockup">
+    <div class="wordmark">sober<br>adventuring</div>
+    <p class="tagline">are you ready?</p>
   </div>
 
   <div class="hero">
     <span class="hero-eyebrow">Coming soon</span>
     <h1>we're rebuilding.</h1>
-    <p>New site, new tools, same work. In the meantime, grab the free guide below or find me on Instagram.</p>
+    <p>In the works of somethin ah-mazing for all my sober adventurers !! in the meantime, grab the free guide below.</p>
   </div>
 
   <div class="guide" id="guide">
