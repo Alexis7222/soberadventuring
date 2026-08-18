@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sober Adventuring</title>
-<meta name="description" content="Sober Adventuring — recovery resources, the First 90 Days workbook, and Remote & Rooted. Everything in one place.">
+<meta name="description" content="Sober Adventuring — coming soon.">
 <link rel="canonical" href="https://soberadventuring.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -18,16 +18,13 @@
   --ash:#302D28;
   --ash-body:#4C463D;
   --muted:#776F63;
-  --muted2:#A9A08F;
   --coral:oklch(0.7 0.13 38);
   --coral-label:oklch(0.6 0.13 38);
-  --aqua:oklch(0.7 0.13 178);
-  --aqua-label:oklch(0.5 0.1 178);
   --honey:oklch(0.75 0.11 78);
   --pale-aqua:oklch(0.85 0.06 178);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+html{-webkit-text-size-adjust:100%;}
 body{
   font-family:'Newsreader',serif;
   background:var(--ash);
@@ -50,7 +47,6 @@ img{display:block;max-width:100%;}
   box-shadow:0 24px 60px rgba(0,0,0,0.35);
 }
 
-/* 1. HEADER BAND */
 .header-band{
   background:var(--ash);
   padding:48px 28px 36px;
@@ -83,15 +79,24 @@ img{display:block;max-width:100%;}
   max-width:300px;
 }
 
-/* 2. HERO COPY */
 .hero{
-  padding:28px 28px 8px;
+  padding:36px 28px 8px;
   text-align:center;
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:500;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--coral-label);
+  display:block;
+  margin-bottom:14px;
 }
 .hero h1{
   font-family:'Bricolage Grotesque',sans-serif;
   font-weight:800;
-  font-size:30px;
+  font-size:34px;
   line-height:1.05;
   letter-spacing:-0.02em;
   color:var(--ash);
@@ -101,112 +106,14 @@ img{display:block;max-width:100%;}
   font-size:14px;
   line-height:1.65;
   color:var(--ash-body);
-  margin-top:12px;
+  margin-top:14px;
+  max-width:320px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-/* 3/4. OFFERS */
-.offer{
-  padding:18px 28px;
-}
-.offer.offer-1{border-bottom:1px solid var(--bone-border);}
-.offer-eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-weight:500;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:0.1em;
-  display:block;
-  margin-bottom:6px;
-}
-.offer-1 .offer-eyebrow{color:var(--coral-label);}
-.offer-2 .offer-eyebrow{color:var(--aqua-label);}
-.offer-title{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-weight:800;
-  font-size:20px;
-  color:var(--ash);
-  margin-bottom:8px;
-}
-.offer-body{
-  font-family:'Newsreader',serif;
-  font-size:13px;
-  line-height:1.6;
-  color:var(--ash-body);
-  margin-bottom:14px;
-}
-.offer-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-.offer-price{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-weight:800;
-  font-size:18px;
-  color:var(--ash);
-}
-.pill{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-weight:700;
-  font-size:12px;
-  padding:9px 20px;
-  border-radius:999px;
-  white-space:nowrap;
-  transition:transform 0.15s,opacity 0.15s;
-}
-.pill:active{transform:scale(0.97);}
-.pill-coral{background:var(--coral);color:var(--ash);}
-.pill-ash{background:var(--ash);color:#F5F0E6;}
-
-/* 5. DIVIDER */
-.divider{
-  margin:4px 28px 0;
-  border-top:1px dashed var(--bone-border);
-}
-
-/* 6. FREE LINK STACK */
-.links-stack{padding:4px 28px 0;}
-.link-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:15px 4px;
-  border-bottom:1px solid var(--bone-border);
-  transition:opacity 0.15s;
-}
-.link-row:last-child{border-bottom:none;}
-.link-row-text{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-weight:700;
-  font-size:14px;
-  color:var(--ash);
-}
-.link-row-arrow{
-  font-size:14px;
-  color:var(--muted2);
-  flex-shrink:0;
-  margin-left:12px;
-}
-.link-row.soon{opacity:0.5;cursor:default;}
-.link-row.soon .link-row-arrow{font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
-.link-row.live:active{opacity:0.7;}
-
-/* 7. FOOTER */
-.footer{
-  padding:26px 24px 34px;
-  text-align:center;
-}
-.footer p{
-  font-family:'Newsreader',serif;
-  font-style:italic;
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* Guide capture (preserves existing working lead-magnet flow) */
 .guide{
-  margin:8px 28px 24px;
+  margin:32px 28px 24px;
   padding:20px;
   background:rgba(48,45,40,0.04);
   border:1px solid var(--bone-border);
@@ -272,6 +179,17 @@ img{display:block;max-width:100%;}
   line-height:1.5;
   padding:6px 0 2px;
 }
+
+.footer{
+  padding:8px 24px 34px;
+  text-align:center;
+}
+.footer p{
+  font-family:'Newsreader',serif;
+  font-style:italic;
+  font-size:13px;
+  color:var(--muted);
+}
 </style>
 </head>
 <body>
@@ -285,51 +203,9 @@ img{display:block;max-width:100%;}
   </div>
 
   <div class="hero">
-    <h1>welcome, sober adventurer!</h1>
-    <p>the nights of waking up with throw up caked into our hair are over. with the drugs and alcohol to the side, adventure becomes possible &mdash; but will you take the action?</p>
-  </div>
-
-  <div class="offer offer-1">
-    <span class="offer-eyebrow">for the woman who just quit</span>
-    <div class="offer-title">First 90 Days, Anywhere</div>
-    <p class="offer-body">Nobody warns you that the hardest part isn't the drinking &mdash; it's the dinners, the flights, the 9pm silence. This is what I built so I wouldn't white-knuckle it alone.</p>
-    <div class="offer-row">
-      <span class="offer-price">$34</span>
-      <!-- TODO: replace mailto with Shopify product checkout link once live -->
-      <a class="pill pill-coral" id="offer1Cta" href="mailto:alexis.m.antonelli@gmail.com?subject=First%2090%20Days%2C%20Anywhere%20%E2%80%94%20I%20want%20in&amp;body=Hi%20Lexi%2C%20I%27d%20like%20to%20get%20the%20First%2090%20Days%2C%20Anywhere%20workbook%20(%2434).">get the workbook</a>
-    </div>
-  </div>
-
-  <div class="offer offer-2">
-    <span class="offer-eyebrow">for the woman who wants OUT (of the cubicle)</span>
-    <div class="offer-title">Remote &amp; Rooted</div>
-    <p class="offer-body">You didn't quit drinking to keep living small (atleast I didn't). These four weeks focus on building remote income that doesn't care what timezone you're in and at the end, the flexible life you see won't just be mine.</p>
-    <div class="offer-row">
-      <span class="offer-price">$189</span>
-      <!-- TODO: replace mailto with Shopify product checkout link once live -->
-      <a class="pill pill-ash" id="offer2Cta" href="mailto:alexis.m.antonelli@gmail.com?subject=Remote%20%26%20Rooted%20%E2%80%94%20I%20want%20in&amp;body=Hi%20Lexi%2C%20I%27d%20like%20to%20join%20Remote%20%26%20Rooted%20(%24189).">join the program</a>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="links-stack">
-    <a href="#guide" class="link-row live" id="linkGuideRow">
-      <span class="link-row-text">six ways to leave a party (free)</span>
-      <span class="link-row-arrow">&rarr;</span>
-    </a>
-    <div class="link-row soon">
-      <span class="link-row-text">the mocktail map</span>
-      <span class="link-row-arrow">Soon</span>
-    </div>
-    <a href="https://t.me/+wJbhwv2ccS1hMjFh" class="link-row live" target="_blank" rel="noopener" id="linkGroupChat">
-      <span class="link-row-text">join the group chat</span>
-      <span class="link-row-arrow">&rarr;</span>
-    </a>
-    <a href="https://www.instagram.com/soberadventuring/" class="link-row live" target="_blank" rel="noopener" id="linkReel">
-      <span class="link-row-text">watch the latest reel</span>
-      <span class="link-row-arrow">&rarr;</span>
-    </a>
+    <span class="hero-eyebrow">Coming soon</span>
+    <h1>we're rebuilding.</h1>
+    <p>New site, new tools, same work. In the meantime, grab the free guide below or find me on Instagram.</p>
   </div>
 
   <div class="guide" id="guide">
@@ -350,11 +226,6 @@ img{display:block;max-width:100%;}
 
 <script>
 const WORKER='https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
-document.querySelectorAll('.pill, .link-row.live').forEach(function(el){
-  el.addEventListener('click',function(){
-    if(typeof gtag!=='undefined')gtag('event','cta_click',{cta_id:el.id||el.textContent.trim()});
-  });
-});
 document.getElementById('guideBtn').addEventListener('click',async function(){
   var btn=this;
   var ok=document.getElementById('guideOk');
@@ -365,7 +236,7 @@ document.getElementById('guideBtn').addEventListener('click',async function(){
   try{await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,name:name,result:'guide'})});}
   catch(_){}
   btn.style.display='none';ok.style.display='block';
-  if(typeof gtag!=='undefined')gtag('event','guide_signup',{method:'linkbio'});
+  if(typeof gtag!=='undefined')gtag('event','guide_signup',{method:'coming_soon'});
 });
 </script>
 </body>
