@@ -28,7 +28,7 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 
 | Variable | Value | Purpose |
 |----------|-------|---------|
-| `ADMIN_KEY` | `***REMOVED***` | Password for `/alexis7222` admin dashboard GET requests |
+| `ADMIN_KEY` | (kept in Cloudflare only) | Password for `/alexis7222` admin dashboard GET requests |
 
 ### KV Namespace (set in Cloudflare dashboard)
 
@@ -36,14 +36,14 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 |---------|---------------|---------|
 | `LEADS` | LEADS | Stores every lead submitted through any form |
 
-**Setup complete as of 2026-06-08.** KV namespace ID: `c40f0fc7a633497d9a62116cdbcc1e06`. ADMIN_KEY set. Worker deployed.
+**Setup complete as of 2026-06-08.** ADMIN_KEY set. Worker deployed.
 
-### API Keys (hardcoded in worker.js)
+### API Keys (in worker.js on Lexi's computer, never committed here)
 
 | Key | Purpose |
 |-----|---------|
-| `***REMOVED***` | Kit API secret — lead capture only |
-| `***REMOVED***` | Resend API key |
+| Kit API secret | Lead capture only |
+| Resend API key | Sends the guide PDF email |
 
 ### Kit Tag IDs
 
@@ -60,6 +60,7 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 
 | File | Purpose | Notes |
 |------|---------|-------|
+| `free-mocktail-cards/` | 12 Drinks of Christmas lead capture page; posts result `mocktail-cards` to the Worker | Thanks page at `free-mocktail-cards/thanks/` links the PDF |
 | `index.html` | Production homepage | LOCKED — never edit without explicit "edit index.html" instruction |
 | `sa-worker/worker.js` | Unified Cloudflare Worker | KV storage + Kit + Resend + GET handler |
 | `sa-worker/wrangler.toml` | Worker deployment config | Has KV namespace placeholder — fill in before deploying |

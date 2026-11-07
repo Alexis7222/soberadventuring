@@ -68,7 +68,7 @@ tr:hover td{background:rgba(197,68,44,.03)}
   <div class="gate-logo">Sober<em>Adventuring.</em></div>
   <div class="gate-box">
     <h2>Admin Access</h2>
-    <p>Enter your admin key to view quiz leads.</p>
+    <p>Enter your admin key to view your leads.</p>
     <input type="password" id="keyInput" class="gate-input" placeholder="Admin key" onkeydown="if(event.key==='Enter')loadLeads()">
     <button class="gate-btn" onclick="loadLeads()">Access dashboard &rarr;</button>
     <p class="gate-error" id="gateError">Incorrect key. Try again.</p>
@@ -83,7 +83,7 @@ tr:hover td{background:rgba(197,68,44,.03)}
   </div>
 
   <div class="dash-hero">
-    <h1>Quiz <em>Leads</em></h1>
+    <h1>All <em>Leads</em></h1>
     <p id="lastUpdated">Loading...</p>
   </div>
 
@@ -107,6 +107,10 @@ tr:hover td{background:rgba(197,68,44,.03)}
     <div class="stat-card">
       <div class="stat-num" id="statPivot">—</div>
       <div class="stat-label">Pivot package</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statMocktail">—</div>
+      <div class="stat-label">Mocktail cards</div>
     </div>
   </div>
 
@@ -142,7 +146,8 @@ var resultMap = {
   'result-a': { label: 'Clarity Call',   cls: 'badge-a' },
   'result-b': { label: 'Starter Guide',  cls: 'badge-b' },
   'result-c': { label: 'Pivot Package',  cls: 'badge-c' },
-  'guide':    { label: 'Free Guide',     cls: 'badge-b' }
+  'guide':    { label: 'Free Guide',     cls: 'badge-b' },
+  'mocktail-cards': { label: 'Mocktail Cards', cls: 'badge-a' }
 };
 
 function loadLeads() {
@@ -176,13 +181,14 @@ function loadLeads() {
 function renderLeads(leads) {
   var now = new Date();
   var weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
-  var counts = { total: leads.length, week: 0, a: 0, b: 0, c: 0 };
+  var counts = { total: leads.length, week: 0, a: 0, b: 0, c: 0, m: 0 };
 
   leads.forEach(function(l) {
     if (new Date(l.ts) > weekAgo) counts.week++;
     if (l.result === 'result-a') counts.a++;
     if (l.result === 'result-b') counts.b++;
     if (l.result === 'result-c') counts.c++;
+    if (l.result === 'mocktail-cards') counts.m++;
   });
 
   document.getElementById('statTotal').textContent   = counts.total;
@@ -190,10 +196,11 @@ function renderLeads(leads) {
   document.getElementById('statClarity').textContent = counts.a;
   document.getElementById('statGuide').textContent   = counts.b;
   document.getElementById('statPivot').textContent   = counts.c;
+  document.getElementById('statMocktail').textContent = counts.m;
 
   if (!leads.length) {
     document.getElementById('leadsBody').innerHTML =
-      '<tr><td colspan="4"><div class="empty-state"><strong>No leads yet.</strong> Quiz completions with email will appear here.</div></td></tr>';
+      '<tr><td colspan="4"><div class="empty-state"><strong>No leads yet.</strong> Every form signup with an email will appear here.</div></td></tr>';
     return;
   }
 

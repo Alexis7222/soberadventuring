@@ -15,7 +15,7 @@ This file has been rebuilt multiple times by accident. It is the production home
 If the user asks about the website or the homepage in general terms, do not assume that means edit `index.html`.
 
 ### Kit API Key
-The Kit API key (`***REMOVED***`) is for **lead capture subscribers ONLY**.
+The Kit API key (kept in the Cloudflare Worker settings, never in this repo) is for **lead capture subscribers ONLY**.
 It is the list of people who opted in at soberadventuring.com for the lead magnet.
 **NEVER use it for internal broadcasts, automated content delivery, or agent outputs.**
 If you're tempted to use Kit for anything automated, stop. Use Gmail SMTP instead.
