@@ -56,6 +56,12 @@ tr:hover td{background:rgba(197,68,44,.03)}
 .badge-a{background:rgba(45,61,36,.1);color:#2D3D24}
 .badge-b{background:rgba(197,68,44,.1);color:var(--terra)}
 .badge-c{background:rgba(27,0,9,.08);color:var(--ink)}
+.del-btn{background:var(--terra);border:1.5px solid var(--terra);color:var(--cream);font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;padding:10px 16px;cursor:pointer;white-space:nowrap;display:none}
+.del-btn:hover{opacity:.88}
+.del-btn:disabled{opacity:.5;cursor:wait}
+.del-note{max-width:960px;margin:12px auto 0;padding:0 28px;font-size:12px;color:var(--muted);display:none}
+.cb{width:16px;height:16px;accent-color:var(--terra);cursor:pointer}
+th.cbcol,td.cbcol{width:36px;padding-right:0}
 .empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
 .empty-state strong{display:block;font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:8px}
 @media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}.leads-wrap{padding:0 16px}.dash-toolbar{padding:0 16px}table{font-size:13px}th,td{padding:10px 12px}}
@@ -116,13 +122,17 @@ tr:hover td{background:rgba(197,68,44,.03)}
 
   <div class="dash-toolbar">
     <input type="text" id="searchInput" placeholder="Search by email or name..." oninput="filterTable()">
+    <button class="del-btn" id="delBtn" onclick="deleteSelected()">Delete selected</button>
     <button class="export-btn" onclick="exportCSV()">Export CSV</button>
   </div>
+
+  <p class="del-note" id="delNote">Deleting leads needs one small update to your Cloudflare Worker before these buttons work.</p>
 
   <div class="leads-wrap">
     <table>
       <thead>
         <tr>
+          <th class="cbcol"><input type="checkbox" class="cb" id="selAll" onclick="toggleAll(this.checked)" aria-label="Select all shown"></th>
           <th>Email</th>
           <th>Name</th>
           <th>Result</th>
@@ -130,7 +140,7 @@ tr:hover td{background:rgba(197,68,44,.03)}
         </tr>
       </thead>
       <tbody id="leadsBody">
-        <tr><td colspan="4" class="empty-state"><strong>Loading leads...</strong></td></tr>
+        <tr><td colspan="5" class="empty-state"><strong>Loading leads...</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -141,6 +151,9 @@ var WORKER_URL = 'https://bitter-star-c87e.alexis-m-antonelli.workers.dev';
 
 var allLeads = [];
 var adminKey = '';
+var shownLeads = [];
+var selected = {};
+var canDelete = false;
 
 var resultMap = {
   'result-a': { label: 'Clarity Call',   cls: 'badge-a' },
@@ -169,6 +182,9 @@ function loadLeads() {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
     allLeads = leads;
+    canDelete = leads.length > 0 && leads.every(function(l){ return !!l.id; });
+    document.getElementById('delNote').style.display = (leads.length && !canDelete) ? 'block' : 'none';
+    document.getElementById('selAll').disabled = !canDelete;
     renderLeads(leads);
     document.getElementById('lastUpdated').textContent = 'Last loaded ' + new Date().toLocaleTimeString();
   })
@@ -179,6 +195,7 @@ function loadLeads() {
 }
 
 function renderLeads(leads) {
+  shownLeads = leads;
   var now = new Date();
   var weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
   var counts = { total: leads.length, week: 0, a: 0, b: 0, c: 0, m: 0 };
@@ -200,7 +217,7 @@ function renderLeads(leads) {
 
   if (!leads.length) {
     document.getElementById('leadsBody').innerHTML =
-      '<tr><td colspan="4"><div class="empty-state"><strong>No leads yet.</strong> Every form signup with an email will appear here.</div></td></tr>';
+      '<tr><td colspan="5"><div class="empty-state"><strong>No leads yet.</strong> Every form signup with an email will appear here.</div></td></tr>';
     return;
   }
 
@@ -208,7 +225,11 @@ function renderLeads(leads) {
     var d = new Date(l.ts);
     var dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     var res = resultMap[l.result] || { label: l.result || '—', cls: '' };
+    var cb = canDelete
+      ? '<input type="checkbox" class="cb" data-id="' + escAttr(l.id) + '"' + (selected[l.id] ? ' checked' : '') + ' onclick="toggleOne(this)" aria-label="Select lead">'
+      : '';
     return '<tr>' +
+      '<td class="cbcol">' + cb + '</td>' +
       '<td>' + escHtml(l.email) + '</td>' +
       '<td>' + escHtml(l.name || '—') + '</td>' +
       '<td><span class="result-badge ' + res.cls + '">' + res.label + '</span></td>' +
@@ -242,9 +263,61 @@ function exportCSV() {
   a.click();
 }
 
+function toggleOne(el) {
+  var id = el.getAttribute('data-id');
+  if (el.checked) selected[id] = true; else delete selected[id];
+  updateDelBtn();
+}
+
+function toggleAll(on) {
+  shownLeads.forEach(function(l) { if (!l.id) return; if (on) selected[l.id] = true; else delete selected[l.id]; });
+  renderLeads(shownLeads);
+  updateDelBtn();
+}
+
+function updateDelBtn() {
+  var n = Object.keys(selected).length;
+  var btn = document.getElementById('delBtn');
+  btn.style.display = n ? 'inline-block' : 'none';
+  btn.textContent = 'Delete selected (' + n + ')';
+}
+
+function deleteSelected() {
+  var ids = Object.keys(selected);
+  if (!ids.length) return;
+  if (!confirm('Delete ' + ids.length + ' lead' + (ids.length === 1 ? '' : 's') + '? This cannot be undone.')) return;
+  var btn = document.getElementById('delBtn');
+  btn.disabled = true; btn.textContent = 'Deleting...';
+  fetch(WORKER_URL, {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + adminKey, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ids: ids })
+  })
+  .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function() {
+    var gone = {}; ids.forEach(function(id) { gone[id] = true; });
+    allLeads = allLeads.filter(function(l) { return !gone[l.id]; });
+    selected = {};
+    document.getElementById('selAll').checked = false;
+    btn.disabled = false;
+    updateDelBtn();
+    filterTable();
+  })
+  .catch(function() {
+    btn.disabled = false; updateDelBtn();
+    alert('Those leads could not be deleted. Make sure your Worker has the delete update.');
+  });
+}
+
+function escAttr(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
 function logout() {
   adminKey = '';
   allLeads = [];
+  selected = {};
+  updateDelBtn();
   document.getElementById('dashboard').style.display = 'none';
   document.getElementById('gate').style.display = 'flex';
   document.getElementById('keyInput').value = '';
