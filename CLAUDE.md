@@ -14,11 +14,10 @@ This file has been rebuilt multiple times by accident. It is the production home
 
 If the user asks about the website or the homepage in general terms, do not assume that means edit `index.html`.
 
-### Kit API Key
-The Kit API key (kept in the Cloudflare Worker settings, never in this repo) is for **lead capture subscribers ONLY**.
-It is the list of people who opted in at soberadventuring.com for the lead magnet.
-**NEVER use it for internal broadcasts, automated content delivery, or agent outputs.**
-If you're tempted to use Kit for anything automated, stop. Use Gmail SMTP instead.
+### Lead capture
+Kit is no longer used (removed 2026-11). Leads are stored in the Cloudflare Worker's `LEADS` KV and viewed at `/alexis7222`.
+Guide signups get the PDF email through Resend. API keys and the admin password are Cloudflare secrets, never in this repo.
+**NEVER use the lead list for internal broadcasts, automated content delivery, or agent outputs.** Use Gmail SMTP for automated emails.
 
 ### Writing Rules — Banned Forever
 These are banned in every piece of content this system produces. No exceptions.
@@ -164,7 +163,7 @@ To trigger via GitHub: Actions tab → select workflow → Run workflow.
 ## WHAT NOT TO DO
 
 - Do not change the Apify actor ID — `nH2AHrwxeTRJoN5hX` is the only verified working actor
-- Do not use Kit API for anything automated — lead capture subscribers only
+- Do not use the lead list for anything automated — lead capture only
 - Do not change the cron timing without understanding the calendar → content agent dependency
 - Do not generate content without the gold vault loaded — it's the entire quality standard
 - Do not write captions that open with a question or emotion

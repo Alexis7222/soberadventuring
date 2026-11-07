@@ -12,7 +12,7 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 |--------|--------|-------|
 | GitHub Pages | LIVE | Push to `main` → deploys automatically. No build step. |
 | Cloudflare Worker | LIVE | `https://bitter-star-c87e.alexis-m-antonelli.workers.dev` |
-| Kit (ConvertKit) | LIVE | Lead capture subscribers only. Never use for automated content. |
+| Kit (ConvertKit) | REMOVED | No longer used (2026-11). Leads live in the Worker's LEADS KV. |
 | Resend | LIVE | Sends guide PDF email on guide signups |
 | Google Analytics | PLACEHOLDER | Replace `G-XXXXXXXXXX` in index.html with real Measurement ID |
 
@@ -22,13 +22,14 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 
 **Worker name:** `bitter-star-c87e`
 **Worker URL:** `https://bitter-star-c87e.alexis-m-antonelli.workers.dev`
-**Deploy command:** `wrangler deploy` inside `C:\Users\Alexis\sa-worker\`
+**Deploy command:** `npx wrangler deploy` inside `C:\Users\Alexis\sa-worker\`
 
-### Environment Variables (set in Cloudflare dashboard)
+### Secrets (set with `npx wrangler secret put <NAME>`, never in any file)
 
-| Variable | Value | Purpose |
-|----------|-------|---------|
-| `ADMIN_KEY` | (kept in Cloudflare only) | Password for `/alexis7222` admin dashboard GET requests |
+| Secret | Purpose |
+|--------|---------|
+| `ADMIN_KEY` | Password for the `/alexis7222` admin dashboard (view and delete leads) |
+| `RESEND_API_KEY` | Sends the guide PDF email |
 
 ### KV Namespace (set in Cloudflare dashboard)
 
@@ -36,23 +37,11 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 |---------|---------------|---------|
 | `LEADS` | LEADS | Stores every lead submitted through any form |
 
-**Setup complete as of 2026-06-08.** ADMIN_KEY set. Worker deployed.
+**Setup complete as of 2026-06-08.** Worker deployed.
 
-### API Keys (in worker.js on Lexi's computer, never committed here)
+### Which signups get the guide email
 
-| Key | Purpose |
-|-----|---------|
-| Kit API secret | Lead capture only |
-| Resend API key | Sends the guide PDF email |
-
-### Kit Tag IDs
-
-| Tag | ID | Trigger |
-|-----|----|---------|
-| guide | 20114246 | Any guide signup (sends PDF email) |
-| result-a | 20114247 | Recovery quiz result A |
-| result-b | 20114248 | Recovery quiz result B |
-| result-c | 20114249 | Recovery quiz result C |
+Every signup is saved to `LEADS`. Every result except the recovery quiz results `result-a`, `result-b` and `result-c` gets the guide PDF email through Resend.
 
 ---
 
@@ -62,7 +51,7 @@ This file is the persistent project memory for soberadventuring.com. Update it w
 |------|---------|-------|
 | `free-mocktail-cards/` | 12 Drinks of Christmas lead capture page; posts result `mocktail-cards` to the Worker | Thanks page at `free-mocktail-cards/thanks/` links the PDF |
 | `index.html` | Production homepage | LOCKED — never edit without explicit "edit index.html" instruction |
-| `sa-worker/worker.js` | Unified Cloudflare Worker | KV storage + Kit + Resend + GET handler |
+| `sa-worker/worker.js` | Unified Cloudflare Worker | KV storage + Resend + GET and DELETE handlers |
 | `sa-worker/wrangler.toml` | Worker deployment config | Has KV namespace placeholder — fill in before deploying |
 | `workers/leads-worker.js` | Old version (incomplete) | Superseded by sa-worker/worker.js. Keep for reference. |
 | `alexis7222/index.html` | Admin leads dashboard | Fetches leads via GET from Worker |
@@ -114,7 +103,7 @@ Only link to these from the homepage. Do not invent post titles.
 
 - [ ] KV namespace setup (see Worker Configuration above) — required for admin dashboard to show leads
 - [ ] Replace `G-XXXXXXXXXX` in index.html with real Google Analytics 4 Measurement ID
-- [ ] Test full email deliverability: submit guide form → confirm Kit subscription fires → confirm Resend email arrives → confirm PDF at `https://soberadventuring.com/25-hot-takes.pdf` is accessible
+- [ ] Test full email deliverability: submit guide form → confirm lead appears in `/alexis7222` → confirm Resend email arrives → confirm PDF at `https://soberadventuring.com/25-hot-takes.pdf` is accessible
 - [ ] Verify both quizzes submit correctly to the Worker and leads appear in `/alexis7222`
 
 ---

@@ -151,7 +151,7 @@ Content → followers → trust → Common Ground community → coaching calls �
 
 | Constraint | Rule |
 |-----------|------|
-| Kit API key | Lead capture subscribers ONLY — never for automated broadcasts |
+| Lead list (LEADS KV) | Lead capture only — never for automated broadcasts. Kit is no longer used. |
 | Writing banned structures | See CLAUDE.md — enforced in all prompts |
 | Apify actor ID | `nH2AHrwxeTRJoN5hX` only — do not change |
 | Workflow timing | Calendar must run before content agent — never flip the order |
